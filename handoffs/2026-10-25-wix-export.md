@@ -15,8 +15,8 @@ Branch `claude/project-thread-3cunpa`. Everything is under `wix-export/`; script
 
 ## Watch out for
 - Main menu links go to `/kopie-van-therapies` and `/kopie-van-conditions` (not in the sitemap). Also `/therapies`, `/booking`, `/privacy`. All exported under `pages/unlisted/`; all need redirects.
-- Two "home" pages: `/` and `/copy-of-meditation-video` (the header logo links to the second). Owner to confirm which is the real one.
-- Fonts (Futura, Avenir, Helvetica) are licensed through Wix, and the wordmark uses an uploaded font that looks like a demo licence. Saved for reference only; check licences or pick close free alternatives before shipping.
+- Two "home" pages: `/` and `/copy-of-meditation-video`. **Owner confirmed (2026-10-25): `/` is the real home page.** Rebuild `/` as home, point the logo at `/`, and redirect `/copy-of-meditation-video` to `/`.
+- Fonts (Futura, Avenir, Helvetica and the uploaded wordmark font): **owner confirmed (2026-10-25) she holds licences for them and they may be used.** Use the files in `brand/fonts/`.
 - Wix serves phones a 320px layout, so mobile screenshots are 640px wide.
 - 34 images shown on the site are not in the Media Manager (26 stock, 8 owner uploads); URLs in `media-used.json`.
 - No client data: Google Reviews widget, comments and member areas are masked/excluded. Public therapist contact details are kept.
