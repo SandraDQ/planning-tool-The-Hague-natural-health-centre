@@ -18,7 +18,7 @@ import type {
   TherapistBusiness,
   Therapy,
 } from "@/lib/domain/types";
-import { makeAppointment } from "./build";
+import { insertAppointment, makeAppointment } from "./build";
 import { stableId } from "./ids";
 import { candidateWindows, validateInState } from "./rules";
 import { SERIES_HORIZON_WEEKS, materializeSeries } from "./series";
@@ -452,6 +452,8 @@ export function createSeedState(now: Date = new Date()): DemoState {
     appointmentPayment: {},
     intakes: [],
     balancePayments: [],
+    appointmentPolicy: {},
+    refunds: [],
     rentRates: [
       { id: "rate-room-3", roomId: DEMO_IDS.rooms[3], pricingMode: "fixed_monthly", amountCents: 65000, btwTreatment: "exempt", validFrom: `${year}-01-01`, validTo: null },
       { id: "rate-room-4", roomId: DEMO_IDS.rooms[4], pricingMode: "fixed_monthly", amountCents: 60000, btwTreatment: "exempt", validFrom: `${year}-01-01`, validTo: null },
@@ -527,7 +529,7 @@ function seedAppointments(state: DemoState, opts: { nowMs: number; from: string;
     const past = ms(appt.session.end) <= nowMs;
     const r = rnd();
     appt.status = forced ?? (past ? (r < 0.92 ? "completed" : "no_show") : r < 0.88 ? "confirmed" : "cancelled");
-    state.appointments.push(appt);
+    insertAppointment(state, appt);
     if (appt.source === "online" && appt.status !== "cancelled") storeIntake(state, appt, pick(REASONS), rnd() < 0.3);
     if (appt.status === "confirmed" || appt.status === "completed" || appt.status === "no_show") {
       if (appt.source === "online") state.appointmentPayment[appt.id] = `demo_tr_${appt.id.slice(0, 8)}`;

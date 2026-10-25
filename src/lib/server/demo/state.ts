@@ -56,6 +56,10 @@ export interface DemoState {
   appointmentPayment: Record<Id, string>;
   intakes: StoredIntake[];
   balancePayments: BalancePayment[];
+  /** Cancellation policy frozen at booking (D6; the DB snapshots it on the appointment). */
+  appointmentPolicy: Record<Id, CancellationPolicy>;
+  /** Demo refunds (Mollie refunds later). */
+  refunds: Array<{ id: Id; appointmentId: Id; amountCents: number; reason: "client_cancellation" | "therapist_cancellation" }>;
   rentRates: RentRate[];
   rentSettings: RentSettings;
   /** Block series are materialised up to this local date. */

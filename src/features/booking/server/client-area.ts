@@ -11,7 +11,7 @@ import type { Appointment, Client, Id, Session } from "@/lib/domain/types";
 export interface ClientAreaStore {
   getMe(session: Session): Promise<Client>;
   listMyAppointments(session: Session): Promise<Appointment[]>;
-  cancelAppointment(session: Session, appointmentId: Id, by: "client"): Promise<Appointment>;
+  cancelAppointment(session: Session, appointmentId: Id, by: "client"): Promise<unknown>;
 }
 
 export function clientArea(store: DataStore): Partial<ClientAreaStore> {

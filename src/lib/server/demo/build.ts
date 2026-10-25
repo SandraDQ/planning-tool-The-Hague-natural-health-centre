@@ -15,6 +15,13 @@ export function sessionTypeContext(state: DemoState, sessionTypeId: Id) {
   return { sessionType, service, therapist };
 }
 
+/** Inserts an appointment and freezes the therapist's current cancellation policy for it (D6). */
+export function insertAppointment(state: DemoState, appt: Appointment): void {
+  state.appointments.push(appt);
+  const policy = state.policies.find((p) => p.therapistId === appt.therapistId);
+  if (policy) state.appointmentPolicy[appt.id] = structuredClone(policy);
+}
+
 export function makeAppointment(
   state: DemoState,
   input: {

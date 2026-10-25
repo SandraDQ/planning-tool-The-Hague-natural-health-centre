@@ -22,7 +22,8 @@ import type {
 } from "@/lib/domain/types";
 import type { AppStore } from "../extensions";
 import { holdExpiresAt } from "@/lib/scheduling";
-import { makeAppointment, sessionTypeContext } from "./build";
+import { insertAppointment, makeAppointment, sessionTypeContext } from "./build";
+import { cancellationTerms } from "./cancellation";
 import { checkReleaseBlock, checkReserveBlock, findSlots, occupies, roomHasFutureBookings, validateInState } from "./rules";
 import { SERIES_HORIZON_WEEKS, materializeSeries } from "./series";
 import type { DemoState } from "./state";
@@ -103,6 +104,18 @@ export function createDemoStore(state: DemoState, options: DemoStoreOptions = {}
   }
 
   const timeOffOf = (therapistId: Id) => state.timeOff.filter((t) => t.therapistId === therapistId).map((t) => t.period);
+
+  /** New client = no earlier session with this therapist that took place or is still booked. */
+  function isNewClient(a: Appointment): boolean {
+    return !state.appointments.some(
+      (x) =>
+        x.id !== a.id &&
+        x.clientId === a.clientId &&
+        x.therapistId === a.therapistId &&
+        ms(x.session.start) < ms(a.session.start) &&
+        (x.status === "completed" || x.status === "no_show" || x.status === "confirmed"),
+    );
+  }
 
   // ---------- authorisation ----------
 
@@ -316,7 +329,7 @@ export function createDemoStore(state: DemoState, options: DemoStoreOptions = {}
           source: "online",
           holdExpiresAt: holdExpiresAt(now()),
         });
-        state.appointments.push(appt);
+        insertAppointment(state, appt);
         syncPaperWindow(appt.paperWindowId);
         state.intakes.push({ appointmentId: appt.id, answers: clone(intake), deleteAfter: null });
         return clone(appt);
@@ -441,7 +454,7 @@ export function createDemoStore(state: DemoState, options: DemoStoreOptions = {}
           source: "manual",
           holdExpiresAt: null,
         });
-        state.appointments.push(appt);
+        insertAppointment(state, appt);
         syncPaperWindow(appt.paperWindowId);
         return clone(appt);
       },
@@ -451,6 +464,10 @@ export function createDemoStore(state: DemoState, options: DemoStoreOptions = {}
         const a = ownAppointment(me, appointmentId);
         if (!occupies(a)) fail("invalid", "Only held or confirmed appointments can be cancelled");
         cancel(a, "therapist");
+        // A cancellation by the therapist always returns the full paid deposit.
+        if (state.appointmentPayment[a.id] && a.snapshot.depositCents > 0) {
+          state.refunds.push({ id: randomUUID(), appointmentId: a.id, amountCents: a.snapshot.depositCents, reason: "therapist_cancellation" });
+        }
         return clone(a);
       },
       async markNoShow(session, appointmentId) {
@@ -846,6 +863,29 @@ export function createDemoStore(state: DemoState, options: DemoStoreOptions = {}
       async listMyAppointments(session) {
         const me = asClient(session);
         return clone(state.appointments.filter((a) => a.clientId === me.id).sort((a, b) => ms(b.session.start) - ms(a.session.start)));
+      },
+      async cancelAppointment(session, appointmentId, by) {
+        const me = asClient(session);
+        if (by !== "client") fail("invalid");
+        const a = state.appointments.find((x) => x.id === appointmentId);
+        if (!a) fail("not_found");
+        if (a!.clientId !== me.id) fail("forbidden");
+        if (!occupies(a!)) fail("invalid", "Only held or confirmed appointments can be cancelled");
+        if (ms(a!.session.start) <= now()) fail("invalid", "The session has already started");
+        const depositPaidCents = state.appointmentPayment[a!.id] ? a!.snapshot.depositCents : 0;
+        const terms = cancellationTerms({
+          policy: state.appointmentPolicy[a!.id] ?? null,
+          sessionStart: a!.session.start,
+          priceCents: a!.snapshot.priceCents,
+          depositPaidCents,
+          newClient: isNewClient(a!),
+          nowMs: now(),
+        });
+        cancel(a!, "client"); // D18: intake purged (cancelled before the start)
+        if (terms.refundCents > 0) {
+          state.refunds.push({ id: randomUUID(), appointmentId: a!.id, amountCents: terms.refundCents, reason: "client_cancellation" });
+        }
+        return { appointment: clone(a!), depositPaidCents, ...terms };
       },
     },
   };

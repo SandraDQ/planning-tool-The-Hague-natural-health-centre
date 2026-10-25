@@ -74,7 +74,13 @@ await store.therapist.listMyAppointments(session, { start, end }); // ranges up 
 - **Booking:** `public.findSlots(sessionTypeId, range)` → `EngineSlot[]`, which has `paperWindowId`. Pass the chosen slot unchanged to `booking.holdSlot({ sessionTypeId, slot, client, intake })`. `intake.acceptedPolicy` and `healthDataConsent` must be `true`. Then the demo payment screen calls `booking.confirmPayment(id, "demo_tr_" + something)` or `booking.failPayment(id)`. If nothing is done, the hold expires after 15 min. `getAppointment(id)` is anonymous (the id is the capability), so only show the snapshot and status.
 - **Therapist extras:** `listMySessionTypes`, `listMyTimeOff`, `readIntake`, `listMyPaperWindows`. The contract methods `listRooms`, `listBlockTemplates` and `listTakenBlocks` are implemented as the coordinator asked.
 - **Admin extras:** `listPaperWindows`. `roomGrid` returns all rooms, reserved blocks and non-cancelled appointments overlapping the range (client ids only, no names, no intake).
-- **Client:** `store.client.getMe(session)`, `store.client.listMyAppointments(session)` (newest first).
+- **Client:** `store.client.getMe(session)`, `store.client.listMyAppointments(session)` (newest first), and `store.client.cancelAppointment(session, id, "client")`. That returns `ClientCancellation { appointment, onTime, freeUntil, depositPaidCents, feeCents, refundCents }`, so the UI can say what comes back.
+  - It applies the cancellation policy **frozen at booking** (D6, kept in `state.appointmentPolicy`). On time → the full deposit is refunded. Late → the fee (% of the price or a fixed amount) is kept **from the deposit only** and the rest is refunded. Any fee above the deposit is not charged here.
+  - "No fee for new clients" counts a client as new when they have no earlier completed, no-show or confirmed session with that therapist.
+  - `business_days` = the same local time N working days (Mon–Fri) earlier. Public holidays are not counted yet.
+  - Only held/confirmed appointments, only before the start (`invalid` otherwise), only the own appointment (`forbidden`). An unpaid hold has `depositPaidCents: 0`. The intake is purged (D18).
+  - Refunds are recorded in `state.refunds`. A therapist cancellation refunds the full paid deposit.
+- **Abandoned demo payment:** call `booking.failPayment(id)`. It cancels the hold and frees the slot immediately (tested). Treat "abandon" like "fail".
 - Times are ISO UTC. Display them in Europe/Amsterdam.
 
 ## Tests
@@ -96,6 +102,8 @@ await store.therapist.listMyAppointments(session, { start, end }); // ranges up 
 Last run: `pnpm test` 93/93 passed (7 files). `pnpm typecheck` clean (whole project). `pnpm lint`: 0 errors, 2 warnings in `scripts/wix-export/layout.mjs` (not mine). I checked by hand on a dev server: `/nl/login` and `/en/login` render; signing in as a therapist sets the cookie and redirects (303) to `/nl/therapist`; the page then shows "logged in as".
 
 ## Contract proposals (`src/lib/domain/` is not mine)
+
+0. Add the cancellation policy to `Appointment.snapshot` (the DB already snapshots it). The demo keeps it in a side map.
 
 1. Add `TherapistExtras`, `AdminExtras.listPaperWindows` and a `client: ClientStore` to `DataStore` (now in `src/lib/server/extensions.ts`), and the same to the future Supabase store.
 2. `readIntake` should log access (`intake_access_log`), like the DB function. The demo does not log.

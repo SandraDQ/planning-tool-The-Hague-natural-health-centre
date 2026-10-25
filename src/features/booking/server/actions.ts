@@ -122,10 +122,17 @@ export async function demoPayFailed(form: FormData) {
   redirect({ href: { pathname: `/book/pay/${id}`, query: { status: "failed" } }, locale });
 }
 
-/** Demo: the client closed the bank page without paying. Nothing changes; the hold simply runs out. */
+/** Demo: the client closed the bank page without paying. The slot is released straight away, as on a failed payment. */
 export async function demoPayAbandoned(form: FormData) {
   const locale = asLocale(String(form.get("locale") ?? ""));
   const id = String(form.get("id") ?? "");
+  const appointment = await ownedAppointment(id);
+  if (!appointment) redirect({ href: "/book", locale });
+  try {
+    await getStore().booking.failPayment(id);
+  } catch (err) {
+    console.error("[booking] demo abandon failed", errorCode(err) ?? "unknown");
+  }
   redirect({ href: { pathname: `/book/pay/${id}`, query: { status: "abandoned" } }, locale });
 }
 
