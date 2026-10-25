@@ -1,0 +1,22 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Client personal data from Wix: never commit
+/wix-export/private/
+
+# Dependencies and builds
+node_modules/
+.next/
+out/
+dist/
+coverage/
+playwright-report/
+test-results/
+
+# OS / editor
+.DS_Store
+*.log
+.vscode/
+.idea/
