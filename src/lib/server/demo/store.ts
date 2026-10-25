@@ -20,7 +20,7 @@ import type {
   Slot,
   Therapist,
 } from "@/lib/domain/types";
-import type { AppStore } from "../extensions";
+import type { AppStore, ManualClientInput } from "../extensions";
 import { holdExpiresAt } from "@/lib/scheduling";
 import { insertAppointment, makeAppointment, sessionTypeContext } from "./build";
 import { cancellationTerms } from "./cancellation";
@@ -169,6 +169,27 @@ export function createDemoStore(state: DemoState, options: DemoStoreOptions = {}
     return client;
   }
 
+  /** Manual (phone/paper) client: only the first name is required (owned by the therapist). */
+  function createManualClient(input: ManualClientInput, createdBy: Id): Client {
+    if (!input || !isText(input.firstName, 100)) fail("invalid", "First name is required");
+    const opt = (v: unknown, max: number) => v === undefined || v === null || (typeof v === "string" && v.length <= max);
+    if (!opt(input.lastName, 100) || !opt(input.phone, 40) || !opt(input.email, 254)) fail("invalid", "Invalid client details");
+    const email = (input.email ?? "").trim().toLowerCase();
+    if (email && !isEmail(email)) fail("invalid", "Invalid e-mail address");
+    if (input.locale !== "nl" && input.locale !== "en") fail("invalid", "Unknown locale");
+    const client: Client = {
+      id: randomUUID(),
+      firstName: input.firstName.trim(),
+      lastName: (input.lastName ?? "").trim(),
+      email,
+      phone: (input.phone ?? "").trim(),
+      locale: input.locale,
+    };
+    state.clients.push(client);
+    state.clientCreatedBy[client.id] = createdBy;
+    return client;
+  }
+
   function checkSlotShape(slot: Slot) {
     if (!slot || typeof slot.therapistId !== "string" || typeof slot.roomId !== "string" || !slot.session || !Number.isFinite(ms(slot.session.start))) {
       fail("invalid", "Invalid slot");
@@ -191,6 +212,8 @@ export function createDemoStore(state: DemoState, options: DemoStoreOptions = {}
     if (!template) fail("invalid", "Unknown block time");
     if (!isDate(input.date)) fail("invalid", "Invalid date");
     const period = blockPeriod(template!, input.date);
+    // Stricter than the engine (which lets admin override): nobody books a block in the past.
+    if (actor === "admin" && ms(period.start) <= now()) fail("invalid", "This date is in the past");
     const code = checkReserveBlock(state, { roomId: room!.id, therapistId, period }, actor, now());
     if (code === "forbidden") fail("forbidden", "This block has already started");
     if (code === "block_taken") fail("block_taken", "Someone else already has this block");
@@ -442,7 +465,7 @@ export function createDemoStore(state: DemoState, options: DemoStoreOptions = {}
         if (code) fail(code);
         // A manual booking inside an open paper window takes that window.
         const w = state.paperWindows.find((p) => p.therapistId === me.id && p.status === "open" && p.roomId === input.slot.roomId && overlaps(p.period, period));
-        const client = findOrCreateClient(input.client, me.id);
+        const client = createManualClient(input.client, me.id);
         const appt = makeAppointment(state, {
           sessionTypeId: sessionType.id,
           roomId: input.slot.roomId,
@@ -485,6 +508,7 @@ export function createDemoStore(state: DemoState, options: DemoStoreOptions = {}
         if (!isInt(input.amountCents, 1, 10_000_000)) fail("invalid", "Amount must be a positive number of cents");
         if (!isDate(input.paidOn)) fail("invalid", "Invalid date");
         if (a.status === "held" || a.status === "cancelled") fail("invalid", "This appointment has no balance to pay");
+        if (ms(a.session.start) > now()) fail("invalid", "A balance can be recorded once the session has started");
         const payment = { id: randomUUID(), appointmentId: a.id, method: input.method, amountCents: input.amountCents, paidOn: input.paidOn };
         state.balancePayments.push(payment);
         return clone(payment);
@@ -614,6 +638,19 @@ export function createDemoStore(state: DemoState, options: DemoStoreOptions = {}
       async listMyTimeOff(session) {
         const me = asTherapist(session);
         return clone(state.timeOff.filter((t) => t.therapistId === me.id));
+      },
+      async deleteTimeOff(session, timeOffId) {
+        const me = asTherapist(session);
+        const row = state.timeOff.find((t) => t.id === timeOffId);
+        if (!row) fail("not_found");
+        if (row!.therapistId !== me.id) fail("forbidden");
+        state.timeOff = state.timeOff.filter((t) => t.id !== timeOffId);
+      },
+      async listBalancePayments(session, appointmentIds) {
+        const me = asTherapist(session);
+        const wanted = new Set(Array.isArray(appointmentIds) ? appointmentIds : []);
+        const own = new Set(state.appointments.filter((a) => a.therapistId === me.id && wanted.has(a.id)).map((a) => a.id));
+        return clone(state.balancePayments.filter((p) => own.has(p.appointmentId)).sort((a, b) => a.paidOn.localeCompare(b.paidOn)));
       },
       async readIntake(session, appointmentId) {
         const me = asTherapist(session);
@@ -812,7 +849,9 @@ export function createDemoStore(state: DemoState, options: DemoStoreOptions = {}
         return clone({
           rooms: [...state.rooms].sort((a, b) => a.number - b.number),
           blocks: state.blocks.filter((b) => b.status === "reserved" && overlaps(b.period, range)),
-          appointments: state.appointments.filter((a) => a.status !== "cancelled" && overlaps(a.session, range)),
+          appointments: state.appointments
+            .filter((a) => a.status !== "cancelled" && overlaps(a.session, range))
+            .map((a) => ({ ...a, clientFirstName: state.clients.find((c) => c.id === a.clientId)?.firstName ?? null })),
         });
       },
       async listBlockSeries(session) {
@@ -845,14 +884,26 @@ export function createDemoStore(state: DemoState, options: DemoStoreOptions = {}
         } else if (room!.privateTherapistId !== therapist!.id) {
           fail("outside_block", "This private room is not assigned to the therapist");
         }
-        if (state.paperWindows.some((w) => w.therapistId === therapist!.id && overlaps(w.period, period))) fail("invalid", "Overlaps another window");
+        if (state.paperWindows.some((w) => w.status !== "closed" && w.therapistId === therapist!.id && overlaps(w.period, period))) fail("invalid", "Overlaps another window");
         const w = { id: randomUUID(), therapistId: therapist!.id, roomId: room!.id, period, status: "open" as const };
         state.paperWindows.push(w);
         return clone(w);
       },
-      async listPaperWindows(session) {
+      async listPaperWindows(session, filter) {
         asAdmin(session);
-        return clone(state.paperWindows);
+        return clone(
+          state.paperWindows
+            .filter((w) => !filter?.therapistId || w.therapistId === filter.therapistId)
+            .sort((a, b) => ms(a.period.start) - ms(b.period.start)),
+        );
+      },
+      async closePaperWindow(session, windowId) {
+        asAdmin(session);
+        const w = state.paperWindows.find((x) => x.id === windowId);
+        if (!w) fail("not_found");
+        if (w!.status === "filled") fail("invalid", "This window is already booked");
+        w!.status = "closed";
+        return clone(w!);
       },
     },
 

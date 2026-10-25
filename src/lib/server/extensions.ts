@@ -3,7 +3,34 @@
 // the Supabase implementation must provide them too.
 
 import type { AdminStore, DataStore, TherapistStore } from "@/lib/domain/store";
-import type { Appointment, Client, Id, IntakeInput, PaperWindow, Session, SessionType, TimeOff } from "@/lib/domain/types";
+import type {
+  Appointment,
+  BalancePayment,
+  Client,
+  Id,
+  IntakeInput,
+  Interval,
+  Locale,
+  PaperWindow,
+  Room,
+  RoomBlock,
+  Session,
+  SessionType,
+  Slot,
+  TimeOff,
+} from "@/lib/domain/types";
+
+/** Room-grid appointment for the admin: the client's first name only (7A), never intake. */
+export type GridAppointment = Appointment & { clientFirstName: string | null };
+
+/** Client details for a manual (phone/paper) booking: only the first name is required. */
+export interface ManualClientInput {
+  firstName: string;
+  lastName?: string;
+  email?: string;
+  phone?: string;
+  locale: Locale;
+}
 
 /** Result of a client cancellation: what happens to the deposit. Cents. */
 export interface ClientCancellation {
@@ -21,6 +48,12 @@ export interface ClientCancellation {
 }
 
 export interface TherapistExtras {
+  /** Replaces the contract version: phone/paper clients need only a first name. */
+  addManualBooking(session: Session, input: { sessionTypeId: Id; slot: Slot; client: ManualClientInput }): Promise<Appointment>;
+  /** Balance payments of own appointments (others' ids are left out). */
+  listBalancePayments(session: Session, appointmentIds: Id[]): Promise<BalancePayment[]>;
+  /** Removes own time off. */
+  deleteTimeOff(session: Session, timeOffId: Id): Promise<void>;
   /** All own session types, also those of archived services. */
   listMySessionTypes(session: Session): Promise<SessionType[]>;
   listMyTimeOff(session: Session): Promise<TimeOff[]>;
@@ -31,7 +64,12 @@ export interface TherapistExtras {
 }
 
 export interface AdminExtras {
-  listPaperWindows(session: Session): Promise<PaperWindow[]>;
+  /** Replaces the contract version: appointments carry `clientFirstName`. */
+  roomGrid(session: Session, range: Interval): Promise<{ rooms: Room[]; blocks: RoomBlock[]; appointments: GridAppointment[] }>;
+  /** All paper-calendar windows, optionally of one therapist, sorted by start. */
+  listPaperWindows(session: Session, filter?: { therapistId?: Id }): Promise<PaperWindow[]>;
+  /** Closes an open window so it takes no more bookings (a booked window is already closed to others). */
+  closePaperWindow(session: Session, windowId: Id): Promise<PaperWindow>;
 }
 
 /** Signed-in client ("/account"). */
@@ -48,7 +86,7 @@ export interface ClientStore {
 }
 
 export type AppStore = Omit<DataStore, "therapist" | "admin"> & {
-  therapist: TherapistStore & TherapistExtras;
-  admin: AdminStore & AdminExtras;
+  therapist: Omit<TherapistStore, "addManualBooking"> & TherapistExtras;
+  admin: Omit<AdminStore, "roomGrid"> & AdminExtras;
   client: ClientStore;
 };

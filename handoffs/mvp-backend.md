@@ -80,6 +80,13 @@ await store.therapist.listMyAppointments(session, { start, end }); // ranges up 
   - `business_days` = the same local time N working days (Mon–Fri) earlier. Public holidays are not counted yet.
   - Only held/confirmed appointments, only before the start (`invalid` otherwise), only the own appointment (`forbidden`). An unpaid hold has `depositPaidCents: 0`. The intake is purged (D18).
   - Refunds are recorded in `state.refunds`. A therapist cancellation refunds the full paid deposit.
+- **Dashboard gaps closed** (see `handoffs/mvp-dashboards.md`; tests in `src/lib/server/demo/gaps.test.ts`):
+  1. `admin.roomGrid` appointments carry `clientFirstName` (`GridAppointment`): first name only, never last name, contact details or intake.
+  2. `therapist.listBalancePayments(session, appointmentIds)` returns payments of own appointments only. `recordBalancePayment` now refuses a payment before the session has started (`invalid`).
+  3. `therapist.addManualBooking` takes `ManualClientInput`: only `firstName` is required; `lastName`, `email` and `phone` are optional and stored as `""`. An e-mail, if given, must be valid.
+  4. `admin.assignBlock` refuses a past date or a block that has started (`invalid`). This is stricter than the engine's admin override.
+  5. `therapist.deleteTimeOff(session, timeOffId)` works on own time off only.
+  6. `admin.listPaperWindows(session, { therapistId? })` is sorted by start. `admin.closePaperWindow(session, id)` sets status `closed` (`invalid` if already booked). A closed window offers no slots and never reopens by itself. The same time can be opened again with `openPaperWindow`.
 - **Abandoned demo payment:** call `booking.failPayment(id)`. It cancels the hold and frees the slot immediately (tested). Treat "abandon" like "fail".
 - Times are ISO UTC. Display them in Europe/Amsterdam.
 
