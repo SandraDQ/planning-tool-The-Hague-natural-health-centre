@@ -29,6 +29,9 @@ Every decision, with date and who made it. Decisions 1–18 from the master prom
 | D23 | 2026-10-25 | Demo payment: the deposit step shows a clearly labelled "demo payment" screen that simulates the Mollie webhook (succeed / fail / abandon). Real Mollie Connect replaces it in Phase 5. | Orchestrator | Decided |
 | D24 | 2026-10-25 | Shared-room slots = reserved blocks intersected with the therapist's working hours when they have set any; with no working hours set, the whole block is bookable (master prompt 3.2). | Orchestrator (default) | Decided |
 | D25 | 2026-10-25 | A therapist's manual booking during their own time off is allowed with a warning, not refused ("therapists decide"). Online slots never fall in time off. | Orchestrator (default) | Decided |
+| D26 | 2026-10-25 | A guest booking never attaches to an existing client account by e-mail. It creates its own client record; linking to an account happens only after the person confirms by magic link (when Supabase Auth is connected). A signed-in client always books as themselves. | Orchestrator (default, security review F2) | Decided |
+| D27 | 2026-10-25 | The booking form keeps only name, e-mail and phone in the browser between steps; complaint, date of birth and address are never stored client-side and must be retyped if a slot is lost. | Orchestrator (default, security review F6) | Decided |
+| D28 | 2026-10-25 | Demo mode needs an explicit `DEMO_MODE=1` and refuses to start when any real service key is set. | Orchestrator (security review F3) | Decided |
 
 ## Open questions (defaults apply unless the owner says otherwise)
 

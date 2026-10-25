@@ -1,0 +1,227 @@
+// Privacy & security review of the MVP application layer (handoffs/reviews/mvp-app-review.md).
+// Tests named "HOLE:" pass WHILE the hole exists. Turn each one around when its fix lands.
+// Tests named "OK:" check a property that holds today and must keep holding.
+
+import { afterEach, describe, expect, it, vi } from "vitest";
+import { DomainError } from "@/lib/domain/store";
+import type { IntakeInput, Session } from "@/lib/domain/types";
+import { DEMO_IDS, createSeedState } from "../demo/seed";
+import { createDemoStore } from "../demo/store";
+import { stableId } from "../demo/ids";
+import { hasRealBackend, isDemoMode } from "../mode";
+import { createSessionToken, sessionSecret, verifySessionToken } from "../session-token";
+
+// ownership.ts is server-only and reads cookies(); stub both so the real check runs here.
+let bookingsCookie = "";
+vi.mock("server-only", () => ({}));
+vi.mock("next/headers", () => ({
+  cookies: async () => ({ get: (name: string) => (name === "thnhc_bookings" ? { value: bookingsCookie } : undefined) }),
+}));
+vi.mock("@/lib/server/session", () => ({ getSession: async () => null }));
+
+const T0 = Date.parse("2026-11-02T07:30:00Z"); // Monday morning, Amsterdam
+const DAY = 86_400_000;
+
+function setup() {
+  const clock = { now: T0 };
+  const state = createSeedState(new Date(T0));
+  const store = createDemoStore(state, { now: () => clock.now });
+  return { clock, state, store };
+}
+
+const as = {
+  admin: { role: "admin", userId: DEMO_IDS.admin, displayName: "Admin" } satisfies Session,
+  therapist: (therapistId: string): Session => ({ role: "therapist", userId: `user-${therapistId}`, therapistId, displayName: therapistId }),
+  lotte: { role: "client", userId: "user-client-lotte", clientId: DEMO_IDS.clientLotte, displayName: "Lotte" } satisfies Session,
+};
+const intake = (reason: string): IntakeInput => ({ reason, newClient: true, acceptedPolicy: true, healthDataConsent: true });
+const range = (from: number, days: number) => ({ start: new Date(from).toISOString(), end: new Date(from + days * DAY).toISOString() });
+
+async function code(p: Promise<unknown>) {
+  try {
+    await p;
+  } catch (e) {
+    if (e instanceof DomainError) return e.code;
+    throw e;
+  }
+  return "ok";
+}
+
+describe("A1 · online booking attaches to an existing client by e-mail", () => {
+  it("HOLE: a stranger who types Lotte's e-mail books into Lotte's account, and the therapist reads the stranger's text as Lotte's intake", async () => {
+    const { state, store } = setup();
+    const lotte = state.clients.find((c) => c.id === DEMO_IDS.clientLotte)!;
+    const slot = (await store.public.findSlots("st-daan-60", range(T0 + 2 * DAY, 14)))[0];
+    const appt = await store.booking.holdSlot({
+      sessionTypeId: "st-daan-60",
+      slot,
+      client: { firstName: "Mallory", lastName: "Stranger", email: lotte.email.toUpperCase(), phone: "+31 6 9999 9999", locale: "en" },
+      intake: intake("INJECTED-BY-STRANGER"),
+    });
+    // The booking is Lotte's now: it shows in her account and she can cancel it.
+    expect(appt.clientId).toBe(lotte.id);
+    expect((await store.client.listMyAppointments(as.lotte)).some((a) => a.id === appt.id)).toBe(true);
+    // The therapist sees Lotte's name and contact details next to the stranger's intake.
+    const [client] = await store.therapist.listClients(as.therapist("th-daan"), [appt.clientId]);
+    expect(client.firstName).toBe(lotte.firstName);
+    expect((await store.therapist.readIntake(as.therapist("th-daan"), appt.id))?.reason).toBe("INJECTED-BY-STRANGER");
+  });
+});
+
+describe("A2 · the booking-ownership cookie is an unsigned list of appointment ids", () => {
+  afterEach(() => {
+    bookingsCookie = "";
+  });
+
+  it("HOLE: any id typed into thnhc_bookings passes ownsBooking, and seeded ids are computable from public data", async () => {
+    const { ownsBooking } = await import("@/features/booking/server/ownership");
+    const { state } = setup();
+    const upcoming = state.appointments.find((a) => a.clientId === DEMO_IDS.clientLotte && a.status === "confirmed")!;
+    // Seeded ids are UUIDv5 of therapist id + room id + start, all visible in the booking flow / source.
+    const guessed = stableId(`appointment:${upcoming.therapistId}:${upcoming.roomId}:${upcoming.session.start}`);
+    expect(guessed).toBe(upcoming.id);
+    bookingsCookie = guessed; // what an attacker sets by hand
+    expect(await ownsBooking(upcoming)).toBe(true);
+  });
+
+  it("HOLE: confirmPayment / failPayment take no session; whoever holds an id can release another person's hold", async () => {
+    const { store } = setup();
+    const slot = (await store.public.findSlots("st-daan-60", range(T0 + 2 * DAY, 14)))[0];
+    const hold = await store.booking.holdSlot({
+      sessionTypeId: "st-daan-60",
+      slot,
+      client: { firstName: "Real", lastName: "Client", email: "real.client@example.invalid", phone: "+31 6 1111 1111", locale: "nl" },
+      intake: intake("x"),
+    });
+    await store.booking.failPayment(hold.id); // no session, no proof of ownership
+    expect((await store.booking.getAppointment(hold.id))?.status).toBe("cancelled");
+  });
+});
+
+describe("A3 · no limit on anonymous holds", () => {
+  it("HOLE: one anonymous caller can hold every free start of a therapist for two weeks (each hold blocks the slot for 15 min, renewable)", async () => {
+    const { store } = setup();
+    const day = range(T0 + 2 * DAY, 14);
+    let held = 0;
+    for (let i = 0; i < 40; i++) {
+      const slots = await store.public.findSlots("st-daan-60", day);
+      if (slots.length === 0) break;
+      await store.booking.holdSlot({
+        sessionTypeId: "st-daan-60",
+        slot: slots[0],
+        client: { firstName: "Bot", lastName: `${i}`, email: `bot${i}@example.invalid`, phone: "+31 6 0000 0000", locale: "nl" },
+        intake: intake("spam"),
+      });
+      held++;
+    }
+    // Nothing stopped it: every online slot of this therapist for two weeks is now held by one caller.
+    expect(held).toBeGreaterThan(5);
+    expect(await store.public.findSlots("st-daan-60", day)).toHaveLength(0);
+  });
+});
+
+describe("A4 · demo mode switch", () => {
+  const KEYS = ["SUPABASE_URL", "SUPABASE_SERVICE_ROLE_KEY", "DATABASE_URL", "MOLLIE_API_KEY", "MONEYBIRD_TOKEN", "EMAIL_API_KEY", "NODE_ENV"] as const;
+  const env = process.env as Record<string, string | undefined>;
+  const saved = Object.fromEntries(KEYS.map((k) => [k, env[k]]));
+  afterEach(() => {
+    for (const k of KEYS) {
+      if (saved[k] === undefined) delete env[k];
+      else env[k] = saved[k];
+    }
+  });
+
+  it("HOLE: demo mode (anyone can sign in as admin) stays on in production next to real payment, e-mail and database keys", () => {
+    for (const k of KEYS) delete env[k];
+    Object.assign(env, { NODE_ENV: "production", DATABASE_URL: "postgres://real", MOLLIE_API_KEY: "live_x", EMAIL_API_KEY: "x", MONEYBIRD_TOKEN: "x" });
+    expect(isDemoMode()).toBe(true);
+  });
+
+  it("HOLE: SUPABASE_URL alone (service key forgotten or misnamed) keeps demo mode on", () => {
+    for (const k of KEYS) delete env[k];
+    env.SUPABASE_URL = "https://abc.supabase.co";
+    expect(hasRealBackend()).toBe(false);
+    expect(isDemoMode()).toBe(true);
+  });
+
+  it("OK: both Supabase keys switch demo mode off", () => {
+    process.env.SUPABASE_URL = "https://abc.supabase.co";
+    process.env.SUPABASE_SERVICE_ROLE_KEY = "x";
+    expect(isDemoMode()).toBe(false);
+  });
+});
+
+describe("A5 · demo session token", () => {
+  const saved = process.env.DEMO_SESSION_SECRET;
+  afterEach(() => {
+    if (saved === undefined) delete process.env.DEMO_SESSION_SECRET;
+    else process.env.DEMO_SESSION_SECRET = saved;
+  });
+
+  it("OK: tokens signed with an empty or short secret are refused; a short env secret is ignored (random per process)", () => {
+    process.env.DEMO_SESSION_SECRET = "short";
+    const secret = sessionSecret();
+    expect(secret).not.toBe("short");
+    expect(secret.length).toBeGreaterThanOrEqual(32);
+    expect(verifySessionToken(createSessionToken("admin", ""), secret)).toBeNull();
+    expect(verifySessionToken(createSessionToken("admin", "short"), secret)).toBeNull();
+    const ok = createSessionToken("admin", secret);
+    expect(verifySessionToken(ok, secret)).toBe("admin");
+    // No "alg"/payload games: a payload with an extra segment or a non-string account is refused.
+    expect(verifySessionToken(`${ok}.x`, secret)).toBeNull();
+  });
+});
+
+describe("A6 · data minimisation for admin and therapists (holds today)", () => {
+  it("OK: admin room grid carries first names only: no last name, e-mail, phone or intake", async () => {
+    const { state, store } = setup();
+    const grid = await store.admin.roomGrid(as.admin, range(T0 - 7 * DAY, 35));
+    const json = JSON.stringify(grid);
+    expect(grid.appointments.length).toBeGreaterThan(0);
+    for (const c of state.clients) {
+      expect(json).not.toContain(c.email);
+      if (c.phone) expect(json).not.toContain(c.phone);
+    }
+    for (const i of state.intakes) expect(json).not.toContain(i.answers.reason);
+    expect(Object.keys(grid.appointments[0]).sort()).not.toContain("lastName");
+  });
+
+  it("OK: IDORs on ids passed from forms are refused by the store", async () => {
+    const { state, store } = setup();
+    const anna = state.appointments.find((a) => a.therapistId === "th-anna" && a.status === "confirmed" && Date.parse(a.session.start) > T0)!;
+    const bram = as.therapist("th-bram");
+    expect(await code(store.therapist.readIntake(bram, anna.id))).toBe("forbidden");
+    expect(await code(store.therapist.cancelAppointment(bram, anna.id, "therapist"))).toBe("forbidden");
+    expect(await code(store.therapist.recordBalancePayment(bram, { appointmentId: anna.id, method: "cash", amountCents: 100, paidOn: "2026-11-02" }))).toBe("forbidden");
+    const annaService = state.services.find((s) => s.therapistId === "th-anna")!;
+    expect(await code(store.therapist.upsertService(bram, { ...annaService }))).not.toBe("ok");
+    const annaBlock = state.blocks.find((b) => b.therapistId !== "th-bram" && b.status === "reserved");
+    if (annaBlock) expect(await code(store.therapist.releaseBlock(bram, annaBlock.id))).toBe("forbidden");
+    expect(await code(store.client.cancelAppointment(as.lotte, anna.id, "client"))).toBe("forbidden");
+    expect(await code(store.admin.listRooms(bram))).toBe("forbidden");
+    expect(await code(store.therapist.getMe(as.admin))).toBe("forbidden");
+  });
+});
+
+describe("A7 · input validation details", () => {
+  it("HOLE (low): photoUrl accepts a protocol-relative URL to any host", async () => {
+    const { store } = setup();
+    const me = await store.therapist.updateMe(as.therapist("th-anna"), { photoUrl: "//tracker.example/pixel.gif" });
+    expect(me.photoUrl).toBe("//tracker.example/pixel.gif");
+  });
+
+  it("HOLE (low): setBusiness stores whatever extra fields the caller sends (mass assignment)", async () => {
+    const { state, store } = setup();
+    await store.admin.setBusiness(as.admin, {
+      therapistId: "th-anna",
+      legalName: "Anna BV",
+      tradeName: null,
+      address: null,
+      kvk: null,
+      btwNumber: null,
+      kor: false,
+      ...({ iban: "NL00EVIL0000000000", isAdmin: true } as object),
+    });
+    expect(state.business.find((b) => b.therapistId === "th-anna")).toHaveProperty("isAdmin", true);
+  });
+});
