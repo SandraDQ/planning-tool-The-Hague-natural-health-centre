@@ -24,4 +24,4 @@ Write a message
 
 [Button: Submit]
 
-[Embedded: Google Maps](https://static.parastorage.com/services/editor-elements-library/dist/thunderbolt/media/googleMap.f3347ff6.html?defaultLocation=0&showZoom=true&showStreetView=true&showMapType=true&language=en&region=GB&id=dataItem-kfpdl3ba&googleMapsScriptPath=%2Fservices%2Feditor-elements-library%2Fdist%2Fthunderbolt%2Fmedia%2Fgoogle-map.min.9a2bea98.js&origin=https%3A%2F%2Fwww.thehague-naturalhealthcentre.com&hasFocus=true)
+[Embedded: Google Maps](https://static.parastorage.com/services/editor-elements-library/dist/thunderbolt/media/googleMap.f3347ff6.html)

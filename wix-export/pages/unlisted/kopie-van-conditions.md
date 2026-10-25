@@ -15,8 +15,7 @@ robots: "noindex"
 
 We do not treat what is wrong - we listen to what your body needs and what your spirit craves.
 
-At our natural health centre, we believe healing should always include nature—because we are nature.  
-
+At our natural health centre, we believe healing should always include nature—because we are nature.
 Our clients often tell us that what we truly excel in is taking the time to see them as a whole person, not just a collection of symptoms. This means listening deeply to your story and understanding how you came to be in your current state of illness. Health isn’t about quick fixes—it’s about uncovering the root cause of imbalance and supporting your body’s natural ability to heal. We also recognise that true health comes from within. No one else can "fix" us—we are already whole, just sometimes out of alignment. The journey to health is ongoing, and we welcome the privilege of walking it with you.
 
 The conditions listed below are just a guide; if you don’t see yours, please feel free to reach out with any questions.
@@ -77,9 +76,7 @@ Examples: chronic wounds, burns, post-operative wounds, diabetic foot ulcers, sp
 
 ![16.jpg](https://static.wixstatic.com/media/33166a_723ce4732f95494c80469a628d5fa52e~mv2.jpg)
 
-## Cancer  
-
-Support
+## Cancer Support
 
 Examples: side effects of chemotherapy (nausea, fatigue), pain, lymphedema, anxiety, sleep disturbances
 
@@ -109,8 +106,6 @@ Examples: overweight, chronic stress, smoking, poor diet
 
 ![13.jpg](https://static.wixstatic.com/media/33166a_273fefba585b4954a9f394b5bd165180~mv2.jpg)
 
-## Cardiovascular  
-
-Health
+## Cardiovascular Health
 
 Examples: high blood pressure, high cholesterol, palpitations

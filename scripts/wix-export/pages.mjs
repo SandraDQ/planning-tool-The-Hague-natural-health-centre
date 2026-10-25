@@ -1,5 +1,5 @@
 // Renders every page/service/blog URL from the sitemaps (plus internal links missing from them) to pages/<type>/<slug>.md.
-import { BASE, chromium, pool, save, slugOf, openPage, pageMeta, domToMarkdown, yamlStr } from "./web.mjs";
+import { BASE, chromium, pool, save, slugOf, openPage, pageMeta, domToMarkdown, collectMedia, yamlStr } from "./web.mjs";
 import { loadSitemaps } from "./sitemap.mjs";
 
 const TYPES = ["pages", "booking-services", "blog-posts", "blog-categories"];
@@ -16,6 +16,7 @@ async function render(ctx, { url, type, lastmod }) {
     const meta = await pageMeta(page);
     const md = await page.evaluate(domToMarkdown, "#PAGES_CONTAINER");
     const links = await page.evaluate(() => [...document.querySelectorAll("a[href]")].map((a) => a.href));
+    mediaByPage[url] = await page.evaluate(collectMedia);
     const fm = { url, type, title: meta.title, description: meta.description, og_image: meta.ogImage, language: meta.language, lastmod };
     if (meta.published) Object.assign(fm, { published: meta.published, author: meta.author });
     if (meta.robots) fm.robots = meta.robots;
@@ -75,13 +76,14 @@ ${extra.footerLinks.map((l) => `- [${l.text || "(icon)"}](${l.href})`).join("\n"
   return extra.menu.flatMap(function flat(i) { return [i.href, ...i.children.flatMap(flat)]; }).concat(extra.footerLinks.map((l) => l.href));
 }
 
+const mediaByPage = {};
 const all = await loadSitemaps();
 const known = new Set(all.map((r) => norm(r.url)));
 const targets = all.filter((r) => TYPES.includes(r.type));
 const browser = await chromium.launch();
 const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } });
 const chromeLinks = await siteChrome(ctx);
-const results = await pool(targets, 3, (t) => render(ctx, t));
+const results = await pool(targets, 2, (t) => render(ctx, t));
 
 // Internal links that are not in any sitemap (e.g. hidden menu pages) -> pages/unlisted/.
 const found = new Set();
@@ -92,8 +94,9 @@ for (const href of [...chromeLinks, ...results.flatMap((r) => r.links)]) {
 }
 const unlisted = [...found].sort().map((url) => ({ url, type: "unlisted", lastmod: "" }));
 console.log("unlisted:", unlisted.map((u) => u.url));
-const r2 = await pool(unlisted, 3, (t) => render(ctx, t));
+const r2 = await pool(unlisted, 2, (t) => render(ctx, t));
 const fails = [...results, ...r2].filter((r) => !r.ok);
+save("pages/_media-by-page.json", JSON.stringify(mediaByPage, null, 1) + "\n");
 save("pages/_unlisted-urls.txt", unlisted.map((u) => u.url).join("\n") + "\n");
 console.log(`rendered ${results.length + r2.length - fails.length}, failed ${fails.length}`, fails);
 await browser.close();

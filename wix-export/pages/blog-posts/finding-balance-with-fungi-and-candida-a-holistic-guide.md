@@ -35,7 +35,8 @@ Several factors can disturb the microbiome and give Candida the upper hand:
 - **High-sugar or refined-carbohydrate diet** – Yeast thrives on sugar and multiplies rapidly when fuelled by sweets, alcohol, and processed foods.
 - **Hormonal changes** – Pregnancy, birth control, and hormone therapies can alter the vaginal and gut environment, encouraging yeast growth. During perimenopause and menopause, declining oestrogen and testosterone affect local immunity and pH balance, increasing susceptibility to infections.
 - **Weakened immune system** – Chronic stress, illness, or reduced immunity can limit the body’s ability to regulate fungal populations.
-- **Gut imbalance** – Low stomach acid, poor digestion, and lack of microbial diversity can promote fungal dominance. _Candida albicans_ may also contribute to intestinal permeability, impairing nutrient absorption and immune function..
+- **Gut imbalance** – Low stomach acid, poor digestion, and lack of microbial diversity can promote fungal dominance. _Candida albicans_ may also contribute to intestinal permeability, impairing nutrient absorption and immune function.
+  .
 
 ### How Candida Protects Itself
 

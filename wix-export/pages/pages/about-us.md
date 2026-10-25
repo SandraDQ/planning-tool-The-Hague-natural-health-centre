@@ -24,24 +24,15 @@ Through natural and complementary therapies, alongside uplifting self-help event
 
 [Community Gatherings](https://www.thehague-naturalhealthcentre.com/events)
 
-## The Heart behind The Hague  
-
-Natural Health Center
+## The Heart behind The Hague Natural Health Center
 
 Sandra's story
-
 After years of living a fast-paced life and relying on three to four medications a day to manage my allergies, I had forgotten the simple, nurturing remedies my mother and grandmother once used to help me feel better as a child. Like so many of us, I had become caught in the rat race, always pushing forward, until one day I realized my medications were no longer working. With some hesitation, I began to explore natural alternatives.
-
 Slowly and gently, I started to heal , not just physically but more importantly, I started feeling emotionally stronger. That journey changed everything for me. I was so inspired by the process that I became a therapist myself. I wanted to help others find their way back to themselves. To feel empowered, connected, and supported on their path to wellness.
-
 I believe that healing starts when we remember:
-
 We are not just part of nature - WE ARE NATURE.
-
 And the most powerful way to return to health is through nature itself.
-
 However, I hadn’t traveled this journey alone. I worked with many amazing therapists, but they were never in the same place, and I often found myself repeating my story each time I met someone new. That’s when a new dream began to grow inside my heart: to create a warm, welcoming space where caring professionals come together to support healing in a truly holistic way.
-
 In January 2024, that dream became real and The Hague Natural Health Centre opened its doors. I hope this beautiful sanctuary contributes to a healthier community.
 
 [Button: Read more]
@@ -218,8 +209,7 @@ Reflexologist or Medical Podiatrist
 
 ### [Gratiela Mitulet](https://www.thehague-naturalhealthcentre.com/about-us#gratielamitulet)
 
-Hypnosis Practitioner  
-
+Hypnosis Practitioner
 & Reiki Master
 
 ![sanne crop vhk_edited_edited_edited.jpg](https://static.wixstatic.com/media/3d01ac_6bf83b312f314665879729d2b5df30ea~mv2.jpg)
@@ -244,15 +234,9 @@ Energy Medicine
 
 ## Sandra Delgado Quist
 
-## Founder and Director  
+## Founder and Director Homeopath Reiki Practitioner
 
-Homeopath  
-
-Reiki Practitioner
-
-## [Sandra speaks  
-
-English, Spanish & Dutch](http://www.sandradelgadoquist.com/)
+## [Sandra speaks English, Spanish & Dutch](http://www.sandradelgadoquist.com/)
 
 Sandra a Homeopath and Shamanic Energy Medicine Woman who was recently initiated into the sacred Munay-Ki Rites. She spent four years studying at The School of Homeopathy in Stroud, UK, and completed a three year postgraduate course at the Dynamis School for Advanced Homeopathy in Ireland. She completed her Reiki practitioner and teacher training at the Jikiden Reiki Institute in Kyoto, Japan.
 
@@ -280,9 +264,7 @@ To find out more about Cynthia, please visit their [website.](https://www.cynsdo
 
 ## Nutrition
 
-## Audrey speaks  
-
-English and Dutch
+## Audrey speaks English and Dutch
 
 Audrey is a nutritional therapist specializing in women’s health, fertility, gut health, and genitourinary wellness. Her approach combines the power of food as medicine with advanced functional diagnostic testing to uncover hidden imbalances that prevent the body from thriving with health and vitality.
 
@@ -310,11 +292,7 @@ To find out more about Ira please visit [her website](https://lahira.nl/acupunct
 
 ## Orthomoleculaire Therapist, EMB Blood Testing On-Site, Nutrition & Supplemental Support
 
-## Aurora speaks  
-
-Dutch, English, Romanian  
-
-& Farsi
+## Aurora speaks Dutch, English, Romanian & Farsi
 
 Aurora is trained in EMB (Energetic Morphological Blood Testing) which provides diagnoses that are also examined in conventional healthcare. These include iron deficiency, thyroid disorders, autoimmune diseases, anemia, and infections. An EMB blood test also explains symptoms that don't appear in conventional healthcare and/or are untreatable. This provides significant insight and makes this test incredibly valuable.
 
@@ -363,13 +341,9 @@ To find out more about Cammi please visit[her website](https://cammimanchur.com/
 
 ## [Vd. Priyanka Singh](https://www.thehague-naturalhealthcentre.com/)
 
-## Ayurvedic Practitioner  
+## Ayurvedic Practitioner & Therapist
 
-& Therapist
-
-## Priyanka works in English,  
-
-Dutch and Hindi
+## Priyanka works in English, Dutch and Hindi
 
 Bringing over 13 years of clinical experience, Priyanka specializes in holistic consultations, Panchakarma therapies, stress management, pain relief, and natural hair and skin treatments. Her practice thoughtfully integrates traditional Ayurvedic wisdom with Dutch healthcare quality standards to provide ethical, evidence-aware care.
 
@@ -475,8 +449,6 @@ Nature already provides many of the "medicines" we need to stay healthy. Even a 
 
 ## Be first to hear about our free monthly talks, special offers and workshops. Our free events are limited, so you'll want to reserve your spot early!
 
-[Embedded: reCAPTCHA](https://www.google.com/recaptcha/enterprise/anchor?ar=1&k=6Ld0J8IcAAAAANyrnxzrRlX1xrrdXsOmsepUYosy&co=aHR0cHM6Ly93d3cudGhlaGFndWUtbmF0dXJhbGhlYWx0aGNlbnRyZS5jb206NDQz&hl=en&v=NhfdZHzre16wrc2m6BxEdu7J&theme=light&size=normal&anchor-ms=40000&execute-ms=30000&cb=79my1j6df5sp)
-
 [Button: Send]
 
-[Embedded: Google Maps](https://static.parastorage.com/services/editor-elements-library/dist/thunderbolt/media/googleMap.f3347ff6.html?defaultLocation=0&showZoom=true&showStreetView=true&showMapType=true&language=en&region=GB&id=dataItem-m7ubee6w&googleMapsScriptPath=%2Fservices%2Feditor-elements-library%2Fdist%2Fthunderbolt%2Fmedia%2Fgoogle-map.min.9a2bea98.js&origin=https%3A%2F%2Fwww.thehague-naturalhealthcentre.com&hasFocus=true)
+[Embedded: Google Maps](https://static.parastorage.com/services/editor-elements-library/dist/thunderbolt/media/googleMap.f3347ff6.html)

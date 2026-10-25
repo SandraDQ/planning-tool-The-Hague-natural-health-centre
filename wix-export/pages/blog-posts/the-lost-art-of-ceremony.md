@@ -51,7 +51,8 @@ Taking the time to honor these transitions is vital. It creates space to acknowl
 
 You don’t need to spend a lot of money to mark an occasion, though a few special touches can help set the mood.
 
-- **Acknowledge the Journey:** Take a moment to honor the synchronicities that led you to thismoment. Express gratitude for those who supported you along the way.
+- **Acknowledge the Journey:** Take a moment to honor the synchronicities that led you to this
+  moment. Express gratitude for those who supported you along the way.
 - **Keep it Simple:** A ceremony can be as simple as lighting a candle and sitting in silence to contemplate a change.
 - **Make it Meaningful:** Ensure that whatever elements you include have personal significance to you.
 - **Celebrate Change:** Recognize that change is inevitable and usually shapes who we become. Embrace the challenges and look for the opportunities hidden within them.

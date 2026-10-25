@@ -23,9 +23,12 @@ author: "Sandra Quist, Homeopathy & Founder"
 
 Written by Sandra Quist, Homeopath & Founder, The Hague Natural Health Centre
 
-- ![Reiki, Somatic Therapy](https://static.wixstatic.com/media/3d01ac_88e82d8e28e24ec6b916a9efe4ecc604~mv2.jpg)Reiki, Somatic Therapy
-- ![Homeopathic Remedies](https://static.wixstatic.com/media/3d01ac_291a5644a09842fc9c8e2a3b053b0512~mv2.jpg)Homeopathic Remedies
-- ![Psychology & EMDR](https://static.wixstatic.com/media/a9a775_bfb645183a3344f5839cf78ca70f869e~mv2.jpeg)Psychology & EMDR
+- ![Reiki, Somatic Therapy](https://static.wixstatic.com/media/3d01ac_88e82d8e28e24ec6b916a9efe4ecc604~mv2.jpg)
+  Reiki, Somatic Therapy
+- ![Homeopathic Remedies](https://static.wixstatic.com/media/3d01ac_291a5644a09842fc9c8e2a3b053b0512~mv2.jpg)
+  Homeopathic Remedies
+- ![Psychology & EMDR](https://static.wixstatic.com/media/a9a775_bfb645183a3344f5839cf78ca70f869e~mv2.jpeg)
+  Psychology & EMDR
 
 In a world where modern medicine often takes centre stage, the allure of natural remedies
 

@@ -93,13 +93,21 @@ to a vast technology and awakening the wisdom that lives within.
 
 **and exhaling to come into the moment, the sensations in your body, presence.**
 
-1. Bring your awareness to your perineum , adrenals glands and your entire Root chakra. Chant UM into that area, literally placing the sound there with our intention with the lowest pitch you can sound. Repeat this 7 times.**Pause and be in the Silence for about 30-60 seconds afterwards.**
-2. Attention comes now to the Sacral chakra. Your genitals, womb/hara, ovaries, testes. Chant UUH in your guttural pitch. Have the intention of this sound vibrating and resonating in this area. Repeat for 7 times.**Pause and be in the Silence for about 30-60 seconds afterwards**
-3. Coming to your Solar Plexus, located between your belly button and ribs. Chant ME-AI-EE at a pitch that is higher than your guttural. Placing this sound in the area. Repeat for 7 times.**Pause and be in the Silence for about 30-60 seconds afterwards**
-4. Bring your awareness to your Heart area. Chant HUU in a pitch that resonates for you with your heart, and is a higher pitch than the Solar Plexus. Repeat 7 times.**Pause and be in the Silence for about 30-60 seconds afterwards**
-5. And now the throat chakra: Placing the sound AHH there…a pitch higher than the one you made at the heart. Visualise and sense this whole area imprinted with the AH chant vibrating, lighting up. Repeat 7 times .**Pause and be in the Silence for about 30-60 seconds afterwards**
+1. Bring your awareness to your perineum , adrenals glands and your entire Root chakra. Chant UM into that area, literally placing the sound there with our intention with the lowest pitch you can sound. Repeat this 7 times.
+  **Pause and be in the Silence for about 30-60 seconds afterwards.**
+2. Attention comes now to the Sacral chakra. Your genitals, womb/hara, ovaries, testes. Chant UUH in your guttural pitch. Have the intention of this sound vibrating and resonating in this area. Repeat for 7 times.
+  **Pause and be in the Silence for about 30-60 seconds afterwards**
+3. Coming to your Solar Plexus, located between your belly button and ribs. Chant ME-AI-EE at a pitch that is higher than your guttural. Placing this sound in the area. Repeat for 7 times.
+  **Pause and be in the Silence for about 30-60 seconds afterwards**
+4. Bring your awareness to your Heart area. Chant HUU in a pitch that resonates for you with your heart, and is a higher pitch than the Solar Plexus. Repeat 7 times.
+  **Pause and be in the Silence for about 30-60 seconds afterwards**
+5. And now the throat chakra: Placing the sound AHH there…a pitch higher than the one you made at the heart. Visualise and sense this whole area imprinted with the AH chant vibrating, lighting up. Repeat 7 times .
+  **Pause and be in the Silence for about 30-60 seconds afterwards**
 6. Coming to the area of the third eye chakra. THe middle and back of the head, and also skull, nose, eyes, ears. Chant OWNN, sensing how the ‘ nn’ resonates the bones of the face, the teeth. Repeat 7 times. **Pause and be in the Silence for about 30-60 seconds afterwards**
-7. And now the Crown Chakra, the area just above and around your head.. Chant EEE at the highest pitch you can make. Notice the quality of your voice when it makes this sound.., is it easy, cracked, strained or smooth? Repeat 7 times .**Pause and be in the Silence, this time for 60- 120 seconds afterwards.****What do you notice, has anything shifted or arisen?****Have the intention to welcome all parts of yourself , all phenomena with no judgement, recognising you are the sacred witness, the silent compassionate space that holds all. And if judgement towards something arises, we welcome that too with Non judgement.**
+7. And now the Crown Chakra, the area just above and around your head.. Chant EEE at the highest pitch you can make. Notice the quality of your voice when it makes this sound.., is it easy, cracked, strained or smooth? Repeat 7 times .
+  **Pause and be in the Silence, this time for 60- 120 seconds afterwards.**
+  **What do you notice, has anything shifted or arisen?**
+  **Have the intention to welcome all parts of yourself , all phenomena with no judgement, recognising you are the sacred witness, the silent compassionate space that holds all. And if judgement towards something arises, we welcome that too with Non judgement.**
 8. You can then start to descend through the Chakras with the same process you did when ascending. This is very important as it closes the Chakras and energetic field again while grounding the body.
 
 _Ava-Rebekah Rahman is a concert violinist, artistic director, practitioner of the Feminine Mystic_

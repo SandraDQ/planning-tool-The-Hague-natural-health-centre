@@ -1,0 +1,386 @@
+{
+ "headerAtTop": {
+  "position": "sticky",
+  "top": 0,
+  "height": 120,
+  "bg": "rgba(0, 0, 0, 0)",
+  "underlay": "rgb(255, 255, 255)",
+  "z": "50",
+  "scrollY": 0
+ },
+ "headerScrolled": {
+  "position": "sticky",
+  "top": 0,
+  "height": 120,
+  "bg": "rgba(0, 0, 0, 0)",
+  "underlay": "rgb(255, 255, 255)",
+  "z": "50",
+  "scrollY": 1500
+ },
+ "menu": [
+  {
+   "label": "Home",
+   "href": "https://www.thehague-naturalhealthcentre.com/",
+   "current": "page",
+   "color": "rgb(106, 93, 87)",
+   "font": "17px / 50px lato-light, lato, sans-serif",
+   "letterSpacing": "normal",
+   "transform": "none",
+   "submenu": false
+  },
+  {
+   "label": "Therapies",
+   "href": "https://www.thehague-naturalhealthcentre.com/kopie-van-therapies",
+   "current": "",
+   "color": "rgb(53, 47, 43)",
+   "font": "17px / 50px lato-light, lato, sans-serif",
+   "letterSpacing": "normal",
+   "transform": "none",
+   "submenu": false
+  },
+  {
+   "label": "Conditions",
+   "href": "https://www.thehague-naturalhealthcentre.com/kopie-van-conditions",
+   "current": "",
+   "color": "rgb(53, 47, 43)",
+   "font": "17px / 50px lato-light, lato, sans-serif",
+   "letterSpacing": "normal",
+   "transform": "none",
+   "submenu": false
+  },
+  {
+   "label": "About us",
+   "href": "https://www.thehague-naturalhealthcentre.com/about-us",
+   "current": "",
+   "color": "rgb(53, 47, 43)",
+   "font": "17px / 50px lato-light, lato, sans-serif",
+   "letterSpacing": "normal",
+   "transform": "none",
+   "submenu": false
+  },
+  {
+   "label": "Events",
+   "href": "https://www.thehague-naturalhealthcentre.com/events",
+   "current": "",
+   "color": "rgb(53, 47, 43)",
+   "font": "17px / 50px lato-light, lato, sans-serif",
+   "letterSpacing": "normal",
+   "transform": "none",
+   "submenu": false
+  },
+  {
+   "label": "Blog",
+   "href": "https://www.thehague-naturalhealthcentre.com/blog",
+   "current": "",
+   "color": "rgb(53, 47, 43)",
+   "font": "17px / 50px lato-light, lato, sans-serif",
+   "letterSpacing": "normal",
+   "transform": "none",
+   "submenu": false
+  },
+  {
+   "label": "Contact",
+   "href": "https://www.thehague-naturalhealthcentre.com/contact",
+   "current": "",
+   "color": "rgb(53, 47, 43)",
+   "font": "17px / 50px lato-light, lato, sans-serif",
+   "letterSpacing": "normal",
+   "transform": "none",
+   "submenu": false
+  }
+ ],
+ "menuHover": {
+  "before": "rgb(53, 47, 43) none",
+  "after": "rgb(106, 93, 87) none",
+  "item": "Therapies"
+ },
+ "header": [
+  {
+   "n": 1,
+   "id": "comp-k66j7ioo",
+   "top": 0,
+   "height": 120,
+   "width": 1440,
+   "bg": "transparent (page/white)",
+   "bgImages": [],
+   "bgVideo": "",
+   "cols": [],
+   "rows": [
+    [
+     {
+      "kind": "image",
+      "x": 67.1875,
+      "y": 11,
+      "w": 59,
+      "h": 72,
+      "id": "a9a775_162d6364f1334d6e98f83b198104ab90~mv2.png",
+      "alt": "Natural Health Centre Hummingbird Logo",
+      "link": "https://www.thehague-naturalhealthcentre.com/copy-of-meditation-video"
+     },
+     {
+      "kind": "text",
+      "x": 86.1875,
+      "y": 47,
+      "w": 239,
+      "h": 35.4375,
+      "heads": [],
+      "text": "NATURAL HEALTH CENTRE",
+      "color": "#486f55",
+      "align": "center",
+      "font": "23px wfont_fdfc6f_9ffd0a4644fd4f1b80605af12ceae8fc"
+     },
+     {
+      "kind": "text",
+      "x": 143.1875,
+      "y": 28,
+      "w": 124,
+      "h": 50,
+      "heads": [],
+      "text": "THE HAGUE",
+      "color": "#486f55",
+      "align": "center",
+      "font": "16px wfont_fdfc6f_9ffd0a4644fd4f1b80605af12ceae8fc ls 4px"
+     }
+    ]
+   ],
+   "pageWidth": 1440,
+   "content": {
+    "left": 67,
+    "right": 325,
+    "width": 258
+   },
+   "padding": {
+    "top": 11,
+    "bottom": 37
+   },
+   "gaps": []
+  }
+ ],
+ "footer": [
+  {
+   "n": 1,
+   "id": "comp-lp7ho07n",
+   "top": 6691,
+   "height": 528,
+   "width": 1440,
+   "bg": "transparent (page/white)",
+   "bgImages": [],
+   "bgVideo": "",
+   "cols": [],
+   "rows": [
+    [
+     {
+      "kind": "image",
+      "x": 98.9375,
+      "y": 39,
+      "w": 181,
+      "h": 151,
+      "id": "a9a775_4c77ac6ec6c1466fbe725210bb3ff505~mv2.png",
+      "alt": "Logo Natural Health Centre The Hague",
+      "link": "https://www.thehague-naturalhealthcentre.com/"
+     },
+     {
+      "kind": "text",
+      "x": 385.59375,
+      "y": 88.21875,
+      "w": 220,
+      "h": 220.0625,
+      "heads": [],
+      "text": "Monday appointment only Tuesday 09 - 17h Wednesday 09 - 17h Thursday 09 -17h Friday 09 - 17h Saturday appointment only Sunday closed​",
+      "color": "#486f55",
+      "align": "start",
+      "font": "17px futura-lt-w01-light"
+     },
+     {
+      "kind": "text",
+      "x": 386.59375,
+      "y": 39,
+      "w": 135,
+      "h": 33.21875,
+      "heads": [],
+      "text": "Opening hours",
+      "color": "#486f55",
+      "align": "start",
+      "font": "18px lato-light"
+     },
+     {
+      "kind": "text",
+      "x": 836.125,
+      "y": 39,
+      "w": 114,
+      "h": 33.21875,
+      "heads": [],
+      "text": "Contact",
+      "color": "#486f55",
+      "align": "start",
+      "font": "18px lato-light"
+     },
+     {
+      "kind": "text",
+      "x": 836.125,
+      "y": 88.21875,
+      "w": 450,
+      "h": 125.75,
+      "heads": [],
+      "text": "The Hague Natural Health Centre Badhuisstraat 224, 2584 HN, The Hague info@thehague-naturalhealthcentre.com +31 6 23 32 87 57 (Answerphone o",
+      "color": "#486f55",
+      "align": "start",
+      "font": "17px lato-light"
+     },
+     {
+      "kind": "button",
+      "x": 837.125,
+      "y": 222.96875,
+      "w": 193,
+      "h": 40,
+      "label": "Send us a message",
+      "href": "",
+      "btn": 0,
+      "style": {
+       "bg": "#486f55 (alpha 0.8)",
+       "color": "#ffffff",
+       "radius": "50px",
+       "border": "0px solid #3f7652",
+       "width": 193,
+       "height": 40,
+       "font": "17px lato-light, lato, sans-serif",
+       "letter_spacing": "0.85px",
+       "transform": "none",
+       "shadow": "none"
+      }
+     }
+    ],
+    [
+     {
+      "kind": "text",
+      "x": 836.125,
+      "y": 304.96875,
+      "w": 450,
+      "h": 31.4375,
+      "heads": [],
+      "text": "Social",
+      "color": "#486f55",
+      "align": "start",
+      "font": "17px lato-light"
+     }
+    ],
+    [
+     {
+      "kind": "text",
+      "x": 836.125,
+      "y": 353.40625,
+      "w": 450,
+      "h": 105.3125,
+      "heads": [],
+      "text": "Facebook @thehaguenaturalhealthcentre Instagram @thehaguenaturalhealthcentre LinkedIn @thehaguenaturalhealthcentre",
+      "color": "#486f55",
+      "align": "start",
+      "font": "17px lato-light"
+     }
+    ]
+   ],
+   "pageWidth": 1440,
+   "content": {
+    "left": 99,
+    "right": 1286,
+    "width": 1187
+   },
+   "padding": {
+    "top": 39,
+    "bottom": 69
+   },
+   "gaps": [
+    106,
+    315
+   ]
+  }
+ ],
+ "animations": {
+  "cssAnimations": {
+   "Captcha3940957316__fadeOut": 1
+  },
+  "motionParts": {},
+  "motionEnter": 0,
+  "fixed": [
+   {
+    "id": "comp-lttwrrqt-pinned-layer",
+    "text": "Wix Chat",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 900
+   },
+   {
+    "id": "",
+    "text": "",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 900
+   }
+  ]
+ },
+ "mobileHeader": {
+  "position": "sticky",
+  "height": 206
+ },
+ "mobileToggle": {
+  "tag": "DIV",
+  "label": "Open navigation menu",
+  "testid": ""
+ },
+ "mobileMenuLayers": [
+  {
+   "x": 0,
+   "w": 320,
+   "h": 544,
+   "bg": "rgba(72, 111, 85, 0.5)",
+   "transition": "all"
+  },
+  {
+   "x": 0,
+   "w": 320,
+   "h": 545,
+   "bg": "rgb(255, 255, 255)",
+   "transition": "all"
+  }
+ ],
+ "mobileMenu": [
+  {
+   "label": "NATURAL HEALTH CENTRE",
+   "href": "https://www.thehague-naturalhealthcentre.com/copy-of-meditation-video"
+  },
+  {
+   "label": "THE HAGUE",
+   "href": "https://www.thehague-naturalhealthcentre.com/copy-of-meditation-video"
+  },
+  {
+   "label": "Home",
+   "href": "https://www.thehague-naturalhealthcentre.com/"
+  },
+  {
+   "label": "Therapies",
+   "href": "https://www.thehague-naturalhealthcentre.com/kopie-van-therapies"
+  },
+  {
+   "label": "Conditions",
+   "href": "https://www.thehague-naturalhealthcentre.com/kopie-van-conditions"
+  },
+  {
+   "label": "About us",
+   "href": "https://www.thehague-naturalhealthcentre.com/about-us"
+  },
+  {
+   "label": "Events",
+   "href": "https://www.thehague-naturalhealthcentre.com/events"
+  },
+  {
+   "label": "Blog",
+   "href": "https://www.thehague-naturalhealthcentre.com/blog"
+  },
+  {
+   "label": "Contact",
+   "href": "https://www.thehague-naturalhealthcentre.com/contact"
+  }
+ ]
+}

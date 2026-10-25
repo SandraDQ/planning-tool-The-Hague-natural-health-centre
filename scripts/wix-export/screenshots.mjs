@@ -1,6 +1,6 @@
 // Full-page desktop (1440) and mobile (390, iPhone-like) screenshots of main pages, services, 3 blog posts, 1 event and unlisted menu pages.
 import { existsSync, readFileSync } from "node:fs";
-import { chromium, devices, pool, save, slugOf, openPage, OUT } from "./web.mjs";
+import { chromium, devices, pool, save, slugOf, openPage, privacyMask, OUT } from "./web.mjs";
 import { loadSitemaps } from "./sitemap.mjs";
 
 const all = await loadSitemaps();
@@ -21,7 +21,7 @@ for (const [name, opts] of Object.entries(shapes)) {
     const page = await ctx.newPage();
     try {
       await openPage(page, url);
-      const buf = await page.screenshot({ fullPage: true, timeout: 120000 });
+      const buf = await page.screenshot({ fullPage: true, timeout: 120000, ...privacyMask(page) });
       save(`screenshots/${slugOf(url)}-${name}.png`, buf);
       console.log("ok", name, slugOf(url));
     } catch (e) {

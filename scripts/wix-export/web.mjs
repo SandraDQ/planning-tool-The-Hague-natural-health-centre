@@ -60,10 +60,21 @@ export const originalImage = (src) =>
 // Hide the cookie banner with CSS instead of clicking anything.
 export const HIDE_CHROME_CSS = `[data-hook="consent-banner-root"],#consent-banner-root{display:none!important}`;
 
+// Wix blog pages never reach network idle, so wait for load and give idle at most 10s.
+// If the site answers with a bot check ("Just a moment..."), back off and retry instead of pushing on.
+export async function gotoPolitely(page, url) {
+  for (let i = 1; ; i++) {
+    await page.goto(url, { waitUntil: "load", timeout: 90000 });
+    await page.waitForLoadState("networkidle", { timeout: 10000 }).catch(() => {});
+    if (!/just a moment|attention required/i.test(await page.title())) return;
+    if (i >= 3) throw new Error("bot check page served (rate limited)");
+    console.log("bot check, backing off", url);
+    await sleep(30000 * i);
+  }
+}
+
 export async function openPage(page, url) {
-  // Wix blog pages never reach network idle, so wait for load and give idle at most 10s.
-  await page.goto(url, { waitUntil: "load", timeout: 90000 });
-  await page.waitForLoadState("networkidle", { timeout: 10000 }).catch(() => {});
+  await gotoPolitely(page, url);
   await page.addStyleTag({ content: HIDE_CHROME_CSS });
   await autoScroll(page);
 }
@@ -200,3 +211,45 @@ export async function pageMeta(page) {
 }
 
 export const yamlStr = (s) => JSON.stringify(String(s ?? ""));
+
+// Runs in the browser: every wixstatic image/video used on the page, with where it sits and the colour behind it.
+export function collectMedia() {
+  const bgOf = (el) => {
+    for (let x = el; x && x !== document.documentElement; x = x.parentElement) {
+      const under = x.querySelector(':scope > [id^="bgLayers"] [data-testid="colorUnderlay"]');
+      for (const c of [under && getComputedStyle(under).backgroundColor, getComputedStyle(x).backgroundColor]) {
+        const m = c && c.match(/rgba?\(([\d.]+), ([\d.]+), ([\d.]+)(?:, ([\d.]+))?\)/);
+        if (m && m[4] !== "0") return "#" + m.slice(1, 4).map((v) => (+v).toString(16).padStart(2, "0")).join("") + (m[4] ? ` (alpha ${m[4]})` : "");
+      }
+    }
+    return "#ffffff (page default)";
+  };
+  const idOf = (u) => {
+    const m = decodeURIComponent(u || "").match(/static\.wixstatic\.com\/media\/([^/?#"')\s]+)/) || (u || "").match(/video\.wixstatic\.com\/video\/([^/?#]+)/);
+    return m ? (u.includes("video.wixstatic") ? `video:${m[1]}` : m[1]) : null;
+  };
+  const out = [];
+  const add = (el, url, kind) => {
+    const id = idOf(url);
+    if (!id) return;
+    out.push({
+      id, kind, alt: el.alt ?? "",
+      area: el.closest("#SITE_HEADER") ? "header" : el.closest("#SITE_FOOTER") ? "footer" : "main",
+      background: el.closest('[id^="bgLayers"]') ? true : undefined,
+      on_colour: bgOf(el.parentElement ?? el),
+    });
+  };
+  for (const img of document.querySelectorAll("img")) add(img, img.currentSrc || img.src, "img");
+  for (const v of document.querySelectorAll("video")) { add(v, v.currentSrc || v.src, "video"); add(v, v.poster, "video-poster"); }
+  for (const el of document.querySelectorAll("#SITE_CONTAINER *")) {
+    const b = getComputedStyle(el).backgroundImage;
+    if (b && b.includes("wixstatic")) for (const [, u] of b.matchAll(/url\("?([^")]+)"?\)/g)) add(el, u, "css-background");
+  }
+  const og = document.querySelector('meta[property="og:image"]')?.content;
+  if (og) out.push({ id: idOf(og), kind: "og:image", alt: "", area: "meta" });
+  return out.filter((o) => o.id);
+}
+
+// Review widgets, comments and member/guest lists show visitors' names and photos: masked in every screenshot.
+export const PRIVATE_SEL = 'google-reviews-wix-custom-element, [data-hook*="comment" i], [data-hook*="member" i], [data-hook*="guest" i], [data-hook*="attendee" i], [data-hook*="avatar" i]';
+export const privacyMask = (page) => ({ mask: [page.locator(PRIVATE_SEL)], maskColor: "#b4b4b4" });
