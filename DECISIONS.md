@@ -24,6 +24,8 @@ Every decision, with date and who made it. Decisions 1–18 from the master prom
 | D18 | 2026-10-25 | When a hold expires or a booking is cancelled before its session starts, its intake gets `delete_after = now()` and is removed by the next daily purge (data minimisation, AVG art. 5(1)(c)). Intakes of sessions that took place (completed, no-show, or cancelled after the start) keep the therapist's retention period. | Backend | Proposed |
 | D19 | 2026-10-25 | **Overrides master prompt 8 and 8A.** The current website is kept as it is: same logo, look, content, page structure and URLs, rebuilt faithfully from the Wix export. The only additions are a login to the platform (therapists, admin, clients) and online booking. The design system is re-themed to match the existing site (its colours, fonts and logo) instead of the Apple-inspired style; the usability rules from 8A (mobile-first, tap targets, plain language, accessibility) still apply to the new screens. | Owner | Decided |
 
+| D20 | 2026-10-25 | The site's own fonts (Futura, Avenir, Helvetica and the heading/wordmark font) are used in the rebuild, self-hosted from `wix-export/brand/fonts/`. The owner confirmed she holds licences for them. To check before go-live: that her licence covers self-hosting on the new website (not only desktop use or use via Wix). | Owner | Decided |
+
 ## Open questions (defaults apply unless the owner says otherwise)
 
 | # | Question | Default |
