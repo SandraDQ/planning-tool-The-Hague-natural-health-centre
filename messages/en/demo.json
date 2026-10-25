@@ -1,1 +1,6 @@
-{}
+{
+  "banner": {
+    "label": "Demo",
+    "text": "test data, nothing is real."
+  }
+}

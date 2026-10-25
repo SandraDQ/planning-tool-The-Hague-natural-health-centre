@@ -5,22 +5,26 @@
  */
 export { Avatar } from "./components/Avatar";
 export { Badge, type BadgeTone } from "./components/Badge";
+export { BottomNav, SectionNav, isNavItemActive, type AppNavItem } from "./components/BottomNav";
 export { BrandLink } from "./components/BrandLink";
 export { Button, ButtonLink, IconButton, buttonClasses, type ButtonVariant, type ButtonSize } from "./components/Button";
 export { Card } from "./components/Card";
 export { Checkbox } from "./components/Checkbox";
 export { DatePicker, type PickerDay } from "./components/DatePicker";
 export { dayToDate } from "./dates";
+export { DemoBanner } from "./components/DemoBanner";
 export { EmptyState } from "./components/EmptyState";
 export { Field } from "./components/Field";
 export { Header } from "./components/Header";
 export { HeaderMenu, type NavItem } from "./components/HeaderMenu";
 export { LanguageSwitch } from "./components/LanguageSwitch";
 export { Logo } from "./components/Logo";
+export { Notice, type NoticeTone } from "./components/Notice";
 export { ProgressSteps } from "./components/ProgressSteps";
 export { RadioCard, RadioCardGroup, type RadioCardOption } from "./components/RadioCard";
 export { SegmentedControl } from "./components/SegmentedControl";
 export { SiteFooter } from "./components/SiteFooter";
+export { SiteSection, DisplayHeading, type SiteSectionTone } from "./components/SiteSection";
 export { SiteHeader } from "./components/SiteHeader";
 export { Select } from "./components/Select";
 export { Sheet } from "./components/Sheet";
