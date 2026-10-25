@@ -28,6 +28,8 @@ Every decision, with date and who made it. Decisions 1–18 from the master prom
 | D21 | 2026-10-25 | **MVP first.** Goal: a viewable MVP (site copy + login + booking + admin rooms/renters + therapist calendar) before real services are connected. Until Supabase, Mollie, Moneybird and email are connected, the app runs in **demo mode**: a server-side data layer behind a `DataStore` interface (`src/lib/domain/`), with an in-memory demo implementation seeded with fake data, and a Supabase implementation added later against the existing migrations. Demo state may reset on redeploy. | Owner | Decided |
 | D22 | 2026-10-25 | Demo login: a "demo" sign-in page lets a viewer choose to enter as admin, a test therapist or a test client (signed cookie). Real magic links + TOTP replace it when Supabase is connected. Demo mode is clearly labelled on every page and cannot be enabled in production with real keys present. | Orchestrator | Decided |
 | D23 | 2026-10-25 | Demo payment: the deposit step shows a clearly labelled "demo payment" screen that simulates the Mollie webhook (succeed / fail / abandon). Real Mollie Connect replaces it in Phase 5. | Orchestrator | Decided |
+| D24 | 2026-10-25 | Shared-room slots = reserved blocks intersected with the therapist's working hours when they have set any; with no working hours set, the whole block is bookable (master prompt 3.2). | Orchestrator (default) | Decided |
+| D25 | 2026-10-25 | A therapist's manual booking during their own time off is allowed with a warning, not refused ("therapists decide"). Online slots never fall in time off. | Orchestrator (default) | Decided |
 
 ## Open questions (defaults apply unless the owner says otherwise)
 

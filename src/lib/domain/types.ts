@@ -170,7 +170,7 @@ export interface PaperWindow {
   therapistId: Id;
   roomId: Id;
   period: Interval;
-  status: "open" | "filled";
+  status: "open" | "filled" | "closed";
 }
 
 export interface Client {
@@ -189,6 +189,8 @@ export interface Appointment {
   therapistId: Id;
   roomId: Id;
   roomBlockId: Id | null;
+  /** Set when booked into an admin-opened paper-calendar window (3.5). */
+  paperWindowId?: Id | null;
   clientId: Id;
   sessionTypeId: Id;
   /** Session only. */
@@ -232,5 +234,6 @@ export interface Slot {
   therapistId: Id;
   roomId: Id;
   roomBlockId: Id | null;
+  paperWindowId?: Id | null;
   session: Interval;
 }

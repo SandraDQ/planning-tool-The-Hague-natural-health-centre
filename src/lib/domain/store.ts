@@ -98,6 +98,11 @@ export interface TherapistStore {
   getMyPolicy(session: Session): Promise<CancellationPolicy | null>;
   setMyPolicy(session: Session, policy: Omit<CancellationPolicy, "therapistId">): Promise<CancellationPolicy>;
   getMyBusiness(session: Session): Promise<TherapistBusiness | null>;
+  /** Active rooms (no other therapists' details). */
+  listRooms(session: Session): Promise<Room[]>;
+  listBlockTemplates(session: Session): Promise<BlockTemplate[]>;
+  /** Reserved shared-room blocks in range, anonymised: who holds them is hidden unless it is the caller. */
+  listTakenBlocks(session: Session, range: Interval): Promise<Array<Pick<RoomBlock, "id" | "roomId" | "period"> & { mine: boolean }>>;
 }
 
 /** Admin: rooms, renters (therapists), rent configuration, overview. Never intake. */
