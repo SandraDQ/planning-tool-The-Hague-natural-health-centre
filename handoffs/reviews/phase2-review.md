@@ -2,7 +2,9 @@
 
 *2026-10-25 · privacy-security-reviewer · branch `claude/project-thread-5fstmm` · nothing committed*
 
-## Verdict: **BLOCK**
+## Verdict: **PASS** (after re-review, see the end of this file)
+
+*First review: BLOCK (below). Re-review of migration 0010: all findings closed.*
 
 One finding breaks a hard rule from MASTER_PROMPT 2, 11.2 and 15 ("Admin cannot open intake data"). The test proves it: R1 in `tests/db/90_review.sql`. A second finding (no 2FA at database level) needs a decision before the gate. Everything else is medium or low and can be fixed in this phase or tracked for later.
 
@@ -87,3 +89,37 @@ One finding breaks a hard rule from MASTER_PROMPT 2, 11.2 and 15 ("Admin cannot 
 
 ## To unblock
 Fix F1 (and invert the `R1 HOLE` assertion). Decide and implement F2 (or log the decision with a DB-level check). F3–F6 should land in Phase 2 as well, because they are small migration changes. Re-run `pnpm test:db` and ask me for a re-review.
+
+---
+
+# Re-review · migration `20261025000010_review_fixes.sql` (commit d45ae3d)
+
+*2026-10-25 · privacy-security-reviewer · `src/` not reviewed this round (design-system agent is editing it)*
+
+## Final verdict: **PASS**
+
+`pnpm test:db`: 11 files passed, 0 failed, 384 assertions. The count includes my new `tests/db/91_rereview.sql` (61 assertions). Those tests attack the fixes from angles that `90_review.sql` does not cover.
+
+## Each finding, checked
+
+| # | Status | How I tried to break it (all in `91_rereview.sql` unless noted) |
+|---|---|---|
+| F1 | **Closed** | Admin linking a new client row to own profile → TH005. Admin creating a second row for an existing client account → TH005. Admin changing `client_id` or `therapist_id` of an appointment → TH005. `current_client_ids()` is empty for the admin. Admin at aal2 sees 0 intake rows, and `read_intake()` / `log_intake_access()` refuse them. Even the **server** cannot link a client row to an admin or therapist profile. Therapist and client cannot create linked rows. Therapist A cannot read B's intake through `read_intake()`. No views exist that could bypass RLS. |
+| F2 | **Closed** | A loop over **every** public table at aal1 (therapist and admin): no private rows visible. Only the own profile and the public catalogue show (the admin at aal1 sees not even public therapists). Writes are refused (one comes back as TH006 instead of 42501, see O2). A JWT without an `aal` claim counts as aal1. `read_intake`, `log_intake_access` and `job_health` refuse aal1. Every table has RLS plus the restrictive `require_mfa` policy for `authenticated` (checked from `pg_policy`). The SECURITY DEFINER functions callable by `authenticated` match an exact allow-list. The rest only return the caller's own ids or booleans. |
+| F3 | **Closed** | Admin DELETE on profiles affects 0 rows, INSERT → TH005, and the admin still reads all profiles. |
+| F4 | **Closed** | On a fresh database **without** `thnhc.allow_missing_pg_cron`, applying the migrations stops at 0010 with "pg_cron is required…" (checked by hand on a separate local cluster, removed afterwards). `job_health()` answers the admin at aal2 and refuses therapists, the admin at aal1, and anon. |
+| F5 | **Closed** | An expired hold, cancelled through `expire_stale_holds()`, makes its intake due at once. Live bookings keep their date. The purge removes exactly that intake and leaves invoices and payments untouched. |
+| F7 | **Closed** | The purge logs exactly one `retention_expired` row, with no duplicate `manual` row. A therapist's manual delete is logged as `manual` even with `thnhc.deletion_reason` set to `retention_expired`. |
+| F8 | **Closed** | `answers` cannot be read directly, nor indirectly through WHERE, RETURNING or a SET expression (all 42501). The treating therapist (aal2) and the client (aal1) read it through `read_intake()`, which writes `intake_access_log`. |
+| F6 | **Closed** | Anon has privileges only on therapies, services, session_types and the public columns of therapists. Anon can execute only `is_bookable_therapist` and `is_public_service`. Anon cannot call `read_intake`, `job_health` or `mfa_satisfied`. A table or function created afterwards by the migration role gets **no** grants for anon, authenticated or PUBLIC. |
+| F9 | **Closed** | A therapist setting own `onboarding_status` → TH005. |
+| F10 | **Closed** | No TRUNCATE, REFERENCES or TRIGGER for anon or authenticated on any table. |
+
+## New observations (low, not blocking)
+
+- **O1 · low · admin can trigger early intake deletion.** `…0010:188–206`: any cancellation before the session start sets `delete_after = now()`. The admin (admin_all on appointments) can cancel any booking, so the intake is purged within 24 h. Setting the booking back to confirmed does not bring the intake back. This affects integrity, not confidentiality, and admin cancellation is a legitimate role. *Suggestion:* when the owner answers the D18 question, consider purging early only for `cancel_reason in ('hold_expired', 'client', 'therapist')`, and logging admin cancellations.
+- **O2 · low · error code at aal1.** The therapist guard on `room_blocks` runs as the caller. At aal1 it cannot see `block_templates`, so a refused insert returns TH006 ("must match a template") instead of 42501. The write is still refused. The app should check aal2 first (D17) so users never see this misleading message.
+- **O3 · low · intake edits are not logged.** `therapist_update_own` on `intakes` lets the treating therapist change `answers` without a log row (`intake_access_log.action` has `update`, but nothing writes it). *Suggestion:* a trigger that logs `update` on intakes, or edits only through a function.
+- **O4 · note · local stub vs. real Supabase.** The tests use a stub `auth.jwt()`. Phase 4 E2E should confirm once against the real Supabase project that the `aal` claim is aal2 after TOTP, and that a magic-link-only session of a therapist sees nothing.
+
+The later-phase notes from the first review still apply: intake mail only to the therapist's login e-mail, admin calendar showing therapy types (owner/DPO), storage policies, security headers, rate limiting, and the `/design` pages before go-live.
