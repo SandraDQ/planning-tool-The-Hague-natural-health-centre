@@ -3,136 +3,112 @@
  * ------------------------------------------------------------------
  * One source of truth for colour, type, spacing, radius, shadow and
  * motion. Raw values live in `--thn-*` custom properties on :root and
- * are exposed to Tailwind v4 through `@theme inline` below, so the
- * utilities (`bg-canvas`, `text-fg-muted`, `rounded-md`, `shadow-sm`…)
- * switch automatically between light and dark mode.
+ * are exposed to Tailwind v4 through `@theme inline` below.
  *
- * Theme selection:
- *   - default: follows the device (prefers-color-scheme)
- *   - <html data-theme="light"> or <html data-theme="dark"> overrides it
+ * v2 (D19): re-themed to match the CURRENT website
+ * (thehague-naturalhealthcentre.com, Wix). Colours come from
+ * wix-export/brand/notes.md + computed-styles.json (site theme
+ * variables --color_N in brackets). The logo is used as delivered.
  *
- * PROVISIONAL: the accent colour (muted sage) is a placeholder. The
- * original logo is not in the repo yet; once it arrives from the Wix
- * export, the accent is replaced by a colour taken from the logo
- * (the palette is built around the logo, never the other way round,
- * see MASTER_PROMPT 8 and 8A). Only the five `--thn-accent*` /
- * `--thn-on-accent` values per theme need to change. Re-check contrast
- * (WCAG 2.1 AA: 4.5:1 text, 3:1 UI) after the swap.
+ * Theme selection: LIGHT is the default and the only theme the public
+ * site uses (the current site has no dark mode). Dark is opt-in only:
+ * <html data-theme="dark">. It is NOT switched on by the device setting.
  *
- * Contrast (checked):
- *   light  fg/canvas 15.9 · fg-muted/canvas 6.2 · white/accent 6.3 ·
- *          accent/canvas 6.0 · border-strong/surface 3.7 (UI)
- *   dark   fg/canvas 15.6 · fg-muted/canvas 8.1 · on-accent/accent 8.1 ·
- *          accent/canvas 8.7 · border-strong/surface 3.4 (UI)
+ * Contrast (WCAG 2.1 AA, checked with the WCAG formula):
+ *   fg #352f2b        on white 13.2 · on cream #f4f3eb 11.8 · on sand #e8e4d5 10.4
+ *   fg-muted #6a5d57  on white 6.3  · on cream 5.7  · on sand 5.0
+ *   accent #486f55    on white 5.7  · on cream 5.1  · on sand 4.48 (FAILS for small
+ *                     text: use accent-strong #3b5241 for text on sand)
+ *   white on accent 5.7 · white on accent-strong 8.5
+ *   border-strong #9f8c82 on white 3.2 (UI outline, >= 3:1)
+ * Site colours that FAIL AA for body text, so restricted:
+ *   #857166 brown   4.6 on white but 4.2 on cream -> fg-muted (#6a5d57) is used
+ *                   for secondary text; #857166 only as `brown` (large text/decor)
+ *   #9f8c82 taupe   3.2 on white -> lines, outlines, large text (>= 24px) only
+ *   #799382 sage    white text on it 3.3 -> large text only (>= 24px regular);
+ *                   body text on a sage band uses the darker accent band instead
+ *   dark (opt-in)   fg #f3f1eb on #27211e 14.1 · fg-muted #cfc5c1 9.4 ·
+ *                   accent #a2b7a9 7.5 · #27211e on accent 7.5
  */
 
 :root {
   color-scheme: light;
 
-  /* Surfaces: warm neutral, never pure white for the page itself */
-  --thn-canvas: #faf8f4; /* page background */
+  /* Surfaces: the site is mostly white with cream / sand bands */
+  --thn-canvas: #ffffff; /* page background [color_11] */
   --thn-surface: #ffffff; /* cards, sheets, inputs */
-  --thn-surface-2: #f2eee7; /* sunken areas, hover, skeletons */
-  --thn-border: #e6e0d6; /* decorative dividers */
-  --thn-border-strong: #8c857a; /* input outlines (>= 3:1) */
+  --thn-surface-2: #f4f3eb; /* cream band, hover, sunken areas (site text/bg cream) */
+  --thn-sand: #e8e4d5; /* sand band, footer [color_27/43] */
+  --thn-border: #e8e4d5; /* decorative dividers [color_27] */
+  --thn-border-strong: #9f8c82; /* input outlines, >= 3:1 [color_13] */
 
   /* Text */
-  --thn-fg: #1f1d1a;
-  --thn-fg-muted: #625c53; /* secondary text, still AA on all surfaces */
+  --thn-fg: #352f2b; /* [color_15] */
+  --thn-fg-muted: #6a5d57; /* [color_14] */
+  --thn-brown: #857166; /* site brown: large text / decor only (see above) */
 
-  /* Accent — PROVISIONAL muted sage, replace with the logo colour */
-  --thn-accent: #4a6652;
-  --thn-accent-strong: #3b5443; /* hover / pressed */
-  --thn-accent-soft: #e3ebe4; /* selected backgrounds, room blocks */
+  /* Brand green (the site's main text/accent colour, matches the hummingbird) */
+  --thn-accent: #486f55; /* [color_19] */
+  --thn-accent-strong: #3b5241; /* hover / pressed, text on sand [color_20] */
+  --thn-accent-soft: #dde7df; /* sage #799382 at ~25% on white: selected, room blocks */
   --thn-on-accent: #ffffff;
+  --thn-sage: #799382; /* site's sage band [color_18]; large text only */
+  --thn-on-sage: #ffffff; /* 3.3:1 -> only text >= 24px (or 19px bold) on sage */
 
-  /* Semantic */
-  --thn-success: #2e6540;
-  --thn-success-soft: #e2efe5;
-  --thn-warning: #7f5200;
-  --thn-warning-soft: #f8ecd6;
-  --thn-danger: #a0362b;
-  --thn-danger-soft: #f8e3e0;
+  /* Semantic (not on the current site; muted to sit with the palette) */
+  --thn-success: #3b6b4a;
+  --thn-success-soft: #e3ede5;
+  --thn-warning: #7a5410;
+  --thn-warning-soft: #f6ecd8;
+  --thn-danger: #9c3a2e;
+  --thn-danger-soft: #f6e4e0;
 
-  --thn-focus: #3b5443;
-  --thn-scrim: rgb(31 29 26 / 0.36);
-  --thn-header: rgb(250 248 244 / 0.78); /* frosted header tint */
+  --thn-focus: #3b5241;
+  --thn-scrim: rgb(53 47 43 / 0.4);
+  --thn-header: #ffffff;
+  --thn-logo-plate: transparent; /* behind the full logo; light plate in dark mode */
 
-  /* Depth */
-  --thn-shadow-sm: 0 1px 2px rgb(31 29 26 / 0.05), 0 1px 3px rgb(31 29 26 / 0.06);
-  --thn-shadow-md: 0 2px 6px rgb(31 29 26 / 0.05), 0 8px 24px rgb(31 29 26 / 0.07);
-  --thn-shadow-lg: 0 8px 20px rgb(31 29 26 / 0.08), 0 24px 56px rgb(31 29 26 / 0.12);
+  /* Depth: the site is flat; shadows only lift overlays */
+  --thn-shadow-sm: 0 1px 2px rgb(53 47 43 / 0.06);
+  --thn-shadow-md: 0 2px 8px rgb(53 47 43 / 0.08);
+  --thn-shadow-lg: 0 10px 30px rgb(53 47 43 / 0.16);
 }
 
-/* Dark: follows the device unless the page forces light */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    color-scheme: dark;
-    --thn-canvas: #171614;
-    --thn-surface: #211f1c;
-    --thn-surface-2: #2b2925;
-    --thn-border: #36332e;
-    --thn-border-strong: #77716a;
-    --thn-fg: #f1eee8;
-    --thn-fg-muted: #b4ada2;
-    --thn-accent: #9dbba5; /* PROVISIONAL */
-    --thn-accent-strong: #b6cfbd;
-    --thn-accent-soft: #26332b;
-    --thn-on-accent: #13201a;
-    --thn-success: #9cd3ac;
-    --thn-success-soft: #1d2e22;
-    --thn-warning: #e9c27a;
-    --thn-warning-soft: #33291a;
-    --thn-danger: #f0a79d;
-    --thn-danger-soft: #3a2220;
-    --thn-focus: #b6cfbd;
-    --thn-scrim: rgb(0 0 0 / 0.55);
-    --thn-header: rgb(23 22 20 / 0.74);
-    --thn-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.3);
-    --thn-shadow-md: 0 2px 6px rgb(0 0 0 / 0.25), 0 8px 24px rgb(0 0 0 / 0.3);
-    --thn-shadow-lg: 0 8px 20px rgb(0 0 0 / 0.35), 0 24px 56px rgb(0 0 0 / 0.45);
-  }
-}
-
-/* Dark forced by data-theme (same values as above) */
+/* Dark: opt-in only (data-theme="dark"), built from the site theme's dark browns */
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --thn-canvas: #171614;
-  --thn-surface: #211f1c;
-  --thn-surface-2: #2b2925;
-  --thn-border: #36332e;
-  --thn-border-strong: #77716a;
-  --thn-fg: #f1eee8;
-  --thn-fg-muted: #b4ada2;
-  --thn-accent: #9dbba5; /* PROVISIONAL */
-  --thn-accent-strong: #b6cfbd;
-  --thn-accent-soft: #26332b;
-  --thn-on-accent: #13201a;
-  --thn-success: #9cd3ac;
-  --thn-success-soft: #1d2e22;
-  --thn-warning: #e9c27a;
-  --thn-warning-soft: #33291a;
-  --thn-danger: #f0a79d;
-  --thn-danger-soft: #3a2220;
-  --thn-focus: #b6cfbd;
+  --thn-canvas: #27211e; /* [color_1] */
+  --thn-surface: #312824; /* [color_3] */
+  --thn-surface-2: #3a312c;
+  --thn-sand: #3a312c;
+  --thn-border: #4a403a;
+  --thn-border-strong: #9f8c82;
+  --thn-fg: #f3f1eb; /* [color_4] */
+  --thn-fg-muted: #cfc5c1; /* [color_7] */
+  --thn-brown: #bfb4ae;
+  --thn-accent: #a2b7a9; /* [color_17] */
+  --thn-accent-strong: #c8dbce; /* [color_16] */
+  --thn-accent-soft: #33403a;
+  --thn-on-accent: #27211e;
+  --thn-sage: #3b5241;
+  --thn-on-sage: #f3f1eb;
+  --thn-success: #a8d3b4;
+  --thn-success-soft: #23322a;
+  --thn-warning: #e6c584;
+  --thn-warning-soft: #3a2f1d;
+  --thn-danger: #efaa9f;
+  --thn-danger-soft: #42261f;
+  --thn-focus: #c8dbce;
   --thn-scrim: rgb(0 0 0 / 0.55);
-  --thn-header: rgb(23 22 20 / 0.74);
+  --thn-header: #27211e;
+  --thn-logo-plate: #f4f3eb; /* the logo's dark outlines need a light ground */
   --thn-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.3);
-  --thn-shadow-md: 0 2px 6px rgb(0 0 0 / 0.25), 0 8px 24px rgb(0 0 0 / 0.3);
-  --thn-shadow-lg: 0 8px 20px rgb(0 0 0 / 0.35), 0 24px 56px rgb(0 0 0 / 0.45);
+  --thn-shadow-md: 0 2px 8px rgb(0 0 0 / 0.3);
+  --thn-shadow-lg: 0 10px 30px rgb(0 0 0 / 0.45);
 }
 
-/* `dark:` variant that respects both the device setting and data-theme */
-@custom-variant dark {
-  &:where([data-theme="dark"], [data-theme="dark"] *) {
-    @slot;
-  }
-  @media (prefers-color-scheme: dark) {
-    &:where(:root:not([data-theme="light"]), :root:not([data-theme="light"]) *) {
-      @slot;
-    }
-  }
-}
+/* `dark:` variant: only when dark is explicitly chosen */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 @theme inline {
   /* Colour: the default Tailwind palette is removed on purpose so that
@@ -143,6 +119,10 @@
   --color-canvas: var(--thn-canvas);
   --color-surface: var(--thn-surface);
   --color-surface-2: var(--thn-surface-2);
+  --color-sand: var(--thn-sand);
+  --color-brown: var(--thn-brown);
+  --color-sage: var(--thn-sage);
+  --color-on-sage: var(--thn-on-sage);
   --color-border: var(--thn-border);
   --color-border-strong: var(--thn-border-strong);
   --color-fg: var(--thn-fg);
@@ -160,26 +140,31 @@
   --color-focus: var(--thn-focus);
   --color-scrim: var(--thn-scrim);
   --color-header: var(--thn-header);
+  --color-logo-plate: var(--thn-logo-plate);
 
-  /* Typography: one family, five sizes. Nothing else. */
-  --font-sans:
-    -apple-system, BlinkMacSystemFont, "Segoe UI Variable Text", "Segoe UI", Inter, Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+  /* Typography (matches the current site, open-licence stand-ins, see fonts.ts):
+     - sans:    Lato (site body: lato-light). Body text is Light 300.
+     - heading: Jost (stand-in for Futura LT Light/Book used for site headings).
+     - display: Antonio (stand-in for the uploaded condensed extra-light heading font).
+     Five sizes, aligned with the site's own steps (17 body, 20 h3, 28 title, up to 55 hero). */
+  --font-sans: var(--font-lato), "Helvetica Neue", Arial, sans-serif;
+  --font-heading: var(--font-jost), Futura, "Century Gothic", "Avenir Next", sans-serif;
+  --font-display: var(--font-antonio), "Arial Narrow", sans-serif-condensed, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
   --text-*: initial;
   --text-sm: 0.875rem; /* 14px — captions, meta, badges */
-  --text-sm--line-height: 1.45;
-  --text-base: 1.0625rem; /* 17px — body, inputs, buttons */
-  --text-base--line-height: 1.55;
-  --text-lg: 1.25rem; /* 20px — card titles, sub-headings */
-  --text-lg--line-height: 1.4;
-  --text-xl: 1.75rem; /* 28px — page titles */
-  --text-xl--line-height: 1.2;
-  --text-xl--letter-spacing: -0.015em;
-  --text-2xl: clamp(2.25rem, 1.6rem + 2.8vw, 3.25rem); /* 36–52px — hero only */
-  --text-2xl--line-height: 1.1;
-  --text-2xl--letter-spacing: -0.025em;
+  --text-sm--line-height: 1.5;
+  --text-base: 1.0625rem; /* 17px — body, inputs, buttons (site nav + body size) */
+  --text-base--line-height: 1.65;
+  --text-lg: 1.25rem; /* 20px — card titles, sub-headings (site h3) */
+  --text-lg--line-height: 1.45;
+  --text-xl: 1.75rem; /* 28px — page and section titles (site --font_2) */
+  --text-xl--line-height: 1.3;
+  --text-xl--letter-spacing: 0.01em;
+  --text-2xl: clamp(2.25rem, 1.5rem + 3.2vw, 3.4375rem); /* 36–55px — hero only (site h2 55px) */
+  --text-2xl--line-height: 1.15;
+  --text-2xl--letter-spacing: 0.02em;
 
   /* Spacing: Tailwind's 4px grid (p-4 = 16px) plus layout helpers */
   --spacing: 0.25rem;
@@ -187,12 +172,14 @@
   --container-content: 72rem; /* max-w-content */
   --container-reading: 40rem; /* max-w-reading */
 
-  /* Radius: 12–20px. `xs` exists only for checkbox squares. */
+  /* Radius: the site is square-cornered and flat (D19 overrides 8A's 12–20px).
+     Small radii keep app screens soft without the "app" look.
+     PROVISIONAL until the page screenshots confirm the site's button shape. */
   --radius-*: initial;
-  --radius-xs: 6px;
-  --radius-sm: 12px;
-  --radius-md: 16px;
-  --radius-lg: 20px;
+  --radius-xs: 2px; /* checkbox squares, nested segments */
+  --radius-sm: 3px; /* buttons, inputs, chips */
+  --radius-md: 4px; /* cards, radio cards, panels */
+  --radius-lg: 6px; /* sheets, large panels */
 
   /* Depth */
   --shadow-*: initial;

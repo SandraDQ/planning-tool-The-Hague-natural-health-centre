@@ -12,12 +12,13 @@ import {
   Checkbox,
   DatePicker,
   EmptyState,
-  Header,
   Icons,
   Logo,
   ProgressSteps,
   RadioCardGroup,
   SegmentedControl,
+  SiteFooter,
+  SiteHeader,
   Select,
   Sheet,
   Textarea,
@@ -31,17 +32,20 @@ import {
 import { MockNote } from "./MockNote";
 
 const swatches = [
-  { token: "canvas", className: "bg-canvas" },
-  { token: "surface", className: "bg-surface" },
-  { token: "surface2", className: "bg-surface-2" },
-  { token: "border", className: "bg-border" },
-  { token: "fg", className: "bg-fg" },
-  { token: "fgMuted", className: "bg-fg-muted" },
-  { token: "accent", className: "bg-accent" },
-  { token: "accentSoft", className: "bg-accent-soft" },
-  { token: "success", className: "bg-success" },
-  { token: "warning", className: "bg-warning" },
-  { token: "danger", className: "bg-danger" },
+  { token: "canvas", className: "bg-canvas", hex: "#ffffff" },
+  { token: "surface2", className: "bg-surface-2", hex: "#f4f3eb" },
+  { token: "sand", className: "bg-sand", hex: "#e8e4d5" },
+  { token: "fg", className: "bg-fg", hex: "#352f2b" },
+  { token: "fgMuted", className: "bg-fg-muted", hex: "#6a5d57" },
+  { token: "brown", className: "bg-brown", hex: "#857166" },
+  { token: "borderStrong", className: "bg-border-strong", hex: "#9f8c82" },
+  { token: "accent", className: "bg-accent", hex: "#486f55" },
+  { token: "accentStrong", className: "bg-accent-strong", hex: "#3b5241" },
+  { token: "sage", className: "bg-sage", hex: "#799382" },
+  { token: "accentSoft", className: "bg-accent-soft", hex: "#dde7df" },
+  { token: "success", className: "bg-success", hex: "#3b6b4a" },
+  { token: "warning", className: "bg-warning", hex: "#7a5410" },
+  { token: "danger", className: "bg-danger", hex: "#9c3a2e" },
 ] as const;
 
 const week: PickerDay[] = [
@@ -58,7 +62,7 @@ function Section({ title, note, children }: { title: string; note?: string; chil
   return (
     <section className="flex flex-col gap-5 border-t border-border pt-10">
       <div>
-        <h2 className="text-xl font-semibold">{title}</h2>
+        <h2 className="text-xl">{title}</h2>
         {note && <p className="mt-2 max-w-reading text-base text-fg-muted">{note}</p>}
       </div>
       {children}
@@ -82,19 +86,20 @@ export function Showcase() {
 
   return (
     <>
-      <Header actions={<div className="mr-1 hidden sm:block"><ThemeToggle /></div>} />
+      <SiteHeader homeHref="/design/home" bookHref="/design/choose-time" />
       <main className="mx-auto flex max-w-content flex-col gap-10 px-gutter pt-10 pb-16 sm:pt-14">
         <div className="flex flex-col gap-4">
-          <h1 className="text-2xl font-semibold">{t("title")}</h1>
+          <h1 className="text-2xl">{t("title")}</h1>
           <p className="max-w-reading text-lg text-fg-muted">{t("intro")}</p>
-          <div className="sm:hidden">
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="text-sm text-fg-muted">{t("themeNote")}</span>
             <ThemeToggle />
           </div>
         </div>
 
         <Card className="flex flex-col gap-4">
           <div>
-            <h2 className="text-lg font-semibold">{t("mockupsTitle")}</h2>
+            <h2 className="text-lg">{t("mockupsTitle")}</h2>
             <p className="mt-1 text-base text-fg-muted">{t("mockupsText")}</p>
           </div>
           <ul className="grid gap-2 sm:grid-cols-3">
@@ -106,7 +111,7 @@ export function Showcase() {
               <li key={l.href}>
                 <Link
                   href={l.href}
-                  className="flex min-h-13 items-center justify-between gap-2 rounded-md bg-surface-2 px-4 text-base font-medium text-fg transition-colors duration-150 hover:bg-accent-soft"
+                  className="flex min-h-13 items-center justify-between gap-2 rounded-sm bg-surface-2 px-4 text-base text-fg transition-colors duration-150 hover:bg-accent-soft"
                 >
                   {l.label}
                   <Icons.ChevronRight className="size-5 text-fg-muted" />
@@ -117,9 +122,12 @@ export function Showcase() {
         </Card>
 
         <Section title={t("logo")} note={t("logoNote")}>
-          <div className="flex flex-wrap items-end gap-6">
-            <Logo height={36} />
-            <Logo height={64} />
+          <div className="flex flex-wrap items-end gap-8">
+            <Logo variant="mark" height={44} />
+            <Logo variant="mark" height={72} />
+            <div className="bg-sand p-4">
+              <Logo variant="full" height={151} />
+            </div>
           </div>
         </Section>
 
@@ -127,8 +135,10 @@ export function Showcase() {
           <ul className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-6">
             {swatches.map((s) => (
               <li key={s.token} className="flex flex-col gap-2">
-                <span className={`h-16 rounded-md border border-border ${s.className}`} />
-                <span className="text-sm text-fg-muted">{t(`tokens.${s.token}`)}</span>
+                <span className={`h-16 rounded-sm border border-border ${s.className}`} />
+                <span className="text-sm">
+                  {t(`tokens.${s.token}`)} <span className="block font-mono text-fg-muted">{s.hex}</span>
+                </span>
               </li>
             ))}
           </ul>
@@ -136,11 +146,13 @@ export function Showcase() {
 
         <Section title={t("type")} note={t("typeNote")}>
           <div className="flex flex-col gap-4">
-            <p className="text-2xl font-semibold">{t("typeHero")}</p>
-            <p className="text-xl font-semibold">{t("typeTitle")}</p>
-            <p className="text-lg font-semibold">{t("typeHeading")}</p>
+            <p className="font-display text-2xl font-extralight tracking-[0.04em] text-accent uppercase">{t("typeDisplay")}</p>
+            <p className="font-heading text-2xl tracking-[0.05em] uppercase">{t("typeHero")}</p>
+            <p className="font-heading text-xl">{t("typeTitle")}</p>
+            <p className="font-heading text-lg">{t("typeHeading")}</p>
             <p className="text-base">{t("typeBody")}</p>
             <p className="text-sm text-fg-muted">{t("typeSmall")}</p>
+            <p className="text-sm text-fg-muted">{t("typeFonts")}</p>
           </div>
         </Section>
 
@@ -211,7 +223,7 @@ export function Showcase() {
         <Section title={t("cards")}>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <Card>
-              <h3 className="text-lg font-semibold">{t("cardTitle")}</h3>
+              <h3 className="text-lg">{t("cardTitle")}</h3>
               <p className="mt-2 text-base text-fg-muted">{t("cardText")}</p>
             </Card>
             <Card as="a" href="#" interactive className="flex items-center gap-4">
@@ -311,6 +323,7 @@ export function Showcase() {
         </Section>
       </main>
       <MockNote />
+      <SiteFooter />
     </>
   );
 }

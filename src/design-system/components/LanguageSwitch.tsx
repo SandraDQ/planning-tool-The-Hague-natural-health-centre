@@ -7,14 +7,14 @@ import { cn } from "../utils";
 
 const names: Record<string, string> = { nl: "Nederlands", en: "English" };
 
-/** NL | EN switch. Keeps the visitor on the same page. */
+/** NL | EN switch (new on the site, styled like its menu). Keeps the visitor on the same page. */
 export function LanguageSwitch({ className }: { className?: string }) {
   const locale = useLocale();
   const pathname = usePathname();
   const t = useTranslations("design.ui");
   return (
     <nav aria-label={t("chooseLanguage")} className={cn("flex items-center", className)}>
-      <ul className="flex items-center gap-0.5">
+      <ul className="flex items-center">
         {routing.locales.map((l) => {
           const active = l === locale;
           return (
@@ -27,8 +27,8 @@ export function LanguageSwitch({ className }: { className?: string }) {
                 aria-current={active ? "true" : undefined}
                 aria-label={names[l]}
                 className={cn(
-                  "inline-flex size-11 items-center justify-center rounded-sm text-sm font-semibold tracking-wide transition-colors duration-150",
-                  active ? "bg-surface-2 text-fg" : "text-fg-muted hover:bg-surface-2 hover:text-fg",
+                  "inline-flex size-11 items-center justify-center rounded-sm text-sm tracking-[0.12em] underline-offset-[6px] transition-colors duration-150",
+                  active ? "font-bold text-accent underline decoration-1" : "text-fg-muted hover:text-fg hover:underline",
                 )}
               >
                 {l.toUpperCase()}

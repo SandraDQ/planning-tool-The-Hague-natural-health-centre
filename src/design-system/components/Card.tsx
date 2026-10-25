@@ -10,16 +10,16 @@ type CardProps<T extends ElementType> = {
   children?: ReactNode;
 } & Omit<ComponentProps<T>, "as" | "className" | "children">;
 
-/** Groups related content on a white surface with soft depth. */
+/** Groups related content on a white surface with a thin sand line (flat, like the site). */
 export function Card<T extends ElementType = "div">({ as, padded = true, interactive, className, children, ...props }: CardProps<T>) {
   const Comp = (as ?? "div") as ElementType;
   return (
     <Comp
       className={cn(
-        "rounded-lg border border-border bg-surface shadow-sm",
+        "rounded-md border border-border bg-surface",
         padded && "p-5 sm:p-6",
         interactive &&
-          "transition-[box-shadow,transform,border-color] duration-200 ease-calm hover:-translate-y-0.5 hover:border-border-strong/40 hover:shadow-md",
+          "transition-[border-color,background-color] duration-200 ease-calm hover:border-sage hover:bg-surface-2/40",
         className,
       )}
       {...props}

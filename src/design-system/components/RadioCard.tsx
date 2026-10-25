@@ -26,8 +26,8 @@ export function RadioCard({ name, value, title, description, meta, disabled, che
     <label
       htmlFor={id}
       className={cn(
-        "group relative flex min-h-11 cursor-pointer items-start gap-4 rounded-md border border-border bg-surface p-4 shadow-sm",
-        "transition-[border-color,background-color,box-shadow] duration-150 hover:border-border-strong/60",
+        "group relative flex min-h-11 cursor-pointer items-start gap-4 rounded-md border border-border bg-surface p-4",
+        "transition-[border-color,background-color,box-shadow] duration-150 hover:border-sage",
         "has-[:checked]:border-accent has-[:checked]:bg-accent-soft has-[:checked]:shadow-none",
         "has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-focus",
         "has-[:disabled]:cursor-not-allowed has-[:disabled]:opacity-50",
@@ -77,7 +77,7 @@ type RadioCardGroupProps = {
 export function RadioCardGroup({ legend, hideLegend, name, options, value, defaultValue, onChange, className }: RadioCardGroupProps) {
   return (
     <fieldset className={className}>
-      <legend className={cn("mb-3 text-lg font-semibold text-fg", hideLegend && "sr-only")}>{legend}</legend>
+      <legend className={cn("mb-3 font-heading text-lg font-normal text-fg", hideLegend && "sr-only")}>{legend}</legend>
       <div className="flex flex-col gap-3">
         {options.map((o) => (
           <RadioCard

@@ -1,9 +1,11 @@
 /**
  * THNHC design system. Every screen uses only these components and the
  * tokens in ./tokens.css (imported by src/app/globals.css).
+ * Fonts: import { fontVariables } from "@/design-system/fonts" (root layout only).
  */
 export { Avatar } from "./components/Avatar";
 export { Badge, type BadgeTone } from "./components/Badge";
+export { BrandLink } from "./components/BrandLink";
 export { Button, ButtonLink, IconButton, buttonClasses, type ButtonVariant, type ButtonSize } from "./components/Button";
 export { Card } from "./components/Card";
 export { Checkbox } from "./components/Checkbox";
@@ -18,6 +20,8 @@ export { Logo } from "./components/Logo";
 export { ProgressSteps } from "./components/ProgressSteps";
 export { RadioCard, RadioCardGroup, type RadioCardOption } from "./components/RadioCard";
 export { SegmentedControl } from "./components/SegmentedControl";
+export { SiteFooter } from "./components/SiteFooter";
+export { SiteHeader } from "./components/SiteHeader";
 export { Select } from "./components/Select";
 export { Sheet } from "./components/Sheet";
 export { Textarea } from "./components/Textarea";
@@ -28,4 +32,5 @@ export { TimeSlotPicker, type Slot } from "./components/TimeSlotPicker";
 export { Toast, ToastProvider, useToast, type ToastInput, type ToastTone } from "./components/Toast";
 export * as Icons from "./components/icons";
 export { brand, type LogoAsset } from "./brand";
+export { siteNav, siteActions, siteContact, openingHours, siteSocial, siteLegal, siteWordmark, type SiteNavKey } from "./site";
 export { cn } from "./utils";

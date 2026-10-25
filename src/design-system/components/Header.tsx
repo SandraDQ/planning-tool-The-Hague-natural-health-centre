@@ -1,14 +1,15 @@
 import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { BrandLink } from "./BrandLink";
 import { LanguageSwitch } from "./LanguageSwitch";
 import { HeaderMenu, type NavItem } from "./HeaderMenu";
-import { Logo } from "./Logo";
 import { cn } from "../utils";
 
 /**
- * Frosted sticky header: logo (links home) + optional navigation + language switch.
- * On phones the navigation moves into a menu sheet.
+ * Slim header for platform screens that are not part of the public site
+ * (e.g. admin tools): logo + name, optional navigation, actions, language switch.
+ * Public pages use <SiteHeader>, which reproduces the current website's header.
  */
 export function Header({
   nav,
@@ -23,16 +24,9 @@ export function Header({
 }) {
   const t = useTranslations();
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-40 border-b border-border/70 bg-header backdrop-blur-xl backdrop-saturate-150",
-        className,
-      )}
-    >
-      <div className="mx-auto flex h-16 max-w-content items-center gap-3 px-gutter">
-        <Link href={homeHref} className="-m-1 inline-flex min-h-11 items-center rounded-sm p-1" aria-label={t("common.centreName")}>
-          <Logo height={36} />
-        </Link>
+    <header className={cn("border-b border-border bg-header", className)}>
+      <div className="mx-auto flex min-h-16 max-w-content items-center gap-3 px-gutter py-2">
+        <BrandLink href={homeHref} size="sm" />
         {nav && nav.length > 0 && (
           <nav aria-label={t("design.ui.mainNav")} className="ml-6 hidden md:block">
             <ul className="flex items-center gap-1">
@@ -40,7 +34,7 @@ export function Header({
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="inline-flex min-h-11 items-center rounded-sm px-3 text-base text-fg-muted transition-colors duration-150 hover:bg-surface-2 hover:text-fg"
+                    className="inline-flex min-h-11 items-center rounded-sm px-3 text-base text-fg transition-colors duration-150 hover:text-accent hover:underline hover:underline-offset-4"
                   >
                     {item.label}
                   </Link>
@@ -52,7 +46,11 @@ export function Header({
         <div className="ml-auto flex items-center gap-1">
           {actions}
           <LanguageSwitch />
-          {nav && nav.length > 0 && <HeaderMenu nav={nav} className="md:hidden" />}
+          {nav && nav.length > 0 && (
+            <div className="md:hidden">
+              <HeaderMenu nav={nav} />
+            </div>
+          )}
         </div>
       </div>
     </header>

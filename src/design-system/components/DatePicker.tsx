@@ -66,7 +66,7 @@ export function DatePicker({
   return (
     <div className={className}>
       <div className="mb-3 flex items-center justify-between gap-2">
-        <h3 className="text-base font-semibold text-fg capitalize" aria-live="polite">
+        <h3 className="text-base font-normal text-fg capitalize" aria-live="polite">
           {heading}
         </h3>
         <div className="-mr-2 flex">
@@ -92,14 +92,14 @@ export function DatePicker({
               onClick={() => onSelect(day.date)}
               className={cn(
                 "flex h-18 min-w-11 flex-1 flex-col items-center justify-center gap-0.5 rounded-sm transition-[background-color,color] duration-150",
-                isSelected ? "bg-accent text-on-accent shadow-sm" : "text-fg hover:bg-surface-2",
+                isSelected ? "bg-accent text-on-accent" : "text-fg hover:bg-surface-2",
                 !day.available && "cursor-not-allowed text-fg-muted/70 hover:bg-transparent",
               )}
             >
               <span className={cn("text-sm", isSelected ? "text-on-accent" : "text-fg-muted")}>
                 {format.dateTime(date, { weekday: "short" }).replace(".", "")}
               </span>
-              <span className={cn("text-lg leading-none font-semibold tabular-nums", !day.available && "line-through decoration-1")}>
+              <span className={cn("font-heading text-lg leading-none tabular-nums", !day.available && "line-through decoration-1")}>
                 {format.dateTime(date, { day: "numeric" })}
               </span>
               <span

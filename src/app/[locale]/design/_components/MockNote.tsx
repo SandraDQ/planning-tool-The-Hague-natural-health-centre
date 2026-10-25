@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 
-/** Small footer on every mock-up: says the data is made up and links between previews. */
+/** Thin bar above the site footer on every mock-up: says the data is made up and links between previews. */
 export function MockNote() {
   const t = useTranslations("design.mock");
   const pages = [
@@ -11,7 +11,7 @@ export function MockNote() {
     { href: "/design/therapist-calendar", label: t("pages.calendar") },
   ];
   return (
-    <footer className="border-t border-border py-6 text-sm text-fg-muted">
+    <div className="border-t border-border bg-surface-2 py-4 text-sm text-fg-muted">
       <div className="mx-auto flex max-w-content flex-col px-gutter gap-3 sm:flex-row sm:items-center sm:justify-between">
         <p>{t("note")}</p>
         <ul className="-mx-2 flex flex-wrap">
@@ -24,6 +24,6 @@ export function MockNote() {
           ))}
         </ul>
       </div>
-    </footer>
+    </div>
   );
 }

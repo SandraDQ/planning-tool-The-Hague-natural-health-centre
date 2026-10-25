@@ -46,37 +46,44 @@
         "home": "Homepagina",
         "chooseTime": "Boeken: kies een tijd",
         "calendar": "Agenda van de therapeut"
-      }
+      },
+      "heroPhoto": "Hoofdfoto van de huidige site volgt",
+      "map": "Kaart (Google Maps, zoals op de huidige site)"
     },
     "showcase": {
       "title": "Bouwstenen",
-      "intro": "Alle onderdelen waarmee de website en de dashboards worden gebouwd. Bekijk ze in licht en donker.",
+      "intro": "Alle onderdelen voor de website en de dashboards, opnieuw vormgegeven in de stijl van de huidige website: hetzelfde logo, dezelfde kleuren en lettertypes.",
       "mockupsTitle": "Ontwerpvoorbeelden",
       "mockupsText": "Drie schermen, gemaakt met alleen deze bouwstenen.",
       "colours": "Kleuren",
-      "coloursNote": "De accentkleur is tijdelijk. Zodra het logo binnen is, kiezen we het accent uit het logo.",
+      "coloursNote": "Overgenomen van de huidige website. Lopende tekst gebruikt alleen kleuren die aan WCAG AA voldoen; lichtbruin, taupe en saliegroen zijn voor lijnen, grote tekst en vlakken.",
       "tokens": {
         "canvas": "Achtergrond",
         "surface": "Vlak",
-        "surface2": "Verdiept",
+        "surface2": "Crème",
         "border": "Lijn",
         "fg": "Tekst",
         "fgMuted": "Tekst, rustig",
-        "accent": "Accent (tijdelijk)",
+        "accent": "Merkgroen",
         "accentSoft": "Accent, zacht",
         "success": "Gelukt",
         "warning": "Let op",
-        "danger": "Fout"
+        "danger": "Fout",
+        "sand": "Zand (voettekst, vlakken)",
+        "brown": "Bruin (grote tekst)",
+        "borderStrong": "Taupe (lijnen)",
+        "accentStrong": "Groen, donker",
+        "sage": "Saliegroen (vlakken)"
       },
       "type": "Tekst",
-      "typeNote": "Eén lettertype, vijf maten.",
-      "typeHero": "Rust en aandacht",
+      "typeNote": "Drie lettertypes, vijf groottes. Lato Light voor tekst, een Futura-achtige letter voor koppen en een smalle letter voor grote titels, zoals op de huidige site.",
+      "typeHero": "Natural Health Centre",
       "typeTitle": "Kies een tijd",
       "typeHeading": "Je afspraak",
       "typeBody": "Korte zinnen en veel ruimte. Zo leest alles rustig.",
       "typeSmall": "Prijzen zijn inclusief btw.",
       "buttons": "Knoppen",
-      "buttonsNote": "Eén hoofdknop per scherm. Alle knoppen zijn minstens 44 pixels hoog.",
+      "buttonsNote": "Effen groen, zoals op de huidige site. Eén hoofdknop per scherm. Elke knop is minstens 44 pixels hoog.",
       "primary": "Maak een afspraak",
       "secondary": "Bekijk therapeuten",
       "ghost": "Terug",
@@ -137,63 +144,55 @@
       "segmentedDay": "Dag",
       "segmentedWeek": "Week",
       "logo": "Logo",
-      "logoNote": "Het echte logo komt van de huidige website. Tot die tijd houdt dit vak de plek vrij. We tekenen het logo nooit na."
+      "logoNote": "De originele logobestanden van de huidige website, ongewijzigd: de kolibrie uit de kop en het volledige logo uit de voettekst.",
+      "themeNote": "Licht is de standaard, zoals op de huidige site. Donker is optioneel.",
+      "typeDisplay": "Zorg geïnspireerd door de natuur",
+      "typeFonts": "Lato (tekst) · Jost (koppen, in plaats van Futura) · Antonio (grote titels, in plaats van het smalle lettertype van de site). Allemaal open licentie."
     },
     "home": {
-      "nav": {
-        "therapies": "Therapieën",
-        "therapists": "Therapeuten",
-        "about": "Over ons",
-        "contact": "Contact"
-      },
-      "heroEyebrow": "Scheveningen, Den Haag",
-      "heroTitle": "Rust, aandacht en natuurlijke zorg",
-      "heroText": "Dertien therapieën onder één dak. Kies een therapeut en boek zelf een tijd die bij je past.",
-      "book": "Maak een afspraak",
-      "meet": "Bekijk therapeuten",
-      "therapiesTitle": "Wat past bij jou?",
-      "therapiesText": "Kies een therapie en zie wie er bij ons werkt.",
-      "allTherapies": "Alle 13 therapieën",
-      "therapies": {
-        "acupuncture": {
-          "name": "Acupunctuur",
-          "text": "Fijne naalden die je lichaam helpen herstellen."
+      "heroPlace": "The Hague",
+      "heroName": "Natural Health Centre",
+      "taglineLead": "Wij helpen mensen zich",
+      "tagline": "zelfverzekerd, gezond en energiek te voelen",
+      "book": "Afspraak maken",
+      "natureTitle": "Zorg geïnspireerd door de natuur",
+      "natureLead": "Wij geloven dat de natuur de sleutel is om echt te herstellen en opnieuw te ontdekken hoe het voelt om ontspannen en vol energie te zijn.",
+      "natureText": "Een druk leven en sociale verplichtingen kunnen je energie opslokken, waardoor je moe of ziek wordt. Wil je beter omgaan met de drukte en weer van het leven genieten? Maak dan kennis met ons natuurlijke gezondheidscentrum.",
+      "helpTitle": "Hoe kunnen wij helpen?",
+      "helpText1": "Ons lichaam heeft een zelfherstellend vermogen dat vanzelf werkt. Staan we voortdurend onder stress, dan komt dat vermogen onder druk en geeft het lichaam signalen dat het niet goed gaat, zoals pijn of mentale klachten. Vaak negeren mensen die kleine signalen tot ze uitgroeien tot klachten die moeilijker te overwinnen zijn.",
+      "helpText2": "Wij bieden onder één dak verschillende natuurlijke therapieën die ziekte holistisch benaderen: lichaam, geest en ziel.",
+      "seeTherapies": "Bekijk therapieën",
+      "quoteLabel": "Wat cliënten zeggen",
+      "quote": "Eindelijk! Een vooruitstrevende, holistische kliniek met een luxe uitstraling, waar de therapeuten echt samenwerken om je beter te maken.",
+      "quoteBy": "Lucie, Rotterdam",
+      "engageTitle": "Hoe werkt het?",
+      "engageText1": "Weet je welke therapie je wilt? Neem dan direct contact op met de therapeut.",
+      "goTherapists": "Naar onze therapeuten",
+      "engageText2": "Wil je de mogelijkheden bespreken of heb je vragen? Neem gerust contact op met een van de therapeuten hieronder.",
+      "bookWith": "Afspraak met {name}",
+      "people": {
+        "sandra": {
+          "name": "Sandra Delgado Quist",
+          "first": "Sandra",
+          "text": "Sandra is oprichter van The Hague Natural Health Centre en geregistreerd homeopaat, Reiki-docent en -beoefenaar. Ze vindt het prachtig om mensen te leren en te helpen zelf de regie over hun gezondheid te nemen."
         },
-        "massage": {
-          "name": "Massage",
-          "text": "Spanning loslaten en weer ontspannen."
+        "ira": {
+          "name": "Ira Sloof",
+          "first": "Ira",
+          "text": "Ira is gediplomeerd acupuncturist en herbalist (opgeleid bij de Zhong). Ze helpt mensen graag met uiteenlopende klachten en draagt bij aan het activeren van hun levensenergie (Qi). Dit werk vervult haar met vreugde."
         },
-        "homeopathy": {
-          "name": "Homeopathie",
-          "text": "Zachte middelen, afgestemd op jou."
-        },
-        "psychology": {
-          "name": "Psychologie",
-          "text": "Ruimte om te praten en verder te komen."
-        },
-        "ayurveda": {
-          "name": "Ayurveda",
-          "text": "Evenwicht door voeding, ritme en rust."
-        },
-        "nutrition": {
-          "name": "Voeding",
-          "text": "Eten dat je energie geeft."
+        "audrey": {
+          "name": "Audrey Dickinson",
+          "first": "Audrey",
+          "text": "Audrey is opgeleid voedingsdeskundige, gespecialiseerd in hormonale en vaginale gezondheid. Ze ondersteunt mensen graag met haalbare voedingsplannen die niet overweldigend zijn voor wie zijn eetpatroon wil veranderen."
         }
       },
-      "therapistsTitle": "Onze therapeuten",
-      "therapistsText": "Zelfstandige therapeuten, elk met een eigen praktijk.",
-      "viewProfile": "Bekijk profiel",
-      "nextFree": "Eerste vrije tijd: {when}",
-      "stepsTitle": "Zo boek je",
-      "stepsText": "Binnen twee minuten geregeld, zonder te bellen.",
-      "step1": "Kies een therapie of therapeut",
-      "step2": "Kies een tijd die past",
-      "step3": "Betaal een kleine aanbetaling",
-      "step3Text": "De rest betaal je bij de afspraak.",
-      "visitTitle": "Kom langs",
-      "visitText": "Zes rustige behandelkamers in Scheveningen.",
-      "address": "Badhuisstraat 224, 2584 Den Haag",
-      "route": "Plan je route"
+      "accessibleTitle": "Toegankelijk voor iedereen",
+      "accessibleText": "Echte gezondheid begint thuis. Vroeger groeide ons medicijn in de tuin en wisten we hoe we planten als medicijn konden gebruiken. We zijn het contact met de natuur en onze innerlijke wijsheid kwijtgeraakt. Vanuit onze betrokkenheid bij de buurt organiseren we regelmatig bijeenkomsten over onderwerpen die veel mensen raken. Deze kleine bijeenkomsten geven je kennis over mogelijkheden om zelf de regie over je gezondheid te nemen.",
+      "eventsTitle": "Mis geen enkel evenement",
+      "eventsText": "Hoor als eerste over onze maandelijkse lezingen, aanbiedingen en workshops. Onze gratis evenementen hebben beperkt plek, dus reserveer op tijd!",
+      "emailLabel": "E-mailadres",
+      "send": "Versturen"
     },
     "chooseTime": {
       "steps": {
@@ -268,6 +267,39 @@
       },
       "weekNumber": "Week {number}",
       "privacyNote": "Je ziet alleen voornaam en dienst. Klachten staan in het intakeformulier."
+    },
+    "site": {
+      "nav": {
+        "home": "Home",
+        "therapies": "Therapieën",
+        "conditions": "Klachten",
+        "about": "Over ons",
+        "events": "Evenementen",
+        "blog": "Blog",
+        "contact": "Contact"
+      },
+      "book": "Afspraak maken",
+      "bookShort": "Boeken",
+      "login": "Inloggen",
+      "footer": {
+        "openingHours": "Openingstijden",
+        "days": {
+          "mon": "Maandag",
+          "tue": "Dinsdag",
+          "wed": "Woensdag",
+          "thu": "Donderdag",
+          "fri": "Vrijdag",
+          "sat": "Zaterdag",
+          "sun": "Zondag"
+        },
+        "appointment": "alleen op afspraak",
+        "closed": "gesloten",
+        "contact": "Contact",
+        "phoneNote": "antwoordapparaat of WhatsApp",
+        "sendMessage": "Stuur ons een bericht",
+        "social": "Social media",
+        "privacy": "Privacy"
+      }
     }
   }
 }

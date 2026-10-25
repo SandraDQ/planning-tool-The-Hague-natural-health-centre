@@ -7,9 +7,10 @@ import {
   ButtonLink,
   Card,
   DatePicker,
-  Header,
   Icons,
   ProgressSteps,
+  SiteFooter,
+  SiteHeader,
   TimeSlotPicker,
   dayToDate,
   type PickerDay,
@@ -78,7 +79,7 @@ export function ChooseTime() {
 
   return (
     <>
-      <Header homeHref="/design/home" />
+      <SiteHeader homeHref="/design/home" bookHref="/design/choose-time" />
       <main className="mx-auto max-w-content px-gutter pt-4 pb-10 sm:pt-6 lg:pb-16">
         <Link
           href="/design/home"
@@ -92,7 +93,7 @@ export function ChooseTime() {
         <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_22rem] lg:gap-10">
           <div className="flex min-w-0 flex-col gap-6">
             <div>
-              <h1 className="text-xl font-semibold">{t("title")}</h1>
+              <h1 className="text-xl">{t("title")}</h1>
               <p className="mt-2 text-base text-fg-muted">{t("intro")}</p>
             </div>
 
@@ -130,9 +131,9 @@ export function ChooseTime() {
           </div>
 
           {/* Summary: what you book and what you pay, always in view */}
-          <aside className="lg:sticky lg:top-24 lg:self-start" aria-labelledby="summary-title">
+          <aside className="lg:sticky lg:top-6 lg:self-start" aria-labelledby="summary-title">
             <Card className="flex flex-col gap-5">
-              <h2 id="summary-title" className="text-lg font-semibold">
+              <h2 id="summary-title" className="text-lg">
                 {t("summaryTitle")}
               </h2>
               <div className="flex items-center gap-3">
@@ -210,6 +211,7 @@ export function ChooseTime() {
         </div>
       </div>
       <MockNote />
+      <SiteFooter />
     </>
   );
 }

@@ -8,12 +8,13 @@ import {
   Card,
   DatePicker,
   EmptyState,
-  Header,
   IconButton,
   Icons,
   SegmentedControl,
   Select,
   Sheet,
+  SiteFooter,
+  SiteHeader,
   TextField,
   cn,
   dayToDate,
@@ -48,13 +49,13 @@ export function TherapistCalendar() {
 
   return (
     <>
-      <Header homeHref="/design/therapist-calendar" />
+      <SiteHeader homeHref="/design/home" bookHref="/design/choose-time" account={{ label: "Sophie de Vries", href: "/design/therapist-calendar" }} />
       <main className="mx-auto max-w-content px-gutter pt-5 pb-10 sm:pt-8 lg:pb-16">
         {/* Toolbar */}
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div className="min-w-0">
             <p className="text-sm font-medium text-fg-muted">{t("title")}</p>
-            <h1 className="text-xl font-semibold first-letter:uppercase">{title}</h1>
+            <h1 className="text-xl first-letter:uppercase">{title}</h1>
             {view === "day" && (
               <p className="mt-1 text-sm text-fg-muted">
                 {t("appointments", { count: appointmentCount })} · {t("blocks", { count: day.blocks.length })}
@@ -148,6 +149,7 @@ export function TherapistCalendar() {
         </Button>
       </div>
       <MockNote />
+      <SiteFooter />
 
       <Sheet
         open={adding}

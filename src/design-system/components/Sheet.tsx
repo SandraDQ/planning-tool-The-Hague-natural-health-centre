@@ -64,7 +64,7 @@ export function Sheet({ open, onClose, title, description, children, footer, cla
         <div aria-hidden="true" className="mx-auto mt-2.5 h-1 w-10 shrink-0 rounded-full bg-border sm:hidden" />
         <div className="flex items-start gap-3 px-5 pt-3 pb-2 sm:px-6 sm:pt-5">
           <div className="min-w-0 flex-1 pt-2">
-            <h2 id={titleId} className="text-lg font-semibold">
+            <h2 id={titleId} className="text-lg font-normal">
               {title}
             </h2>
             {description && (

@@ -67,7 +67,7 @@ export function TimeSlotPicker({ slots, selected, onSelect, emptyAction, classNa
                     className={cn(
                       "min-h-12 rounded-sm border text-base font-medium tabular-nums transition-[background-color,border-color,color] duration-150",
                       active
-                        ? "border-accent bg-accent text-on-accent shadow-sm"
+                        ? "border-accent bg-accent text-on-accent"
                         : "border-border bg-surface text-fg hover:border-accent hover:bg-accent-soft",
                     )}
                   >

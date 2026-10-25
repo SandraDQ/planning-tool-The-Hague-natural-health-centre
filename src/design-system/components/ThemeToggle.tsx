@@ -8,19 +8,22 @@ import { THEME_STORAGE_KEY, type ThemeChoice } from "../theme";
 
 function apply(choice: ThemeChoice) {
   const root = document.documentElement;
-  if (choice === "system") delete root.dataset.theme;
-  else root.dataset.theme = choice;
+  if (choice === "dark") root.dataset.theme = "dark";
+  else delete root.dataset.theme;
 }
 
-/** Lets the visitor follow the device or force light/dark. Remembered per browser. */
+/**
+ * Light (default, as on the current site) or dark (opt-in). Remembered per browser.
+ * The device's dark-mode setting is deliberately NOT followed (D19: the site has no dark mode).
+ */
 export function ThemeToggle({ className }: { className?: string }) {
   const t = useTranslations("design.ui.theme");
-  const [choice, setChoice] = useState<ThemeChoice>("system");
+  const [choice, setChoice] = useState<ThemeChoice>("light");
 
   useEffect(() => {
     try {
       const stored = window.localStorage.getItem(THEME_STORAGE_KEY);
-      if (stored === "light" || stored === "dark") setChoice(stored);
+      if (stored === "dark") setChoice("dark");
     } catch {
       /* storage unavailable: keep following the device */
     }
@@ -30,8 +33,8 @@ export function ThemeToggle({ className }: { className?: string }) {
     setChoice(next);
     apply(next);
     try {
-      if (next === "system") window.localStorage.removeItem(THEME_STORAGE_KEY);
-      else window.localStorage.setItem(THEME_STORAGE_KEY, next);
+      if (next === "dark") window.localStorage.setItem(THEME_STORAGE_KEY, "dark");
+      else window.localStorage.removeItem(THEME_STORAGE_KEY);
     } catch {
       /* ignore */
     }
@@ -44,7 +47,6 @@ export function ThemeToggle({ className }: { className?: string }) {
       onChange={change}
       className={className}
       segments={[
-        { value: "system", label: t("system") },
         { value: "light", label: t("light") },
         { value: "dark", label: t("dark") },
       ]}

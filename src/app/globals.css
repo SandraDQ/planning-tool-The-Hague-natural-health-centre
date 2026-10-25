@@ -1,6 +1,9 @@
 @import "tailwindcss";
 @import "../design-system/tokens.css";
 
+/* Don't scan the Wix export (page text) for class names: its markdown produces invalid CSS */
+@source not "../../wix-export";
+
 @layer base {
   html {
     -webkit-text-size-adjust: 100%;
@@ -12,17 +15,33 @@
     background: var(--thn-canvas);
     color: var(--thn-fg);
     font-family: var(--font-sans);
+    font-weight: 300; /* Lato Light, as on the current site */
     font-size: var(--text-base);
     line-height: var(--text-base--line-height);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
+  /* Headings use the Futura-style face (Jost), regular weight, like the site */
   h1,
   h2,
   h3 {
     text-wrap: balance;
-    font-weight: 600;
+    font-family: var(--font-heading);
+    font-weight: 400;
+  }
+
+  /* Form controls inherit the page font; Lato Regular keeps typed text crisp */
+  button,
+  input,
+  select,
+  textarea {
+    font-weight: 400;
+  }
+
+  strong,
+  b {
+    font-weight: 700;
   }
 
   p {

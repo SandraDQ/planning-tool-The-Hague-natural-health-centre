@@ -1,19 +1,17 @@
-import { useFormatter, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
-import { Avatar, ButtonLink, Card, Header, Icons } from "@/design-system";
-import { Link } from "@/i18n/navigation";
+import { ButtonLink, Icons, Logo, SiteFooter, SiteHeader, TextField, Button } from "@/design-system";
 import { MockNote } from "../_components/MockNote";
 import { PhotoPlaceholder } from "../_components/PhotoPlaceholder";
 
-const therapies = ["acupuncture", "massage", "homeopathy", "psychology", "ayurveda", "nutrition"] as const;
+/*
+ * Home page mock-up, D19: the CURRENT home page (wix-export/pages/pages/home.md),
+ * same sections in the same order and the same text (EN as on the site; NL is a
+ * draft translation). Added: "Book an appointment" in the hero and per therapist.
+ * Photos are placeholders until the media export is in.
+ */
 
-// Made-up therapists for the mock-up only.
-const therapists = [
-  { name: "Sophie de Vries", therapy: "acupuncture", next: "2026-11-03T10:30:00+01:00" },
-  { name: "Mark Jansen", therapy: "massage", next: "2026-11-02T14:00:00+01:00" },
-  { name: "Elif Kaya", therapy: "psychology", next: "2026-11-05T09:00:00+01:00" },
-  { name: "Daan Bakker", therapy: "homeopathy", next: "2026-11-04T16:15:00+01:00" },
-] as const;
+const therapists = ["sandra", "ira", "audrey"] as const;
 
 export default async function HomeMockPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -21,141 +19,143 @@ export default async function HomeMockPage({ params }: { params: Promise<{ local
   return <HomeMock />;
 }
 
+/** Section title in the site's condensed display style (uppercase, brand green). */
+function DisplayTitle({ id, children, className }: { id?: string; children: React.ReactNode; className?: string }) {
+  return (
+    <h2 id={id} className={`font-display text-2xl font-extralight tracking-[0.04em] text-accent uppercase ${className ?? ""}`}>
+      {children}
+    </h2>
+  );
+}
+
 function HomeMock() {
   const t = useTranslations("design.home");
-  const nav = [
-    { href: "/design/home#therapies", label: t("nav.therapies") },
-    { href: "/design/home#therapists", label: t("nav.therapists") },
-    { href: "/design/home#about", label: t("nav.about") },
-    { href: "/design/home#visit", label: t("nav.contact") },
-  ];
+  const tp = useTranslations("design.mock");
 
   return (
     <>
-      <Header nav={nav} homeHref="/design/home" />
+      <SiteHeader homeHref="/design/home" bookHref="/design/choose-time" />
       <main>
-        {/* Hero: one message, one primary action */}
-        <section className="mx-auto grid max-w-content items-center gap-10 px-gutter pt-12 pb-16 sm:pt-20 lg:grid-cols-[1.1fr_1fr] lg:gap-16 lg:pb-24">
-          <div className="flex flex-col items-start gap-6">
-            <p className="text-sm font-medium text-fg-muted">{t("heroEyebrow")}</p>
-            <h1 className="text-2xl font-semibold">{t("heroTitle")}</h1>
-            <p className="max-w-reading text-lg text-fg-muted">{t("heroText")}</p>
-            <div className="mt-2 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-              <ButtonLink href="/design/choose-time" size="lg">
+        {/* Hero: photo with a soft grey veil, logo, name and tagline (as on the site) */}
+        <section className="relative bg-sand" aria-labelledby="hero-title">
+          <p className="absolute right-3 bottom-2 text-sm text-fg-muted">{tp("heroPhoto")}</p>
+          <div className="mx-auto flex max-w-content flex-col items-center px-gutter py-14 text-center sm:py-20 lg:py-24">
+            <Logo variant="mark" height={88} decorative />
+            <h1 id="hero-title" className="mt-5 flex flex-col items-center uppercase">
+              <span className="text-lg tracking-[0.35em] text-fg">{t("heroPlace")}</span>
+              <span className="mt-2 text-2xl tracking-[0.05em] text-fg">{t("heroName")}</span>
+            </h1>
+            <p className="mt-5 font-heading text-xl font-light text-fg">
+              {t("taglineLead")}
+              <br />
+              <span className="text-accent">{t("tagline")}</span>
+            </p>
+            <div className="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+              <ButtonLink href="/design/choose-time" size="lg" leadingIcon={<Icons.CalendarIcon />}>
                 {t("book")}
               </ButtonLink>
-              <ButtonLink href="/design/home#therapists" variant="ghost" size="lg">
-                {t("meet")}
+              <ButtonLink href="/design/home#therapists" variant="secondary" size="lg">
+                {t("goTherapists")}
               </ButtonLink>
             </div>
           </div>
-          <PhotoPlaceholder className="aspect-[4/3] w-full" />
         </section>
 
-        {/* Therapies */}
-        <section id="therapies" className="scroll-mt-20 bg-surface-2/60 py-16 sm:py-20">
-          <div className="mx-auto max-w-content px-gutter">
-            <div className="mb-8 flex flex-col gap-2">
-              <h2 className="text-xl font-semibold">{t("therapiesTitle")}</h2>
-              <p className="text-base text-fg-muted">{t("therapiesText")}</p>
+        {/* Nature inspired healthcare */}
+        <section className="mx-auto max-w-reading px-gutter py-16 text-center sm:py-20" aria-labelledby="nature">
+          <DisplayTitle id="nature">{t("natureTitle")}</DisplayTitle>
+          <p className="mt-6 font-heading text-lg font-light text-fg">{t("natureLead")}</p>
+          <p className="mt-4 text-base">{t("natureText")}</p>
+        </section>
+
+        {/* How can we help? */}
+        <section className="bg-surface-2" aria-labelledby="help">
+          <div className="mx-auto grid max-w-content items-center gap-10 px-gutter py-16 sm:py-20 lg:grid-cols-2 lg:gap-16">
+            <div>
+              <h2 id="help" className="text-xl text-fg">
+                {t("helpTitle")}
+              </h2>
+              <p className="mt-4 text-base">{t("helpText1")}</p>
+              <p className="mt-4 text-base">{t("helpText2")}</p>
+              <ButtonLink href="/design/home#therapies" className="mt-8">
+                {t("seeTherapies")}
+              </ButtonLink>
             </div>
-            <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {therapies.map((key) => (
-                <li key={key}>
-                  <Card as={Link} href="/design/choose-time" interactive className="flex h-full items-center gap-4">
-                    <div className="min-w-0 flex-1">
-                      <h3 className="text-lg font-semibold">{t(`therapies.${key}.name`)}</h3>
-                      <p className="mt-1 text-base text-fg-muted">{t(`therapies.${key}.text`)}</p>
-                    </div>
-                    <Icons.ChevronRight className="size-5 shrink-0 text-fg-muted" />
-                  </Card>
-                </li>
-              ))}
-            </ul>
-            <Link
-              href="/design/home#therapies"
-              className="mt-6 inline-flex min-h-11 items-center gap-1 rounded-sm text-base font-medium text-accent hover:underline"
-            >
-              {t("allTherapies")}
-              <Icons.ChevronRight className="size-5" />
-            </Link>
+            <PhotoPlaceholder className="aspect-[4/3] w-full" />
           </div>
         </section>
 
-        {/* Therapists */}
-        <section id="therapists" className="mx-auto max-w-content scroll-mt-20 px-gutter py-16 sm:py-20">
-          <div className="mb-8 flex flex-col gap-2">
-            <h2 className="text-xl font-semibold">{t("therapistsTitle")}</h2>
-            <p className="text-base text-fg-muted">{t("therapistsText")}</p>
+        {/* Quote on the site's sage band (large text only: white on sage is 3.3:1) */}
+        <section className="bg-sage" aria-label={t("quoteLabel")}>
+          <figure className="mx-auto max-w-reading px-gutter py-16 text-center text-on-sage sm:py-20">
+            <blockquote className="font-heading text-xl font-light">“{t("quote")}”</blockquote>
+            <figcaption className="mt-5 font-heading text-xl font-light">{t("quoteBy")}</figcaption>
+          </figure>
+        </section>
+
+        {/* How to engage? + therapists */}
+        <section id="therapists" className="mx-auto max-w-content scroll-mt-6 px-gutter py-16 sm:py-20" aria-labelledby="engage">
+          <div className="mx-auto max-w-reading text-center">
+            <h2 id="engage" className="text-xl">
+              {t("engageTitle")}
+            </h2>
+            <p className="mt-4 text-base">{t("engageText1")}</p>
+            <ButtonLink href="/design/home#therapists" variant="secondary" className="mt-6">
+              {t("goTherapists")}
+            </ButtonLink>
+            <p className="mt-8 text-base">{t("engageText2")}</p>
           </div>
-          <ul className="grid gap-3 sm:grid-cols-2">
-            {therapists.map((p) => (
-              <li key={p.name}>
-                <TherapistCard name={p.name} therapy={t(`therapies.${p.therapy}.name`)} next={p.next} />
+          <ul className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+            {therapists.map((key) => (
+              <li key={key} className="flex flex-col items-center text-center">
+                <PhotoPlaceholder className="aspect-square w-48 rounded-full" label={t(`people.${key}.name`)} />
+                <h3 className="mt-5 text-lg">{t(`people.${key}.name`)}</h3>
+                <p className="mt-2 text-base">{t(`people.${key}.text`)}</p>
+                <ButtonLink href="/design/choose-time" variant="ghost" className="mt-3" trailingIcon={<Icons.ChevronRight />}>
+                  {t("bookWith", { name: t(`people.${key}.first`) })}
+                </ButtonLink>
               </li>
             ))}
           </ul>
         </section>
 
-        {/* How booking works */}
-        <section id="about" className="border-y border-border bg-surface py-16 sm:py-20">
-          <div className="mx-auto max-w-content px-gutter">
-            <div className="mb-10 flex flex-col gap-2">
-              <h2 className="text-xl font-semibold">{t("stepsTitle")}</h2>
-              <p className="text-base text-fg-muted">{t("stepsText")}</p>
+        {/* Accessible to all */}
+        <section id="therapies" className="bg-surface-2" aria-labelledby="accessible">
+          <div className="mx-auto grid max-w-content items-center gap-10 px-gutter py-16 sm:py-20 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
+            <div>
+              <DisplayTitle id="accessible">{t("accessibleTitle")}</DisplayTitle>
+              <p className="mt-6 text-base">{t("accessibleText")}</p>
             </div>
-            <ol className="grid gap-8 sm:grid-cols-3">
-              {[t("step1"), t("step2"), t("step3")].map((step, i) => (
-                <li key={step} className="flex gap-4 sm:flex-col">
-                  <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-accent-soft text-base font-semibold text-accent-strong dark:text-accent">
-                    {i + 1}
-                  </span>
-                  <div>
-                    <p className="text-lg font-semibold">{step}</p>
-                    {i === 2 && <p className="mt-1 text-base text-fg-muted">{t("step3Text")}</p>}
-                  </div>
-                </li>
-              ))}
-            </ol>
+            <div className="grid grid-cols-2 gap-4">
+              <PhotoPlaceholder className="aspect-[3/4] w-full" />
+              <PhotoPlaceholder className="aspect-[3/4] w-full" />
+            </div>
           </div>
         </section>
 
-        {/* Visit */}
-        <section id="visit" className="mx-auto max-w-content scroll-mt-20 px-gutter py-16 sm:py-20">
-          <Card className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
-            <div className="flex gap-4">
-              <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-surface-2 text-fg-muted">
-                <Icons.MapPin className="size-6" />
-              </span>
-              <div>
-                <h2 className="text-lg font-semibold">{t("visitTitle")}</h2>
-                <p className="mt-1 text-base">{t("address")}</p>
-                <p className="mt-1 text-base text-fg-muted">{t("visitText")}</p>
-              </div>
+        {/* Never miss an event: mailing list on a brand-green band */}
+        <section className="bg-accent text-on-accent" aria-labelledby="events">
+          <div className="mx-auto grid max-w-content gap-8 px-gutter py-16 sm:py-20 lg:grid-cols-2 lg:items-center lg:gap-16">
+            <div>
+              <h2 id="events" className="font-display text-2xl font-extralight tracking-[0.04em] uppercase">
+                {t("eventsTitle")}
+              </h2>
+              <p className="mt-4 font-heading text-lg font-light">{t("eventsText")}</p>
             </div>
-            <ButtonLink href="/design/home#visit" variant="secondary">
-              {t("route")}
-            </ButtonLink>
-          </Card>
+            <form className="flex flex-col gap-4 bg-surface p-5 text-fg sm:p-6" action="#">
+              <TextField label={t("emailLabel")} type="email" autoComplete="email" placeholder="name@example.com" />
+              <Button type="submit" className="self-start">
+                {t("send")}
+              </Button>
+            </form>
+          </div>
         </section>
+
+        {/* Map (Google Maps embed on the current site) */}
+        <PhotoPlaceholder label={tp("map")} className="h-64 w-full sm:h-80" />
       </main>
       <MockNote />
+      <SiteFooter />
     </>
-  );
-}
-
-function TherapistCard({ name, therapy, next }: { name: string; therapy: string; next: string }) {
-  const t = useTranslations("design.home");
-  const format = useFormatter();
-  return (
-    <Card as={Link} href="/design/choose-time" interactive className="flex items-center gap-4">
-      <Avatar name={name} size="md" />
-      <div className="min-w-0 flex-1">
-        <p className="text-base font-semibold">{name}</p>
-        <p className="text-sm text-fg-muted">{therapy}</p>
-        <p className="mt-1 text-sm text-accent">{t("nextFree", { when: format.dateTime(new Date(next), { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }) })}</p>
-      </div>
-      <Icons.ChevronRight className="size-5 shrink-0 text-fg-muted" />
-    </Card>
   );
 }

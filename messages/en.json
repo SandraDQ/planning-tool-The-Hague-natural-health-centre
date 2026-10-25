@@ -46,37 +46,44 @@
         "home": "Home page",
         "chooseTime": "Booking: choose a time",
         "calendar": "Therapist calendar"
-      }
+      },
+      "heroPhoto": "Hero photo from the current site to follow",
+      "map": "Map (Google Maps, as on the current site)"
     },
     "showcase": {
       "title": "Building blocks",
-      "intro": "Every part used to build the website and the dashboards. See them in light and dark.",
+      "intro": "Every part used to build the website and the dashboards, re-themed to match the current website: its logo, colours and fonts.",
       "mockupsTitle": "Mock-ups",
       "mockupsText": "Three screens, built only from these building blocks.",
       "colours": "Colours",
-      "coloursNote": "The accent colour is temporary. Once the logo arrives, the accent is taken from the logo.",
+      "coloursNote": "Taken from the current website. Body text uses only colours that pass WCAG AA; the light brown, taupe and sage are for lines, large text and bands.",
       "tokens": {
         "canvas": "Background",
         "surface": "Surface",
-        "surface2": "Sunken",
+        "surface2": "Cream",
         "border": "Line",
         "fg": "Text",
         "fgMuted": "Text, quiet",
-        "accent": "Accent (temporary)",
+        "accent": "Brand green",
         "accentSoft": "Accent, soft",
         "success": "Success",
         "warning": "Warning",
-        "danger": "Error"
+        "danger": "Error",
+        "sand": "Sand (footer, bands)",
+        "brown": "Brown (large text)",
+        "borderStrong": "Taupe (lines)",
+        "accentStrong": "Green, dark",
+        "sage": "Sage (bands)"
       },
       "type": "Text",
-      "typeNote": "One typeface, five sizes.",
-      "typeHero": "Calm and attention",
+      "typeNote": "Three typefaces, five sizes. Lato Light for text, a Futura-style face for headings and a condensed face for display titles, as on the current site.",
+      "typeHero": "Natural Health Centre",
       "typeTitle": "Choose a time",
       "typeHeading": "Your appointment",
       "typeBody": "Short sentences and plenty of space. Everything reads calmly.",
       "typeSmall": "Prices include VAT.",
       "buttons": "Buttons",
-      "buttonsNote": "One main button per screen. Every button is at least 44 pixels tall.",
+      "buttonsNote": "Flat brand green, like the current site. One main button per screen. Every button is at least 44 pixels tall.",
       "primary": "Book an appointment",
       "secondary": "Meet our therapists",
       "ghost": "Back",
@@ -137,63 +144,55 @@
       "segmentedDay": "Day",
       "segmentedWeek": "Week",
       "logo": "Logo",
-      "logoNote": "The real logo comes from the current website. Until then, this box keeps its place. We never redraw the logo."
+      "logoNote": "The original logo files from the current website, unchanged: the hummingbird from the header and the full logo from the footer.",
+      "themeNote": "Light is the default, like the current site. Dark is optional.",
+      "typeDisplay": "Nature inspired healthcare",
+      "typeFonts": "Lato (text) · Jost (headings, in place of Futura) · Antonio (display, in place of the site's condensed font). All open licence."
     },
     "home": {
-      "nav": {
-        "therapies": "Therapies",
-        "therapists": "Therapists",
-        "about": "About us",
-        "contact": "Contact"
-      },
-      "heroEyebrow": "Scheveningen, The Hague",
-      "heroTitle": "Calm, attention and natural care",
-      "heroText": "Thirteen therapies under one roof. Choose a therapist and book a time that suits you.",
+      "heroPlace": "The Hague",
+      "heroName": "Natural Health Centre",
+      "taglineLead": "Helping people feel",
+      "tagline": "Confident, Healthy, Energized",
       "book": "Book an appointment",
-      "meet": "Meet our therapists",
-      "therapiesTitle": "What suits you?",
-      "therapiesText": "Choose a therapy and see who works with us.",
-      "allTherapies": "All 13 therapies",
-      "therapies": {
-        "acupuncture": {
-          "name": "Acupuncture",
-          "text": "Fine needles that help your body recover."
+      "natureTitle": "Nature inspired healthcare",
+      "natureLead": "We believe that nature is the key to truly restoring health and rediscovering what it feels like to be relaxed and full of energy.",
+      "natureText": "The demands of our busy lives and meeting social obligations can drain our energy sources, leaving us fatigued or unwell. If you want to improve how you manage the hustle and bustle and enjoy life again, get to know our natural health centre.",
+      "helpTitle": "How can we help?",
+      "helpText1": "Our bodies have self-healing power which is automatic. When we are under constant stress, this natural ability to self-heal becomes challenged and our body starts to give signals that it is unwell in the form of symptoms like pain or mental distress. Often people tend to ignore the little signals until they become dis-eases and more difficult to overcome.",
+      "helpText2": "We offer various natural therapies under one roof that approach disease from a holistic perspective - addressing mind, body and spirit.",
+      "seeTherapies": "See therapies",
+      "quoteLabel": "What clients say",
+      "quote": "At last! A forward thinking, holistic clinic, with a luxurious feel, where the practitioners actually work together to get you better.",
+      "quoteBy": "Lucie, Rotterdam",
+      "engageTitle": "How to engage?",
+      "engageText1": "If you know which type of therapy you would like to choose, please contact the therapist directly.",
+      "goTherapists": "Go to our therapists",
+      "engageText2": "If you would like to discuss various options or have questions, feel free to contact one of the therapists below.",
+      "bookWith": "Book with {name}",
+      "people": {
+        "sandra": {
+          "name": "Sandra Delgado Quist",
+          "first": "Sandra",
+          "text": "Sandra is founder of The Hague Natural Health Centre and an accredited Homeopath, Reiki teacher & practitioner. Sandra is passionate about teaching and empowering people to take control of their own health."
         },
-        "massage": {
-          "name": "Massage",
-          "text": "Let go of tension and relax again."
+        "ira": {
+          "name": "Ira Sloof",
+          "first": "Ira",
+          "text": "Ira is an accredited acupuncturist and herbalist by the Zhong. She loves helping people overcome a wide variety of issues, contributing to the activation of their Life Energy (Qi). Being involved in this work fills her with joy."
         },
-        "homeopathy": {
-          "name": "Homeopathy",
-          "text": "Gentle remedies, matched to you."
-        },
-        "psychology": {
-          "name": "Psychology",
-          "text": "Room to talk and move forward."
-        },
-        "ayurveda": {
-          "name": "Ayurveda",
-          "text": "Balance through food, rhythm and rest."
-        },
-        "nutrition": {
-          "name": "Nutrition",
-          "text": "Food that gives you energy."
+        "audrey": {
+          "name": "Audrey Dickinson",
+          "first": "Audrey",
+          "text": "Audrey is a trained nutritionist specialising in hormonal and vaginal health. She enjoys supporting people with manageable nutrition plans that are not overwhelming to people trying to make dietary changes."
         }
       },
-      "therapistsTitle": "Our therapists",
-      "therapistsText": "Independent therapists, each with their own practice.",
-      "viewProfile": "View profile",
-      "nextFree": "Next free time: {when}",
-      "stepsTitle": "How booking works",
-      "stepsText": "Done in two minutes, no phone call needed.",
-      "step1": "Choose a therapy or therapist",
-      "step2": "Choose a time that suits you",
-      "step3": "Pay a small deposit",
-      "step3Text": "The balance is payable at the session.",
-      "visitTitle": "Visit us",
-      "visitText": "Six quiet treatment rooms in Scheveningen.",
-      "address": "Badhuisstraat 224, 2584 The Hague",
-      "route": "Plan your route"
+      "accessibleTitle": "Accessible to all",
+      "accessibleText": "True health begins at home. In ancient times our medicine grew in the garden and we understood how to use plants as medicine. We have lost our connection to nature and our inner wisdom. As part of our commitment to the local community, we offer regular events discussing topics that affect many. These small gatherings aim to provide you with knowledge about various options that can help you to take control of your own health.",
+      "eventsTitle": "Never miss an event",
+      "eventsText": "Be first to hear about our monthly talks, special offers and workshops. Our free events are limited, so you'll want to reserve your spot early!",
+      "emailLabel": "Email address",
+      "send": "Send"
     },
     "chooseTime": {
       "steps": {
@@ -268,6 +267,39 @@
       },
       "weekNumber": "Week {number}",
       "privacyNote": "You only see first name and service. Complaints are in the intake form."
+    },
+    "site": {
+      "nav": {
+        "home": "Home",
+        "therapies": "Therapies",
+        "conditions": "Conditions",
+        "about": "About us",
+        "events": "Events",
+        "blog": "Blog",
+        "contact": "Contact"
+      },
+      "book": "Book an appointment",
+      "bookShort": "Book",
+      "login": "Log in",
+      "footer": {
+        "openingHours": "Opening hours",
+        "days": {
+          "mon": "Monday",
+          "tue": "Tuesday",
+          "wed": "Wednesday",
+          "thu": "Thursday",
+          "fri": "Friday",
+          "sat": "Saturday",
+          "sun": "Sunday"
+        },
+        "appointment": "appointment only",
+        "closed": "closed",
+        "contact": "Contact",
+        "phoneNote": "Answerphone or Whatsapp",
+        "sendMessage": "Send us a message",
+        "social": "Social",
+        "privacy": "Privacy"
+      }
     }
   }
 }
