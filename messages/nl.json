@@ -1,0 +1,11 @@
+{
+  "common": {
+    "centreName": "The Hague Natural Health Centre",
+    "language": "Taal",
+    "switchTo": "English"
+  },
+  "home": {
+    "title": "Rust, aandacht en natuurlijke zorg",
+    "bookCta": "Maak een afspraak"
+  }
+}

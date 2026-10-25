@@ -1,0 +1,11 @@
+{
+  "common": {
+    "centreName": "The Hague Natural Health Centre",
+    "language": "Language",
+    "switchTo": "Nederlands"
+  },
+  "home": {
+    "title": "Calm, attention and natural care",
+    "bookCta": "Book an appointment"
+  }
+}
