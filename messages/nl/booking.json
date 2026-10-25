@@ -40,7 +40,7 @@
     "title": "Kies een tijd",
     "intro": "Dagen met een stip hebben nog plek. Tijden zijn in Haagse tijd.",
     "takenTitle": "Iemand anders was u net voor",
-    "takenText": "Sorry, die tijd is zojuist geboekt. Uw gegevens zijn bewaard. Kies een andere tijd.",
+    "takenText": "Sorry, die tijd is zojuist geboekt. Uw naam en contactgegevens zijn bewaard. Kies een andere tijd.",
     "nextFree": "Eerstvolgende vrije dag",
     "nextWeek": "Volgende week",
     "noneTitle": "Geen vrije tijden deze week",
@@ -108,7 +108,8 @@
       "tooLong": "Dit is te lang. Maak het korter.",
       "acceptedPolicy": "Ga akkoord met de annuleringsvoorwaarden om verder te gaan.",
       "healthDataConsent": "We hebben uw toestemming nodig om uw gezondheidsgegevens aan uw therapeut door te geven."
-    }
+    },
+    "fromAccount": "Deze gegevens komen uit uw account. U kunt ze daar wijzigen."
   },
   "pay": {
     "title": "Aanbetaling betalen",

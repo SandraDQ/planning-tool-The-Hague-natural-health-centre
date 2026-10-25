@@ -40,7 +40,7 @@
     "title": "Choose a time",
     "intro": "Days with a dot still have space. Times are in The Hague time.",
     "takenTitle": "Someone just took this time",
-    "takenText": "Sorry, that time was booked a moment ago. Your details are saved. Please choose another time.",
+    "takenText": "Sorry, that time was booked a moment ago. Your name and contact details are saved. Please choose another time.",
     "nextFree": "Next free day",
     "nextWeek": "Next week",
     "noneTitle": "No free times this week",
@@ -108,7 +108,8 @@
       "tooLong": "This is too long. Please shorten it.",
       "acceptedPolicy": "Please accept the cancellation policy to continue.",
       "healthDataConsent": "We need your consent to pass your health information to your therapist."
-    }
+    },
+    "fromAccount": "These come from your account. You can change them there."
   },
   "pay": {
     "title": "Pay your deposit",

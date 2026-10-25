@@ -8,15 +8,22 @@ import { holdBooking, type HoldState } from "../server/actions";
 import { LIMITS, emptyDetails, readDetails, validateDetails, type DetailsErrors, type DetailsField, type DetailsValues } from "../validation";
 import { localDay } from "../time";
 
-// Per-viewer convenience only: keeps typed details if the chosen time is taken
-// and the client goes back to pick another. Never holds consent.
+// Per-viewer convenience only (D27): keeps name, e-mail and phone if the chosen
+// time is taken and the client goes back to pick another. Never the complaint,
+// date of birth, address, comments or consents: those are retyped.
 export const DRAFT_KEY = "thnhc.booking.details";
-const DRAFT_FIELDS: DetailsField[] = ["firstName", "lastName", "email", "phone", "reason", "clientKind", "dateOfBirth", "address", "comments"];
+const DRAFT_FIELDS = ["firstName", "lastName", "email", "phone"] as const;
+type DraftField = (typeof DRAFT_FIELDS)[number];
 
-function loadDraft(): Partial<DetailsValues> {
+function loadDraft(): Partial<Record<DraftField, string>> {
   try {
     const raw = window.sessionStorage.getItem(DRAFT_KEY);
-    return raw ? (JSON.parse(raw) as Partial<DetailsValues>) : {};
+    const parsed = raw ? (JSON.parse(raw) as Record<string, unknown>) : {};
+    const draft: Partial<Record<DraftField, string>> = {};
+    for (const k of DRAFT_FIELDS) if (typeof parsed[k] === "string") draft[k] = parsed[k] as string;
+    // Rewrite without anything else an older version may have stored.
+    window.sessionStorage.setItem(DRAFT_KEY, JSON.stringify(draft));
+    return draft;
   } catch {
     return {};
   }
@@ -60,19 +67,21 @@ export function DetailsForm({
   const askClientKind = !signedInName;
   const optionalFilled = !!(values.dateOfBirth || values.address || values.comments);
 
-  // Restore a draft (prefill from the account wins).
+  // A signed-in client always books as themselves (D26): their name, e-mail and
+  // phone come from the account, are read-only here and never kept as a draft.
+  const fromAccount = !!signedInName;
+
+  // Guests: restore name, e-mail and phone after a lost slot.
   useEffect(() => {
+    if (fromAccount) return;
     const draft = loadDraft();
     if (Object.keys(draft).length === 0) return;
     setValues((v) => {
       const next = { ...v };
-      for (const k of DRAFT_FIELDS) {
-        const d = draft[k];
-        if (typeof d === "string" && d && !(prefill && prefill[k])) (next as Record<string, unknown>)[k] = d;
-      }
+      for (const k of DRAFT_FIELDS) if (draft[k]) next[k] = draft[k]!;
       return next;
     });
-  }, [prefill]);
+  }, [fromAccount]);
 
   // Server-side validation result.
   useEffect(() => {
@@ -90,7 +99,7 @@ export function DetailsForm({
   const set = <K extends DetailsField>(k: K, v: DetailsValues[K]) => {
     setValues((prev) => {
       const next = { ...prev, [k]: v };
-      saveDraft(next);
+      if (!fromAccount && (DRAFT_FIELDS as readonly string[]).includes(k)) saveDraft(next);
       return next;
     });
     if (errors[k]) setErrors((e) => ({ ...e, [k]: undefined }));
@@ -152,6 +161,7 @@ export function DetailsForm({
           maxLength={LIMITS.name}
           value={values.firstName}
           onChange={(e) => set("firstName", e.target.value)}
+          readOnly={fromAccount}
           error={err("firstName")}
         />
         <TextField
@@ -163,6 +173,7 @@ export function DetailsForm({
           maxLength={LIMITS.name}
           value={values.lastName}
           onChange={(e) => set("lastName", e.target.value)}
+          readOnly={fromAccount}
           error={err("lastName")}
         />
         <TextField
@@ -171,12 +182,13 @@ export function DetailsForm({
           type="email"
           inputMode="email"
           label={t("email")}
-          hint={t("emailHint")}
+          hint={fromAccount ? t("fromAccount") : t("emailHint")}
           autoComplete="email"
           required
           maxLength={LIMITS.email}
           value={values.email}
           onChange={(e) => set("email", e.target.value)}
+          readOnly={fromAccount}
           error={err("email")}
         />
         <TextField
@@ -185,12 +197,13 @@ export function DetailsForm({
           type="tel"
           inputMode="tel"
           label={t("phone")}
-          hint={t("phoneHint")}
+          hint={fromAccount ? t("fromAccount") : t("phoneHint")}
           autoComplete="tel"
           required
           maxLength={LIMITS.phone}
           value={values.phone}
           onChange={(e) => set("phone", e.target.value)}
+          readOnly={fromAccount}
           error={err("phone")}
         />
       </div>
