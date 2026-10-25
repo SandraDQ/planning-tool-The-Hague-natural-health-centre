@@ -301,5 +301,89 @@
         "privacy": "Privacy"
       }
     }
+  },
+  "site": {
+    "skipToContent": "Skip to content",
+    "siteName": "The Hague Natural Health Centre",
+    "newsletter": {
+      "emailLabel": "Email",
+      "placeholder": "Email address",
+      "send": "Send",
+      "note": "Sending opens your email app with a sign-up message to us."
+    },
+    "map": {
+      "title": "Find us",
+      "show": "Show map",
+      "open": "Open in Google Maps",
+      "note": "The map is loaded from Google Maps when you choose to show it."
+    },
+    "contactForm": {
+      "required": "required",
+      "note": "Submitting opens your email app with your message to us."
+    },
+    "blog": {
+      "allPosts": "All Posts",
+      "categories": "Blog categories",
+      "readMinutes": "{minutes} min read",
+      "englishOnly": "This article is only available in English.",
+      "backToBlog": "Back to the blog",
+      "recentPosts": "Recent Posts",
+      "seeAll": "See All",
+      "empty": "No posts in this category yet.",
+      "by": "By {author}"
+    },
+    "events": {
+      "multipleDates": "Multiple Dates",
+      "moreInfo": "More info",
+      "reserve": "Reserve your place",
+      "cancelled": "Cancelled",
+      "when": "Date and time",
+      "where": "Location",
+      "price": "Price",
+      "backToEvents": "See other events",
+      "englishOnly": "Event details are only available in English.",
+      "detailsSoon": "The full description and online registration for this event will be added to this page. To reserve your place now, please contact us.",
+      "contactUs": "Contact us",
+      "timeLocation": "Time & Location",
+      "aboutEvent": "About the event",
+      "tickets": "Tickets"
+    },
+    "about": {
+      "gallery": "Photos of the centre",
+      "galleryPrev": "Previous photos",
+      "galleryNext": "Next photos",
+      "team": "Our therapists"
+    },
+    "booking": {
+      "duration": "Duration",
+      "price": "Price"
+    },
+    "book": {
+      "title": "Book an appointment",
+      "lead": "Online booking is coming soon.",
+      "text": "Soon you will be able to choose a therapist, a treatment and a time here, and book straight away. Until then, please contact the therapist you would like to see, or contact us and we will help you.",
+      "therapists": "Go to our therapists",
+      "contact": "Contact us",
+      "metaTitle": "Book an appointment | The Hague Natural Health Centre",
+      "metaDescription": "Online booking for The Hague Natural Health Centre is coming soon."
+    },
+    "login": {
+      "title": "Log in",
+      "lead": "Logging in is coming soon.",
+      "text": "Soon clients, therapists and the centre's team can log in here to see appointments and manage bookings. Until then, please contact us if you have any questions.",
+      "home": "Back to the home page",
+      "contact": "Contact us",
+      "metaTitle": "Log in | The Hague Natural Health Centre",
+      "metaDescription": "Log in to The Hague Natural Health Centre (coming soon)."
+    },
+    "categoryNames": {
+      "holistic-palliative-support": "Holistic Palliative Support",
+      "babies": "Babies",
+      "end-of-life-care": "End-of-Life Care",
+      "holistic-health": "Holistic Health",
+      "ceremonies": "Ceremonies",
+      "counselling-coaching": "Counselling & Coaching",
+      "natural-remedies": "Natural Remedies"
+    }
   }
 }

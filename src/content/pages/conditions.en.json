@@ -1,0 +1,139 @@
+{
+  "meta": {
+    "title": "Therapies | The Hague Natural Health Centre | Holistic Health in The Hague",
+    "description": "The Hague Natural Health Centre is holistic health centre offering alternative, natural therapies including accupuncture, homeopathy, ayurdeva, reiki, yoga, vedic meditation, EMDR, counselling, nutrition, psychology, tissue salts, bach flower essences, men's and women's circles, Trauma Sensitive Yoga (TCTSY) and talks, courses, workshops and events. Contact Founder and Homeopath Sandra Delgado Quist for more information."
+  },
+  "title": "CONDITIONS TREATED",
+  "image": {
+    "src": "/media/_root/Wix-site__5b1d3812.jpeg",
+    "alt": "Natural Health Care in The Netherlands NL The Hague Den Haag"
+  },
+  "lead": "We do not treat what is wrong - we listen to what your body needs and what your spirit craves.",
+  "intro": [
+    "At our natural health centre, we believe healing should always include nature—because we are nature.",
+    "Our clients often tell us that what we truly excel in is taking the time to see them as a whole person, not just a collection of symptoms. This means listening deeply to your story and understanding how you came to be in your current state of illness. Health isn’t about quick fixes—it’s about uncovering the root cause of imbalance and supporting your body’s natural ability to heal. We also recognise that true health comes from within. No one else can \"fix\" us—we are already whole, just sometimes out of alignment. The journey to health is ongoing, and we welcome the privilege of walking it with you.",
+    "The conditions listed below are just a guide; if you don’t see yours, please feel free to reach out with any questions."
+  ],
+  "items": [
+    {
+      "title": "Skin Conditions",
+      "examples": "Examples: eczema, acne, psoriasis, rosacea, fungal infections",
+      "image": {
+        "src": "/media/_root/9__6c873f94.jpg",
+        "alt": "9.jpg"
+      }
+    },
+    {
+      "title": "Hormonal Disorders",
+      "examples": "Examples: thyroid issues, PCOS, menopausal symptoms, type 2 diabetes",
+      "image": {
+        "src": "/media/_root/shutterstock_1996372277__4ddd3641.jpg",
+        "alt": "shutterstock_1996372277.jpg"
+      }
+    },
+    {
+      "title": "Digestive Issues",
+      "examples": "Examples: IBS, acid reflux, food intolerances, constipation",
+      "image": {
+        "src": "/media/_root/1__cefdb3ed.jpg",
+        "alt": "1.jpg"
+      }
+    },
+    {
+      "title": "Respiratory & Allergy Conditions",
+      "examples": "Examples: asthma, hay fever, chronic colds, sinus infections",
+      "image": {
+        "src": "/media/_root/14__d1ae5cab.jpg",
+        "alt": "14.jpg"
+      }
+    },
+    {
+      "title": "Pain & Musculoskeletal Issues",
+      "examples": "Examples: back pain, rheumatism, fibromyalgia, joint and muscle pain",
+      "image": {
+        "src": "/media/_root/12__bd655446.jpg",
+        "alt": "12.jpg"
+      }
+    },
+    {
+      "title": "Mental Health & Stress-Related Complaints",
+      "examples": "Examples: burnout, anxiety, depression, sleep problems",
+      "image": {
+        "src": "/media/_root/4__1e6763b6.jpg",
+        "alt": "4.jpg"
+      }
+    },
+    {
+      "title": "Immune System & Resistance",
+      "examples": "Examples: frequent illness, autoimmune diseases, chronic fatigue",
+      "image": {
+        "src": "/media/_root/17__e338b981.jpg",
+        "alt": "17.jpg"
+      }
+    },
+    {
+      "title": "Cancer Support",
+      "examples": "Examples: side effects of chemotherapy (nausea, fatigue), pain, lymphedema, anxiety, sleep disturbances",
+      "image": {
+        "src": "/media/_root/16__723ce473.jpg",
+        "alt": "16.jpg"
+      }
+    },
+    {
+      "title": "Neurological Conditions",
+      "examples": "Examples: headaches, migraines, tingling sensations, concentration issues",
+      "image": {
+        "src": "/media/_root/stock-photo-pre-adolescent-boy-asking-for-help-overwhelmed-by-homework-2478259643__3b4e7fc5.jpg",
+        "alt": "stock-photo-pre-adolescent-boy-asking-for-help-overwhelmed-by-homework-2478259643.jpg"
+      }
+    },
+    {
+      "title": "Urological & Sexual Health",
+      "examples": "Examples: bladder infections, incontinence, erectile dysfunction, low libido",
+      "image": {
+        "src": "/media/_root/15__2ca1fa80.jpg",
+        "alt": "15.jpg"
+      }
+    },
+    {
+      "title": "Gynecological & Fertility Issues",
+      "examples": "Examples: menstrual problems, endometriosis, fertility challenges",
+      "image": {
+        "src": "/media/_root/8__591bc56f.jpg",
+        "alt": "8.jpg"
+      }
+    },
+    {
+      "title": "Lifestyle-Related Complaints",
+      "examples": "Examples: overweight, chronic stress, smoking, poor diet",
+      "image": {
+        "src": "/media/_root/stock-photo-male-employee-smoking-cigarettes-at-workplace-1504693310__a234b66b.jpg",
+        "alt": "stock-photo-male-employee-smoking-cigarettes-at-workplace-1504693310.jpg"
+      }
+    },
+    {
+      "title": "Wound Healing",
+      "examples": "Examples: chronic wounds, burns, post-operative wounds, diabetic foot ulcers, sports injurie",
+      "image": {
+        "src": "/media/_root/shutterstock_1946442163__19388a49.jpg",
+        "alt": "shutterstock_1946442163.jpg"
+      }
+    },
+    {
+      "title": "Addiction",
+      "examples": "Examples: alcohol, smoking, medication, food",
+      "image": {
+        "src": "/media/_root/shutterstock_2509785071__a7a31364.jpg",
+        "alt": "shutterstock_2509785071.jpg"
+      }
+    },
+    {
+      "title": "Cardiovascular Health",
+      "examples": "Examples: high blood pressure, high cholesterol, palpitations",
+      "image": {
+        "src": "/media/_root/13__273fefba.jpg",
+        "alt": "13.jpg"
+      }
+    }
+  ]
+}

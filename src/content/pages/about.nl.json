@@ -1,0 +1,637 @@
+{
+  "meta": {
+    "title": "Over ons | The Hague Natural Health Centre | Holistische gezondheid in Den Haag",
+    "description": "The Hague Natural Health Centre is een holistisch gezondheidscentrum met alternatieve, natuurlijke therapieën, waaronder acupunctuur, homeopathie, ayurveda, reiki, yoga, vedische meditatie, EMDR, counseling, voeding, psychologie, celzouten, Bach-bloesemremedies, mannen- en vrouwencirkels, traumasensitieve yoga (TCTSY) en lezingen, cursussen, workshops en evenementen. Neem voor meer informatie contact op met oprichter en homeopaat Sandra Delgado Quist."
+  },
+  "hero": {
+    "image": {
+      "src": "/media/_root/shutterstock_2529728901__cc3f2236.jpg",
+      "alt": "shutterstock_2529728901.jpg"
+    },
+    "title": "Wie zijn wij?",
+    "intro": [
+      "Welkom bij The Hague Natural Health Centre: een plek voor heling, groei en welzijn.",
+      "Wij zijn een hechte groep toegewijde natuurlijke therapeuten, verbonden door een gedeelde passie: mensen op een zachte, holistische manier weer in contact brengen met hun gezondheid. Onze missie is niet alleen je te steunen op je weg terug naar gezondheid, maar je ook de kennis en middelen te geven om die vast te houden.",
+      "Met natuurlijke en aanvullende therapieën en inspirerende zelfhulpbijeenkomsten lopen we met je mee, bij elke stap."
+    ],
+    "buttons": [
+      {
+        "label": "Ons verhaal",
+        "href": "/about-us#story"
+      },
+      {
+        "label": "Maak kennis met onze therapeuten",
+        "href": "/about-us#therapists"
+      },
+      {
+        "label": "Bijeenkomsten in de buurt",
+        "href": "/events"
+      }
+    ]
+  },
+  "story": {
+    "title": [
+      "Het hart achter The Hague",
+      "Natural Health Centre"
+    ],
+    "subtitle": "Het verhaal van Sandra",
+    "body": "Jarenlang leefde ik een druk leven en slikte ik drie tot vier medicijnen per dag tegen mijn allergieën. Ik was de eenvoudige, liefdevolle middeltjes vergeten waarmee mijn moeder en oma me als kind hielpen om me beter te voelen. Zoals zovelen was ik in de ratrace beland, altijd maar doorgaan, tot ik op een dag merkte dat mijn medicijnen niet meer werkten. Met enige aarzeling ging ik op zoek naar natuurlijke alternatieven.\n\nLangzaam en voorzichtig begon ik te herstellen, niet alleen lichamelijk maar vooral ook emotioneel: ik voelde me sterker. Die reis veranderde alles voor me. Het proces inspireerde me zo dat ik zelf therapeut werd. Ik wilde anderen helpen de weg terug naar zichzelf te vinden. Om zich sterk, verbonden en gesteund te voelen op hun weg naar gezondheid.\n\nIk geloof dat heling begint wanneer we ons herinneren:\n\nWe zijn niet alleen een deel van de natuur: WIJ ZIJN NATUUR.\n\nEn de krachtigste weg terug naar gezondheid loopt via de natuur zelf.\n\nToch maakte ik deze reis niet alleen. Ik werkte met veel geweldige therapeuten, maar die zaten nooit op dezelfde plek, en vaak moest ik mijn verhaal bij iedere nieuwe therapeut opnieuw vertellen. Toen begon er een nieuwe droom te groeien in mijn hart: een warme, gastvrije plek waar betrokken professionals samenkomen om heling op een echt holistische manier te ondersteunen.\n\nIn januari 2024 werd die droom werkelijkheid en opende The Hague Natural Health Centre zijn deuren. Ik hoop dat deze mooie plek bijdraagt aan een gezondere gemeenschap.",
+    "readMore": "Lees meer",
+    "readLess": "Lees minder"
+  },
+  "gallery": [
+    {
+      "src": "/media/_root/WhatsApp-Image-2025-01-18-at-19.31.53-1__12526d92.jpeg",
+      "alt": "WhatsApp Image 2025-01-18 at 19.31.53 (1)"
+    },
+    {
+      "src": "/media/_root/Screenshot-2026-02-01-at-20.45.23__5ea18266.png",
+      "alt": "Screenshot 2026-02-01 at 20.45.23"
+    },
+    {
+      "src": "/media/_root/IMG_8177__ec487aea.jpeg",
+      "alt": "IMG_8177"
+    },
+    {
+      "src": "/media/_root/WhatsApp-Image-2026-04-28-at-07.42.33__a91418a3.jpeg",
+      "alt": "WhatsApp Image 2026-04-28 at 07.42.33"
+    },
+    {
+      "src": "/media/_root/WhatsApp-Image-2026-04-13-at-08.45.54-3__6b6eff77.jpeg",
+      "alt": "WhatsApp Image 2026-04-13 at 08.45.54 (3)"
+    },
+    {
+      "src": "/media/_root/IMG_1564__344c0a0b.jpeg",
+      "alt": "IMG_1564"
+    },
+    {
+      "src": "/media/_root/WhatsApp-Image-2026-04-13-at-08.45.54-4__8577f6ee.jpeg",
+      "alt": "WhatsApp Image 2026-04-13 at 08.45.54 (4)"
+    },
+    {
+      "src": "/media/_root/WhatsApp-Image-2026-04-28-at-07.42.34-3__00b2f04f.jpeg",
+      "alt": "WhatsApp Image 2026-04-28 at 07.42.34 (3)"
+    },
+    {
+      "src": "/media/_root/IMG_1548__e31a8def.jpeg",
+      "alt": "IMG_1548"
+    },
+    {
+      "src": "/media/_root/WhatsApp-Image-2025-01-18-at-19.31.55__a00bee13.jpeg",
+      "alt": "WhatsApp Image 2025-01-18 at 19.31.55"
+    },
+    {
+      "src": "/media/_root/IMG_9022__f5d96a78.jpeg",
+      "alt": "IMG_9022"
+    },
+    {
+      "src": "/media/_root/WhatsApp-Image-2026-04-28-at-07.42.31-3__4639f2ae.jpeg",
+      "alt": "WhatsApp Image 2026-04-28 at 07.42.31 (3)"
+    },
+    {
+      "src": "/media/_root/joel-van-der-putten__9bead7a2.jpg",
+      "alt": "joel van der putten"
+    },
+    {
+      "src": "/media/_root/Screenshot-2026-04-04-at-14.51.07__2669a885.png",
+      "alt": "Screenshot 2026-04-04 at 14.51.07"
+    },
+    {
+      "src": "/media/_root/Screenshot-2025-11-02-at-14.23.40__754e5e4c.png",
+      "alt": "Screenshot 2025-11-02 at 14.23.40"
+    },
+    {
+      "src": "/media/_root/IMG_7167__b4b71f6a.jpeg",
+      "alt": "IMG_7167"
+    },
+    {
+      "src": "/media/_root/IMG_6562__9f411287.jpeg",
+      "alt": "IMG_6562"
+    },
+    {
+      "src": "/media/_root/IMG_6589__ff945bdc.jpeg",
+      "alt": "IMG_6589"
+    },
+    {
+      "src": "/media/_root/WhatsApp-Image-2025-01-18-at-19.32.20__9c465702.jpeg",
+      "alt": "WhatsApp Image 2025-01-18 at 19.32.20"
+    },
+    {
+      "src": "/media/_root/IMG_6552__e59f1d44.jpeg",
+      "alt": "IMG_6552"
+    },
+    {
+      "src": "/media/_root/IMG_6557__cc8082ca.jpeg",
+      "alt": "IMG_6557"
+    },
+    {
+      "src": "/media/_root/IMG_6564__1aade13d.jpeg",
+      "alt": "IMG_6564"
+    }
+  ],
+  "team": {
+    "label": "MAAK KENNIS MET ONZE THERAPEUTEN",
+    "intro": [
+      "Als therapeuten werken we samen en delen we onze kennis. Je kunt één-op-één bij een therapeut terecht, of bij een combinatie van ons, zodat je de best passende consulten en behandelingen krijgt.",
+      "Wil je een afspraak maken? Neem dan contact op met de therapeut via de contactgegevens hieronder."
+    ],
+    "members": [
+      {
+        "name": "Sandra Delgado Quist",
+        "role": "Oprichter & directeur, homeopaat & Reiki-docent",
+        "anchor": "sandra",
+        "image": {
+          "src": "/media/_root/Close-up-red---small-file__3e82dcde.jpg",
+          "alt": "Sandra Delgado Quist Homeopath Reiki The Hague Den Haag NL"
+        }
+      },
+      {
+        "name": "Ira Sloof",
+        "role": "Acupuncturist, Chinese geneeskunde & lasertherapie",
+        "anchor": "ira",
+        "image": {
+          "src": "/media/_root/Ira-Sloof__93fd0026.jpg",
+          "alt": "Ira Sloof"
+        }
+      },
+      {
+        "name": "Vd. Priyanka Singh",
+        "role": "Ayurvedisch behandelaar & therapeut",
+        "anchor": "amandacoggin",
+        "image": {
+          "src": "/media/_root/Priyanka-Singh-photo_edited__2c56278f.jpg",
+          "alt": "Priyanka Singh photo_edited.jpg"
+        }
+      },
+      {
+        "name": "Binnenkort",
+        "role": "Natuurgeneeskundige of osteopaat",
+        "anchor": null,
+        "image": {
+          "src": "/media/_root/Logo-Natural-Health-Centre---The-Hague-transparent-background_edited__c9583b52.png",
+          "alt": "Logo Natural Health Centre - The Hague-transparent background_edited.png"
+        }
+      },
+      {
+        "name": "Cammi Manchur",
+        "role": "Psycholoog, beeldend therapeut & Jungiaanse analytische therapie",
+        "anchor": "cammi",
+        "image": {
+          "src": "/media/_root/Cammi__9a153a77.png",
+          "alt": "Cammi.png"
+        }
+      },
+      {
+        "name": "Melanie Bertaud",
+        "role": "Lifecoach & Compassionate Inquiry-practitioner",
+        "anchor": "melanie",
+        "image": {
+          "src": "/media/_root/Therapist-Melanie-bw__258b1938.jpg",
+          "alt": "Therapist Melanie bw"
+        }
+      },
+      {
+        "name": "Audrey Dickinson",
+        "role": "Voedingstherapeut",
+        "anchor": "audrey",
+        "image": {
+          "src": "/media/_root/Audrey-28-02-2025-at-10.58__520dccf2.jpg",
+          "alt": "Audrey 28-02-2025 at 10.58.jpg"
+        }
+      },
+      {
+        "name": "Binnenkort",
+        "role": "Chiropractor of massagetherapeut",
+        "anchor": null,
+        "image": {
+          "src": "/media/_root/Logo-Natural-Health-Centre---The-Hague-transparent-background_edited__c9583b52.png",
+          "alt": "Logo Natural Health Centre - The Hague-transparent background_edited.png"
+        }
+      },
+      {
+        "name": "AuroraClinciu",
+        "role": "Orthomoleculair therapeut, EMB-bloedonderzoek, voeding & supplementen",
+        "anchor": "aurora",
+        "image": {
+          "src": "/media/_root/WhatsApp-Image-2025-08-04-at-16.29_edited__610c2f34.jpg",
+          "alt": "WhatsApp Image 2025-08-04 at 16.29_edited.jpg"
+        }
+      },
+      {
+        "name": "Cynthia Ramirez",
+        "role": "Full-spectrum doula\nIn de VS geregistreerd verpleegkundige (RN)",
+        "anchor": "hella",
+        "image": {
+          "src": "/media/_root/DSCF0741_edited__4238e46c.jpg",
+          "alt": "DSCF0741_edited_edited_edited.png"
+        }
+      },
+      {
+        "name": "Nadia Eliseeva",
+        "role": "Levensenergiecoach & new age-therapeut",
+        "anchor": "nadia",
+        "image": {
+          "src": "/media/_root/DSC09160-Edit_edited__8b6b46cf.jpg",
+          "alt": "DSC09160-Edit_edited.jpg"
+        }
+      },
+      {
+        "name": "Binnenkort",
+        "role": "Reflexoloog of medisch pedicure",
+        "anchor": null,
+        "image": {
+          "src": "/media/_root/Logo-Natural-Health-Centre---The-Hague-transparent-background_edited_edited__8e144762.jpg",
+          "alt": "Logo Natural Health Centre - The Hague-transparent background_edited_edited.jpg"
+        }
+      },
+      {
+        "name": "Gratiela Mitulet",
+        "role": "Hypnosebehandelaar\n& Reiki-master",
+        "anchor": "gratielamitulet",
+        "image": {
+          "src": "/media/_root/Gratiela__7ec3930e.jpg",
+          "alt": "Gratiela.jpg"
+        }
+      },
+      {
+        "name": "Lysanne Sizoo",
+        "role": "Psychosynthese-psychotherapeut",
+        "anchor": "lysannesizoo",
+        "image": {
+          "src": "/media/_root/sanne-crop-vhk_edited_edited_edited__6bf83b31.jpg",
+          "alt": "sanne crop vhk_edited_edited_edited.jpg"
+        }
+      },
+      {
+        "name": "Valeria Arteaga",
+        "role": "Therapeut diepe weefselmassage & therapeutische massage",
+        "anchor": "valeria",
+        "image": {
+          "src": "/media/_root/Valeria_edited_edited__bab34784.jpg",
+          "alt": "Valeria_edited_edited.jpg"
+        }
+      },
+      {
+        "name": "Binnenkort",
+        "role": "Energetische geneeskunde",
+        "anchor": null,
+        "image": {
+          "src": "/media/_root/Logo-Natural-Health-Centre---The-Hague-transparent-background_edited_edited__8e144762.jpg",
+          "alt": "Logo Natural Health Centre - The Hague-transparent background_edited_edited.jpg"
+        }
+      }
+    ]
+  },
+  "profiles": [
+    {
+      "id": "sandra",
+      "name": "Sandra Delgado Quist",
+      "roles": [
+        "Oprichter en directeur",
+        "Homeopaat",
+        "Reiki-beoefenaar"
+      ],
+      "languages": {
+        "text": "Sandra spreekt\nEngels, Spaans & Nederlands",
+        "href": "http://www.sandradelgadoquist.com/"
+      },
+      "image": {
+        "src": "/media/_root/Close-up-red---small-file__3e82dcde.jpg",
+        "alt": "Sandra Delgado Quist Homeopath The Hague"
+      },
+      "body": "Sandra is homeopaat en sjamanistisch energiegeneeskundige en werd onlangs ingewijd in de heilige Munay-Ki-riten. Ze studeerde vier jaar aan The School of Homeopathy in Stroud (VK) en volgde een driejarige postdoctorale opleiding aan de Dynamis School for Advanced Homeopathy in Ierland. Haar opleiding tot Reiki-beoefenaar en -docent volgde ze aan het Jikiden Reiki Institute in Kyoto, Japan.\n\nEen deel van haar missie is ritueel en ceremonie weer een plek te geven in het moderne leven, zodat we ons het geschenk van het leven herinneren. In haar praktijk eert ze \"Pachamama\" (Moeder Aarde) en nodigt ze anderen uit om weer contact te maken met de rijke, helende wijsheid van de natuur. Ze vindt het prachtig om mensen te leren en te helpen zelf de regie over hun gezondheid te nemen, en geeft al 15 jaar Reiki-les.\n\nMeer weten over Sandra? Kijk op haar website [sandradelgadoquist.com](https://www.sandradelgadoquist.com/). Of maak direct een afspraak via deze link: [direct boeken](https://calendly.com/sandra-homeopath)",
+      "contacts": [
+        {
+          "kind": "whatsapp",
+          "label": "WhatsApp Sandra",
+          "href": "https://wa.me/31623328757"
+        },
+        {
+          "kind": "email",
+          "label": "Mail Sandra",
+          "href": "mailto:sandra@thehague-naturalhealthcentre.com?subject=NHC%20website%20inquiry"
+        }
+      ]
+    },
+    {
+      "id": "hella",
+      "name": "Cynthia Ramirez",
+      "roles": [
+        "Full-spectrum doula"
+      ],
+      "languages": {
+        "text": "Cynthia werkt in het Engels",
+        "href": null
+      },
+      "image": {
+        "src": "/media/_root/DSCF0741_edited__4238e46c.jpg",
+        "alt": "DSCF0741_edited_edited_edited.png"
+      },
+      "body": "Cynthia is full-spectrum doula en geregistreerd verpleegkundige uit Californië (VS). Na haar verhuizing naar Nederland voelde Cynthia zich weer aangetrokken tot wat ze het meest miste aan de verpleging: naast mensen staan in kwetsbare en ingrijpende momenten. Dat leidde tot het doulawerk en tot wat Cynthia emotionele begeleiding noemt: er volledig zijn voor iemand die door een verandering gaat, zonder diens ervaring over te nemen of voor te schrijven hoe die ervaring eruit moet zien.\n\nCynthia biedt steun bij zwangerschap en bevalling, abortus, verlies en rouw, het levenseinde en andere grote overgangen in het leven. In kwetsbare momenten vindt Cynthia het prachtig om te zien hoe mensen reageren zoals ze werkelijk nodig hebben: ze vertrouwen op hun gevoel, intuïtie en keuzes zonder zich kleiner te maken voor het gemak van anderen. Vanuit lichamelijke autonomie en reproductieve rechtvaardigheid loopt Cynthia met ieder mee en maakt ze ruimte voor keuzes die van henzelf blijven.\n\nMeer weten over Cynthia? Kijk op haar [website.](https://www.cynsdoulaservices.com/)",
+      "contacts": [
+        {
+          "kind": "email",
+          "label": "Bericht aan Cynthia",
+          "href": "mailto:hello@cynsdoulaservices.com?subject=Inquiry%20About%20Doula%20Services"
+        }
+      ]
+    },
+    {
+      "id": "audrey",
+      "name": "Audrey Dickinson",
+      "roles": [
+        "Voeding"
+      ],
+      "languages": {
+        "text": "Audrey spreekt\nEngels en Nederlands",
+        "href": null
+      },
+      "image": {
+        "src": "/media/_root/Audrey-28-02-2025-at-10.58__520dccf2.jpg",
+        "alt": "Audrey 28-02-2025 at 10.58.jpg"
+      },
+      "body": "Audrey is voedingstherapeut, gespecialiseerd in vrouwengezondheid, vruchtbaarheid, darmgezondheid en de gezondheid van blaas en geslachtsorganen. Ze combineert de kracht van voeding als medicijn met geavanceerde functionele diagnostiek om verborgen disbalansen op te sporen die het lichaam verhinderen gezond en vitaal te zijn.\n\nZe werkt met verschillende onderzoeksmethoden, zoals bloedonderzoek naar tekorten (bijvoorbeeld ijzer), schildklier- en afweerwaarden; haaranalyse voor inzicht in mineralen en gifstoffen; en uitgebreid ontlastingsonderzoek naar een lekkende darm, slechte vertering, SIBO en bacteriële disbalans. Audrey ondersteunt ook de intieme gezondheid van vrouwen met vaginaal onderzoek, bij klachten als blaasontsteking, bacteriële vaginose, soa's, HPV, candida en meer.\n\nMeer weten over Audrey? Kijk op [haar website](https://nourishenflourish.com/).",
+      "contacts": [
+        {
+          "kind": "email",
+          "label": "Mail Audrey",
+          "href": "mailto:adickinson.nutrition@gmail.com?subject=Book%20a%20nutrition%20appointment%20with%20Audrey"
+        },
+        {
+          "kind": "whatsapp",
+          "label": "WhatsApp Audrey",
+          "href": "https://wa.me/31657193244"
+        }
+      ]
+    },
+    {
+      "id": "ira",
+      "name": "Ira Sloof",
+      "roles": [
+        "Acupuncturist en herbalist"
+      ],
+      "languages": {
+        "text": "Ira spreekt Nederlands & Engels",
+        "href": null
+      },
+      "image": {
+        "src": "/media/_root/Ira-Sloof__93fd0026.jpg",
+        "alt": "Ira Sloof_edited.jpg"
+      },
+      "body": "Altijd in beweging, in ontwikkeling: zo kun je Ira typeren. Ira is opgeleid als vakleerkracht lichamelijke opvoeding en was 20 jaar directeur van een basisschool, waar ze mensen inspireerde om in beweging te komen. Nu helpt ze als acupuncturist, herbalist, yogadocent en bewustzijnscoach mensen om op een dieper niveau in beweging te komen.\n\nZe helpt mensen graag met uiteenlopende klachten en draagt bij aan het activeren van hun levensenergie (Qi). Dit werk vervult haar met vreugde. Ira studeerde acupunctuur en Chinese geneeskunde en is gediplomeerd acupuncturist en herbalist (opgeleid bij de Zhong).\n\nMeer weten over Ira? Kijk op [haar website](https://lahira.nl/acupunctuur/).",
+      "contacts": [
+        {
+          "kind": "email",
+          "label": "Bericht aan Ira",
+          "href": "mailto:ira@lahira.nl?subject=NHC%20website%20inquiry%20for%20Ira"
+        },
+        {
+          "kind": "whatsapp",
+          "label": "WhatsApp Ira",
+          "href": "https://wa.me/31625362400"
+        }
+      ]
+    },
+    {
+      "id": "aurora",
+      "name": "Aurora Clinciu",
+      "roles": [
+        "Orthomoleculair therapeut, EMB-bloedonderzoek op locatie, voeding & ondersteuning met supplementen"
+      ],
+      "languages": {
+        "text": "Aurora spreekt\nNederlands, Engels, Roemeens\n& Farsi",
+        "href": null
+      },
+      "image": {
+        "src": "/media/_root/WhatsApp-Image-2025-08-04-at-16.29.19__d669c5f3.jpg",
+        "alt": "WhatsApp Image 2025-08-04 at 16.29.19.jpg"
+      },
+      "body": "Aurora is opgeleid in EMB (Energetisch Morfologisch Bloedonderzoek). Dit onderzoek geeft diagnoses die ook in de reguliere zorg worden onderzocht, zoals ijzertekort, schildklierproblemen, auto-immuunziekten, bloedarmoede en infecties. Een EMB-bloedonderzoek verklaart ook klachten die in de reguliere zorg niet zichtbaar worden en/of niet te behandelen zijn. Dat geeft veel inzicht en maakt dit onderzoek bijzonder waardevol.\n\nAurora kan onder meer ondersteunen met hormoontherapie met bio-identieke hormonen voor mannen en vrouwen; darm- en spijsverteringsklachten; een lekkende darm (leaky gut syndroom), herstel van het microbioom, insuline/diabetes/stofwisseling, long covid, auto-immuunprotocollen, autisme en ADHD. Ook kan ze helpen bij herstel van stress en burn-out en bij de hormonale gezondheid van vrouwen.",
+      "contacts": [
+        {
+          "kind": "email",
+          "label": "Mail Aurora",
+          "href": "mailto:gaiaorthomoleculair@gmail.com?subject=NHC%20website%20inquiry%20for%20Aurora"
+        },
+        {
+          "kind": "phone",
+          "label": "Bel Aurora",
+          "href": "tel:+31626111585"
+        }
+      ]
+    },
+    {
+      "id": "nadia",
+      "name": "Nadia Eliseeva",
+      "roles": [
+        "Levensenergiecoach, therapeut systemische opstellingen, psycholoog"
+      ],
+      "languages": {
+        "text": "Nadia spreekt Engels, Nederlands & Russisch",
+        "href": null
+      },
+      "image": {
+        "src": "/media/_root/DSC09160-Edit__84781527.jpg",
+        "alt": "DSC09160-Edit.jpg"
+      },
+      "body": "Nadia is gecertificeerd coach en psycholoog, opgeleid in systemische opstellingen en psychosomatiek. Haar specialiteit is onderzoeken hoe onbewuste blokkades en verborgen innerlijke dynamieken het mentale en lichamelijke welzijn beïnvloeden, burn-out voorkomen en het energieniveau verhogen.\n\nNadia ondersteunt cliënten met\n\n- lichamelijke klachten door stress;\n- minder vitaliteit en moeite om energie terug te krijgen;\n- uitputting van het zenuwstelsel;\n- angst en emotionele overbelasting;\n- terugkerende patronen in relaties of familie, onderzocht met opstellingen\n- overgangsperiodes in het leven met innerlijke onrust of verlies van richting.\n\nAls opgeleide opstellingenbegeleider geeft Nadia regelmatig workshops die een kijkje bieden in het onbewuste, door te werken met diepe emotionele en energetische verbindingen en af te stemmen op je eigen authentieke pad.",
+      "contacts": [
+        {
+          "kind": "email",
+          "label": "Mail Nadia",
+          "href": "mailto:nadiaeliseeva89@gmail.com?subject=NHC%20website%20inquiry%20for%20Nadia"
+        },
+        {
+          "kind": "whatsapp",
+          "label": "WhatsApp Nadia",
+          "href": "https://wa.me/31649982505"
+        }
+      ]
+    },
+    {
+      "id": "cammi",
+      "name": "Cammi Manchur",
+      "roles": [
+        "Psycholoog, beeldend therapeut & Jungiaanse analytische therapie"
+      ],
+      "languages": {
+        "text": "Cammi werkt in het Engels",
+        "href": null
+      },
+      "image": {
+        "src": "/media/_root/Cammi__9a153a77.png",
+        "alt": "Cammi.png"
+      },
+      "body": "Cammi Manchur is psycholoog en beeldend therapeut, gespecialiseerd in ADHD. Ze werkt met jongeren (16+) en volwassenen en helpt hen hun sterke kanten te begrijpen, met uitdagingen om te gaan en praktische hulpmiddelen te ontwikkelen voor focus, emotieregulatie en zelfvertrouwen. Ze is gespecialiseerd in:\n\n- ADHD-therapie\n- Relatietherapie\n- Jungiaans-analytische therapie (dieptepsychologie).\n\nGeïnspireerd door het werk van Carl Jung brengt Cammi een diepe waardering voor creativiteit, symboliek en het onbewuste in haar praktijk. Ze combineert wetenschappelijk onderbouwde psychologische methoden met beeldende therapie, zodat cliënten inzichten krijgen die verder gaan dan woorden. Haar stijl is samenwerkend, warm en gericht op sterke kanten, met aandacht voor zelfinzicht, veerkracht en betekenisvolle, blijvende verandering.\n\nMeer weten over Cammi? Kijk op [haar website](https://cammimanchur.com/).",
+      "contacts": []
+    },
+    {
+      "id": "amandacoggin",
+      "name": "Vd. Priyanka Singh",
+      "roles": [
+        "Ayurvedisch behandelaar\n& therapeut"
+      ],
+      "languages": {
+        "text": "Priyanka werkt in het Engels,\nNederlands en Hindi",
+        "href": null
+      },
+      "image": {
+        "src": "/media/_root/Priyanka-Singh-photo_edited__2c56278f.jpg",
+        "alt": "Priyanka Singh photo_edited.jpg"
+      },
+      "body": "Met meer dan 13 jaar klinische ervaring is Priyanka gespecialiseerd in holistische consulten, Panchakarma-behandelingen, stressmanagement, pijnverlichting en natuurlijke haar- en huidbehandelingen. In haar praktijk verbindt ze traditionele ayurvedische wijsheid zorgvuldig met Nederlandse kwaliteitsnormen in de zorg, voor ethische zorg die oog heeft voor wetenschappelijk bewijs.\n\nVanuit een warme, cliëntgerichte visie richt ze zich op het vinden en behandelen van de oorzaak van gezondheidsproblemen, in plaats van alleen klachten te beheersen. Met een grondig onderzoek van lichaam, geest en leefstijl bepaalt ze ieders unieke constitutie (Prakriti en dosha's) en stelt ze een volledig persoonlijk behandelplan op. Haar doel is iedere cliënt te versterken met begeleiding op maat en holistische steun op weg naar blijvende balans, vitaliteit en optimale gezondheid.\n\nMeer weten over Priyanka? Kijk op [haar website](https://priiyankasnaturenest.nl/).",
+      "contacts": [
+        {
+          "kind": "email",
+          "label": "Bericht aan Priyanka",
+          "href": "mailto:priiyankasingh87@gmail.com?subject=NHC%20website%20inquiry%20for%20Priyanka"
+        },
+        {
+          "kind": "phone",
+          "label": "WhatsApp Priyanka",
+          "href": "tel:0623955935"
+        }
+      ]
+    },
+    {
+      "id": "gratielamitulet",
+      "name": "Gratiela Mitulet",
+      "roles": [
+        "Hypnosebehandelaar & Reiki-master"
+      ],
+      "languages": {
+        "text": "Gratiela werkt in het Engels, Nederlands en Roemeens",
+        "href": null
+      },
+      "image": {
+        "src": "/media/_root/Screenshot-2026-03-24-at-14.32_edited__fb94c1d9.jpg",
+        "alt": "Screenshot 2026-03-24 at 14.32_edited.jpg"
+      },
+      "body": "Gratiela is gecertificeerd en geaccrediteerd QHHT-, IH- en Hypnotic World-hypnosebehandelaar, Reiki-master en beeldend kunstenaar. Ze geeft sessies in het Engels, Nederlands en Roemeens en combineert haar vakkennis met de intuïtie van een kunstenaar om cliënten te helpen de antwoorden te vinden die ze zoeken.\n\nHaar aanpak is heel persoonlijk: ze neemt de tijd om echt te luisteren en combineert verschillende hypnosemethoden om aan te sluiten bij wat iedere cliënt nodig heeft. Of het nu gaat om chronische klachten of om spirituele helderheid, Gratiela biedt een veilige, toegewijde ruimte voor verandering.\n\nMeer weten over Gratiela? Kijk op [haar website](https://studiohw.nl/).",
+      "contacts": [
+        {
+          "kind": "email",
+          "label": "Bericht aan Gratiela",
+          "href": "mailto:prapastie.valsator-3c@icloud.com?subject=NHC%20website%20inquiry%20for%20Gratiela"
+        }
+      ]
+    },
+    {
+      "id": "lysannesizoo",
+      "name": "Lysanne Sizoo",
+      "roles": [
+        "Psychosynthese-psychotherapeut"
+      ],
+      "languages": {
+        "text": "Lysanne werkt in het Engels",
+        "href": null
+      },
+      "image": {
+        "src": "/media/_root/sanne-crop-vhk_edited__93df7923.jpg",
+        "alt": "sanne crop vhk_edited.jpg"
+      },
+      "body": "Lysanne Sizoo heeft een master in psychosynthese-psychotherapie en is de grondlegger van de Star Psychology-methode. Al meer dan vijfentwintig jaar begeleidt ze cliënten op hun psychologische reis, met een diep holistische blik. Voor Lysanne is mens-zijn een volmaakte dans tussen ons aardse en ons spirituele zelf.\n\nIn 2025 introduceerde ze Star Psychology, een combinatie van astrologie, human design en holistische psychologie. Met de geboortehoroscoop als kaart van de psyche brengt deze aanpak innerlijke patronen, sterke kanten en onbewuste drijfveren aan het licht, wat bijdraagt aan meer zelfinzicht, heling en betekenisvolle verandering.\n\nMeer weten over Lysanne? Kijk op [haar website](https://www.truest-self.com/).",
+      "contacts": [
+        {
+          "kind": "email",
+          "label": "Bericht aan Lysanne",
+          "href": "mailto:san@mental-health.se?subject=NHC%20website%20inquiry%20for%20Lysanne"
+        },
+        {
+          "kind": "phone",
+          "label": "WhatsApp Lysanne",
+          "href": "tel:+46733420068"
+        }
+      ]
+    },
+    {
+      "id": "melanie",
+      "name": "Melanie Bertaud",
+      "roles": [
+        "Lifecoach & Compassionate Inquiry-practitioner"
+      ],
+      "languages": {
+        "text": "Melanie werkt in het Engels en spreekt Engels, Frans & Italiaans",
+        "href": null
+      },
+      "image": {
+        "src": "/media/_root/Therapist-Melanie-bw__258b1938.jpg",
+        "alt": "profile pic_edited.jpg"
+      },
+      "body": "Melanie is een ICF-geaccrediteerde, traumasensitieve lifecoach en Compassionate Inquiry-practitioner met een missie: mensen helpen weer in contact te komen met hun authentieke zelf en een stralende gezondheid. Met een mix van holistische coaching, lichaamsgericht werk, natuurgeneeskundige voeding en mindfulness helpt ze cliënten de oorzaak van hun patronen te begrijpen, zodat ze positief kunnen veranderen en een leven kunnen opbouwen dat klopt en betekenis heeft. Ze is gespecialiseerd in:\n\n- Angst / stress / overweldiging / uitstelgedrag\n- Ontrouw / jezelf terugvinden na een breuk\n- Chaotisch eten / eetbuien / gewichtsbeheersing\n- Omgaan met auto-immuunklachten\n- Grote veranderingen in het leven\n- Weinig zelfvertrouwen\n- Gebrek aan richting\n\nRustig, geaard, warm en zonder oordeel: de sessies van Melanie zijn een veilige plek om te onderzoeken wat er achter de mist van zelfopgelegde verwachtingen, oude patronen en beperkende overtuigingen ligt, en de weg terug te vinden naar je authentieke zelf. Meer weten, of een kennismakingsgesprek plannen? Kijk op haar [website](https://www.delftwellnesscoach.nl/).",
+      "contacts": [
+        {
+          "kind": "email",
+          "label": "Bericht aan Melanie",
+          "href": "mailto:delftwellnesscoach@pm.me?subject=NHC%20website%20inquiry%20for%20Melanie"
+        },
+        {
+          "kind": "phone",
+          "label": "WhatsApp Melanie",
+          "href": "tel:0648082846"
+        }
+      ]
+    },
+    {
+      "id": "valeria",
+      "name": "Valeria Arteaga",
+      "roles": [
+        "Therapeut diepe weefselmassage & therapeutische massage"
+      ],
+      "languages": {
+        "text": "Valeria werkt in het Engels en Spaans",
+        "href": null
+      },
+      "image": {
+        "src": "/media/_root/Valeria_edited_edited_edited__c703510a.jpg",
+        "alt": "Valeria_edited_edited_edited.jpg"
+      },
+      "body": "Valeria komt uit de VS, is nieuw in Nederland en brengt 16 jaar ervaring in klinische massage en een sprankelende persoonlijkheid naar Den Haag en Amsterdam. Haar werk volgt de overtuiging dat massage een noodzaak is in de vermomming van luxe, dat beweging een medicijn is en dat haar rol is het eigen herstelvermogen van het lichaam te ondersteunen: kortere hersteltijd, minder blessures en blijvende verlichting van chronische pijn.\n\nZe is gespecialiseerd in:\n\n- Diepe weefselmassage / sportmassage / herstel na een operatie\n- Ondersteuning bij chronische pijn en myofasciale release\n- Neurokinetische heropvoeding en Active Release Technique\n- Zwangerschapsmassage\n\nPersoonlijk: als transgender vrouw maakt ze van haar behandelkamer een veilige plek voor iedereen uit de LHBTQIA+-gemeenschap en hun bondgenoten. Ze is haar hele leven sporter geweest, van voetbal tot powerliften en Muay Thai. Hoewel ze dol is op alles waar haar adrenaline van gaat stromen, hecht ze ook veel waarde aan de kracht van rust en herstel.\n\nMeer weten over Valeria? Kijk op haar [website](https://www.peaksandvalleyswellness.com/).",
+      "contacts": [
+        {
+          "kind": "email",
+          "label": "Bericht aan Valeria",
+          "href": "mailto:valeria@peaksandvalleyswellness.com?subject=NHC%20website%20inquiry%20for%20Valeria"
+        },
+        {
+          "kind": "phone",
+          "label": "WhatsApp Valeria",
+          "href": "tel:0615881829"
+        }
+      ]
+    }
+  ],
+  "sustainable": {
+    "title": "Duurzaam leven",
+    "items": [
+      {
+        "title": "Gezonde gemeenschappen",
+        "image": {
+          "src": "/media/_root/Screenshot-2024-12-30-at-17.46.11__dd889452.png",
+          "alt": "Screenshot 2024-12-30 at 17.46.11.png"
+        },
+        "text": "Homeopathie omschrijft gezondheid als het vermogen om je aan te passen aan verandering. Dat betekent dat je ingrijpende veranderingen, zoals een verhuizing naar een ander land, een nieuwe baan of een overlijden in de familie, goed kunt doorstaan. Toch worden zulke stressvolle gebeurtenissen vaak overweldigend, en dan hebben we hulp nodig om de klachten die stress veroorzaakt te overwinnen. Als we mentaal en lichamelijk gezond zijn, kunnen we ons op een positieve manier aanpassen, ondanks de uitdagingen."
+      },
+      {
+        "title": "Educatie",
+        "image": {
+          "src": "/media/_root/PLN_8181__d680d4ea.jpg",
+          "alt": "PLN_8181.JPG"
+        },
+        "text": "Vroeger stonden we meer in verbinding met onze wereld (de aarde, Pachamama) en wisten we intuïtief welke planten en mineralen in onze omgeving ons konden helpen genezen. Die verbinding zijn we kwijtgeraakt, niet alleen met de natuur maar ook met onszelf. Ons doel in het gezondheidscentrum is mensen te helpen zelf weer contact te maken met de natuur. Zo krijgen ze meer regie over hun eigen gezondheid, in plaats van volledig te vertrouwen op anderen die hen vertellen wat ze moeten doen."
+      },
+      {
+        "title": "Duurzame geneeskunde",
+        "image": {
+          "src": "/media/_root/15db9251-c3f8-49ed-99f7-cea61a7d0631__b50ad8a9.jpg",
+          "alt": "15db9251-c3f8-49ed-99f7-cea61a7d0631.jpg"
+        },
+        "text": "De natuur geeft ons al veel van de \"medicijnen\" die we nodig hebben om gezond te blijven. Zelfs een eenvoudige wandeling in de natuur geeft mensen nieuwe energie. Onze therapieën en middelen worden duurzaam verkregen: we nemen niet meer van de natuur dan nodig is voor onze middelen. We willen bijdragen aan duurzamere zorg door mensen opnieuw te leren de geneeskrachtige gaven van de natuur te beschermen, te respecteren en er voorzichtig gebruik van te maken. Dit willen we in de nabije toekomst verder uitbreiden."
+      }
+    ]
+  },
+  "newsletter": {
+    "title": "MIS GEEN ENKEL EVENEMENT",
+    "text": "Hoor als eerste over onze gratis maandelijkse lezingen, aanbiedingen en workshops. Onze gratis evenementen hebben beperkt plek, dus reserveer op tijd!"
+  }
+}

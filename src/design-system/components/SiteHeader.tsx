@@ -14,8 +14,8 @@ import { cn } from "../utils";
  * "NATURAL HEALTH CENTRE / THE HAGUE" and the main menu (Home … Contact).
  * Added (D19): a "Log in" link, a "Book an appointment" button and the NL/EN switch.
  *
- * - Phones/tablets: logo + short "Book" button + menu sheet (menu, log in, language).
- * - Desktop (lg+): brand row with language, log in and book; menu row underneath.
+ * - Phones/tablets/small laptops (< 1280px): logo + "Book" button + menu sheet (menu, log in, language).
+ * - Desktop (xl+): one 120px row like the live site: logo left, menu, then language, log in and book.
  *
  * Pass `account` when someone is signed in: the "Log in" link becomes a link to their dashboard.
  * Pass `nav` / `bookHref` only to override the site's own menu (e.g. in mock-ups).
@@ -41,27 +41,30 @@ export function SiteHeader({
   const accountLink = account ?? { label: t("login"), href: loginHref };
 
   return (
-    <header className={cn("border-b border-border bg-header", className)}>
-      <div className="mx-auto max-w-content px-gutter">
-        <div className="flex items-center gap-1.5 py-2.5 sm:gap-4 lg:py-5">
+    <header className={cn("bg-header", className)}>
+      <div className="mx-auto max-w-[75rem] px-gutter">
+        <div className="flex items-center gap-1.5 py-2.5 sm:gap-4 xl:min-h-30 xl:gap-3 xl:py-3">
           <div className="min-w-0 sm:hidden">
             <BrandLink href={homeHref} size="sm" />
           </div>
-          <div className="hidden sm:block lg:hidden">
+          <div className="hidden sm:block xl:hidden">
             <BrandLink href={homeHref} size="md" />
           </div>
-          <div className="hidden lg:block">
+          <div className="hidden xl:block">
             <BrandLink href={homeHref} size="lg" />
           </div>
 
-          <div className="ml-auto flex shrink-0 items-center gap-1 sm:gap-2">
-            <div className="hidden lg:block">
+          {/* Desktop: the site's menu in one row on the right, as on the live site */}
+          <SiteNavLinks nav={items} label={tu("mainNav")} className="ml-auto hidden xl:block" />
+
+          <div className="ml-auto flex shrink-0 items-center gap-1 sm:gap-2 xl:ml-2">
+            <div className="hidden xl:block">
               <LanguageSwitch />
             </div>
             <div className="hidden sm:block">
               <Link
                 href={accountLink.href}
-                className="inline-flex min-h-11 items-center gap-2 rounded-sm px-3 text-base text-fg transition-colors duration-150 hover:text-accent hover:underline hover:underline-offset-4"
+                className="inline-flex min-h-11 items-center gap-2 rounded-sm px-2 text-base font-light whitespace-nowrap text-fg transition-colors duration-150 hover:text-fg-muted hover:underline hover:underline-offset-4"
               >
                 <User className="size-5" />
                 {accountLink.label}
@@ -72,12 +75,18 @@ export function SiteHeader({
                 {t("bookShort")}
               </ButtonLink>
             </div>
-            <div className="hidden sm:block">
-              <ButtonLink href={bookHref} leadingIcon={<CalendarIcon />}>
+            {/* Full label on tablets and wide screens; next to the desktop menu (1280–1535px) the short one, so the row fits */}
+            <div className="hidden sm:block xl:hidden 2xl:block">
+              <ButtonLink href={bookHref} leadingIcon={<CalendarIcon />} className="whitespace-nowrap">
                 {t("book")}
               </ButtonLink>
             </div>
-            <div className="-mr-2 lg:hidden">
+            <div className="hidden xl:block 2xl:hidden">
+              <ButtonLink href={bookHref} leadingIcon={<CalendarIcon />} className="whitespace-nowrap" aria-label={t("book")}>
+                {t("bookShort")}
+              </ButtonLink>
+            </div>
+            <div className="-mr-2 xl:hidden">
               <HeaderMenu
                 nav={items}
                 extra={
@@ -99,7 +108,6 @@ export function SiteHeader({
             </div>
           </div>
         </div>
-        <SiteNavLinks nav={items} label={tu("mainNav")} className="hidden border-t border-border py-1.5 lg:block" />
       </div>
     </header>
   );

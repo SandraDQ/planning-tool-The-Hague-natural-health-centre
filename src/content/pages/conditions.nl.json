@@ -1,0 +1,139 @@
+{
+  "meta": {
+    "title": "Klachten | The Hague Natural Health Centre | Holistische gezondheid in Den Haag",
+    "description": "The Hague Natural Health Centre is een holistisch gezondheidscentrum met alternatieve, natuurlijke therapieën, waaronder acupunctuur, homeopathie, ayurveda, reiki, yoga, vedische meditatie, EMDR, counseling, voeding, psychologie, celzouten, Bach-bloesemremedies, mannen- en vrouwencirkels, traumasensitieve yoga (TCTSY) en lezingen, cursussen, workshops en evenementen. Neem voor meer informatie contact op met oprichter en homeopaat Sandra Delgado Quist."
+  },
+  "title": "KLACHTEN DIE WIJ BEHANDELEN",
+  "image": {
+    "src": "/media/_root/Wix-site__5b1d3812.jpeg",
+    "alt": "Natuurlijke gezondheidszorg in Den Haag"
+  },
+  "lead": "Wij behandelen niet wat er mis is: we luisteren naar wat je lichaam nodig heeft en waar je ziel naar verlangt.",
+  "intro": [
+    "In ons natuurlijke gezondheidscentrum geloven we dat genezing altijd de natuur moet omvatten, want wij zijn natuur.",
+    "Onze cliënten vertellen ons vaak dat onze grootste kracht is dat we de tijd nemen om hen als heel mens te zien, niet als een verzameling klachten. Dat betekent dat we echt luisteren naar je verhaal en begrijpen hoe je in je huidige situatie bent beland. Gezondheid gaat niet om snelle oplossingen, maar om het vinden van de oorzaak van de disbalans en het ondersteunen van het natuurlijke herstelvermogen van je lichaam. We weten ook dat echte gezondheid van binnenuit komt. Niemand anders kan ons \"repareren\": we zijn al heel, alleen soms uit balans. De weg naar gezondheid gaat door, en we vinden het een voorrecht om die met je te lopen.",
+    "De klachten hieronder zijn alleen een richtlijn. Staat die van jou er niet bij? Neem gerust contact op met je vragen."
+  ],
+  "items": [
+    {
+      "title": "Huidklachten",
+      "examples": "Bijvoorbeeld: eczeem, acne, psoriasis, rosacea, schimmelinfecties",
+      "image": {
+        "src": "/media/_root/9__6c873f94.jpg",
+        "alt": "9.jpg"
+      }
+    },
+    {
+      "title": "Hormonale klachten",
+      "examples": "Bijvoorbeeld: schildklierproblemen, PCOS, overgangsklachten, diabetes type 2",
+      "image": {
+        "src": "/media/_root/shutterstock_1996372277__4ddd3641.jpg",
+        "alt": "shutterstock_1996372277.jpg"
+      }
+    },
+    {
+      "title": "Spijsverteringsklachten",
+      "examples": "Bijvoorbeeld: PDS, maagzuur, voedselintoleranties, verstopping",
+      "image": {
+        "src": "/media/_root/1__cefdb3ed.jpg",
+        "alt": "1.jpg"
+      }
+    },
+    {
+      "title": "Luchtwegen & allergieën",
+      "examples": "Bijvoorbeeld: astma, hooikoorts, steeds terugkerende verkoudheid, bijholteontsteking",
+      "image": {
+        "src": "/media/_root/14__d1ae5cab.jpg",
+        "alt": "14.jpg"
+      }
+    },
+    {
+      "title": "Pijn & klachten aan spieren en gewrichten",
+      "examples": "Bijvoorbeeld: rugpijn, reuma, fibromyalgie, gewrichts- en spierpijn",
+      "image": {
+        "src": "/media/_root/12__bd655446.jpg",
+        "alt": "12.jpg"
+      }
+    },
+    {
+      "title": "Mentale gezondheid & stressklachten",
+      "examples": "Bijvoorbeeld: burn-out, angst, depressie, slaapproblemen",
+      "image": {
+        "src": "/media/_root/4__1e6763b6.jpg",
+        "alt": "4.jpg"
+      }
+    },
+    {
+      "title": "Afweer & weerstand",
+      "examples": "Bijvoorbeeld: vaak ziek zijn, auto-immuunziekten, chronische vermoeidheid",
+      "image": {
+        "src": "/media/_root/17__e338b981.jpg",
+        "alt": "17.jpg"
+      }
+    },
+    {
+      "title": "Ondersteuning bij kanker",
+      "examples": "Bijvoorbeeld: bijwerkingen van chemotherapie (misselijkheid, vermoeidheid), pijn, lymfoedeem, angst, slaapproblemen",
+      "image": {
+        "src": "/media/_root/16__723ce473.jpg",
+        "alt": "16.jpg"
+      }
+    },
+    {
+      "title": "Neurologische klachten",
+      "examples": "Bijvoorbeeld: hoofdpijn, migraine, tintelingen, concentratieproblemen",
+      "image": {
+        "src": "/media/_root/stock-photo-pre-adolescent-boy-asking-for-help-overwhelmed-by-homework-2478259643__3b4e7fc5.jpg",
+        "alt": "stock-photo-pre-adolescent-boy-asking-for-help-overwhelmed-by-homework-2478259643.jpg"
+      }
+    },
+    {
+      "title": "Urologische & seksuele gezondheid",
+      "examples": "Bijvoorbeeld: blaasontsteking, incontinentie, erectiestoornissen, weinig zin in seks",
+      "image": {
+        "src": "/media/_root/15__2ca1fa80.jpg",
+        "alt": "15.jpg"
+      }
+    },
+    {
+      "title": "Gynaecologische klachten & vruchtbaarheid",
+      "examples": "Bijvoorbeeld: menstruatieklachten, endometriose, moeite met zwanger worden",
+      "image": {
+        "src": "/media/_root/8__591bc56f.jpg",
+        "alt": "8.jpg"
+      }
+    },
+    {
+      "title": "Leefstijlgerelateerde klachten",
+      "examples": "Bijvoorbeeld: overgewicht, chronische stress, roken, ongezond eten",
+      "image": {
+        "src": "/media/_root/stock-photo-male-employee-smoking-cigarettes-at-workplace-1504693310__a234b66b.jpg",
+        "alt": "stock-photo-male-employee-smoking-cigarettes-at-workplace-1504693310.jpg"
+      }
+    },
+    {
+      "title": "Wondgenezing",
+      "examples": "Bijvoorbeeld: chronische wonden, brandwonden, wonden na een operatie, diabetische voetwonden, sportblessures",
+      "image": {
+        "src": "/media/_root/shutterstock_1946442163__19388a49.jpg",
+        "alt": "shutterstock_1946442163.jpg"
+      }
+    },
+    {
+      "title": "Verslaving",
+      "examples": "Bijvoorbeeld: alcohol, roken, medicijnen, eten",
+      "image": {
+        "src": "/media/_root/shutterstock_2509785071__a7a31364.jpg",
+        "alt": "shutterstock_2509785071.jpg"
+      }
+    },
+    {
+      "title": "Hart en bloedvaten",
+      "examples": "Bijvoorbeeld: hoge bloeddruk, hoog cholesterol, hartkloppingen",
+      "image": {
+        "src": "/media/_root/13__273fefba.jpg",
+        "alt": "13.jpg"
+      }
+    }
+  ]
+}

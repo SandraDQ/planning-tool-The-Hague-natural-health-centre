@@ -1,0 +1,54 @@
+{
+  "meta": {
+    "title": "Afspraak maken | The Hague Natural Health Centre | Holistische gezondheid in Den Haag",
+    "description": "Boekingspagina van The Hague Natural Health Centre, met holistische therapieën zoals homeopathie, reiki, EMDR, gestalt-counseling, voeding, psychologie, yoga, traumasensitieve yoga, ayurveda, acupunctuur en nog veel meer."
+  },
+  "title": "CONSULTEN",
+  "intro": "Hier boek je de meeste van onze therapeuten, consulten en lessen. Evenementen zoals lezingen, cursussen en workshops boek je via onze pagina Evenementen. Staat je therapeut of behandeling hier niet bij? Kijk dan op de website van de therapeut (zie onze teampagina) en boek daar rechtstreeks.",
+  "readMore": "Lees meer",
+  "bookNow": "Nu boeken",
+  "serviceDescription": "Over deze behandeling",
+  "contactDetails": "Contactgegevens",
+  "location": "The Hague Natural Health Centre, Badhuisstraat, Den Haag",
+  "services": [
+    {
+      "slug": "homeopathy-initial-consultation",
+      "title": "Homeopathie: eerste consult",
+      "tagline": "Eerste consult voor nieuwe cliënten",
+      "duration": "2 uur",
+      "price": "€150",
+      "description": "Het eerste consult duurt 90 tot 120 minuten.",
+      "metaTitle": "Homeopathie: eerste consult | Hague NHC",
+      "image": {
+        "src": "/media/_root/_edited__df8362e0.jpg",
+        "alt": ""
+      }
+    },
+    {
+      "slug": "homeopathy-follow-up-consultation",
+      "title": "Homeopathie: vervolgconsult",
+      "tagline": "Standaardconsult voor bestaande homeopathiecliënten",
+      "duration": "1 uur",
+      "price": "€95",
+      "description": "Een vervolgconsult duurt 30 tot 60 minuten.",
+      "metaTitle": "Homeopathie: vervolgconsult | Hague NHC",
+      "image": {
+        "src": "/media/_root/_edited__df8362e0.jpg",
+        "alt": ""
+      }
+    },
+    {
+      "slug": "reiki-session",
+      "title": "Reikisessie",
+      "tagline": "Een energetische massage",
+      "duration": "1 uur",
+      "price": "€95",
+      "description": "Je kunt zelf de lengte van je sessie kiezen.",
+      "metaTitle": "Reikisessie | Hague NHC",
+      "image": {
+        "src": "/media/_root/_edited__df8362e0.jpg",
+        "alt": ""
+      }
+    }
+  ]
+}

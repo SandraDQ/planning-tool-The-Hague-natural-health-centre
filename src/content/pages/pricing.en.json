@@ -1,0 +1,206 @@
+{
+  "meta": {
+    "title": "Pricing & Packages | Hague NHC",
+    "description": "One off sessions or package prices at The Hague Natural Health Centre."
+  },
+  "title": "Your path to Vitality & Well Being",
+  "subtitle": "We offer One off sessions or Package Prices",
+  "intro": [
+    "At The Hague Natural Health Centre, we believe in a holistic, personalized approach to health. You can choose to book an individual session with any of our therapists with prices ranging between €75 - €125. Our unique offering is in our collaborative approach to holistic packages.",
+    "Our expert team brings together diverse areas of expertise, working as a roundtable of therapists to create a comprehensive, customized plan that supports your health journey. Whether you're looking for relaxation, a wellness boost, or support with chronic conditions, we customise all packages to suit your needs.",
+    "We believe in a holistic, personalised approach to health. Our expert team collaborates to create custom wellness plans designed to restore balance and vitality. Whether you're looking for relaxation, a wellness boost, or long-term healing, we have a package to suit your needs."
+  ],
+  "table": {
+    "columns": {
+      "therapy": "Therapy",
+      "therapist": "Therapist",
+      "initialDuration": "Duration Initial Consult",
+      "initialRate": "Rate Initial Consult in €",
+      "followDuration": "Duration Follow On Session",
+      "followRate": "Rate Follow On Session in €",
+      "insurance": "Covered by Insurance"
+    },
+    "rows": [
+      {
+        "therapy": "Reiki",
+        "therapist": "Sandra Delgado Quist",
+        "anchor": "sandra",
+        "initialDuration": "",
+        "initialRate": "75",
+        "followDuration": "",
+        "followRate": "",
+        "insurance": ""
+      },
+      {
+        "therapy": "Nutrition Counseling",
+        "therapist": "Audrey Dickinson",
+        "anchor": "audrey",
+        "initialDuration": "",
+        "initialRate": "125",
+        "followDuration": "",
+        "followRate": "75",
+        "insurance": ""
+      },
+      {
+        "therapy": "Massage",
+        "therapist": "Luc Hofmans",
+        "anchor": "luc",
+        "initialDuration": "",
+        "initialRate": "70",
+        "followDuration": "",
+        "followRate": "",
+        "insurance": ""
+      },
+      {
+        "therapy": "Homeopathy",
+        "therapist": "Sandra Delgado Quist",
+        "anchor": "sandra",
+        "initialDuration": "",
+        "initialRate": "125",
+        "followDuration": "",
+        "followRate": "85",
+        "insurance": ""
+      },
+      {
+        "therapy": "Foot Reflexology",
+        "therapist": "Luc Hofmans",
+        "anchor": "luc",
+        "initialDuration": "",
+        "initialRate": "95",
+        "followDuration": "",
+        "followRate": "70",
+        "insurance": ""
+      },
+      {
+        "therapy": "Ayurveda",
+        "therapist": "Archana Munot",
+        "anchor": "archanaayurveda",
+        "initialDuration": "60 minutes",
+        "initialRate": "125",
+        "followDuration": "60 minutes",
+        "followRate": "125",
+        "insurance": ""
+      },
+      {
+        "therapy": "Acupuncture & Chinese Herbs",
+        "therapist": "Ira Sloof",
+        "anchor": "ira",
+        "initialDuration": "90 -120 minutes",
+        "initialRate": "90",
+        "followDuration": "45 - 60 minutes",
+        "followRate": "70",
+        "insurance": "70% provided you are additionally insured"
+      }
+    ]
+  },
+  "packages": [
+    {
+      "title": "Vitality Taster",
+      "lead": "Relax & Recharge with our introductory package, includes:",
+      "facts": [
+        "4 Sessions",
+        "to be used within a 6 week period",
+        "Investment of €345"
+      ],
+      "text": "Perfect for those curious about natural therapies, this introductory package allows you to explore and experience treatments like Homeopathy, Acupuncture, Reflexology, Nutrition, Ayurveda, or Reiki.",
+      "image": {
+        "src": "/media/_root/Screenshot-2025-03-01-at-15.57.53__c64ad58e.png",
+        "alt": ""
+      }
+    },
+    {
+      "title": "Energy Renewal",
+      "lead": "3 month boost includes:",
+      "facts": [
+        "12 Sessions",
+        "3 Month Period",
+        "Investment €995 inclusive VAT"
+      ],
+      "text": "Designed for burnout prevention, stress relief, long COVID recovery, digestive health, and menopause support, this package includes a customized plan with expert guidance to restore your energy.",
+      "image": {
+        "src": "/media/_root/Screenshot-2025-03-01-at-15.55.24__834e45e7.png",
+        "alt": "Screenshot 2025-03-01 at 15.59.08.png"
+      }
+    },
+    {
+      "title": "Deep Healing",
+      "lead": "6 Month Transformation",
+      "facts": [
+        "24 Sessions",
+        "Investment €1,895"
+      ],
+      "text": "A comprehensive wellness journey for Cancer recovery, Hashimoto’s, infertility, endometriosis, and various other chronic conditions, offering continuous expert care and personalized protocols for long-term healing with adjustments made as needed.",
+      "image": {
+        "src": "/media/_root/Screenshot-2025-03-01-at-15.59.53__b46b4133.png",
+        "alt": ""
+      }
+    }
+  ],
+  "why": {
+    "title": "Why choose to work with us?",
+    "body": "At The Hague Natural Health Centre, we believe that true healing is a collaborative effort—one where you play an active role in your own well-being. Health isn’t something that can simply be given to you; it’s something you cultivate. While our expert team provides guidance, treatments, and support, the real transformation happens when you engage in your own healing journey.\n\nOur approach goes beyond just treating symptoms—we aim to empower you with knowledge and tools that allow you to take charge of your health. We provide practical guidance on natural therapies, home remedies, and lifestyle practices to support both you and your family’s long-term well-being.\n\nWe offer\n\n- tailored wellness plans based on your unique needs\n- Ongoing collaboration with our expert team\n- A consistent, supportive environment—no need to repeat your story\n- Treatments for all ages—from infants to adults\n\nWe look forward to working with you to restore balance and vitality in your life. Your journey to wellness starts here!"
+  },
+  "disclaimer": {
+    "title": "Important Disclaimer:",
+    "text": "We do not claim to ‘heal’ or cure any medical condition. Our goal is to minimize or eliminate symptoms, improving your quality of life through holistic, integrative care. Your health journey is unique, and we are here to support you every step of the way."
+  },
+  "cta": {
+    "title": "Empower yourself on your healing journey",
+    "label": "Get in Touch",
+    "href": "mailto:Info@thehague-naturalhealthcentre.com?subject=Interest%20in%20booking%20%20session"
+  },
+  "gallery": [
+    {
+      "src": "/media/_root/WhatsApp-Image-2025-01-18-at-19.31.55__a00bee13.jpeg",
+      "alt": "WhatsApp Image 2025-01-18 at 19.31.55"
+    },
+    {
+      "src": "/media/_root/IMG_7167__b4b71f6a.jpeg",
+      "alt": "IMG_7167"
+    },
+    {
+      "src": "/media/_root/IMG_9022__f5d96a78.jpeg",
+      "alt": "IMG_9022"
+    },
+    {
+      "src": "/media/_root/IMG_8177__ec487aea.jpeg",
+      "alt": "IMG_8177"
+    },
+    {
+      "src": "/media/_root/IMG_6562__9f411287.jpeg",
+      "alt": "IMG_6562"
+    },
+    {
+      "src": "/media/_root/IMG_6589__ff945bdc.jpeg",
+      "alt": "IMG_6589"
+    },
+    {
+      "src": "/media/_root/IMG_6552__e59f1d44.jpeg",
+      "alt": "IMG_6552"
+    },
+    {
+      "src": "/media/_root/8fea9b08-a8b0-4450-8ce9-1d35a0015d6a__696a064f.jpg",
+      "alt": "8fea9b08-a8b0-4450-8ce9-1d35a0015d6a"
+    },
+    {
+      "src": "/media/_root/IMG_6557__cc8082ca.jpeg",
+      "alt": "IMG_6557"
+    },
+    {
+      "src": "/media/_root/WhatsApp-Image-2025-01-18-at-19.31.53-2__6a646e45.jpeg",
+      "alt": "WhatsApp Image 2025-01-18 at 19.31.53 (2)"
+    },
+    {
+      "src": "/media/_root/IMG_6564__1aade13d.jpeg",
+      "alt": "IMG_6564"
+    },
+    {
+      "src": "/media/_root/WhatsApp-Image-2025-01-18-at-19.32.20__9c465702.jpeg",
+      "alt": "WhatsApp Image 2025-01-18 at 19.32.20"
+    },
+    {
+      "src": "/media/_root/WhatsApp-Image-2025-01-18-at-19.31.53-1__12526d92.jpeg",
+      "alt": "WhatsApp Image 2025-01-18 at 19.31.53 (1)"
+    }
+  ]
+}

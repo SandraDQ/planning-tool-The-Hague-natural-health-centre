@@ -21,6 +21,8 @@
  *                     text: use accent-strong #3b5241 for text on sand)
  *   white on accent 5.7 · white on accent-strong 8.5
  *   border-strong #9f8c82 on white 3.2 (UI outline, >= 3:1)
+ *   fg on stone #bfb4ae 7.0 · fg-muted on linen #efece2 5.4 · fg on linen 11.4
+ *   white on accent/80 (#6d8c77, the site's quote box) 3.7 -> large text only
  * Site colours that FAIL AA for body text, so restricted:
  *   #857166 brown   4.6 on white but 4.2 on cream -> fg-muted (#6a5d57) is used
  *                   for secondary text; #857166 only as `brown` (large text/decor)
@@ -41,6 +43,9 @@
   --thn-sand: #e8e4d5; /* sand band, footer [color_27/43] */
   --thn-border: #e8e4d5; /* decorative dividers [color_27] */
   --thn-border-strong: #9f8c82; /* input outlines, >= 3:1 [color_13] */
+  --thn-taupe: #9f8c82; /* the site's page and section titles [color_13]; large text (>= 24px) only */
+  --thn-stone: #bfb4ae; /* stone bands and condition cards [color_12]; fg text on it 7.0 */
+  --thn-linen: #efece2; /* therapy and profile cards (sampled from the live site) */
 
   /* Text */
   --thn-fg: #352f2b; /* [color_15] */
@@ -83,6 +88,9 @@
   --thn-sand: #3a312c;
   --thn-border: #4a403a;
   --thn-border-strong: #9f8c82;
+  --thn-taupe: #cfc5c1;
+  --thn-stone: #4a403a;
+  --thn-linen: #3a312c;
   --thn-fg: #f3f1eb; /* [color_4] */
   --thn-fg-muted: #cfc5c1; /* [color_7] */
   --thn-brown: #bfb4ae;
@@ -121,6 +129,9 @@
   --color-surface-2: var(--thn-surface-2);
   --color-sand: var(--thn-sand);
   --color-brown: var(--thn-brown);
+  --color-taupe: var(--thn-taupe);
+  --color-stone: var(--thn-stone);
+  --color-linen: var(--thn-linen);
   --color-sage: var(--thn-sage);
   --color-on-sage: var(--thn-on-sage);
   --color-border: var(--thn-border);
@@ -146,7 +157,7 @@
      - sans:    Lato (site body: lato-light). Body text is Light 300.
      - heading: Jost (stand-in for Futura LT Light/Book used for site headings).
      - display: Antonio (stand-in for the uploaded condensed extra-light heading font).
-     Five sizes, aligned with the site's own steps (17 body, 20 h3, 28 title, up to 55 hero). */
+     Sizes are aligned with the site's own steps (17 body, 20 h3, 28 title, up to 55 hero). */
   --font-sans: var(--font-lato), "Helvetica Neue", Arial, sans-serif;
   --font-heading: var(--font-jost), Futura, "Century Gothic", "Avenir Next", sans-serif;
   --font-display: var(--font-antonio), "Arial Narrow", sans-serif-condensed, sans-serif;
@@ -165,16 +176,21 @@
   --text-2xl: clamp(2.25rem, 1.5rem + 3.2vw, 3.4375rem); /* 36–55px — hero only (site h2 55px) */
   --text-2xl--line-height: 1.15;
   --text-2xl--letter-spacing: 0.02em;
+  --text-title: clamp(1.625rem, 1.3rem + 1.2vw, 2.25rem); /* 26–36px — the site's condensed page/section titles */
+  --text-title--line-height: 1.25;
+  --text-lead: clamp(1.1875rem, 1.05rem + 0.55vw, 1.5rem); /* 19–24px — the site's large intro/body text */
+  --text-lead--line-height: 1.65;
 
   /* Spacing: Tailwind's 4px grid (p-4 = 16px) plus layout helpers */
   --spacing: 0.25rem;
   --spacing-gutter: var(--thn-gutter);
   --container-content: 72rem; /* max-w-content */
   --container-reading: 40rem; /* max-w-reading */
+  --container-site: 61.25rem; /* max-w-site: the current site's 980px content column (public pages) */
 
   /* Radius: the site is square-cornered and flat (D19 overrides 8A's 12–20px).
      Small radii keep app screens soft without the "app" look.
-     PROVISIONAL until the page screenshots confirm the site's button shape. */
+     Buttons are pills, as the live screenshots show (Wix radius 60–90px): rounded-full. */
   --radius-*: initial;
   --radius-xs: 2px; /* checkbox squares, nested segments */
   --radius-sm: 3px; /* buttons, inputs, chips */

@@ -3,6 +3,8 @@
 
 /* Don't scan the Wix export (page text) for class names: its markdown produces invalid CSS */
 @source not "../../wix-export";
+/* Same for the site's content files (page text, blog Markdown) */
+@source not "../content";
 
 @layer base {
   html {

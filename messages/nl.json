@@ -301,5 +301,89 @@
         "privacy": "Privacy"
       }
     }
+  },
+  "site": {
+    "skipToContent": "Naar de inhoud",
+    "siteName": "The Hague Natural Health Centre",
+    "newsletter": {
+      "emailLabel": "E-mail",
+      "placeholder": "E-mailadres",
+      "send": "Versturen",
+      "note": "Versturen opent je e-mailprogramma met een aanmeldbericht aan ons."
+    },
+    "map": {
+      "title": "Hier vind je ons",
+      "show": "Kaart tonen",
+      "open": "Openen in Google Maps",
+      "note": "De kaart wordt pas van Google Maps geladen als je ervoor kiest om hem te tonen."
+    },
+    "contactForm": {
+      "required": "verplicht",
+      "note": "Versturen opent je e-mailprogramma met je bericht aan ons."
+    },
+    "blog": {
+      "allPosts": "Alle berichten",
+      "categories": "Blogcategorieën",
+      "readMinutes": "{minutes} min. leestijd",
+      "englishOnly": "Dit artikel is alleen in het Engels beschikbaar.",
+      "backToBlog": "Terug naar de blog",
+      "recentPosts": "Recente berichten",
+      "seeAll": "Alles bekijken",
+      "empty": "Nog geen berichten in deze categorie.",
+      "by": "Door {author}"
+    },
+    "events": {
+      "multipleDates": "Meerdere data",
+      "moreInfo": "Meer info",
+      "reserve": "Reserveer je plek",
+      "cancelled": "Geannuleerd",
+      "when": "Datum en tijd",
+      "where": "Locatie",
+      "price": "Prijs",
+      "backToEvents": "Bekijk andere evenementen",
+      "englishOnly": "De details van evenementen zijn alleen in het Engels beschikbaar.",
+      "detailsSoon": "De volledige beschrijving en online aanmelding voor dit evenement komen op deze pagina. Wil je nu al een plek reserveren? Neem dan contact met ons op.",
+      "contactUs": "Neem contact op",
+      "timeLocation": "Tijd en locatie",
+      "aboutEvent": "Over het evenement",
+      "tickets": "Tickets"
+    },
+    "about": {
+      "gallery": "Foto's van het centrum",
+      "galleryPrev": "Vorige foto's",
+      "galleryNext": "Volgende foto's",
+      "team": "Onze therapeuten"
+    },
+    "booking": {
+      "duration": "Duur",
+      "price": "Prijs"
+    },
+    "book": {
+      "title": "Afspraak maken",
+      "lead": "Online afspraken maken kan binnenkort.",
+      "text": "Binnenkort kies je hier een therapeut, een behandeling en een tijd, en boek je direct. Tot die tijd kun je contact opnemen met de therapeut die je wilt zien, of met ons, dan helpen we je verder.",
+      "therapists": "Naar onze therapeuten",
+      "contact": "Neem contact op",
+      "metaTitle": "Afspraak maken | The Hague Natural Health Centre",
+      "metaDescription": "Online afspraken maken bij The Hague Natural Health Centre kan binnenkort."
+    },
+    "login": {
+      "title": "Inloggen",
+      "lead": "Inloggen kan binnenkort.",
+      "text": "Binnenkort kunnen cliënten, therapeuten en het team van het centrum hier inloggen om afspraken te bekijken en te beheren. Heb je tot die tijd vragen? Neem dan contact met ons op.",
+      "home": "Terug naar de homepage",
+      "contact": "Neem contact op",
+      "metaTitle": "Inloggen | The Hague Natural Health Centre",
+      "metaDescription": "Inloggen bij The Hague Natural Health Centre (binnenkort)."
+    },
+    "categoryNames": {
+      "holistic-palliative-support": "Holistische palliatieve zorg",
+      "babies": "Baby's",
+      "end-of-life-care": "Zorg rond het levenseinde",
+      "holistic-health": "Holistische gezondheid",
+      "ceremonies": "Ceremonies",
+      "counselling-coaching": "Counseling & coaching",
+      "natural-remedies": "Natuurlijke middelen"
+    }
   }
 }

@@ -1,0 +1,96 @@
+{
+  "meta": {
+    "title": "Therapieën | The Hague Natural Health Centre | Holistische gezondheid in Den Haag",
+    "description": "The Hague Natural Health Centre is een holistisch gezondheidscentrum met alternatieve, natuurlijke therapieën, waaronder acupunctuur, homeopathie, ayurveda, reiki, yoga, vedische meditatie, EMDR, counseling, voeding, psychologie, celzouten, Bach-bloesemremedies, mannen- en vrouwencirkels, traumasensitieve yoga (TCTSY) en lezingen, cursussen, workshops en evenementen. Neem voor meer informatie contact op met oprichter en homeopaat Sandra Delgado Quist."
+  },
+  "title": "THERAPIEËN",
+  "image": { "src": "/media/_root/Wix-site__5b1d3812.jpeg", "alt": "Natuurlijke gezondheidszorg in Den Haag" },
+  "intro": [
+    "Heb je ooit gewenst dat jij, je homeopaat, een voedingsdeskundige en je counselor samen aan tafel konden zitten om een volledig persoonlijk gezondheidsplan voor jou te maken? Wij doen dat!",
+    "Ieder van ons is gepassioneerd over de eigen therapie en kijk op gezondheid. Wat we delen, is de overtuiging dat echt holistische, geïntegreerde zorg het verschil maakt.",
+    "Ons ideaal is natuurlijke en reguliere zorg naast elkaar, waarbij je huidige zorgverleners, en misschien zelfs je werkgever, met ons samenwerken aan het best mogelijke programma, speciaal voor jou.",
+    "Ons aandeel in die visie is een volledig eigen benadering van geneeskunde. Meestal kiezen mensen voor één-op-één begeleiding, maar je kunt ook met meerdere van ons werken. Wij stemmen dan samen een volledig persoonlijk zorgplan af, zodat je gezonder en gelukkiger wordt."
+  ],
+  "yourWay": {
+    "title": "Jouw gezondheid. Op jouw manier.",
+    "text": "Wil je een afspraak maken? Neem dan contact op met de therapeut of therapeuten die je wilt zien, via hun contactgegevens.",
+    "cta": { "label": "Naar onze therapeuten", "href": "/about-us" }
+  },
+  "items": [
+    {
+      "title": "Homeopathie",
+      "image": { "src": "/media/_root/Homeopathic-Medicine__7d5e3e83.webp", "alt": "Homeopathie in Den Haag" },
+      "body": "Een natuurlijke vorm van geneeskunde met korreltjes of druppels, meestal via de mond ingenomen, die het lichaam aanzet om zelf weer in balans te komen. De homeopaat stelt tijdens de afspraak vragen om het middel voor te schrijven dat het best bij jouw klachten past. Homeopathie is zacht, veilig en effectief, en kan van geboorte tot hoge leeftijd worden gebruikt, ook tijdens zwangerschap en borstvoeding."
+    },
+    {
+      "title": "Acupunctuur",
+      "image": { "src": "/media/_root/Screenshot-2026-08-13-at-22.02.46__792f0a87.png", "alt": "Acupunctuur Den Haag" },
+      "body": "Acupunctuur is onderdeel van de Traditionele Chinese Geneeskunde, die al meer dan 5000 jaar wordt beoefend. De kern is het bevorderen van de vrije stroom van levensenergie, Qi genoemd. Met acupunctuur worden blokkades in de energiebanen opgeheven, zodat de Qi weer vrij kan stromen. Daarbij worden fijne naaldjes langs de meridianen van het lichaam geplaatst om de energiestroom te versterken."
+    },
+    {
+      "title": "Jungiaanse psychologie",
+      "image": { "src": "/media/_root/Screenshot-2026-02-22-at-15.21.07__e7db6eef.png", "alt": "Screenshot 2026-02-22 at 15.21.07.png" },
+      "body": "De Jungiaanse psychologie verkent het onbewuste om tot \"individuatie\" te komen: worden wie je werkelijk bent. Door de schaduw en de archetypen te integreren, brengt ze het \"waarom\" achter gedrag aan het licht. Bij ADHD helpt ze neurodivergentie te zien als een eigen innerlijk landschap, ze helpt stellen geprojecteerde \"innerlijke partner\"-dynamieken te herkennen, en ze biedt de dieptepsychologie de middelen om kernpatronen te veranderen in plaats van alleen symptomen aan de oppervlakte te beheersen."
+    },
+    {
+      "title": "Diepe weefselmassage & therapeutische massage",
+      "image": { "src": "/media/_root/Screenshot-2026-05-22-at-07.43.45__552398cc.png", "alt": "Screenshot 2026-05-22 at 07.43.45.png" },
+      "body": "Verlicht pijn, herstel beweging en versnel je herstel met gericht lichaamswerk. We combineren diepe weefselmassage, sportmassage en ondersteuning na een operatie om chronische spanning te verminderen en genezing te bevorderen. Myofasciale release, neurokinetische heropvoeding en Active Release Technique pakken de oorzaak aan en verbeteren de functie. Zachte, op maat gemaakte zwangerschapsmassage vermindert pijn, zwelling en stress bij aanstaande moeders."
+    },
+    {
+      "title": "Chinese kruidengeneeskunde",
+      "image": { "src": "/media/_root/Screenshot-2023-11-29-at-13.04.40__90c125dc.png", "alt": "Traditionele Chinese Geneeskunde Den Haag" },
+      "body": "De traditionele Chinese kruidentherapie gebruikt stoffen van plantaardige, minerale en dierlijke oorsprong. Samen met acupunctuur is het een hoofdpijler van de Chinese geneeskunde. De kracht zit in zorgvuldig samengestelde formules, vaak met 4 tot 20 kruiden, afgestemd op iemands specifieke disbalans. Anders dan in de westerse kruidengeneeskunde worden losse kruiden zelden gebruikt. Tegenwoordig worden in de praktijk zo'n 600 verschillende kruiden toegepast."
+    },
+    {
+      "title": "High Power Lasertherapie",
+      "image": { "src": "/media/_root/shutterstock_1052124350-1__0309f16e.jpg", "alt": "High Power Lasertherapie The Hague Natural Health Centre" },
+      "body": "High Power Lasertherapie gebruikt laserlicht om energie direct aan de cellen af te geven. Het licht dringt door tot in de mitochondriën, waar het wordt opgenomen door lichtgevoelige moleculen (chromoforen). Dit stimuleert de celactiviteit, verhoogt de aanmaak van ATP (de energiebron van de cel) en verbetert de doorbloeding en zuurstoftoevoer naar het weefsel. Het resultaat: sneller en beter weefselherstel, vaak in een derde van de gebruikelijke hersteltijd."
+    },
+    {
+      "title": "Reiki",
+      "image": { "src": "/media/_root/Reiki__1aee6849.jpeg", "alt": "Reiki-behandeling" },
+      "body": "Reiki is een eeuwenoude Japanse methode van energetische heling die al eeuwenlang wordt gebruikt voor lichamelijke en emotionele verlichting en welzijn. Het is een zachte maar krachtige behandeling die kan helpen bij stress, angst, pijn en andere lichamelijke en emotionele klachten. De behandelaar legt de handen heel licht op het lichaam, of werkt zonder aanraking, om de natuurlijke energiestroom in balans te brengen en te herstellen. Je blijft tijdens de sessie volledig gekleed."
+    },
+    {
+      "title": "Ayurveda",
+      "image": { "src": "/media/_root/Screenshot-2026-08-20-at-16.01.49__63759055.png", "alt": "Screenshot 2026-08-20 at 16.01.49.png" },
+      "body": "Ayurveda is een traditioneel geneeskundig systeem uit India dat welzijn bevordert door lichaam, geest en ziel in balans te brengen. Er wordt gekeken naar iemands unieke constitutie (dosha's) en met aangepaste voeding, leefstijl, kruidenmiddelen en beweging wordt de natuurlijke harmonie hersteld. Voordelen zijn onder meer een betere spijsvertering, beter omgaan met stress, beter slapen en meer vitaliteit. Wie ayurvedische principes in het dagelijks leven toepast, kan rekenen op duurzame energie, meer vitaliteit en gezondheid op de lange termijn."
+    },
+    {
+      "title": "Voeding",
+      "image": { "src": "/media/_root/Screenshot-2024-12-01-at-19.17.02__eca1db76.png", "alt": "Screenshot 2024-12-01 at 19.17.02.png" },
+      "body": "Laat voeding je medicijn zijn, en je medicijn je voeding (Hippocrates).\n\nVoedingstherapie is een zeer effectieve manier om klachten te verlichten, hormonen in balans te brengen, op een duurzame manier op gewicht te komen en de behoefte aan langdurig medicijngebruik te verminderen. Een voedingsdeskundige spoort tekorten en disbalansen in je lichaam op en maakt een plezierig en lekker plan om die aan te pakken, zonder strikt calorieën te tellen."
+    },
+    {
+      "title": "Panchakarma-massage",
+      "image": { "src": "/media/_root/Screenshot-2026-08-20-at-16.01.41__e52725cc.png", "alt": "Screenshot 2026-08-20 at 16.01.41.png" },
+      "body": "Panchakarma-massage is een therapeutische ayurvedische behandeling met warme, met kruiden doordrenkte oliën die het lichaam diep voeden en de weefsels ontgiften. Met ritmische, gelijktijdige streken wordt de bloedsomloop gestimuleerd, worden afvalstoffen (ama) losgemaakt en komen de subtiele energieën van het lichaam (dosha's) weer in balans. Voordelen zijn onder meer een betere doorbloeding, minder gewrichtspijn, minder angst en een stralendere huid."
+    },
+    {
+      "title": "Systemische opstellingen",
+      "image": { "src": "/media/_root/Screenshot-2026-02-20-at-22.34.37__0f1edefb.png", "alt": "Screenshot 2026-02-20 at 22.34.37.png" },
+      "body": "Deze therapeutische methode biedt een kijkje in het onbewuste door te werken met diepe emotionele en energetische verbindingen. Door ze zichtbaar te maken, brengen systemische opstellingen verborgen dynamieken aan het licht en helpen ze structurele conflicten binnen een systeem op te lossen.\n\nDeze aanpak werkt goed bij chronische gezondheidsklachten, terugkerende gedragspatronen, loyaliteiten binnen de familielijn en hardnekkige emotionele blokkades. Zo herstelt de innerlijke balans en ontstaat de stevige basis voor krachtige, gezonde keuzes."
+    },
+    {
+      "title": "Celzouten & bloesemremedies",
+      "image": { "src": "/media/_root/ayla-verschueren-nKynHXxgEfE-unsplash__df284129.jpg", "alt": "ayla-verschueren-nKynHXxgEfE-unsplash.jpg" },
+      "body": "Celzouten zijn homeopathisch bereide essentiële minerale zouten in de vorm van kleine tabletjes. Ze kunnen naast andere medicijnen of therapieën worden ingenomen om het herstel en de afweer in bepaalde delen van het lichaam te ondersteunen. Het zijn energetische vormen van elektrolyten zoals calcium, magnesium en ijzer.\n\nBloesemremedies zijn meestal druppels die je via de mond inneemt en die heel zacht zorgen voor rust en emotionele verlichting."
+    },
+    {
+      "title": "Sjamanisme",
+      "image": { "src": "/media/_root/Screenshot-2026-05-22-at-07.52.38__b288c6b8.png", "alt": "Screenshot 2026-05-22 at 07.52.38.png" },
+      "body": "Sjamanisme is een spirituele geneeswijze die werkt met de onzichtbare wereld van geest, natuur en voorouders om de balans te herstellen. Met reizen, ceremonie en energiewerk helpt een beoefenaar om energetisch trauma dat in het lichaam is opgeslagen op te sporen en los te laten, ‘vastzittende’ patronen op te ruimen en verloren vitaliteit terug te halen. Veel mensen ervaren meer emotionele helderheid, veerkracht en verbinding met hun doel. Sjamanistische heling kan therapie en lichaamsgericht werk aanvullen met zachte, op de ziel gerichte ondersteuning."
+    },
+    {
+      "title": "Orthomoleculaire therapie",
+      "image": { "src": "/media/_root/Screenshot-2026-05-22-at-07.53.50__9bf49e48.png", "alt": "Screenshot 2026-05-22 at 07.53.50.png" },
+      "body": "Orthomoleculaire therapie gebruikt persoonlijke voeding en gerichte supplementen om de optimale biochemische balans te herstellen. Door tekorten en overschotten op moleculair niveau te corrigeren, kan ze energie, stemming, weerstand, spijsvertering en stofwisseling verbeteren. De zorg omvat vaak een uitgebreide intake, een blik op je leefstijl en laboratoriumonderzoek, zoals micronutriëntenpanels en EMB-bloedonderzoek, om de dosering precies te bepalen. Persoonlijke plannen ondersteunen preventie en herstel, vullen medische behandeling aan en bevorderen vitaliteit op de lange termijn, met voeding voorop en strategieën die op onderzoek zijn gebaseerd."
+    },
+    {
+      "title": "Hypnotherapie",
+      "image": { "src": "/media/_root/Screenshot-2026-05-22-at-07.53.29__9189506a.png", "alt": "Screenshot 2026-05-22 at 07.53.29.png" },
+      "body": "Hypnotherapie is een therapeutisch proces dat met gerichte ontspanning en geleide verbeelding een ontvankelijke, doelgerichte toestand van de geest bereikt. In die toestand kunnen onbehulpzame patronen worden herkend en omgevormd. Voordelen zijn onder meer minder angst en stress, verlichting van chronische pijn, beter slapen en steun bij gedragsverandering (zoals gewoonten of zelfvertrouwen). Het kan ook medische zorg aanvullen door het zenuwstelsel te kalmeren en veerkracht en zelfregulatie te versterken."
+    }
+  ]
+}

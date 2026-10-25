@@ -1,0 +1,54 @@
+{
+  "meta": {
+    "title": "Book Now | The Hague Natural Health Centre | Holistic Health in the Hague",
+    "description": "Booking page for The Hague Natural Health Centre, offering holistic therapies inlcuding homeopathy, reiki, EMDR, Gestalt Counselling, Nutrition, Psychology, Yoga, Trauma Sensitive Yoga, Ayurdevic Medicine, Acupuncture and much more."
+  },
+  "title": "CONSULTATIONS",
+  "intro": "You can book most our of practitioners, consultations and classes here. Events such as talks, courses and workshops are booked via our Events page. If you cannot see your chosen practitioner or treatment here, please visit the individual therapist's website as listed on our team page so that you can book directly with them.",
+  "readMore": "Read More",
+  "bookNow": "Book Now",
+  "serviceDescription": "Service Description",
+  "contactDetails": "Contact Details",
+  "location": "The Hague Natural Health Centre, Badhuisstraat, The Hague, Netherlands",
+  "services": [
+    {
+      "slug": "homeopathy-initial-consultation",
+      "title": "Homeopathy Initial Consultation",
+      "tagline": "Initial consultation for new patients",
+      "duration": "2 hr",
+      "price": "€150",
+      "description": "First consultation can last between 90-120 minutes.",
+      "metaTitle": "Homeopathy Initial Consultation | Hague NHC",
+      "image": {
+        "src": "/media/_root/_edited__df8362e0.jpg",
+        "alt": ""
+      }
+    },
+    {
+      "slug": "homeopathy-follow-up-consultation",
+      "title": "Homeopathy Follow-up Consultation",
+      "tagline": "Standard consultation for existing homeopathy patients",
+      "duration": "1 hr",
+      "price": "€95",
+      "description": "A follow up consultation can last between 30-60 minutes.",
+      "metaTitle": "Homeopathy Follow-up Consultation | Hague NHC",
+      "image": {
+        "src": "/media/_root/_edited__df8362e0.jpg",
+        "alt": ""
+      }
+    },
+    {
+      "slug": "reiki-session",
+      "title": "Reiki Session",
+      "tagline": "An energetic massage",
+      "duration": "1 hr",
+      "price": "€95",
+      "description": "You may choose the length of your session",
+      "metaTitle": "Reiki Session | Hague NHC",
+      "image": {
+        "src": "/media/_root/_edited__df8362e0.jpg",
+        "alt": ""
+      }
+    }
+  ]
+}

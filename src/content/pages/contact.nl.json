@@ -1,0 +1,19 @@
+{
+  "meta": {
+    "title": "Contact | Hague NHC",
+    "description": "Neem contact op met The Hague Natural Health Centre, Badhuisstraat 224, Den Haag."
+  },
+  "image": {
+    "src": "/media/_root/Wix-website_edited__1ed76368.jpg",
+    "alt": ""
+  },
+  "title": "Contact",
+  "formTitle": "Neem contact met ons op",
+  "fields": {
+    "firstName": "Voornaam",
+    "lastName": "Achternaam",
+    "email": "E-mail",
+    "message": "Schrijf een bericht"
+  },
+  "submit": "Versturen"
+}

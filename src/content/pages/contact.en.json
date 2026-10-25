@@ -1,0 +1,19 @@
+{
+  "meta": {
+    "title": "Contact | Hague NHC",
+    "description": ""
+  },
+  "image": {
+    "src": "/media/_root/Wix-website_edited__1ed76368.jpg",
+    "alt": ""
+  },
+  "title": "Contact",
+  "formTitle": "Contact us",
+  "fields": {
+    "firstName": "First name",
+    "lastName": "Last name",
+    "email": "Email",
+    "message": "Write a message"
+  },
+  "submit": "Submit"
+}

@@ -1,0 +1,102 @@
+{
+  "meta": {
+    "title": "Home | The Hague Natural Health Centre | Holistic Health in The Hague",
+    "description": "The Hague Natural Health Centre is holistic health centre offering alternative, natural therapies including accupuncture, homeopathy, ayurdeva, reiki, yoga, vedic meditation, EMDR, counselling, nutrition, psychology, tissue salts, bach flower essences, men's and women's circles, Trauma Sensitive Yoga (TCTSY) and talks, courses, workshops and events. Contact Founder and Homeopath Sandra Delgado Quist for more information."
+  },
+  "hero": {
+    "image": {
+      "src": "/media/_root/shutterstock_1011699703_edited__2a2aeaf8.jpg",
+      "alt": ""
+    },
+    "place": "THE HAGUE",
+    "logoAlt": "The Hague Natural Health Centre Logo",
+    "name": "NATURAL HEALTH CENTRE",
+    "taglineLead": "Helping people feel",
+    "tagline": "Confident, Healthy, Energized",
+    "book": "Book an appointment"
+  },
+  "nature": {
+    "title": "NATURE INSPIRED HEALTHCARE",
+    "lead": "We believe that nature is the key to truly restoring health and rediscovering what it feels like to be relaxed and full of energy,",
+    "text": "The demands of our busy lives and meeting social obligations can drain our energy sources, leaving us fatigued or unwell. If you want to improve how you manage the hustle and bustle and enjoy life again, get to know our natural health centre."
+  },
+  "help": {
+    "title": "How can we help?",
+    "paragraphs": [
+      "Our bodies have self-healing power which is automatic. When we are under constant stress, this natural ability to self-heal becomes challenged and our body starts to give signals that it is unwell in the form of symptoms like pain or mental distress. Often people tend to ignore the little signals until they become dis-eases and more difficult to overcome.",
+      "We offer various natural therapies under one roof that approach disease from a holistic perspective - addressing mind, body and spirit."
+    ],
+    "cta": {
+      "label": "See therapies",
+      "href": "/kopie-van-therapies"
+    },
+    "image": {
+      "src": "/media/_root/Screenshot-2026-01-25-at-17.05.50__66053db5.png",
+      "alt": "Screenshot 2026-01-25 at 17.05.50.png"
+    }
+  },
+  "quote": {
+    "label": "What clients say",
+    "text": "\"At last! A forward thinking, holistic clinic, with a luxurious feel, where the practitioners actually work together to get you better.\"",
+    "by": "Lucie, Rotterdam"
+  },
+  "engage": {
+    "title": "How to engage?",
+    "text1": "If you know which type of therapy you would like to choose, please contact the therapist directly.",
+    "cta": {
+      "label": "Go to our therapists",
+      "href": "/about-us"
+    },
+    "text2": "If you would like to discuss various options or have questions, feel free to contact one of the therapists below.",
+    "people": [
+      {
+        "name": "Sandra Delgado Quist",
+        "text": "Sandra is founder of The Hague Natural Health Centre and an accredited Homeopath, Reiki teacher & practitioner. Sandra is passionate about teaching and empowering people to take control of their own health.",
+        "image": {
+          "src": "/media/_root/Sandra-4_LIa-low-res__3cdeb752.jpeg",
+          "alt": "Sandra-4_LIa low res.jpeg"
+        },
+        "whatsapp": {
+          "label": "Whatsapp Sandra",
+          "href": "https://wa.me/31623328757"
+        }
+      },
+      {
+        "name": "Ira Sloof",
+        "text": "Ira is an accredited acupuncturist and herbalist by the Zhong. She loves helping people overcome a wide variety of issues, contributing to the activation of their Life Energy (Qi). Being involved in this work fills her with joy.",
+        "image": {
+          "src": "/media/_root/Ira-Sloof_edited__5d85f9c7.jpg",
+          "alt": "Ira Sloof_edited.jpg"
+        },
+        "whatsapp": {
+          "label": "Whatsapp Ira",
+          "href": "https://wa.me/31625362400"
+        }
+      },
+      {
+        "name": "Audrey Dickinson",
+        "text": "Audrey is a trained nutritionist specialising in hormonal and vaginal health. She enjoys supporting people with manageable nutrition plans that are not overwhelming to people trying to make dietary changes.",
+        "image": {
+          "src": "/media/_root/Audrey-28-02-2025-at-10.58__520dccf2.jpg",
+          "alt": "Audrey 28-02-2025 at 10.58.jpg"
+        },
+        "whatsapp": {
+          "label": "Whatsapp Audrey",
+          "href": "https://wa.me/31657193244"
+        }
+      }
+    ]
+  },
+  "accessible": {
+    "title": "ACCESSIBLE TO ALL",
+    "text": "True health begins at home. In ancient times our medicine grew in the garden and we understood how to use plants as medicine. We have lost our connection to nature and our inner wisdom. As part of our commitment to the local community, we offer regular events discussing topics that affect many. These small gatherings aim to provide you with knowledge about various options that can help you to take control of your own health.",
+    "image": {
+      "src": "/media/_root/WhatsApp-Image-2025-10-21-at-08.23.50__f3b7ed77.jpeg",
+      "alt": "Natural Health Talks in The Hague"
+    }
+  },
+  "newsletter": {
+    "title": "NEVER MISS AN EVENT",
+    "text": "Be first to hear about our monthly talks, special offers and workshops. Our free events are limited, so you'll want to reserve your spot early!"
+  }
+}

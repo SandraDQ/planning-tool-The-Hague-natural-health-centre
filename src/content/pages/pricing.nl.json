@@ -1,0 +1,206 @@
+{
+  "meta": {
+    "title": "Prijzen & pakketten | Hague NHC",
+    "description": "Losse sessies of pakketprijzen bij The Hague Natural Health Centre."
+  },
+  "title": "Jouw weg naar vitaliteit & welzijn",
+  "subtitle": "Wij bieden losse sessies of pakketprijzen",
+  "intro": [
+    "Bij The Hague Natural Health Centre geloven we in een holistische, persoonlijke benadering van gezondheid. Je kunt een losse sessie boeken bij een van onze therapeuten, met prijzen tussen €75 en €125. Wat ons uniek maakt, is onze gezamenlijke aanpak met holistische pakketten.",
+    "Ons team brengt uiteenlopende expertise samen en werkt als een ronde tafel van therapeuten aan een volledig plan op maat dat jouw weg naar gezondheid ondersteunt. Of je nu ontspanning zoekt, een energieboost of steun bij chronische klachten: we stemmen elk pakket af op wat jij nodig hebt.",
+    "We geloven in een holistische, persoonlijke benadering van gezondheid. Ons team werkt samen aan wellnessplannen op maat die balans en vitaliteit herstellen. Of je nu ontspanning zoekt, een energieboost of herstel op de lange termijn: we hebben een pakket dat bij je past."
+  ],
+  "table": {
+    "columns": {
+      "therapy": "Therapie",
+      "therapist": "Therapeut",
+      "initialDuration": "Duur eerste consult",
+      "initialRate": "Tarief eerste consult in €",
+      "followDuration": "Duur vervolgsessie",
+      "followRate": "Tarief vervolgsessie in €",
+      "insurance": "Vergoed door verzekering"
+    },
+    "rows": [
+      {
+        "therapy": "Reiki",
+        "therapist": "Sandra Delgado Quist",
+        "anchor": "sandra",
+        "initialDuration": "",
+        "initialRate": "75",
+        "followDuration": "",
+        "followRate": "",
+        "insurance": ""
+      },
+      {
+        "therapy": "Voedingsadvies",
+        "therapist": "Audrey Dickinson",
+        "anchor": "audrey",
+        "initialDuration": "",
+        "initialRate": "125",
+        "followDuration": "",
+        "followRate": "75",
+        "insurance": ""
+      },
+      {
+        "therapy": "Massage",
+        "therapist": "Luc Hofmans",
+        "anchor": "luc",
+        "initialDuration": "",
+        "initialRate": "70",
+        "followDuration": "",
+        "followRate": "",
+        "insurance": ""
+      },
+      {
+        "therapy": "Homeopathie",
+        "therapist": "Sandra Delgado Quist",
+        "anchor": "sandra",
+        "initialDuration": "",
+        "initialRate": "125",
+        "followDuration": "",
+        "followRate": "85",
+        "insurance": ""
+      },
+      {
+        "therapy": "Voetreflexologie",
+        "therapist": "Luc Hofmans",
+        "anchor": "luc",
+        "initialDuration": "",
+        "initialRate": "95",
+        "followDuration": "",
+        "followRate": "70",
+        "insurance": ""
+      },
+      {
+        "therapy": "Ayurveda",
+        "therapist": "Archana Munot",
+        "anchor": "archanaayurveda",
+        "initialDuration": "60 minuten",
+        "initialRate": "125",
+        "followDuration": "60 minuten",
+        "followRate": "125",
+        "insurance": ""
+      },
+      {
+        "therapy": "Acupunctuur & Chinese kruiden",
+        "therapist": "Ira Sloof",
+        "anchor": "ira",
+        "initialDuration": "90-120 minuten",
+        "initialRate": "90",
+        "followDuration": "45-60 minuten",
+        "followRate": "70",
+        "insurance": "70% als je aanvullend verzekerd bent"
+      }
+    ]
+  },
+  "packages": [
+    {
+      "title": "Vitality Taster",
+      "lead": "Ontspan en laad op met ons kennismakingspakket, inclusief:",
+      "facts": [
+        "4 sessies",
+        "te gebruiken binnen 6 weken",
+        "Investering €345"
+      ],
+      "text": "Ideaal als je nieuwsgierig bent naar natuurlijke therapieën: met dit kennismakingspakket ontdek en ervaar je behandelingen zoals homeopathie, acupunctuur, reflexologie, voeding, ayurveda of reiki.",
+      "image": {
+        "src": "/media/_root/Screenshot-2025-03-01-at-15.57.53__c64ad58e.png",
+        "alt": ""
+      }
+    },
+    {
+      "title": "Energy Renewal",
+      "lead": "Een boost van 3 maanden, inclusief:",
+      "facts": [
+        "12 sessies",
+        "Periode van 3 maanden",
+        "Investering €995 inclusief btw"
+      ],
+      "text": "Ontwikkeld voor het voorkomen van burn-out, stressvermindering, herstel van long covid, darmgezondheid en steun in de overgang. Dit pakket omvat een plan op maat met deskundige begeleiding om je energie te herstellen.",
+      "image": {
+        "src": "/media/_root/Screenshot-2025-03-01-at-15.55.24__834e45e7.png",
+        "alt": "Screenshot 2025-03-01 at 15.59.08.png"
+      }
+    },
+    {
+      "title": "Deep Healing",
+      "lead": "Transformatie in 6 maanden",
+      "facts": [
+        "24 sessies",
+        "Investering €1.895"
+      ],
+      "text": "Een uitgebreid traject voor herstel na kanker, Hashimoto, onvruchtbaarheid, endometriose en andere chronische aandoeningen, met doorlopende deskundige zorg en persoonlijke protocollen voor herstel op de lange termijn, die we waar nodig bijstellen.",
+      "image": {
+        "src": "/media/_root/Screenshot-2025-03-01-at-15.59.53__b46b4133.png",
+        "alt": ""
+      }
+    }
+  ],
+  "why": {
+    "title": "Waarom met ons werken?",
+    "body": "Bij The Hague Natural Health Centre geloven we dat echte heling een gezamenlijke inspanning is, waarin jij een actieve rol speelt in je eigen welzijn. Gezondheid kun je niet zomaar krijgen; je bouwt het zelf op. Ons team geeft begeleiding, behandelingen en steun, maar de echte verandering ontstaat wanneer jij zelf aan de slag gaat met je herstel.\n\nOnze aanpak gaat verder dan klachten behandelen: we willen je kennis en middelen geven waarmee je zelf de regie over je gezondheid neemt. We geven praktische begeleiding bij natuurlijke therapieën, huismiddelen en leefstijl, voor de gezondheid van jou en je gezin op de lange termijn.\n\nWij bieden\n\n- wellnessplannen op maat, afgestemd op wat jij nodig hebt\n- doorlopende samenwerking met ons team\n- een vaste, ondersteunende omgeving: je hoeft je verhaal niet steeds opnieuw te vertellen\n- behandelingen voor alle leeftijden, van baby's tot volwassenen\n\nWe kijken ernaar uit om samen met jou balans en vitaliteit in je leven te herstellen. Je weg naar gezondheid begint hier!"
+  },
+  "disclaimer": {
+    "title": "Belangrijke disclaimer:",
+    "text": "Wij beweren niet dat we medische aandoeningen ‘genezen’. Ons doel is klachten te verminderen of weg te nemen en je kwaliteit van leven te verbeteren met holistische, integratieve zorg. Jouw weg naar gezondheid is uniek, en wij steunen je bij elke stap."
+  },
+  "cta": {
+    "title": "Neem de regie over je herstel",
+    "label": "Neem contact op",
+    "href": "mailto:Info@thehague-naturalhealthcentre.com?subject=Interest%20in%20booking%20%20session"
+  },
+  "gallery": [
+    {
+      "src": "/media/_root/WhatsApp-Image-2025-01-18-at-19.31.55__a00bee13.jpeg",
+      "alt": "WhatsApp Image 2025-01-18 at 19.31.55"
+    },
+    {
+      "src": "/media/_root/IMG_7167__b4b71f6a.jpeg",
+      "alt": "IMG_7167"
+    },
+    {
+      "src": "/media/_root/IMG_9022__f5d96a78.jpeg",
+      "alt": "IMG_9022"
+    },
+    {
+      "src": "/media/_root/IMG_8177__ec487aea.jpeg",
+      "alt": "IMG_8177"
+    },
+    {
+      "src": "/media/_root/IMG_6562__9f411287.jpeg",
+      "alt": "IMG_6562"
+    },
+    {
+      "src": "/media/_root/IMG_6589__ff945bdc.jpeg",
+      "alt": "IMG_6589"
+    },
+    {
+      "src": "/media/_root/IMG_6552__e59f1d44.jpeg",
+      "alt": "IMG_6552"
+    },
+    {
+      "src": "/media/_root/8fea9b08-a8b0-4450-8ce9-1d35a0015d6a__696a064f.jpg",
+      "alt": "8fea9b08-a8b0-4450-8ce9-1d35a0015d6a"
+    },
+    {
+      "src": "/media/_root/IMG_6557__cc8082ca.jpeg",
+      "alt": "IMG_6557"
+    },
+    {
+      "src": "/media/_root/WhatsApp-Image-2025-01-18-at-19.31.53-2__6a646e45.jpeg",
+      "alt": "WhatsApp Image 2025-01-18 at 19.31.53 (2)"
+    },
+    {
+      "src": "/media/_root/IMG_6564__1aade13d.jpeg",
+      "alt": "IMG_6564"
+    },
+    {
+      "src": "/media/_root/WhatsApp-Image-2025-01-18-at-19.32.20__9c465702.jpeg",
+      "alt": "WhatsApp Image 2025-01-18 at 19.32.20"
+    },
+    {
+      "src": "/media/_root/WhatsApp-Image-2025-01-18-at-19.31.53-1__12526d92.jpeg",
+      "alt": "WhatsApp Image 2025-01-18 at 19.31.53 (1)"
+    }
+  ]
+}

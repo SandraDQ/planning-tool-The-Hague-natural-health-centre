@@ -14,12 +14,14 @@ type StyleOptions = {
 
 /**
  * Class names for a button-looking element, styled like the current site's
- * buttons (flat brand green, Lato, square-ish corners). Use one `primary` per screen.
+ * buttons: pill shape, flat brand green, Lato Light with a little letter spacing.
+ * (The site fills them with green at 80%; we use the full green so white text passes AA.)
+ * Use one `primary` per screen.
  * sm = 44px high with less side padding (tight rows, e.g. the phone header), md = 44px, lg = 52px.
  */
 export function buttonClasses({ variant = "primary", size = "md", fullWidth, className }: StyleOptions = {}) {
   return cn(
-    "inline-flex select-none items-center justify-center gap-2 rounded-sm font-normal tracking-[0.02em]",
+    "inline-flex select-none items-center justify-center gap-2 rounded-full font-normal tracking-[0.04em]",
     "transition-[background-color,color,border-color,box-shadow,transform] duration-150 ease-calm",
     "active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50",
     "[&_svg]:size-5 [&_svg]:shrink-0",

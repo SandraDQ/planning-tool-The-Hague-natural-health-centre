@@ -4,7 +4,7 @@ import { cn } from "../utils";
 export function Avatar({ name, size = "md", className }: { name: string; size?: "sm" | "md" | "lg"; className?: string }) {
   const initials = name
     .split(/\s+/)
-    .filter((w) => w.length > 2 || w === w.toUpperCase())
+    .filter((w) => /^\p{L}/u.test(w) && (w.length > 2 || w === w.toUpperCase()))
     .map((w) => w[0])
     .slice(0, 2)
     .join("")

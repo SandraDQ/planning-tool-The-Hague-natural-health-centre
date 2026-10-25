@@ -1,0 +1,96 @@
+{
+  "meta": {
+    "title": "Therapies | The Hague Natural Health Centre | Holistic Health in The Hague",
+    "description": "The Hague Natural Health Centre is holistic health centre offering alternative, natural therapies including accupuncture, homeopathy, ayurdeva, reiki, yoga, vedic meditation, EMDR, counselling, nutrition, psychology, tissue salts, bach flower essences, men's and women's circles, Trauma Sensitive Yoga (TCTSY) and talks, courses, workshops and events. Contact Founder and Homeopath Sandra Delgado Quist for more information."
+  },
+  "title": "THERAPIES",
+  "image": { "src": "/media/_root/Wix-site__5b1d3812.jpeg", "alt": "Natural Health Care in The Netherlands NL The Hague Den Haag" },
+  "intro": [
+    "Ever wished that you, your homeopath, a nutritionist and your counsellor could all sit together in a room to create a completely bespoke health plan just for you? We do!",
+    "We are each passionate about our individual therapies and approach to health. However, one of our shared values is sharing the benefits of truly holistic, integrated health care.",
+    "Our dream is to see natural and conventional health care, side by side; where your existing healthcare professionals, and maybe even your employer, can work along side us, to create the best possible programme, specific to you.",
+    "Our part in this is vision is to offer a completely unique approach to medicine. Typically people choose to work with us 1:1, but it is possible to work with several of us, and we will work together to provide a completely bespoke healthcare plan, to get you healthier and happier."
+  ],
+  "yourWay": {
+    "title": "Your health. Done your way.",
+    "text": "To book an appointment, contact the therapist or therapists that you wish to see, via their contact details.",
+    "cta": { "label": "Go to our therapists", "href": "/about-us" }
+  },
+  "items": [
+    {
+      "title": "Homeopathy",
+      "image": { "src": "/media/_root/Homeopathic-Medicine__7d5e3e83.webp", "alt": "Homeopathy in The Hague" },
+      "body": "A natural form of medicine using medicated pills or liquid, usually taken orally, prompting the body to balance itself naturally. The homeopath uses the appointment time to ask questions, in order to prescribe the most suitable medicine for you symptoms. Homeopathy is gentle, safe, effective, and can be used from birth to old age, including during pregnancy and breastfeeding."
+    },
+    {
+      "title": "Acupuncture",
+      "image": { "src": "/media/_root/Screenshot-2026-08-13-at-22.02.46__792f0a87.png", "alt": "Acupuncture The Hague" },
+      "body": "Acupuncture is part of Traditional Chinese Medicine, which has been practiced for over 5,000 years. Its core principle is to promote the free circulation of life energy, known as Qi. Through acupuncture, blockages in the energy pathways are resolved, allowing Qi to flow freely again. This treatment involves the use of gentle needles placed along the meridians of the body to increase the flow of energy."
+    },
+    {
+      "title": "Jungian Psychology",
+      "image": { "src": "/media/_root/Screenshot-2026-02-22-at-15.21.07__e7db6eef.png", "alt": "Screenshot 2026-02-22 at 15.21.07.png" },
+      "body": "Jungian psychology explores the unconscious mind to achieve \"individuation\"—becoming your true self. By integrating the shadow and archetypes, it uncovers the \"why\" behind behavior. It aids ADHD by reframing neurodivergence as a unique inner landscape, helps couples recognize projected \"inner-partner\" dynamics, and provides depth psychology the tools to transform core patterns rather than just managing surface symptoms."
+    },
+    {
+      "title": "Deep Tissue & Therapeutic Massage",
+      "image": { "src": "/media/_root/Screenshot-2026-05-22-at-07.43.45__552398cc.png", "alt": "Screenshot 2026-05-22 at 07.43.45.png" },
+      "body": "Relieve pain, restore movement, and speed recovery with targeted bodywork. We combine deep tissue massage, sports therapy, and post‑surgery support to ease chronic tension and promote healing. Myofascial release, Neurokinetic re‑education, and Active Release Technique address root causes and improve function. Gentle, tailored prenatal massage reduces aches, swelling, and stress for expectant mothers."
+    },
+    {
+      "title": "Chinese Herbalism",
+      "image": { "src": "/media/_root/Screenshot-2023-11-29-at-13.04.40__90c125dc.png", "alt": "Traditional Chinese Medicine The Hague" },
+      "body": "Traditional Chinese herbal therapy uses substances of plant, mineral, and animal origin. Along with acupuncture, it forms a core pillar of Chinese medicine. Its strength lies in carefully composed formulas, often containing 4 to 20 herbs, tailored to an individual’s specific imbalance. Unlike Western herbal medicine, single-herb treatments are rarely used. Today, around 600 different herbs are commonly applied in clinical practice."
+    },
+    {
+      "title": "High Power Laser Therapy",
+      "image": { "src": "/media/_root/shutterstock_1052124350-1__0309f16e.jpg", "alt": "High Power Laser Therapy The Hague Natural Health Center" },
+      "body": "High Power Laser therapy uses laser light to deliver energy directly to the cells. The light penetrates the mitochondria, where it is absorbed by light-sensitive molecules (chromophores). This stimulates cellular activity, increases ATP production (the cell's energy source), and enhances blood flow and oxygen supply to the tissue. Resulting in faster & more effective tissue healing, often in 1/3 of the typical recovery time."
+    },
+    {
+      "title": "Reiki",
+      "image": { "src": "/media/_root/Reiki__1aee6849.jpeg", "alt": "Reiki Healing" },
+      "body": "Reiki is an ancient Japanese energy healing technique that has been used for centuries to bring about physical and emotional relief and wellbeing. It is a gentle yet powerful practice that can help relieve stress, anxiety, pain, and other physical and emotional ailments. It can be done with very light hand pressure from the practitioner, or without handpressure. tobalance and restore natural flow of energy. Sessions are conducted fully clothed."
+    },
+    {
+      "title": "Ayurveda",
+      "image": { "src": "/media/_root/Screenshot-2026-08-20-at-16.01.49__63759055.png", "alt": "Screenshot 2026-08-20 at 16.01.49.png" },
+      "body": "Ayurveda is a traditional healing system from India that promotes wellness by balancing the body, mind, and spirit. It works by assessing an individual's unique constitution (doshas) and using tailored diet, lifestyle practices, herbal remedies, and movement to restore natural harmony. Benefits include improved digestion, enhanced stress management, better sleep, and boosted vitality. Incorporating Ayurvedic principles into daily routines can lead to sustainable energy, greater vitality, and long-term health."
+    },
+    {
+      "title": "Nutrition",
+      "image": { "src": "/media/_root/Screenshot-2024-12-01-at-19.17.02__eca1db76.png", "alt": "Screenshot 2024-12-01 at 19.17.02.png" },
+      "body": "Let food be thy medicine, and medicine be thy food (Hippocrates).\n\nNutritional therapy is a highly effective way to relieve symptoms, balance hormones, manage weight sustainably and reduce the need for longterm medication. A nutritionist identifies imbalances or deficiencies in your body, to develop an enjoyable and delicious plan to address them, without the need for strict calorie counting."
+    },
+    {
+      "title": "Panchakarma Massage",
+      "image": { "src": "/media/_root/Screenshot-2026-08-20-at-16.01.41__e52725cc.png", "alt": "Screenshot 2026-08-20 at 16.01.41.png" },
+      "body": "Panchakarma massage is a therapeutic Ayurvedic treatment that uses warm, herb-infused oils to deeply nourish the body and detoxify tissues. It works by applying rhythmic, synchronized strokes to stimulate circulation, soften toxins (ama), and restore balance to the body's subtle energies (doshas). Benefits include improved blood flow, joint pain relief, reduced anxiety, and enhanced skin vitality."
+    },
+    {
+      "title": "Systemic Constellations",
+      "image": { "src": "/media/_root/Screenshot-2026-02-20-at-22.34.37__0f1edefb.png", "alt": "Screenshot 2026-02-20 at 22.34.37.png" },
+      "body": "This therapeutic method offers a window into the subconscious by working with deep emotional and energetic connections. Through visual representation, Systemic Constellations bring hidden dynamics to light, helping to resolve structural conflicts within a system.\n\nThis approach effectively addresses chronic health issues, repetitive behavioural patterns, family lineage loyalties, and persistent emotional blocks, restoring internal balance and creating the grounded stability for empowered, healthy life choices."
+    },
+    {
+      "title": "Tissue Salts & Flower Essences",
+      "image": { "src": "/media/_root/ayla-verschueren-nKynHXxgEfE-unsplash__df284129.jpg", "alt": "ayla-verschueren-nKynHXxgEfE-unsplash.jpg" },
+      "body": "Tissue salts are homoeopathically prepared essential mineral salts, in the form of small medicated pills, which can be taken alongside other medications or therapies to help boost healing and immune response in specific areas of the body. They are energetic versions of eletrolytes such as Calcium, Magnesium & Iron.\n\nFlower essences are usually liquid doses, that are taken orally, to very gently bring about soothing, calm emotional relief."
+    },
+    {
+      "title": "Shamanism",
+      "image": { "src": "/media/_root/Screenshot-2026-05-22-at-07.52.38__b288c6b8.png", "alt": "Screenshot 2026-05-22 at 07.52.38.png" },
+      "body": "It is a spiritual healing practice that works with the unseen world of spirit, nature, and ancestors to restore balance. Through journeying, ceremony, and energy work, a practitioner helps identify and release energetic trauma held in the body, clear “stuck” patterns, and retrieve lost vitality. Many experience greater emotional clarity, resilience, and connection to purpose. Shamanic healing can complement therapy and somatic work with gentle, soul-centered support."
+    },
+    {
+      "title": "Orthomolecular therapy",
+      "image": { "src": "/media/_root/Screenshot-2026-05-22-at-07.53.50__9bf49e48.png", "alt": "Screenshot 2026-05-22 at 07.53.50.png" },
+      "body": "It uses individualized nutrition and targeted supplements to restore optimal biochemical balance. By correcting deficiencies and excesses at the molecular level, it can improve energy, mood, immunity, digestion, and metabolic health. Care often includes detailed assessments, lifestyle review, and lab testing such as micronutrient panels and EMd blood work to guide precise dosing. Personalized plans support prevention and recovery, complement medical treatment, and promote long‑term vitality with food-first, evidence‑informed strategies."
+    },
+    {
+      "title": "Hypnotherapy",
+      "image": { "src": "/media/_root/Screenshot-2026-05-22-at-07.53.29__9189506a.png", "alt": "Screenshot 2026-05-22 at 07.53.29.png" },
+      "body": "It is a therapeutic process that uses focused relaxation and guided imagery to access a receptive, goal‑oriented state of mind. In this state, unhelpful patterns can be identified and reshaped. Benefits include reducing anxiety and stress, easing chronic pain, improving sleep, and supporting behavior change (such as habits or confidence). It can also complement medical care by calming the nervous system and enhancing resilience and self‑regulation."
+    }
+  ]
+}

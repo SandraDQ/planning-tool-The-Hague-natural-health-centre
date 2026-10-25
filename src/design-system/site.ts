@@ -21,7 +21,7 @@ export const siteNav: { key: SiteNavKey; href: string }[] = [
 
 /** New (D19): online booking and the platform login. */
 export const siteActions = {
-  book: "/booking", // the current site's booking page URL
+  book: "/book", // new online booking flow (the old /booking page links here too)
   login: "/login",
 };
 

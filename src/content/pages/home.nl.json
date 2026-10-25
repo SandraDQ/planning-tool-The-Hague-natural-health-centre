@@ -1,0 +1,102 @@
+{
+  "meta": {
+    "title": "Home | The Hague Natural Health Centre | Holistische gezondheid in Den Haag",
+    "description": "The Hague Natural Health Centre is een holistisch gezondheidscentrum met alternatieve, natuurlijke therapieën, waaronder acupunctuur, homeopathie, ayurveda, reiki, yoga, vedische meditatie, EMDR, counseling, voeding, psychologie, celzouten, Bach-bloesemremedies, mannen- en vrouwencirkels, traumasensitieve yoga (TCTSY) en lezingen, cursussen, workshops en evenementen. Neem voor meer informatie contact op met oprichter en homeopaat Sandra Delgado Quist."
+  },
+  "hero": {
+    "image": {
+      "src": "/media/_root/shutterstock_1011699703_edited__2a2aeaf8.jpg",
+      "alt": ""
+    },
+    "place": "THE HAGUE",
+    "logoAlt": "Logo The Hague Natural Health Centre",
+    "name": "NATURAL HEALTH CENTRE",
+    "taglineLead": "Wij helpen mensen zich",
+    "tagline": "zelfverzekerd, gezond en energiek te voelen",
+    "book": "Afspraak maken"
+  },
+  "nature": {
+    "title": "ZORG GEÏNSPIREERD DOOR DE NATUUR",
+    "lead": "Wij geloven dat de natuur de sleutel is om echt te herstellen en opnieuw te ontdekken hoe het voelt om ontspannen en vol energie te zijn.",
+    "text": "Een druk leven en sociale verplichtingen kunnen je energie opslokken, waardoor je moe of ziek wordt. Wil je beter omgaan met de drukte en weer van het leven genieten? Maak dan kennis met ons natuurlijke gezondheidscentrum."
+  },
+  "help": {
+    "title": "Hoe kunnen wij helpen?",
+    "paragraphs": [
+      "Ons lichaam heeft een zelfherstellend vermogen dat vanzelf werkt. Staan we voortdurend onder stress, dan komt dat vermogen onder druk en geeft het lichaam signalen dat het niet goed gaat, zoals pijn of mentale klachten. Vaak negeren mensen die kleine signalen tot ze uitgroeien tot klachten die moeilijker te overwinnen zijn.",
+      "Wij bieden onder één dak verschillende natuurlijke therapieën die ziekte holistisch benaderen: lichaam, geest en ziel."
+    ],
+    "cta": {
+      "label": "Bekijk therapieën",
+      "href": "/kopie-van-therapies"
+    },
+    "image": {
+      "src": "/media/_root/Screenshot-2026-01-25-at-17.05.50__66053db5.png",
+      "alt": "Screenshot 2026-01-25 at 17.05.50.png"
+    }
+  },
+  "quote": {
+    "label": "Wat cliënten zeggen",
+    "text": "\"Eindelijk! Een vooruitstrevende, holistische kliniek met een luxe uitstraling, waar de therapeuten echt samenwerken om je beter te maken.\"",
+    "by": "Lucie, Rotterdam"
+  },
+  "engage": {
+    "title": "Hoe werkt het?",
+    "text1": "Weet je welke therapie je wilt? Neem dan direct contact op met de therapeut.",
+    "cta": {
+      "label": "Naar onze therapeuten",
+      "href": "/about-us"
+    },
+    "text2": "Wil je de mogelijkheden bespreken of heb je vragen? Neem gerust contact op met een van de therapeuten hieronder.",
+    "people": [
+      {
+        "name": "Sandra Delgado Quist",
+        "text": "Sandra is oprichter van The Hague Natural Health Centre en geregistreerd homeopaat, Reiki-docent en -beoefenaar. Ze vindt het prachtig om mensen te leren en te helpen zelf de regie over hun gezondheid te nemen.",
+        "image": {
+          "src": "/media/_root/Sandra-4_LIa-low-res__3cdeb752.jpeg",
+          "alt": "Sandra-4_LIa low res.jpeg"
+        },
+        "whatsapp": {
+          "label": "WhatsApp Sandra",
+          "href": "https://wa.me/31623328757"
+        }
+      },
+      {
+        "name": "Ira Sloof",
+        "text": "Ira is gediplomeerd acupuncturist en herbalist (opgeleid bij de Zhong). Ze helpt mensen graag met uiteenlopende klachten en draagt bij aan het activeren van hun levensenergie (Qi). Dit werk vervult haar met vreugde.",
+        "image": {
+          "src": "/media/_root/Ira-Sloof_edited__5d85f9c7.jpg",
+          "alt": "Ira Sloof_edited.jpg"
+        },
+        "whatsapp": {
+          "label": "WhatsApp Ira",
+          "href": "https://wa.me/31625362400"
+        }
+      },
+      {
+        "name": "Audrey Dickinson",
+        "text": "Audrey is opgeleid voedingsdeskundige, gespecialiseerd in hormonale en vaginale gezondheid. Ze ondersteunt mensen graag met haalbare voedingsplannen die niet overweldigend zijn voor wie zijn eetpatroon wil veranderen.",
+        "image": {
+          "src": "/media/_root/Audrey-28-02-2025-at-10.58__520dccf2.jpg",
+          "alt": "Audrey 28-02-2025 at 10.58.jpg"
+        },
+        "whatsapp": {
+          "label": "WhatsApp Audrey",
+          "href": "https://wa.me/31657193244"
+        }
+      }
+    ]
+  },
+  "accessible": {
+    "title": "TOEGANKELIJK VOOR IEDEREEN",
+    "text": "Echte gezondheid begint thuis. Vroeger groeide ons medicijn in de tuin en wisten we hoe we planten als medicijn konden gebruiken. We zijn het contact met de natuur en onze innerlijke wijsheid kwijtgeraakt. Vanuit onze betrokkenheid bij de buurt organiseren we regelmatig bijeenkomsten over onderwerpen die veel mensen raken. Deze kleine bijeenkomsten geven je kennis over mogelijkheden om zelf de regie over je gezondheid te nemen.",
+    "image": {
+      "src": "/media/_root/WhatsApp-Image-2025-10-21-at-08.23.50__f3b7ed77.jpeg",
+      "alt": "Lezingen over natuurlijke gezondheid in Den Haag"
+    }
+  },
+  "newsletter": {
+    "title": "MIS GEEN ENKEL EVENEMENT",
+    "text": "Hoor als eerste over onze maandelijkse lezingen, aanbiedingen en workshops. Onze gratis evenementen hebben beperkt plek, dus reserveer op tijd!"
+  }
+}

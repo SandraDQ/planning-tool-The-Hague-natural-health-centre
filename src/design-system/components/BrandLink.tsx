@@ -4,40 +4,40 @@ import { cn } from "../utils";
 import { siteWordmark } from "../site";
 
 /**
- * The site's header brand: hummingbird logo + "NATURAL HEALTH CENTRE / THE HAGUE"
- * written beside it (on the current site this text is live text, not part of the image).
- * Links home. `size="lg"` is the desktop size of the current site (logo 72px high).
+ * The site's header brand, as on the live site: the hummingbird with
+ * "THE HAGUE" (small, widely spaced) above "NATURAL HEALTH CENTRE", both in brand
+ * green in the condensed light face. On the live site this is live text, not part of the image.
+ * Links home. `size="lg"` is the desktop size of the live site (logo 72px high).
  */
 export function BrandLink({ href = "/", size = "md", className }: { href?: string; size?: "sm" | "md" | "lg"; className?: string }) {
-  const logoHeight = size === "lg" ? 72 : size === "md" ? 52 : 42;
+  const logoHeight = size === "lg" ? 72 : size === "md" ? 56 : 46;
   return (
-    <Link href={href} className={cn("inline-flex min-h-11 min-w-0 shrink items-center gap-2 rounded-sm text-fg sm:gap-3", className)}>
+    <Link
+      href={href}
+      className={cn("inline-flex min-h-11 min-w-0 shrink items-center gap-1 rounded-sm text-accent sm:gap-2", className)}
+    >
       <Logo variant="mark" height={logoHeight} decorative />
-      {/* On very narrow phones (< 380px) the name is visually hidden so the Book button fits; it stays the link's name. */}
-      <span className="flex min-w-0 flex-col font-heading leading-none font-normal uppercase max-[379px]:sr-only">
+      {/* On very narrow phones (< 340px) the name is visually hidden so the Book button fits; it stays the link's name. */}
+      <span className="flex min-w-0 flex-col items-center pt-1 font-display leading-none font-extralight uppercase max-[339px]:sr-only">
         <span
           className={cn(
             "whitespace-nowrap",
             size === "lg"
-              ? "text-[1.4375rem] tracking-[0.06em]"
+              ? "text-base tracking-[0.25em]"
               : size === "md"
-                ? "text-lg tracking-[0.05em]"
-                : "text-[0.8125rem] tracking-[0.01em]",
-          )}
-        >
-          {siteWordmark.name}
-        </span>
-        <span
-          className={cn(
-            "mt-1.5 whitespace-nowrap text-fg-muted",
-            size === "lg"
-              ? "text-base tracking-[0.42em]"
-              : size === "md"
-                ? "text-sm tracking-[0.38em]"
-                : "text-[0.6875rem] tracking-[0.3em]",
+                ? "text-[0.9375rem] tracking-[0.25em]"
+                : "text-[0.6875rem] tracking-[0.25em]",
           )}
         >
           {siteWordmark.place}
+        </span>
+        <span
+          className={cn(
+            "mt-1 whitespace-nowrap",
+            size === "lg" ? "text-[1.4375rem]" : size === "md" ? "text-[1.3125rem]" : "text-[1.0625rem]",
+          )}
+        >
+          {siteWordmark.name}
         </span>
       </span>
     </Link>
