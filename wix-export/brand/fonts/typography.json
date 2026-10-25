@@ -1,0 +1,3833 @@
+{
+ "desktop": {
+  "/": {
+   "h1": [
+    {
+     "family": "wfont_fdfc6f_9ffd0a4644fd4f1b80605af12ceae8fc, wf_9ffd0a4644fd4f1b80605af12, orig_fsp_demo_blgnxtrlghtsmcndnsd_regular",
+     "weight": "400",
+     "style": "normal",
+     "size": "25px",
+     "line_height": "normal",
+     "letter_spacing": "8.75px",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 1,
+     "example": "THE HAGUE"
+    }
+   ],
+   "h2": [
+    {
+     "family": "wfont_fdfc6f_9ffd0a4644fd4f1b80605af12ceae8fc, wf_9ffd0a4644fd4f1b80605af12, orig_fsp_demo_blgnxtrlghtsmcndnsd_regular",
+     "weight": "400",
+     "style": "normal",
+     "size": "36px",
+     "line_height": "57.6px",
+     "letter_spacing": "3.6px",
+     "transform": "none",
+     "color": "#9f8c82",
+     "count": 3,
+     "example": "NATURE INSPIRED HEALTHCARE"
+    },
+    {
+     "family": "wfont_fdfc6f_9ffd0a4644fd4f1b80605af12ceae8fc, wf_9ffd0a4644fd4f1b80605af12, orig_fsp_demo_blgnxtrlghtsmcndnsd_regular",
+     "weight": "400",
+     "style": "normal",
+     "size": "55px",
+     "line_height": "normal",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#efece2",
+     "count": 1,
+     "example": "NATURAL HEALTH CENTRE"
+    },
+    {
+     "family": "futura-lt-w01-book, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "26px",
+     "line_height": "46.8px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#f4f3eb",
+     "count": 1,
+     "example": "Helping people feel\nConfident,    Healthy,    Ener"
+    },
+    {
+     "family": "futura-lt-w01-light, futura-lt-w05-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "44px",
+     "line_height": "normal",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#ffffff",
+     "count": 1,
+     "example": "\"At last! A forward thinking, holistic clinic, wit"
+    },
+    {
+     "family": "futura-lt-w01-book, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "56px",
+     "line_height": "78.96px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "How to engage?"
+    },
+    {
+     "family": "wfont_fdfc6f_9ffd0a4644fd4f1b80605af12ceae8fc, wf_9ffd0a4644fd4f1b80605af12, orig_fsp_demo_blgnxtrlghtsmcndnsd_regular",
+     "weight": "400",
+     "style": "normal",
+     "size": "36px",
+     "line_height": "normal",
+     "letter_spacing": "3.6px",
+     "transform": "none",
+     "color": "#ffffff",
+     "count": 1,
+     "example": "NEVER MISS AN EVENT"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "26px",
+     "line_height": "36.4px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#ffffff",
+     "count": 1,
+     "example": "Be first to hear about our monthly talks, special "
+    }
+   ],
+   "h3": [
+    {
+     "family": "futura-lt-w01-book, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "20px",
+     "line_height": "26.8px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 3,
+     "example": "Sandra Delgado Quist"
+    }
+   ],
+   "h4": [],
+   "h5": [],
+   "h6": [],
+   "body": [
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "24px",
+     "line_height": "43.2px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#857166",
+     "count": 2,
+     "example": "We believe that nature is the key to truly restori"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "24px",
+     "line_height": "40.08px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#857166",
+     "count": 2,
+     "example": "Our bodies have self-healing power which is automa"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "20px",
+     "line_height": "33.4px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 2,
+     "example": "If you know which type of therapy you would like t"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "24px",
+     "line_height": "40.08px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "​"
+    },
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "26px",
+     "line_height": "43.42px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#eeebe2",
+     "count": 1,
+     "example": "Lucie, Rotterdam"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "19px",
+     "line_height": "34.2px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "Sandra is founder of The Hague Natural Health Cent"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "20px",
+     "line_height": "36px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "Ira is an accredited acupuncturist and herbalist b"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "20px",
+     "line_height": "39.6px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "Audrey is a trained nutritionist specialising in h"
+    },
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "24px",
+     "line_height": "43.2px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "True health begins at home. In ancient times our m"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "24px",
+     "line_height": "43.2px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#9f8c82",
+     "count": 1,
+     "example": "​"
+    }
+   ],
+   "nav": [
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "50px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 12,
+     "example": "Therapies"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "50px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 2,
+     "example": "Home"
+    }
+   ],
+   "footer": [
+    {
+     "family": "futura-lt-w01-light, futura-lt-w05-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "30.43px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 6,
+     "example": "Monday appointment only"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "30.43px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 6,
+     "example": "The Hague Natural Health Centre"
+    },
+    {
+     "family": "helvetica-w01-light, helvetica-w02-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "16px",
+     "line_height": "28.64px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 3,
+     "example": "©2023 The Hague Natural Health Centre  |  Design b"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "18px",
+     "line_height": "32.22px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 2,
+     "example": "Opening hours"
+    },
+    {
+     "family": "Arial, Helvetica, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "30.43px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 2,
+     "example": "Badhuisstraat 224, 2584 HN, The Hague"
+    },
+    {
+     "family": "Arial, Helvetica, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "30.43px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 1,
+     "example": "Sunday closed​"
+    }
+   ],
+   "button": [
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "20px",
+     "line_height": "normal",
+     "letter_spacing": "1px",
+     "transform": "none",
+     "color": "#ffffff",
+     "count": 2,
+     "example": "See therapies"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "23.97px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 1,
+     "example": "Send"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "normal",
+     "letter_spacing": "0.85px",
+     "transform": "none",
+     "color": "#ffffff",
+     "count": 1,
+     "example": "Send us a message"
+    }
+   ],
+   "link": []
+  },
+  "/about-us": {
+   "h1": [
+    {
+     "family": "futura-lt-w01-book, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "56px",
+     "line_height": "normal",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "Who are we?"
+    }
+   ],
+   "h2": [
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "18px",
+     "line_height": "normal",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 16,
+     "example": "Founder and Director\nHomeopath\nReiki Practitioner"
+    },
+    {
+     "family": "lato-light",
+     "weight": "400",
+     "style": "normal",
+     "size": "22px",
+     "line_height": "normal",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 10,
+     "example": "Cynthia Ramirez"
+    },
+    {
+     "family": "lato-light",
+     "weight": "400",
+     "style": "normal",
+     "size": "18px",
+     "line_height": "normal",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 7,
+     "example": "Life Energy Coach, Systemic Constellations Therapi"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "24px",
+     "line_height": "40.8px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#857166",
+     "count": 3,
+     "example": "Healthy Communities"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "23px",
+     "line_height": "normal",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 2,
+     "example": "Sandra Delgado Quist"
+    },
+    {
+     "family": "futura-lt-w01-book, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "45px",
+     "line_height": "normal",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "The Heart behind The Hague\nNatural Health Center"
+    },
+    {
+     "family": "wfont_fdfc6f_9ffd0a4644fd4f1b80605af12ceae8fc, wf_9ffd0a4644fd4f1b80605af12, orig_fsp_demo_blgnxtrlghtsmcndnsd_regular",
+     "weight": "400",
+     "style": "normal",
+     "size": "36px",
+     "line_height": "57.6px",
+     "letter_spacing": "3.6px",
+     "transform": "none",
+     "color": "#9f8c82",
+     "count": 1,
+     "example": "Sustainable Living"
+    },
+    {
+     "family": "wfont_fdfc6f_9ffd0a4644fd4f1b80605af12ceae8fc, wf_9ffd0a4644fd4f1b80605af12, orig_fsp_demo_blgnxtrlghtsmcndnsd_regular",
+     "weight": "400",
+     "style": "normal",
+     "size": "36px",
+     "line_height": "normal",
+     "letter_spacing": "3.6px",
+     "transform": "none",
+     "color": "#ffffff",
+     "count": 1,
+     "example": "NEVER MISS AN EVENT"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "26px",
+     "line_height": "36.4px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#ffffff",
+     "count": 1,
+     "example": "Be first to hear about our free monthly talks, spe"
+    }
+   ],
+   "h3": [
+    {
+     "family": "lato-light",
+     "weight": "400",
+     "style": "normal",
+     "size": "22px",
+     "line_height": "31.02px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 10,
+     "example": "Sandra Delgado Quist"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "22px",
+     "line_height": "31.02px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 3,
+     "example": "Ira Sloof"
+    },
+    {
+     "family": "futura-lt-w01-book, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "22px",
+     "line_height": "31.02px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "Aurora Clinciu"
+    },
+    {
+     "family": "lato-light",
+     "weight": "400",
+     "style": "normal",
+     "size": "18px",
+     "line_height": "31.02px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 1,
+     "example": "Lysanne Sizoo"
+    }
+   ],
+   "h4": [],
+   "h5": [],
+   "h6": [
+    {
+     "family": "futura-lt-w01-book, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "40px",
+     "line_height": "54px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "MEET OUR THERAPISTS"
+    }
+   ],
+   "body": [
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "22px",
+     "line_height": "39.6px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 52,
+     "example": "Welcome to The Hague Natural Health Center — a san"
+    },
+    {
+     "family": "lato-light",
+     "weight": "400",
+     "style": "normal",
+     "size": "18px",
+     "line_height": "38.5px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 14,
+     "example": "Founder & Director, Homeopath & Reiki Teacher"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "22px",
+     "line_height": "39.6px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 14,
+     "example": "Sandra a Homeopath and Shamanic Energy Medicine Wo"
+    },
+    {
+     "family": "lato-light",
+     "weight": "400",
+     "style": "normal",
+     "size": "18px",
+     "line_height": "31.5px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 3,
+     "example": "Naturopath or Osteopath"
+    },
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "24px",
+     "line_height": "43.2px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#a08d83",
+     "count": 2,
+     "example": "We work together, as practitioners, to share our e"
+    },
+    {
+     "family": "lato-light",
+     "weight": "400",
+     "style": "normal",
+     "size": "22px",
+     "line_height": "38.5px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 2,
+     "example": "Coming Soon"
+    },
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "22px",
+     "line_height": "31.24px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "Sandra's story\n\nAfter years of living a fast-paced"
+    },
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "24px",
+     "line_height": "43.2px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#9f8c82",
+     "count": 1,
+     "example": "​"
+    },
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "22px",
+     "line_height": "39.6px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 1,
+     "example": "​​​"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "22px",
+     "line_height": "38.5px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 1,
+     "example": "To find out more about Sandra, please visit her we"
+    },
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "20px",
+     "line_height": "33.4px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "Gratiela  works in English, Dutch and Romanian"
+    },
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "22px",
+     "line_height": "38.5px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 1,
+     "example": "Homeopathy defines health as the ability to adapt "
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "18px",
+     "line_height": "38.5px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "Nature already provides many of the \"medicines\" we"
+    }
+   ],
+   "nav": [
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "50px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 12,
+     "example": "Home"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "50px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 2,
+     "example": "About us"
+    }
+   ],
+   "footer": [
+    {
+     "family": "futura-lt-w01-light, futura-lt-w05-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "30.43px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 6,
+     "example": "Monday appointment only"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "30.43px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 6,
+     "example": "The Hague Natural Health Centre"
+    },
+    {
+     "family": "helvetica-w01-light, helvetica-w02-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "16px",
+     "line_height": "28.64px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 3,
+     "example": "©2023 The Hague Natural Health Centre  |  Design b"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "18px",
+     "line_height": "32.22px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 2,
+     "example": "Opening hours"
+    },
+    {
+     "family": "Arial, Helvetica, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "30.43px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 2,
+     "example": "Badhuisstraat 224, 2584 HN, The Hague"
+    },
+    {
+     "family": "Arial, Helvetica, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "30.43px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 1,
+     "example": "Sunday closed​"
+    }
+   ],
+   "button": [
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "normal",
+     "letter_spacing": "1.5px",
+     "transform": "none",
+     "color": "#ffffff",
+     "count": 3,
+     "example": "About our story"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "23.97px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 1,
+     "example": "Send"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "normal",
+     "letter_spacing": "0.85px",
+     "transform": "none",
+     "color": "#ffffff",
+     "count": 1,
+     "example": "Send us a message"
+    }
+   ],
+   "link": [
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "22px",
+     "line_height": "39.6px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 5,
+     "example": "her website"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "22px",
+     "line_height": "39.6px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 4,
+     "example": "website."
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "22px",
+     "line_height": "38.5px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 2,
+     "example": "sandradelgadoquist.com"
+    },
+    {
+     "family": "lato-light",
+     "weight": "400",
+     "style": "normal",
+     "size": "18px",
+     "line_height": "38.5px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 1,
+     "example": "Founder & Director, Homeopath & Reiki Teacher"
+    }
+   ]
+  },
+  "/services-1": {
+   "h1": [
+    {
+     "family": "futura-lt-w01-book, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "40px",
+     "line_height": "normal",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "Your path to Vitality & Well Being"
+    }
+   ],
+   "h2": [
+    {
+     "family": "futura-lt-w01-book, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "38px",
+     "line_height": "normal",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 3,
+     "example": "Vitality Taster"
+    },
+    {
+     "family": "futura-lt-w01-book, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "41px",
+     "line_height": "normal",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "Empower yourself on your healing journey"
+    }
+   ],
+   "h3": [],
+   "h4": [],
+   "h5": [],
+   "h6": [],
+   "body": [
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "16px",
+     "line_height": "28.8px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 17,
+     "example": "Relax & Recharge with our introductory package, in"
+    },
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "22px",
+     "line_height": "39.6px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 13,
+     "example": "At The Hague Natural Health Centre, we believe tha"
+    },
+    {
+     "family": "futura-lt-w01-book, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "18px",
+     "line_height": "24.3px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 6,
+     "example": "We offer One off sessions or Package Prices"
+    },
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "16px",
+     "line_height": "39.6px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "A comprehensive wellness journey for Cancer recove"
+    },
+    {
+     "family": "futura-lt-w01-book, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "26px",
+     "line_height": "normal",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "Why choose to work with us?"
+    },
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "700",
+     "style": "normal",
+     "size": "22px",
+     "line_height": "39.6px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "Important Disclaimer:"
+    }
+   ],
+   "nav": [
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "50px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 14,
+     "example": "Home"
+    }
+   ],
+   "footer": [
+    {
+     "family": "futura-lt-w01-light, futura-lt-w05-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "30.43px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 6,
+     "example": "Monday appointment only"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "30.43px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 6,
+     "example": "The Hague Natural Health Centre"
+    },
+    {
+     "family": "helvetica-w01-light, helvetica-w02-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "16px",
+     "line_height": "28.64px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 3,
+     "example": "©2023 The Hague Natural Health Centre  |  Design b"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "18px",
+     "line_height": "32.22px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 2,
+     "example": "Opening hours"
+    },
+    {
+     "family": "Arial, Helvetica, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "30.43px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 2,
+     "example": "Badhuisstraat 224, 2584 HN, The Hague"
+    },
+    {
+     "family": "Arial, Helvetica, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "30.43px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 1,
+     "example": "Sunday closed​"
+    }
+   ],
+   "button": [
+    {
+     "family": "avenir-lt-w01_35-light1475496, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "normal",
+     "letter_spacing": "3.75px",
+     "transform": "none",
+     "color": "#ffffff",
+     "count": 1,
+     "example": "Get in Touch"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "normal",
+     "letter_spacing": "0.85px",
+     "transform": "none",
+     "color": "#ffffff",
+     "count": 1,
+     "example": "Send us a message"
+    }
+   ],
+   "link": []
+  },
+  "/contact": {
+   "h1": [
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "56px",
+     "line_height": "78.96px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#f4f3eb",
+     "count": 1,
+     "example": "Contact"
+    },
+    {
+     "family": "futura-lt-w01-book, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "30px",
+     "line_height": "45px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 1,
+     "example": "Contact us"
+    }
+   ],
+   "h2": [],
+   "h3": [],
+   "h4": [],
+   "h5": [],
+   "h6": [],
+   "body": [],
+   "nav": [
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "50px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 12,
+     "example": "Home"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "50px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 2,
+     "example": "Contact"
+    }
+   ],
+   "footer": [
+    {
+     "family": "futura-lt-w01-light, futura-lt-w05-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "30.43px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 6,
+     "example": "Monday appointment only"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "30.43px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 6,
+     "example": "The Hague Natural Health Centre"
+    },
+    {
+     "family": "helvetica-w01-light, helvetica-w02-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "16px",
+     "line_height": "28.64px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 3,
+     "example": "©2023 The Hague Natural Health Centre  |  Design b"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "18px",
+     "line_height": "32.22px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 2,
+     "example": "Opening hours"
+    },
+    {
+     "family": "Arial, Helvetica, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "30.43px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 2,
+     "example": "Badhuisstraat 224, 2584 HN, The Hague"
+    },
+    {
+     "family": "Arial, Helvetica, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "30.43px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 1,
+     "example": "Sunday closed​"
+    }
+   ],
+   "button": [
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "normal",
+     "letter_spacing": "0.85px",
+     "transform": "none",
+     "color": "#ffffff",
+     "count": 1,
+     "example": "Send us a message"
+    }
+   ],
+   "link": []
+  },
+  "/events": {
+   "h1": [],
+   "h2": [
+    {
+     "family": "wfont_fdfc6f_9ffd0a4644fd4f1b80605af12ceae8fc, wf_9ffd0a4644fd4f1b80605af12, orig_fsp_demo_blgnxtrlghtsmcndnsd_regular",
+     "weight": "400",
+     "style": "normal",
+     "size": "36px",
+     "line_height": "57.6px",
+     "letter_spacing": "3.6px",
+     "transform": "none",
+     "color": "#9f8c82",
+     "count": 1,
+     "example": "EVENTS, TALKS AND WORKSHOPS"
+    }
+   ],
+   "h3": [],
+   "h4": [],
+   "h5": [],
+   "h6": [],
+   "body": [
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "23px",
+     "line_height": "34.5px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "To be first to hear about free and paid talks, eve"
+    }
+   ],
+   "nav": [
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "50px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 12,
+     "example": "Home"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "50px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 2,
+     "example": "Events"
+    }
+   ],
+   "footer": [
+    {
+     "family": "futura-lt-w01-light, futura-lt-w05-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "30.43px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 6,
+     "example": "Monday appointment only"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "30.43px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 6,
+     "example": "The Hague Natural Health Centre"
+    },
+    {
+     "family": "helvetica-w01-light, helvetica-w02-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "16px",
+     "line_height": "28.64px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 3,
+     "example": "©2023 The Hague Natural Health Centre  |  Design b"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "18px",
+     "line_height": "32.22px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 2,
+     "example": "Opening hours"
+    },
+    {
+     "family": "Arial, Helvetica, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "30.43px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 2,
+     "example": "Badhuisstraat 224, 2584 HN, The Hague"
+    },
+    {
+     "family": "Arial, Helvetica, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "30.43px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 1,
+     "example": "Sunday closed​"
+    }
+   ],
+   "button": [
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "normal",
+     "letter_spacing": "0.85px",
+     "transform": "none",
+     "color": "#ffffff",
+     "count": 1,
+     "example": "Send us a message"
+    }
+   ],
+   "link": [
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "23px",
+     "line_height": "34.5px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#a08d83",
+     "count": 1,
+     "example": "To be first to hear about free and paid talks, eve"
+    }
+   ]
+  },
+  "/blog": {
+   "h1": [],
+   "h2": [
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "22px",
+     "line_height": "30.8px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 9,
+     "example": "Tissue Salts: Tiny Minerals, Big Jobs"
+    }
+   ],
+   "h3": [],
+   "h4": [],
+   "h5": [],
+   "h6": [],
+   "body": [
+    {
+     "family": "wfont_fdfc6f_9ffd0a4644fd4f1b80605af12ceae8fc, wf_9ffd0a4644fd4f1b80605af12, orig_fsp_demo_blgnxtrlghtsmcndnsd_regular",
+     "weight": "400",
+     "style": "normal",
+     "size": "34px",
+     "line_height": "47.94px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 1,
+     "example": "THE NATURAL HEALTH BLOG"
+    },
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "20px",
+     "line_height": "33.4px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "We take pride in sharing our knowledge and hope th"
+    }
+   ],
+   "nav": [
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "50px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 12,
+     "example": "Home"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "50px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 2,
+     "example": "Blog"
+    }
+   ],
+   "footer": [
+    {
+     "family": "futura-lt-w01-light, futura-lt-w05-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "30.43px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 6,
+     "example": "Monday appointment only"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "30.43px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 6,
+     "example": "The Hague Natural Health Centre"
+    },
+    {
+     "family": "helvetica-w01-light, helvetica-w02-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "16px",
+     "line_height": "28.64px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 3,
+     "example": "©2023 The Hague Natural Health Centre  |  Design b"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "18px",
+     "line_height": "32.22px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 2,
+     "example": "Opening hours"
+    },
+    {
+     "family": "Arial, Helvetica, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "30.43px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 2,
+     "example": "Badhuisstraat 224, 2584 HN, The Hague"
+    },
+    {
+     "family": "Arial, Helvetica, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "30.43px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 1,
+     "example": "Sunday closed​"
+    }
+   ],
+   "button": [
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "normal",
+     "letter_spacing": "0.85px",
+     "transform": "none",
+     "color": "#ffffff",
+     "count": 1,
+     "example": "Send us a message"
+    }
+   ],
+   "link": [
+    {
+     "family": "wfont_fdfc6f_9ffd0a4644fd4f1b80605af12ceae8fc, wf_9ffd0a4644fd4f1b80605af12, orig_fsp_demo_blgnxtrlghtsmcndnsd_regular",
+     "weight": "400",
+     "style": "normal",
+     "size": "34px",
+     "line_height": "47.94px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 1,
+     "example": "THE NATURAL HEALTH BLOG"
+    }
+   ]
+  },
+  "/post/the-lost-art-of-ceremony": {
+   "h1": [
+    {
+     "family": "futura-lt-w01-book, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "40px",
+     "line_height": "50px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 1,
+     "example": "The Lost Art of Ceremony"
+    }
+   ],
+   "h2": [
+    {
+     "family": "futura-lt-w01-book, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "16px",
+     "line_height": "16px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 1,
+     "example": "Comments"
+    }
+   ],
+   "h3": [],
+   "h4": [],
+   "h5": [],
+   "h6": [],
+   "body": [
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "18px",
+     "line_height": "27px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 13,
+     "example": "But since I’ve participated in various groups that"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "700",
+     "style": "normal",
+     "size": "18px",
+     "line_height": "27px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#000000",
+     "count": 5,
+     "example": "Bringing Back the Magic"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "18px",
+     "line_height": "27px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#000000",
+     "count": 5,
+     "example": "In the past, I’ve never been one to join a \"women’"
+    }
+   ],
+   "nav": [
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "50px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 14,
+     "example": "Home"
+    }
+   ],
+   "footer": [
+    {
+     "family": "futura-lt-w01-light, futura-lt-w05-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "30.43px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 6,
+     "example": "Monday appointment only"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "30.43px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 6,
+     "example": "The Hague Natural Health Centre"
+    },
+    {
+     "family": "helvetica-w01-light, helvetica-w02-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "16px",
+     "line_height": "28.64px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 3,
+     "example": "©2023 The Hague Natural Health Centre  |  Design b"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "18px",
+     "line_height": "32.22px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 2,
+     "example": "Opening hours"
+    },
+    {
+     "family": "Arial, Helvetica, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "30.43px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 2,
+     "example": "Badhuisstraat 224, 2584 HN, The Hague"
+    },
+    {
+     "family": "Arial, Helvetica, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "30.43px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 1,
+     "example": "Sunday closed​"
+    }
+   ],
+   "button": [
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "normal",
+     "letter_spacing": "0.85px",
+     "transform": "none",
+     "color": "#ffffff",
+     "count": 1,
+     "example": "Send us a message"
+    }
+   ],
+   "link": []
+  },
+  "/service-page/reiki-session": {
+   "h1": [
+    {
+     "family": "futura-lt-w01-book, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "40px",
+     "line_height": "56px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "Reiki Session"
+    }
+   ],
+   "h2": [
+    {
+     "family": "futura-lt-w01-book, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "20px",
+     "line_height": "28px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 2,
+     "example": "Service Description"
+    }
+   ],
+   "h3": [],
+   "h4": [],
+   "h5": [],
+   "h6": [],
+   "body": [
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "16px",
+     "line_height": "24px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 3,
+     "example": "An energetic massage"
+    }
+   ],
+   "nav": [
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "50px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 14,
+     "example": "Home"
+    }
+   ],
+   "footer": [
+    {
+     "family": "futura-lt-w01-light, futura-lt-w05-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "30.43px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 6,
+     "example": "Monday appointment only"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "30.43px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 6,
+     "example": "The Hague Natural Health Centre"
+    },
+    {
+     "family": "helvetica-w01-light, helvetica-w02-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "16px",
+     "line_height": "28.64px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 3,
+     "example": "©2023 The Hague Natural Health Centre  |  Design b"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "18px",
+     "line_height": "32.22px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 2,
+     "example": "Opening hours"
+    },
+    {
+     "family": "Arial, Helvetica, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "30.43px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 2,
+     "example": "Badhuisstraat 224, 2584 HN, The Hague"
+    },
+    {
+     "family": "Arial, Helvetica, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "30.43px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 1,
+     "example": "Sunday closed​"
+    }
+   ],
+   "button": [
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "normal",
+     "letter_spacing": "0.85px",
+     "transform": "none",
+     "color": "#ffffff",
+     "count": 1,
+     "example": "Send us a message"
+    }
+   ],
+   "link": []
+  }
+ },
+ "mobile": {
+  "/": {
+   "h1": [
+    {
+     "family": "wfont_fdfc6f_9ffd0a4644fd4f1b80605af12ceae8fc, wf_9ffd0a4644fd4f1b80605af12, orig_fsp_demo_blgnxtrlghtsmcndnsd_regular",
+     "weight": "400",
+     "style": "normal",
+     "size": "20px",
+     "line_height": "normal",
+     "letter_spacing": "7px",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 1,
+     "example": "THE HAGUE"
+    }
+   ],
+   "h2": [
+    {
+     "family": "wfont_fdfc6f_9ffd0a4644fd4f1b80605af12ceae8fc, wf_9ffd0a4644fd4f1b80605af12, orig_fsp_demo_blgnxtrlghtsmcndnsd_regular",
+     "weight": "400",
+     "style": "normal",
+     "size": "22px",
+     "line_height": "35.2px",
+     "letter_spacing": "2.2px",
+     "transform": "none",
+     "color": "#9f8c82",
+     "count": 2,
+     "example": "How can we help?"
+    },
+    {
+     "family": "wfont_fdfc6f_9ffd0a4644fd4f1b80605af12ceae8fc, wf_9ffd0a4644fd4f1b80605af12, orig_fsp_demo_blgnxtrlghtsmcndnsd_regular",
+     "weight": "400",
+     "style": "normal",
+     "size": "26px",
+     "line_height": "normal",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#efece2",
+     "count": 1,
+     "example": "NATURAL HEALTH CENTRE"
+    },
+    {
+     "family": "futura-lt-w01-book, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "20px",
+     "line_height": "36px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#f4f3eb",
+     "count": 1,
+     "example": "Helping people feel\nConfident,    Healthy,    Ener"
+    },
+    {
+     "family": "wfont_fdfc6f_9ffd0a4644fd4f1b80605af12ceae8fc, wf_9ffd0a4644fd4f1b80605af12, orig_fsp_demo_blgnxtrlghtsmcndnsd_regular",
+     "weight": "400",
+     "style": "normal",
+     "size": "23px",
+     "line_height": "36.8px",
+     "letter_spacing": "2.3px",
+     "transform": "none",
+     "color": "#9f8c82",
+     "count": 1,
+     "example": "NATURE INSPIRED HEALTHCARE"
+    },
+    {
+     "family": "futura-lt-w01-light, futura-lt-w05-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "24px",
+     "line_height": "normal",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#ffffff",
+     "count": 1,
+     "example": "\"At last! A forward thinking, holistic clinic, wit"
+    },
+    {
+     "family": "futura-lt-w01-book, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "30px",
+     "line_height": "42.3px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "How to engage?"
+    },
+    {
+     "family": "wfont_fdfc6f_9ffd0a4644fd4f1b80605af12ceae8fc, wf_9ffd0a4644fd4f1b80605af12, orig_fsp_demo_blgnxtrlghtsmcndnsd_regular",
+     "weight": "400",
+     "style": "normal",
+     "size": "22px",
+     "line_height": "normal",
+     "letter_spacing": "2.2px",
+     "transform": "none",
+     "color": "#ffffff",
+     "count": 1,
+     "example": "NEVER MISS AN EVENT"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "23.8px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#ffffff",
+     "count": 1,
+     "example": "Be first to hear about our monthly talks, special "
+    }
+   ],
+   "h3": [
+    {
+     "family": "futura-lt-w01-book, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "20px",
+     "line_height": "26.8px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 3,
+     "example": "Sandra Delgado Quist"
+    }
+   ],
+   "h4": [],
+   "h5": [],
+   "h6": [],
+   "body": [
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "16px",
+     "line_height": "28.8px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#857166",
+     "count": 2,
+     "example": "We believe that nature is the key to truly restori"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "25.05px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#857166",
+     "count": 2,
+     "example": "Our bodies have self-healing power which is automa"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "18px",
+     "line_height": "30.06px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 2,
+     "example": "If you know which type of therapy you would like t"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "25.05px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "​"
+    },
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "20px",
+     "line_height": "33.4px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#eeebe2",
+     "count": 1,
+     "example": "Lucie, Rotterdam"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "19px",
+     "line_height": "34.2px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "Sandra is founder of The Hague Natural Health Cent"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "20px",
+     "line_height": "36px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "Ira is an accredited acupuncturist and herbalist b"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "20px",
+     "line_height": "39.6px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "Audrey is a trained nutritionist specialising in h"
+    },
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "27px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "True health begins at home. In ancient times our m"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "27px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#9f8c82",
+     "count": 1,
+     "example": "​"
+    }
+   ],
+   "nav": [],
+   "footer": [
+    {
+     "family": "futura-lt-w01-light, futura-lt-w05-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "26.85px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 6,
+     "example": "Monday appointment only"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "26.85px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 6,
+     "example": "The Hague Natural Health Centre"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "16px",
+     "line_height": "28.64px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 2,
+     "example": "Opening hours"
+    },
+    {
+     "family": "Arial, Helvetica, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "26.85px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 2,
+     "example": "Badhuisstraat 224, 2584 HN, The Hague"
+    },
+    {
+     "family": "helvetica-w01-light, helvetica-w02-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "14px",
+     "line_height": "25.06px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 2,
+     "example": "©2023 The Hague Natural Health Centre  |  Design b"
+    },
+    {
+     "family": "Arial, Helvetica, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "26.85px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 1,
+     "example": "Sunday closed​"
+    },
+    {
+     "family": "helvetica-w01-light, helvetica-w02-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "16px",
+     "line_height": "28.64px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 1,
+     "example": "|"
+    }
+   ],
+   "button": [
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "16px",
+     "line_height": "normal",
+     "letter_spacing": "0.8px",
+     "transform": "none",
+     "color": "#ffffff",
+     "count": 1,
+     "example": "Go to our therapists"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15.8667px",
+     "line_height": "22.372px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 1,
+     "example": "Send"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "normal",
+     "letter_spacing": "0.85px",
+     "transform": "none",
+     "color": "#ffffff",
+     "count": 1,
+     "example": "Send us a message"
+    }
+   ],
+   "link": []
+  },
+  "/about-us": {
+   "h1": [
+    {
+     "family": "futura-lt-w01-book, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "35px",
+     "line_height": "normal",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "Who are we?"
+    }
+   ],
+   "h2": [
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "normal",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 16,
+     "example": "Founder and Director\nHomeopath\nReiki Practitioner"
+    },
+    {
+     "family": "lato-light",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "normal",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 10,
+     "example": "Cynthia Ramirez"
+    },
+    {
+     "family": "lato-light",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "normal",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 7,
+     "example": "Life Energy Coach, Systemic Constellations Therapi"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "18px",
+     "line_height": "30.6px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#857166",
+     "count": 3,
+     "example": "Healthy Communities"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "normal",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 2,
+     "example": "Sandra Delgado Quist"
+    },
+    {
+     "family": "futura-lt-w01-book, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "27px",
+     "line_height": "normal",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "The Heart behind The Hague\nNatural Health Center"
+    },
+    {
+     "family": "wfont_fdfc6f_9ffd0a4644fd4f1b80605af12ceae8fc, wf_9ffd0a4644fd4f1b80605af12, orig_fsp_demo_blgnxtrlghtsmcndnsd_regular",
+     "weight": "400",
+     "style": "normal",
+     "size": "22px",
+     "line_height": "35.2px",
+     "letter_spacing": "2.2px",
+     "transform": "none",
+     "color": "#9f8c82",
+     "count": 1,
+     "example": "Sustainable Living"
+    },
+    {
+     "family": "wfont_fdfc6f_9ffd0a4644fd4f1b80605af12ceae8fc, wf_9ffd0a4644fd4f1b80605af12, orig_fsp_demo_blgnxtrlghtsmcndnsd_regular",
+     "weight": "400",
+     "style": "normal",
+     "size": "22px",
+     "line_height": "normal",
+     "letter_spacing": "2.2px",
+     "transform": "none",
+     "color": "#ffffff",
+     "count": 1,
+     "example": "NEVER MISS AN EVENT"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "23.8px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#ffffff",
+     "count": 1,
+     "example": "Be first to hear about our free monthly talks, spe"
+    }
+   ],
+   "h3": [],
+   "h4": [],
+   "h5": [],
+   "h6": [
+    {
+     "family": "futura-lt-w01-book, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "23px",
+     "line_height": "31.05px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "MEET OUR THERAPISTS"
+    }
+   ],
+   "body": [
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "18px",
+     "line_height": "32.4px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 49,
+     "example": "​"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "18px",
+     "line_height": "32.4px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 14,
+     "example": "Sandra a Homeopath and Shamanic Energy Medicine Wo"
+    },
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "20px",
+     "line_height": "36px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 3,
+     "example": "Welcome to The Hague Natural Health Center — a san"
+    },
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "18px",
+     "line_height": "32.4px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#a08d83",
+     "count": 2,
+     "example": "We work together, as practitioners, to share our e"
+    },
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "22px",
+     "line_height": "31.24px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "Sandra's story\n\nAfter years of living a fast-paced"
+    },
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "18px",
+     "line_height": "32.4px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#9f8c82",
+     "count": 1,
+     "example": "​"
+    },
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "18px",
+     "line_height": "32.4px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 1,
+     "example": "​​​"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "18px",
+     "line_height": "31.5px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 1,
+     "example": "To find out more about Sandra, please visit her we"
+    },
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "28.39px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "Gratiela  works in English, Dutch and Romanian"
+    },
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "18px",
+     "line_height": "31.5px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 1,
+     "example": "Homeopathy defines health as the ability to adapt "
+    },
+    {
+     "family": "lato-light",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "31.5px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 1,
+     "example": "In ancient times, we were more connected to our wo"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "31.5px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "Nature already provides many of the \"medicines\" we"
+    }
+   ],
+   "nav": [],
+   "footer": [
+    {
+     "family": "futura-lt-w01-light, futura-lt-w05-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "26.85px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 6,
+     "example": "Monday appointment only"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "26.85px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 6,
+     "example": "The Hague Natural Health Centre"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "16px",
+     "line_height": "28.64px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 2,
+     "example": "Opening hours"
+    },
+    {
+     "family": "Arial, Helvetica, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "26.85px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 2,
+     "example": "Badhuisstraat 224, 2584 HN, The Hague"
+    },
+    {
+     "family": "helvetica-w01-light, helvetica-w02-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "14px",
+     "line_height": "25.06px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 2,
+     "example": "©2023 The Hague Natural Health Centre  |  Design b"
+    },
+    {
+     "family": "Arial, Helvetica, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "26.85px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 1,
+     "example": "Sunday closed​"
+    },
+    {
+     "family": "helvetica-w01-light, helvetica-w02-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "16px",
+     "line_height": "28.64px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 1,
+     "example": "|"
+    }
+   ],
+   "button": [
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "normal",
+     "letter_spacing": "1.5px",
+     "transform": "none",
+     "color": "#ffffff",
+     "count": 3,
+     "example": "About our story"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15.8667px",
+     "line_height": "22.372px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 1,
+     "example": "Send"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "normal",
+     "letter_spacing": "0.85px",
+     "transform": "none",
+     "color": "#ffffff",
+     "count": 1,
+     "example": "Send us a message"
+    }
+   ],
+   "link": [
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "18px",
+     "line_height": "32.4px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 5,
+     "example": "her website"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "18px",
+     "line_height": "32.4px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 4,
+     "example": "website."
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "18px",
+     "line_height": "31.5px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 2,
+     "example": "sandradelgadoquist.com"
+    }
+   ]
+  },
+  "/services-1": {
+   "h1": [
+    {
+     "family": "futura-lt-w01-book, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "29px",
+     "line_height": "normal",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "Your path to Vitality & Well Being"
+    }
+   ],
+   "h2": [
+    {
+     "family": "futura-lt-w01-book, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "28px",
+     "line_height": "normal",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 3,
+     "example": "Vitality Taster"
+    },
+    {
+     "family": "futura-lt-w01-book, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "24px",
+     "line_height": "normal",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "Empower yourself on your healing journey"
+    }
+   ],
+   "h3": [],
+   "h4": [],
+   "h5": [],
+   "h6": [],
+   "body": [
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "16px",
+     "line_height": "28.8px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 17,
+     "example": "Relax & Recharge with our introductory package, in"
+    },
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "30.6px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 13,
+     "example": "At The Hague Natural Health Centre, we believe tha"
+    },
+    {
+     "family": "futura-lt-w01-book, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "16px",
+     "line_height": "21.6px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 6,
+     "example": "We offer One off sessions or Package Prices"
+    },
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "16px",
+     "line_height": "39.6px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "A comprehensive wellness journey for Cancer recove"
+    },
+    {
+     "family": "futura-lt-w01-book, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "20px",
+     "line_height": "normal",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "Why choose to work with us?"
+    },
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "700",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "30.6px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "Important Disclaimer:"
+    }
+   ],
+   "nav": [],
+   "footer": [
+    {
+     "family": "futura-lt-w01-light, futura-lt-w05-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "26.85px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 6,
+     "example": "Monday appointment only"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "26.85px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 6,
+     "example": "The Hague Natural Health Centre"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "16px",
+     "line_height": "28.64px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 2,
+     "example": "Opening hours"
+    },
+    {
+     "family": "Arial, Helvetica, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "26.85px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 2,
+     "example": "Badhuisstraat 224, 2584 HN, The Hague"
+    },
+    {
+     "family": "helvetica-w01-light, helvetica-w02-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "14px",
+     "line_height": "25.06px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 2,
+     "example": "©2023 The Hague Natural Health Centre  |  Design b"
+    },
+    {
+     "family": "Arial, Helvetica, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "26.85px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 1,
+     "example": "Sunday closed​"
+    },
+    {
+     "family": "helvetica-w01-light, helvetica-w02-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "16px",
+     "line_height": "28.64px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 1,
+     "example": "|"
+    }
+   ],
+   "button": [
+    {
+     "family": "avenir-lt-w01_35-light1475496, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "normal",
+     "letter_spacing": "3.75px",
+     "transform": "none",
+     "color": "#ffffff",
+     "count": 1,
+     "example": "Get in Touch"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "normal",
+     "letter_spacing": "0.85px",
+     "transform": "none",
+     "color": "#ffffff",
+     "count": 1,
+     "example": "Send us a message"
+    }
+   ],
+   "link": []
+  },
+  "/contact": {
+   "h1": [
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "30px",
+     "line_height": "42.3px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#f4f3eb",
+     "count": 1,
+     "example": "Contact"
+    },
+    {
+     "family": "futura-lt-w01-book, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "30px",
+     "line_height": "45px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 1,
+     "example": "Contact us"
+    }
+   ],
+   "h2": [],
+   "h3": [],
+   "h4": [],
+   "h5": [],
+   "h6": [],
+   "body": [],
+   "nav": [],
+   "footer": [
+    {
+     "family": "futura-lt-w01-light, futura-lt-w05-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "26.85px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 6,
+     "example": "Monday appointment only"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "26.85px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 6,
+     "example": "The Hague Natural Health Centre"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "16px",
+     "line_height": "28.64px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 2,
+     "example": "Opening hours"
+    },
+    {
+     "family": "Arial, Helvetica, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "26.85px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 2,
+     "example": "Badhuisstraat 224, 2584 HN, The Hague"
+    },
+    {
+     "family": "helvetica-w01-light, helvetica-w02-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "14px",
+     "line_height": "25.06px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 2,
+     "example": "©2023 The Hague Natural Health Centre  |  Design b"
+    },
+    {
+     "family": "Arial, Helvetica, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "26.85px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 1,
+     "example": "Sunday closed​"
+    },
+    {
+     "family": "helvetica-w01-light, helvetica-w02-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "16px",
+     "line_height": "28.64px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 1,
+     "example": "|"
+    }
+   ],
+   "button": [
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "normal",
+     "letter_spacing": "0.85px",
+     "transform": "none",
+     "color": "#ffffff",
+     "count": 1,
+     "example": "Send us a message"
+    }
+   ],
+   "link": []
+  },
+  "/events": {
+   "h1": [],
+   "h2": [
+    {
+     "family": "wfont_fdfc6f_9ffd0a4644fd4f1b80605af12ceae8fc, wf_9ffd0a4644fd4f1b80605af12, orig_fsp_demo_blgnxtrlghtsmcndnsd_regular",
+     "weight": "400",
+     "style": "normal",
+     "size": "23px",
+     "line_height": "36.8px",
+     "letter_spacing": "2.3px",
+     "transform": "none",
+     "color": "#9f8c82",
+     "count": 1,
+     "example": "EVENTS, TALKS AND WORKSHOPS"
+    }
+   ],
+   "h3": [],
+   "h4": [],
+   "h5": [],
+   "h6": [],
+   "body": [
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "22.5px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "To be first to hear about free and paid talks, eve"
+    }
+   ],
+   "nav": [],
+   "footer": [
+    {
+     "family": "futura-lt-w01-light, futura-lt-w05-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "26.85px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 6,
+     "example": "Monday appointment only"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "26.85px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 6,
+     "example": "The Hague Natural Health Centre"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "16px",
+     "line_height": "28.64px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 2,
+     "example": "Opening hours"
+    },
+    {
+     "family": "Arial, Helvetica, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "26.85px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 2,
+     "example": "Badhuisstraat 224, 2584 HN, The Hague"
+    },
+    {
+     "family": "helvetica-w01-light, helvetica-w02-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "14px",
+     "line_height": "25.06px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 2,
+     "example": "©2023 The Hague Natural Health Centre  |  Design b"
+    },
+    {
+     "family": "Arial, Helvetica, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "26.85px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 1,
+     "example": "Sunday closed​"
+    },
+    {
+     "family": "helvetica-w01-light, helvetica-w02-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "16px",
+     "line_height": "28.64px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 1,
+     "example": "|"
+    }
+   ],
+   "button": [
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "normal",
+     "letter_spacing": "0.85px",
+     "transform": "none",
+     "color": "#ffffff",
+     "count": 1,
+     "example": "Send us a message"
+    }
+   ],
+   "link": [
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "22.5px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#a08d83",
+     "count": 1,
+     "example": "To be first to hear about free and paid talks, eve"
+    }
+   ]
+  },
+  "/blog": {
+   "h1": [],
+   "h2": [
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "22px",
+     "line_height": "30.8px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 24,
+     "example": "Tissue Salts: Tiny Minerals, Big Jobs"
+    }
+   ],
+   "h3": [],
+   "h4": [],
+   "h5": [],
+   "h6": [],
+   "body": [
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "18px",
+     "line_height": "27px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 24,
+     "example": "Every atom in your body came from a star, and the "
+    },
+    {
+     "family": "wfont_fdfc6f_9ffd0a4644fd4f1b80605af12ceae8fc, wf_9ffd0a4644fd4f1b80605af12, orig_fsp_demo_blgnxtrlghtsmcndnsd_regular",
+     "weight": "400",
+     "style": "normal",
+     "size": "22px",
+     "line_height": "31.02px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 1,
+     "example": "THE NATURAL HEALTH BLOG"
+    },
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "25.05px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "We take pride in sharing our knowledge and hope th"
+    }
+   ],
+   "nav": [],
+   "footer": [
+    {
+     "family": "futura-lt-w01-light, futura-lt-w05-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "26.85px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 6,
+     "example": "Monday appointment only"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "26.85px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 6,
+     "example": "The Hague Natural Health Centre"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "16px",
+     "line_height": "28.64px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 2,
+     "example": "Opening hours"
+    },
+    {
+     "family": "Arial, Helvetica, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "26.85px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 2,
+     "example": "Badhuisstraat 224, 2584 HN, The Hague"
+    },
+    {
+     "family": "helvetica-w01-light, helvetica-w02-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "14px",
+     "line_height": "25.06px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 2,
+     "example": "©2023 The Hague Natural Health Centre  |  Design b"
+    },
+    {
+     "family": "Arial, Helvetica, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "26.85px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 1,
+     "example": "Sunday closed​"
+    },
+    {
+     "family": "helvetica-w01-light, helvetica-w02-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "16px",
+     "line_height": "28.64px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 1,
+     "example": "|"
+    }
+   ],
+   "button": [
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "normal",
+     "letter_spacing": "0.85px",
+     "transform": "none",
+     "color": "#ffffff",
+     "count": 1,
+     "example": "Send us a message"
+    }
+   ],
+   "link": [
+    {
+     "family": "wfont_fdfc6f_9ffd0a4644fd4f1b80605af12ceae8fc, wf_9ffd0a4644fd4f1b80605af12, orig_fsp_demo_blgnxtrlghtsmcndnsd_regular",
+     "weight": "400",
+     "style": "normal",
+     "size": "22px",
+     "line_height": "31.02px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 1,
+     "example": "THE NATURAL HEALTH BLOG"
+    }
+   ]
+  },
+  "/post/the-lost-art-of-ceremony": {
+   "h1": [
+    {
+     "family": "futura-lt-w01-book, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "26px",
+     "line_height": "36.4px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 1,
+     "example": "The Lost Art of Ceremony"
+    }
+   ],
+   "h2": [
+    {
+     "family": "futura-lt-w01-book, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "14px",
+     "line_height": "14px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 1,
+     "example": "Comments"
+    }
+   ],
+   "h3": [],
+   "h4": [],
+   "h5": [],
+   "h6": [],
+   "body": [
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "16px",
+     "line_height": "24px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#6a5d57",
+     "count": 13,
+     "example": "But since I’ve participated in various groups that"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "700",
+     "style": "normal",
+     "size": "16px",
+     "line_height": "24px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#000000",
+     "count": 5,
+     "example": "Bringing Back the Magic"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "16px",
+     "line_height": "24px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#000000",
+     "count": 5,
+     "example": "In the past, I’ve never been one to join a \"women’"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "14px",
+     "line_height": "22px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#ffffff",
+     "count": 1,
+     "example": "Post"
+    }
+   ],
+   "nav": [],
+   "footer": [
+    {
+     "family": "futura-lt-w01-light, futura-lt-w05-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "26.85px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 6,
+     "example": "Monday appointment only"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "26.85px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 6,
+     "example": "The Hague Natural Health Centre"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "16px",
+     "line_height": "28.64px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 2,
+     "example": "Opening hours"
+    },
+    {
+     "family": "Arial, Helvetica, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "26.85px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 2,
+     "example": "Badhuisstraat 224, 2584 HN, The Hague"
+    },
+    {
+     "family": "helvetica-w01-light, helvetica-w02-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "14px",
+     "line_height": "25.06px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 2,
+     "example": "©2023 The Hague Natural Health Centre  |  Design b"
+    },
+    {
+     "family": "Arial, Helvetica, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "26.85px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 1,
+     "example": "Sunday closed​"
+    },
+    {
+     "family": "helvetica-w01-light, helvetica-w02-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "16px",
+     "line_height": "28.64px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 1,
+     "example": "|"
+    }
+   ],
+   "button": [
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "normal",
+     "letter_spacing": "0.85px",
+     "transform": "none",
+     "color": "#ffffff",
+     "count": 1,
+     "example": "Send us a message"
+    }
+   ],
+   "link": []
+  },
+  "/service-page/reiki-session": {
+   "h1": [
+    {
+     "family": "futura-lt-w01-book, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "32px",
+     "line_height": "42.56px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 1,
+     "example": "Reiki Session"
+    }
+   ],
+   "h2": [
+    {
+     "family": "futura-lt-w01-book, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "20px",
+     "line_height": "28px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 2,
+     "example": "Service Description"
+    }
+   ],
+   "h3": [],
+   "h4": [],
+   "h5": [],
+   "h6": [],
+   "body": [
+    {
+     "family": "futura-lt-w01-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "14px",
+     "line_height": "19.6px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 3,
+     "example": "An energetic massage"
+    }
+   ],
+   "nav": [],
+   "footer": [
+    {
+     "family": "futura-lt-w01-light, futura-lt-w05-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "26.85px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 6,
+     "example": "Monday appointment only"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "26.85px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 6,
+     "example": "The Hague Natural Health Centre"
+    },
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "16px",
+     "line_height": "28.64px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 2,
+     "example": "Opening hours"
+    },
+    {
+     "family": "Arial, Helvetica, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "26.85px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#352f2b",
+     "count": 2,
+     "example": "Badhuisstraat 224, 2584 HN, The Hague"
+    },
+    {
+     "family": "helvetica-w01-light, helvetica-w02-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "14px",
+     "line_height": "25.06px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 2,
+     "example": "©2023 The Hague Natural Health Centre  |  Design b"
+    },
+    {
+     "family": "Arial, Helvetica, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "15px",
+     "line_height": "26.85px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 1,
+     "example": "Sunday closed​"
+    },
+    {
+     "family": "helvetica-w01-light, helvetica-w02-light, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "16px",
+     "line_height": "28.64px",
+     "letter_spacing": "normal",
+     "transform": "none",
+     "color": "#486f55",
+     "count": 1,
+     "example": "|"
+    }
+   ],
+   "button": [
+    {
+     "family": "lato-light, lato, sans-serif",
+     "weight": "400",
+     "style": "normal",
+     "size": "17px",
+     "line_height": "normal",
+     "letter_spacing": "0.85px",
+     "transform": "none",
+     "color": "#ffffff",
+     "count": 1,
+     "example": "Send us a message"
+    }
+   ],
+   "link": []
+  }
+ }
+}

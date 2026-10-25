@@ -1,6 +1,9 @@
 // Renders every event page from event-pages-sitemap.xml (4 at a time) and writes pages/events.json. No attendee data is read.
-import { chromium, pool, save, HIDE_CHROME_CSS } from "./web.mjs";
+import { OUT, chromium, pool, save, sleep, gotoPolitely, HIDE_CHROME_CSS } from "./web.mjs";
+import { readFileSync } from "node:fs";
 import { loadSitemaps } from "./sitemap.mjs";
+
+const isBad = (e) => e.error || /just a moment/i.test(e.title ?? "");
 
 // Wix rich content (Ricos) -> simple Markdown text.
 const text = (n) => n.textData?.text ?? (n.nodes ?? []).map(text).join("");
@@ -15,8 +18,7 @@ const ricos = (nodes = []) => nodes.map((n) => {
 async function scrape(ctx, { url, lastmod }) {
   const page = await ctx.newPage();
   try {
-    await page.goto(url, { waitUntil: "load", timeout: 90000 });
-    await page.waitForLoadState("networkidle", { timeout: 10000 }).catch(() => {});
+    await gotoPolitely(page, url);
     await page.addStyleTag({ content: HIDE_CHROME_CSS });
     await page.waitForSelector('[data-hook="tickets-picker"], [data-hook="ticket"]', { timeout: 4000 }).catch(() => {});
     const dom = await page.evaluate(() => {
@@ -60,18 +62,27 @@ async function scrape(ctx, { url, lastmod }) {
   }
 }
 
-const events = (await loadSitemaps()).filter((r) => r.type === "event-pages").slice(0, +process.env.LIMIT || undefined); // LIMIT=n for a quick test
+// RETRY=1 re-does only the entries in the existing events.json that failed; LIMIT=n for a quick test.
+const prev = process.env.RETRY ? JSON.parse(readFileSync(OUT + "pages/events.json", "utf8")) : null;
+const events = prev ?? (await loadSitemaps()).filter((r) => r.type === "event-pages").slice(0, +process.env.LIMIT || undefined);
 const browser = await chromium.launch();
 const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } });
 // Skip images, media and fonts: we only need text, and it keeps the load on the site low.
 await ctx.route("**/*", (r) => (["image", "media", "font"].includes(r.request().resourceType()) ? r.abort() : r.continue()));
 let done = 0;
-const out = await pool(events, 4, async (ev) => {
+const out = prev ? prev.map((e) => (isBad(e) ? { ...e, error: e.error ?? "bot check" } : e)) : await pool(events, 4, async (ev) => {
   const r = await scrape(ctx, ev);
   if (++done % 20 === 0) console.log(done, "/", events.length);
   return r;
 });
+// Retry failures one at a time, slowly.
+for (const [i, ev] of out.entries()) {
+  if (!ev.error && !isBad(ev)) continue;
+  await sleep(5000);
+  out[i] = await scrape(ctx, { url: ev.url, lastmod: ev.lastmod });
+  console.log("retry", ev.url, out[i].error ? "failed again" : "ok");
+}
 out.sort((a, b) => (a.start || "").localeCompare(b.start || ""));
 save("pages/events.json", JSON.stringify(out, null, 1) + "\n");
-console.log(`events: ${out.length}, failed: ${out.filter((o) => o.error).length}, no price text: ${out.filter((o) => !o.error && !o.price_text).length}`);
+console.log(`events: ${out.length}, failed: ${out.filter(isBad).length}, no price text: ${out.filter((o) => !o.error && !o.price_text).length}`);
 await browser.close();

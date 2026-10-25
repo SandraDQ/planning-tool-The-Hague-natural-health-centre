@@ -16,11 +16,9 @@ lastmod: "2026-09-14"
 
 ## NATURAL HEALTH CENTRE
 
-## Helping people feel  
+## Helping people feel Confident, Healthy, Energized
 
-Confident, Healthy, Energized
-
-[Embedded: Mailing List](https://www.powr.io/plugins/mailing-list/wix_cached_view?lang=en&dateNumberFormat=en-gb&isPrimaryLanguage=true&pageId=kah6r&compId=comp-m73dv4wk6&viewerCompId=comp-m73dv4wk6&siteRevision=901&viewMode=site&deviceType=desktop&locale=en&tz=Europe%2FAmsterdam&regionalLanguage=en&width=350&height=650&instance=_LGJn_mcbB0NRiKfa0r0cqSCUBJST2voz_8GBuzXeCg.eyJpbnN0YW5jZUlkIjoiNmVjYjc3MWUtNWVlOS00YTAzLWFhMmUtMmY1MThiMTZjZWYxIiwiYXBwRGVmSWQiOiIxMzQ5Yjg4MC0zNWY2LTkxYjUtMDMxZC00OWYwODc0NjIxYjgiLCJzaWduRGF0ZSI6IjIwMjYtMTAtMjVUMTY6NDg6NTIuMTgxWiIsImRlbW9Nb2RlIjpmYWxzZSwiYWlkIjoiODk2YWRiODMtNjgxOS00NWRhLTllOTktN2VkYWMzMWI3MjI5Iiwic2l0ZU93bmVySWQiOiIzZDAxYWM0MC0yMTMzLTRiMDktYjUzNi1lYmYxZmM4OGFhNjYiLCJicyI6InRtWjY5bGFUSmdrR0hYV3VhN0tEaW5GMG1BSXZ3aTA1X0pUeTVoeC1xUlUiLCJzY2QiOiIyMDIzLTExLTE2VDEzOjI0OjM2LjY1MVoifQ&currency=EUR&currentCurrency=EUR&commonConfig=%7B%22brand%22%3A%22wix%22%2C%22host%22%3A%22VIEWER%22%2C%22bsi%22%3A%22%22%2C%22siteRevision%22%3A%22901%22%2C%22renderingFlow%22%3A%22NONE%22%2C%22language%22%3A%22en%22%2C%22locale%22%3A%22en-gb%22%2C%22BSI%22%3A%22%22%7D&currentRoute=.%2F&consent-policy=%7B%22func%22%3A0%2C%22anl%22%3A0%2C%22adv%22%3A0%2C%22dt3%22%3A1%2C%22ess%22%3A1%7D&vsi=e1f34230-5414-4525-8a80-ec99a8dd3e65)
+[Embedded: Mailing List](https://www.powr.io/plugins/mailing-list/wix_cached_view)
 
 ## NATURE INSPIRED HEALTHCARE
 
@@ -80,8 +78,6 @@ True health begins at home. In ancient times our medicine grew in the garden and
 
 ## Be first to hear about our monthly talks, special offers and workshops. Our free events are limited, so you'll want to reserve your spot early!
 
-[Embedded: reCAPTCHA](https://www.google.com/recaptcha/enterprise/anchor?ar=1&k=6Ld0J8IcAAAAANyrnxzrRlX1xrrdXsOmsepUYosy&co=aHR0cHM6Ly93d3cudGhlaGFndWUtbmF0dXJhbGhlYWx0aGNlbnRyZS5jb206NDQz&hl=en&v=NhfdZHzre16wrc2m6BxEdu7J&theme=light&size=normal&anchor-ms=40000&execute-ms=30000&cb=z9s6al53r6gp)
-
 [Button: Send]
 
-[Embedded: Google Maps](https://static.parastorage.com/services/editor-elements-library/dist/thunderbolt/media/googleMap.f3347ff6.html?defaultLocation=0&showZoom=true&showStreetView=true&showMapType=true&language=en&region=GB&id=dataItem-m73dv50s&googleMapsScriptPath=%2Fservices%2Feditor-elements-library%2Fdist%2Fthunderbolt%2Fmedia%2Fgoogle-map.min.9a2bea98.js&origin=https%3A%2F%2Fwww.thehague-naturalhealthcentre.com&hasFocus=true)
+[Embedded: Google Maps](https://static.parastorage.com/services/editor-elements-library/dist/thunderbolt/media/googleMap.f3347ff6.html)

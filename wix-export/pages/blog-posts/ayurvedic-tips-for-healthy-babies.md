@@ -24,8 +24,10 @@ author: "Sandra Quist, Homeopathy & Founder"
 Written by Archana Munot, Ayurvedic Consultant & Practitioner, Maharishi Ayurveda Europe
 
 - ![](https://static.wixstatic.com/media/3d01ac_b7a45cdcb8a5477ab3e4d55f5ce75fec~mv2.jpg)
-- ![Naturally healthy babies](https://static.wixstatic.com/media/3d01ac_71e345e77a28461483514fa3983d5a4a~mv2.png)Naturally healthy babies
-- ![Sleeping tips for babies](https://static.wixstatic.com/media/11062b_bb60928fd31642a6b7fb8fc55784f01c~mv2_d_5909_4439_s_4_2.jpg)Sleeping tips for babies
+- ![Naturally healthy babies](https://static.wixstatic.com/media/3d01ac_71e345e77a28461483514fa3983d5a4a~mv2.png)
+  Naturally healthy babies
+- ![Sleeping tips for babies](https://static.wixstatic.com/media/11062b_bb60928fd31642a6b7fb8fc55784f01c~mv2_d_5909_4439_s_4_2.jpg)
+  Sleeping tips for babies
 
 Welcoming a new baby into the world is a joyous occasion, and ensuring their health and well-being is a top priority for parents. Ayurveda, the ancient Indian system of medicine, offers gentle and natural approaches to promote the health and development of infants. Here are some Ayurvedic tips for raising a healthy baby:
 

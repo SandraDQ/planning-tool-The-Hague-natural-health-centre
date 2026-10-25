@@ -1,0 +1,197 @@
+/* @font-face rules for the fonts the live site loads (desktop + mobile, 8 pages). Original URLs in comments. */
+
+@font-face {
+  font-display: swap;
+  font-family: wf_9ffd0a4644fd4f1b80605af12;
+  src: url("fdfc6f_9ffd0a4644fd4f1b80605af12ceae8fc-file.woff2") /* https://static.wixstatic.com/ufonts/fdfc6f_9ffd0a4644fd4f1b80605af12ceae8fc/woff2/file.woff2 */ format("woff2"), url("https://static.wixstatic.com/ufonts/fdfc6f_9ffd0a4644fd4f1b80605af12ceae8fc/woff/file.woff") format("woff"), url("https://static.wixstatic.com/ufonts/fdfc6f_9ffd0a4644fd4f1b80605af12ceae8fc/ttf/file.ttf") format("ttf");
+  }
+
+@font-face {font-family: 'avenir-lt-w01_35-light1475496';
+  font-style: normal;
+  font-weight: 400;
+  src: url("avenir-lt-w01_35-light1475496.woff2") /* https://static.parastorage.com/fonts/v2/af36905f-3c92-4ef9-b0c1-f91432f16ac1/v1/avenir-lt-w01_35-light1475496.woff2 */ format('woff2');
+  unicode-range: U+0000, U+000D, U+0020-007E, U+00A0-00FF, U+0131, U+0152-0153, U+0160-0161, U+0178, U+017D-017E, U+0192, U+0237, U+02C6-02C7, U+02DA, U+02DC, U+2013-2014, U+2018-201A, U+201C-201E, U+2020-2022, U+2026, U+2030, U+2039-203A, U+2044, U+20AC, U+2122;
+  font-display: swap;
+  }
+
+@font-face {font-family: 'futura-lt-w01-light';
+  font-style: normal;
+  font-weight: 400;
+  src: url("futura-lt-w01-light.woff2") /* https://static.parastorage.com/fonts/v2/8e5b5cbc-6ad9-49f7-aee7-4e5133c3ee4d/v1/futura-lt-w01-light.woff2 */ format('woff2');
+  unicode-range: U+0000, U+000D, U+0020-007E, U+00A0-00FF, U+0110, U+0131, U+0152-0153, U+0160-0161, U+0178, U+017D-017E, U+0192, U+0237, U+02C6-02C7, U+02DA, U+02DC, U+2013-2014, U+2018-201A, U+201C-201E, U+2020-2022, U+2026, U+2030, U+2039-203A, U+2044, U+20AC, U+2122;
+  font-display: swap;
+  }
+
+@font-face {font-family: 'helvetica-w01-roman';
+  font-style: normal;
+  font-weight: 400;
+  src: url("helvetica-w01-roman.woff2") /* https://static.parastorage.com/fonts/v2/2af1bf48-e783-4da8-9fa0-599dde29f2d5/v1/helvetica-w01-roman.woff2 */ format('woff2');
+  unicode-range: U+0000, U+000D, U+0020-007E, U+00A0-012B, U+012E-0137, U+0139-0149, U+014C-017E, U+0192, U+0218-021B, U+0237, U+02C6-02C7, U+02C9, U+02D8-02DD, U+0394, U+03A9, U+03BC, U+03C0, U+0401-040C, U+040E-044F, U+0451-045C, U+045E-045F, U+0462-0463, U+0472-0475, U+0490-0491, U+04D9, U+1E9E, U+2013-2014, U+2018-201A, U+201C-201E, U+2020-2022, U+2026, U+2030, U+2039-203A, U+2044, U+20AC, U+20B9-20BA, U+20BC-20BD, U+2113, U+2116, U+2122, U+2126, U+212E, U+2202, U+2206, U+220F, U+2211-2212, U+2215, U+2219-221A, U+221E, U+222B, U+2248, U+2260, U+2264-2265, U+25CA, U+E300-E30D, U+F6C5, U+F6C9-F6D8, U+F8FF, U+FB01-FB02;
+  font-display: swap;
+  }
+
+@font-face {font-family: 'lato-light';
+  font-style: normal;
+  font-weight: 400;
+  src: url("2hXzmNaFRuKTSBR9nRGO-A.woff2") /* https://static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/lato/v14/2hXzmNaFRuKTSBR9nRGO-A.woff2 */ format('woff2');
+  font-display: swap;
+  }
+
+@font-face {font-family: 'lato-light';
+  font-style: normal;
+  font-weight: 700;
+  src: url("7nLfsQCzhQW_PwpkrwroYw.woff2") /* https://static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/lato/v14/7nLfsQCzhQW_PwpkrwroYw.woff2 */ format('woff2');
+  font-display: swap;
+  }
+
+@font-face {font-family: 'futura-lt-w01-book';
+  font-style: normal;
+  font-weight: 400;
+  src: url("futura-lt-w01-book.woff2") /* https://static.parastorage.com/fonts/v2/790166f1-b347-4f16-8a29-f0c4931a7c35/v1/futura-lt-w01-book.woff2 */ format('woff2');
+  unicode-range: U+0000, U+000D, U+0020-007E, U+00A0-00FF, U+0110, U+0131, U+0152-0153, U+0160-0161, U+0178, U+017D-017E, U+0192, U+0237, U+02C6-02C7, U+02DA, U+02DC, U+2013-2014, U+2018-201A, U+201C-201E, U+2020-2022, U+2026, U+2030, U+2039-203A, U+2044, U+20AC, U+2122;
+  font-display: swap;
+  }
+
+@font-face {font-family: 'helvetica-w01-light';
+  font-style: normal;
+  font-weight: 400;
+  src: url("helvetica-w01-light.woff2") /* https://static.parastorage.com/fonts/v2/8eac109b-0fa9-42bf-a305-43e471e23779/v1/helvetica-w01-light.woff2 */ format('woff2');
+  unicode-range: U+000D, U+0020-007E, U+00A0-00FF, U+0152-0153, U+0160-0161, U+0178, U+017D-017E, U+0192, U+02C6, U+02DC, U+2013-2014, U+2018-201A, U+201C-201E, U+2020-2022, U+2026, U+2030, U+2039-203A, U+20AC, U+2122;
+  font-display: swap;
+  }
+
+@font-face {
+  font-display: block;
+  font-family: "Lato-Light";
+  src: url("https://static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/lato/v14/KDRyPGFdQxeFClMSxPKQ3w.eot?#iefix");
+  src: url("https://static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/lato/v14/KDRyPGFdQxeFClMSxPKQ3w.eot?#iefix") format("eot"), url("2hXzmNaFRuKTSBR9nRGO-A.woff2") /* https://static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/lato/v14/2hXzmNaFRuKTSBR9nRGO-A.woff2 */ format("woff2"), url("https://static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/lato/v14/kU6VHbqMAZhaN_nXCmLQsQ.woff") format("woff"), url("https://static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/lato/v14/BTu4SsVveqk58cdYjlaM9g.ttf") format("truetype"), url("https://static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/l/font?kit=I5jxx2JZduMchyTN9Dgylg&skey=91f32e07d083dd3a&v=v14#Lato") format("svg");
+  }
+
+@font-face {
+  font-display: block;
+  font-family: "Lato-Light";
+  font-weight: 700;
+  src: url("https://static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/lato/v14/6TEmgPQ_0ZdLPE7b6hhIjQ.eot?#iefix");
+  src: url("https://static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/lato/v14/6TEmgPQ_0ZdLPE7b6hhIjQ.eot?#iefix") format("eot"), url("7nLfsQCzhQW_PwpkrwroYw.woff2") /* https://static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/lato/v14/7nLfsQCzhQW_PwpkrwroYw.woff2 */ format("woff2"), url("https://static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/lato/v14/I1Pn3gihk5vyP0Yw5GqKsQ.woff") format("woff"), url("https://static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/lato/v14/zpv3sOKAbMf4wff105oLjw.ttf") format("truetype"), url("https://static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/l/font?kit=adjMoXVaHbO08wMAF5yDsA&skey=3480a19627739c0d&v=v14#Lato") format("svg");
+  }
+
+@font-face {
+  font-family: "Lato-Light";
+  src:url("2hXzmNaFRuKTSBR9nRGO-A.woff2") /* https://static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/lato/v14/2hXzmNaFRuKTSBR9nRGO-A.woff2 */ format("woff2"), url("https://static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff/s/lato/v14/kU6VHbqMAZhaN_nXCmLQsQ.woff") format("woff");
+  }
+
+@font-face {
+  font-family: "Lato-Light";
+  font-weight: 700;
+  src: url("7nLfsQCzhQW_PwpkrwroYw.woff2") /* https://static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/lato/v14/7nLfsQCzhQW_PwpkrwroYw.woff2 */ format("woff2"), url("https://static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff/s/lato/v14/I1Pn3gihk5vyP0Yw5GqKsQ.woff") format("woff");
+  }
+
+@font-face{font-family:"Gordita";
+  src:local("Gordita"),url("gordita-regular-webfont-woff.woff") /* https://public.powrcdn.com/fonts/gordita/gordita-regular-webfont-woff.woff */ format("woff"),url("https://public.powrcdn.com/fonts/gordita/gordita-regular-webfont-woff2.woff2") format("woff2");
+  font-weight:normal;
+  font-style:normal}
+
+@font-face{font-family:avenir-lt-w01_35-light1475496;
+  font-style:normal;
+  font-weight:400;
+  src:url("avenir-lt-w01_35-light1475496.woff2") /* https://static.parastorage.com/fonts/v2/af36905f-3c92-4ef9-b0c1-f91432f16ac1/v1/avenir-lt-w01_35-light1475496.woff2 */ format("woff2");
+  unicode-range:U+0000,U+000D,U+0020-007E,U+00A0-00FF,U+0131,U+0152-0153,U+0160-0161,U+0178,U+017D-017E,U+0192,U+0237,U+02C6-02C7,U+02DA,U+02DC,U+2013-2014,U+2018-201A,U+201C-201E,U+2020-2022,U+2026,U+2030,U+2039-203A,U+2044,U+20AC,U+2122}
+
+@font-face{font-family:avenir-lt-w01_85-heavy1475544;
+  font-style:normal;
+  font-weight:400;
+  src:url("avenir-lt-w01_85-heavy1475544.woff2") /* https://static.parastorage.com/fonts/v2/74290729-59ae-4129-87d0-2eec3974dce1/v1/avenir-lt-w01_85-heavy1475544.woff2 */ format("woff2");
+  unicode-range:U+0000,U+000D,U+0020-007E,U+00A0-00FF,U+0131,U+0152-0153,U+0160-0161,U+0178,U+017D-017E,U+0192,U+0237,U+02C6-02C7,U+02DA,U+02DC,U+2013-2014,U+2018-201A,U+201C-201E,U+2020-2022,U+2026,U+2030,U+2039-203A,U+2044,U+20AC,U+2122}
+
+@font-face{font-family:futura-lt-w01-book;
+  font-style:normal;
+  font-weight:400;
+  src:url("futura-lt-w01-book.woff2") /* https://static.parastorage.com/fonts/v2/790166f1-b347-4f16-8a29-f0c4931a7c35/v1/futura-lt-w01-book.woff2 */ format("woff2");
+  unicode-range:U+0000,U+000D,U+0020-007E,U+00A0-00FF,U+0110,U+0131,U+0152-0153,U+0160-0161,U+0178,U+017D-017E,U+0192,U+0237,U+02C6-02C7,U+02DA,U+02DC,U+2013-2014,U+2018-201A,U+201C-201E,U+2020-2022,U+2026,U+2030,U+2039-203A,U+2044,U+20AC,U+2122}
+
+@font-face{font-family:futura-lt-w01-light;
+  font-style:normal;
+  font-weight:400;
+  src:url("futura-lt-w01-light.woff2") /* https://static.parastorage.com/fonts/v2/8e5b5cbc-6ad9-49f7-aee7-4e5133c3ee4d/v1/futura-lt-w01-light.woff2 */ format("woff2");
+  unicode-range:U+0000,U+000D,U+0020-007E,U+00A0-00FF,U+0110,U+0131,U+0152-0153,U+0160-0161,U+0178,U+017D-017E,U+0192,U+0237,U+02C6-02C7,U+02DA,U+02DC,U+2013-2014,U+2018-201A,U+201C-201E,U+2020-2022,U+2026,U+2030,U+2039-203A,U+2044,U+20AC,U+2122}
+
+@font-face{font-family:helvetica-w01-light;
+  font-style:normal;
+  font-weight:400;
+  src:url("helvetica-w01-light.woff2") /* https://static.parastorage.com/fonts/v2/8eac109b-0fa9-42bf-a305-43e471e23779/v1/helvetica-w01-light.woff2 */ format("woff2");
+  unicode-range:U+000D,U+0020-007E,U+00A0-00FF,U+0152-0153,U+0160-0161,U+0178,U+017D-017E,U+0192,U+02C6,U+02DC,U+2013-2014,U+2018-201A,U+201C-201E,U+2020-2022,U+2026,U+2030,U+2039-203A,U+20AC,U+2122}
+
+@font-face{font-family:helvetica-w01-roman;
+  font-style:normal;
+  font-weight:400;
+  src:url("helvetica-w01-roman.woff2") /* https://static.parastorage.com/fonts/v2/2af1bf48-e783-4da8-9fa0-599dde29f2d5/v1/helvetica-w01-roman.woff2 */ format("woff2");
+  unicode-range:U+0000,U+000D,U+0020-007E,U+00A0-012B,U+012E-0137,U+0139-0149,U+014C-017E,U+0192,U+0218-021B,U+0237,U+02C6-02C7,U+02C9,U+02D8-02DD,U+0394,U+03A9,U+03BC,U+03C0,U+0401-040C,U+040E-044F,U+0451-045C,U+045E-045F,U+0462-0463,U+0472-0475,U+0490-0491,U+04D9,U+1E9E,U+2013-2014,U+2018-201A,U+201C-201E,U+2020-2022,U+2026,U+2030,U+2039-203A,U+2044,U+20AC,U+20B9-20BA,U+20BC-20BD,U+2113,U+2116,U+2122,U+2126,U+212E,U+2202,U+2206,U+220F,U+2211-2212,U+2215,U+2219-221A,U+221E,U+222B,U+2248,U+2260,U+2264-2265,U+25CA,U+E300-E30D,U+F6C5,U+F6C9-F6D8,U+F8FF,U+FB01-FB02}
+
+@font-face{font-family:lato-light;
+  font-style:normal;
+  font-weight:400;
+  src:url("2hXzmNaFRuKTSBR9nRGO-A.woff2") /* https://static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/lato/v14/2hXzmNaFRuKTSBR9nRGO-A.woff2 */ format("woff2")}
+
+@font-face{font-family:lato-light;
+  font-style:normal;
+  font-weight:700;
+  src:url("7nLfsQCzhQW_PwpkrwroYw.woff2") /* https://static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/lato/v14/7nLfsQCzhQW_PwpkrwroYw.woff2 */ format("woff2")}
+
+@font-face{font-family:montserrat;
+  font-style:normal;
+  font-weight:700;
+  src:url("JTURjIg1_i6t8kCHKm45_dJE3gnD_vx3rCs.woff2") /* https://static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_dJE3gnD_vx3rCs.woff2 */ format("woff2");
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
+@font-face {
+  font-family: 'Chivo';
+  font-style: normal;
+  font-weight: 400;
+  src: url("va9b4kzIxd1KFppkaRKvDRPJVDf_vB_ekGrT.woff2") /* https://fonts.gstatic.com/s/chivo/v21/va9b4kzIxd1KFppkaRKvDRPJVDf_vB_ekGrT.woff2 */ format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-stretch: 100%;
+  src: url("KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBA.woff2") /* https://fonts.gstatic.com/s/roboto/v51/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBA.woff2 */ format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  src: url("KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBA.woff2") /* https://fonts.gstatic.com/s/roboto/v51/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBA.woff2 */ format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  src: url("KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBA.woff2") /* https://fonts.gstatic.com/s/roboto/v51/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBA.woff2 */ format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  src: url("KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBA.woff2") /* https://fonts.gstatic.com/s/roboto/v51/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBA.woff2 */ format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+@font-face {font-family: 'avenir-lt-w01_85-heavy1475544';
+  font-style: normal;
+  font-weight: 400;
+  src: url("avenir-lt-w01_85-heavy1475544.woff2") /* https://static.parastorage.com/fonts/v2/74290729-59ae-4129-87d0-2eec3974dce1/v1/avenir-lt-w01_85-heavy1475544.woff2 */ format('woff2');
+  unicode-range: U+0000, U+000D, U+0020-007E, U+00A0-00FF, U+0131, U+0152-0153, U+0160-0161, U+0178, U+017D-017E, U+0192, U+0237, U+02C6-02C7, U+02DA, U+02DC, U+2013-2014, U+2018-201A, U+201C-201E, U+2020-2022, U+2026, U+2030, U+2039-203A, U+2044, U+20AC, U+2122;
+  font-display: swap;
+  }
+

@@ -16,15 +16,67 @@ lastmod: "2026-09-14"
 
 General Note: All events are in English unless otherwise noted
 
-- ![Life Transitions Circle](https://static.wixstatic.com/media/3d01ac_59859d4578f04c80840fb60c13022f9c~mv2.png)Multiple Dates[Life Transitions Circle](https://www.thehague-naturalhealthcentre.com/event-details-registration/life-transitions-circle-2026-10-29-18-30)Thu 29 OctMore info[Reserve your place](https://www.thehague-naturalhealthcentre.com/event-details-registration/life-transitions-circle-2026-10-29-18-30)
-- ![Befriending Your Inner Tricksters](https://static.wixstatic.com/media/8b90ae_e7ca69207de84be0bb4625455dc5d6f5~mv2.jpg)Multiple Dates[Befriending Your Inner Tricksters](https://www.thehague-naturalhealthcentre.com/event-details-registration/befriending-your-inner-tricksters-2026-11-01-10-00)Sun 01 NovMore info[Reserve your place](https://www.thehague-naturalhealthcentre.com/event-details-registration/befriending-your-inner-tricksters-2026-11-01-10-00)
-- ![Dia de los Muertos - Honouring our Ancestors](https://static.wixstatic.com/media/e8301f_e88fde606b3a4cb5826a50ffff365f1e~mv2.jpeg)[Dia de los Muertos - Honouring our Ancestors](https://www.thehague-naturalhealthcentre.com/event-details-registration/dia-de-los-muertos-honouring-our-ancestors)Sun 01 NovMore info[Reserve your place](https://www.thehague-naturalhealthcentre.com/event-details-registration/dia-de-los-muertos-honouring-our-ancestors)
-- ![The Territory of Money: interactive, experiential workshop](https://static.wixstatic.com/media/8b90ae_92c52d6c0d974197b2285a20acd246c3~mv2.png)[The Territory of Money: interactive, experiential workshop](https://www.thehague-naturalhealthcentre.com/event-details-registration/the-territory-of-money-interactive-experiential-workshop)Tue 10 NovMore info[Reserve your place](https://www.thehague-naturalhealthcentre.com/event-details-registration/the-territory-of-money-interactive-experiential-workshop)
-- ![The Rite of the Womb](https://static.wixstatic.com/media/3d01ac_408d406b614b4beb9889eb0ccf8faabc~mv2.png)[The Rite of the Womb](https://www.thehague-naturalhealthcentre.com/event-details-registration/the-rite-of-the-womb-2)Wed 11 NovMore info[Reserve your place](https://www.thehague-naturalhealthcentre.com/event-details-registration/the-rite-of-the-womb-2)
-- ![Exploring Relationships /. Meditation & Sharing Circle](https://static.wixstatic.com/media/8b90ae_16d45570c38942f6a9e41ea34a55242e~mv2.jpg)[Exploring Relationships /. Meditation & Sharing Circle](https://www.thehague-naturalhealthcentre.com/event-details-registration/exploring-relationships-meditation-sharing-circle)Fri 13 NovMore info[Reserve your place](https://www.thehague-naturalhealthcentre.com/event-details-registration/exploring-relationships-meditation-sharing-circle)
-- ![Constellations Workshop: Inner Critic](https://static.wixstatic.com/media/e8301f_c487d50151be462296c9b1d4824991f9~mv2.jpg)[Constellations Workshop: Inner Critic](https://www.thehague-naturalhealthcentre.com/event-details-registration/constellations-workshop-inner-critic)Sun 15 NovMore info[Reserve your place](https://www.thehague-naturalhealthcentre.com/event-details-registration/constellations-workshop-inner-critic)
-- ![Free Learning Series: Natural Remedies for the Home](https://static.wixstatic.com/media/3d01ac_3fe3e2b7aa6e4141a2b386a4119d3774~mv2.png)Multiple Dates[Free Learning Series: Natural Remedies for the Home](https://www.thehague-naturalhealthcentre.com/event-details-registration/free-learning-series-natural-remedies-for-the-home-2026-11-16-19-00)Mon 16 NovMore info[Reserve your place](https://www.thehague-naturalhealthcentre.com/event-details-registration/free-learning-series-natural-remedies-for-the-home-2026-11-16-19-00)
-- ![Soul Suppers - Sharing wisdom & a meal](https://static.wixstatic.com/media/3d01ac_65310e8e80d7475cb6c9ea71014e7967~mv2.png)Multiple Dates[Soul Suppers - Sharing wisdom & a meal](https://www.thehague-naturalhealthcentre.com/event-details-registration/soul-suppers-sharing-wisdom-a-meal-2026-11-18-18-30)Wed 18 NovMore info[Reserve your place](https://www.thehague-naturalhealthcentre.com/event-details-registration/soul-suppers-sharing-wisdom-a-meal-2026-11-18-18-30)
-- ![Jikiden Reiki Training - Level 1 Shoden](https://static.wixstatic.com/media/3d01ac_39ca72be009f459990831e71e09035d2~mv2.png)[Jikiden Reiki Training - Level 1 Shoden](https://www.thehague-naturalhealthcentre.com/event-details-registration/jikiden-reiki-training-level-1-shoden-2)Sat 21 NovMore info[Reserve your place](https://www.thehague-naturalhealthcentre.com/event-details-registration/jikiden-reiki-training-level-1-shoden-2)
-- ![Meditation & Sharing Circle: Working with the seasons: Winter](https://static.wixstatic.com/media/e8301f_86144b92fdac4c98bf117541bb64e0a9~mv2.jpg)[Meditation & Sharing Circle: Working with the seasons: Winter](https://www.thehague-naturalhealthcentre.com/event-details-registration/meditation-sharing-circle-working-with-the-seasons-winter)Sun 13 DecMore info[Reserve your place](https://www.thehague-naturalhealthcentre.com/event-details-registration/meditation-sharing-circle-working-with-the-seasons-winter)
-- ![Meditation & Sharing Circle: Exploring Forgiveness](https://static.wixstatic.com/media/e8301f_746a33405a2f4174a60aa0eb46cbfdf4~mv2.png)[Meditation & Sharing Circle: Exploring Forgiveness](https://www.thehague-naturalhealthcentre.com/event-details-registration/meditation-sharing-circle-exploring-forgiveness)Sun 10 JanMore info[Reserve your place](https://www.thehague-naturalhealthcentre.com/event-details-registration/meditation-sharing-circle-exploring-forgiveness)
+- ![Life Transitions Circle](https://static.wixstatic.com/media/3d01ac_59859d4578f04c80840fb60c13022f9c~mv2.png)
+  Multiple Dates
+  [Life Transitions Circle](https://www.thehague-naturalhealthcentre.com/event-details-registration/life-transitions-circle-2026-10-29-18-30)
+  Thu 29 Oct
+  More info
+  [Reserve your place](https://www.thehague-naturalhealthcentre.com/event-details-registration/life-transitions-circle-2026-10-29-18-30)
+- ![Befriending Your Inner Tricksters](https://static.wixstatic.com/media/8b90ae_e7ca69207de84be0bb4625455dc5d6f5~mv2.jpg)
+  Multiple Dates
+  [Befriending Your Inner Tricksters](https://www.thehague-naturalhealthcentre.com/event-details-registration/befriending-your-inner-tricksters-2026-11-01-10-00)
+  Sun 01 Nov
+  More info
+  [Reserve your place](https://www.thehague-naturalhealthcentre.com/event-details-registration/befriending-your-inner-tricksters-2026-11-01-10-00)
+- ![Dia de los Muertos - Honouring our Ancestors](https://static.wixstatic.com/media/e8301f_e88fde606b3a4cb5826a50ffff365f1e~mv2.jpeg)
+  [Dia de los Muertos - Honouring our Ancestors](https://www.thehague-naturalhealthcentre.com/event-details-registration/dia-de-los-muertos-honouring-our-ancestors)
+  Sun 01 Nov
+  More info
+  [Reserve your place](https://www.thehague-naturalhealthcentre.com/event-details-registration/dia-de-los-muertos-honouring-our-ancestors)
+- ![The Territory of Money: interactive, experiential workshop](https://static.wixstatic.com/media/8b90ae_92c52d6c0d974197b2285a20acd246c3~mv2.png)
+  [The Territory of Money: interactive, experiential workshop](https://www.thehague-naturalhealthcentre.com/event-details-registration/the-territory-of-money-interactive-experiential-workshop)
+  Tue 10 Nov
+  More info
+  [Reserve your place](https://www.thehague-naturalhealthcentre.com/event-details-registration/the-territory-of-money-interactive-experiential-workshop)
+- ![The Rite of the Womb](https://static.wixstatic.com/media/3d01ac_408d406b614b4beb9889eb0ccf8faabc~mv2.png)
+  [The Rite of the Womb](https://www.thehague-naturalhealthcentre.com/event-details-registration/the-rite-of-the-womb-2)
+  Wed 11 Nov
+  More info
+  [Reserve your place](https://www.thehague-naturalhealthcentre.com/event-details-registration/the-rite-of-the-womb-2)
+- ![Exploring Relationships /. Meditation & Sharing Circle](https://static.wixstatic.com/media/8b90ae_16d45570c38942f6a9e41ea34a55242e~mv2.jpg)
+  [Exploring Relationships /. Meditation & Sharing Circle](https://www.thehague-naturalhealthcentre.com/event-details-registration/exploring-relationships-meditation-sharing-circle)
+  Fri 13 Nov
+  More info
+  [Reserve your place](https://www.thehague-naturalhealthcentre.com/event-details-registration/exploring-relationships-meditation-sharing-circle)
+- ![Constellations Workshop: Inner Critic](https://static.wixstatic.com/media/e8301f_c487d50151be462296c9b1d4824991f9~mv2.jpg)
+  [Constellations Workshop: Inner Critic](https://www.thehague-naturalhealthcentre.com/event-details-registration/constellations-workshop-inner-critic)
+  Sun 15 Nov
+  More info
+  [Reserve your place](https://www.thehague-naturalhealthcentre.com/event-details-registration/constellations-workshop-inner-critic)
+- ![Free Learning Series: Natural Remedies for the Home](https://static.wixstatic.com/media/3d01ac_3fe3e2b7aa6e4141a2b386a4119d3774~mv2.png)
+  Multiple Dates
+  [Free Learning Series: Natural Remedies for the Home](https://www.thehague-naturalhealthcentre.com/event-details-registration/free-learning-series-natural-remedies-for-the-home-2026-11-16-19-00)
+  Mon 16 Nov
+  More info
+  [Reserve your place](https://www.thehague-naturalhealthcentre.com/event-details-registration/free-learning-series-natural-remedies-for-the-home-2026-11-16-19-00)
+- ![Soul Suppers - Sharing wisdom & a meal](https://static.wixstatic.com/media/3d01ac_65310e8e80d7475cb6c9ea71014e7967~mv2.png)
+  Multiple Dates
+  [Soul Suppers - Sharing wisdom & a meal](https://www.thehague-naturalhealthcentre.com/event-details-registration/soul-suppers-sharing-wisdom-a-meal-2026-11-18-18-30)
+  Wed 18 Nov
+  More info
+  [Reserve your place](https://www.thehague-naturalhealthcentre.com/event-details-registration/soul-suppers-sharing-wisdom-a-meal-2026-11-18-18-30)
+- ![Jikiden Reiki Training - Level 1 Shoden](https://static.wixstatic.com/media/3d01ac_39ca72be009f459990831e71e09035d2~mv2.png)
+  [Jikiden Reiki Training - Level 1 Shoden](https://www.thehague-naturalhealthcentre.com/event-details-registration/jikiden-reiki-training-level-1-shoden-2)
+  Sat 21 Nov
+  More info
+  [Reserve your place](https://www.thehague-naturalhealthcentre.com/event-details-registration/jikiden-reiki-training-level-1-shoden-2)
+- ![Meditation & Sharing Circle: Working with the seasons: Winter](https://static.wixstatic.com/media/e8301f_86144b92fdac4c98bf117541bb64e0a9~mv2.jpg)
+  [Meditation & Sharing Circle: Working with the seasons: Winter](https://www.thehague-naturalhealthcentre.com/event-details-registration/meditation-sharing-circle-working-with-the-seasons-winter)
+  Sun 13 Dec
+  More info
+  [Reserve your place](https://www.thehague-naturalhealthcentre.com/event-details-registration/meditation-sharing-circle-working-with-the-seasons-winter)
+- ![Meditation & Sharing Circle: Exploring Forgiveness](https://static.wixstatic.com/media/e8301f_746a33405a2f4174a60aa0eb46cbfdf4~mv2.png)
+  [Meditation & Sharing Circle: Exploring Forgiveness](https://www.thehague-naturalhealthcentre.com/event-details-registration/meditation-sharing-circle-exploring-forgiveness)
+  Sun 10 Jan
+  More info
+  [Reserve your place](https://www.thehague-naturalhealthcentre.com/event-details-registration/meditation-sharing-circle-exploring-forgiveness)
