@@ -1,6 +1,6 @@
 # Phase 2 · backend handoff: database foundation
 
-*2026-10-25 · backend agent · nothing committed (the orchestrator commits)*
+*2026-10-25 · backend agent · updated after the privacy-security review (see "Review fixes") · nothing committed (the orchestrator commits)*
 
 ## What I built
 
@@ -15,8 +15,9 @@
 | `…0005_intake.sql` | `intakes` (with `delete_after`), `intake_access_log`, `deletion_log`; `purge_expired_intakes()`, `log_intake_access()` |
 | `…0006_money.sql` | `rent_settings`, `rent_rates` (`fixed_monthly` or `per_block` per room, D12), `rent_runs`, `invoice_sequences`, `invoices`, `invoice_lines`, `payments`, `refunds`, `balance_payments`, `webhook_events`; `next_invoice_number()`, `issue_invoice()`; triggers that make invoices immutable |
 | `…0007_sync.sql` | `calendar_connections`, `calendar_feed_tokens` (hash only), `calendar_event_links`, `external_busy` (no titles); `hash_feed_token()` |
-| `…0008_rls.sql` | RLS on all 36 tables, explicit policies per role, column grants, function `EXECUTE` revokes, `updated_at` triggers |
-| `…0009_jobs.sql` | pg_cron jobs (hold expiry every minute, intake purge daily). Does nothing if pg_cron is missing |
+| `…0008_rls.sql` | RLS on all 36 tables, explicit policies per role (2FA, profiles and intake reads tightened in 0010), column grants, function `EXECUTE` revokes, `updated_at` triggers |
+| `…0009_jobs.sql` | pg_cron jobs (hold expiry every minute, intake purge daily). Soft check, superseded by 0010 |
+| `…0010_review_fixes.sql` | Fixes F1–F10 from the privacy-security review (see "Review fixes") |
 
 **How the database guarantees the core rules**
 - `room_blocks_no_overlap`: one reserved block per room at any moment.
@@ -38,22 +39,52 @@ pnpm test:db      # scripts/test-db.sh
 ```
 The script starts a throwaway Postgres 16 cluster in `/tmp/thnhc-testdb.*`. It listens on a unix socket only (no TCP port) and runs as the `postgres` OS user when started as root. It then applies `supabase/test-support/auth_stub.sql` (local-only stand-in for Supabase's `auth` schema and its roles), the migrations, the seed (twice, to prove it can be re-run) and `test_helpers.sql`. Every `tests/db/*.sql` runs in its own transaction and is rolled back. Last, two real parallel sessions race for the same block and for the same slot. Any failed assertion or SQL error makes the script exit with code 1 (checked with a deliberately failing test). Use `KEEP_TEST_DB=1` to keep the cluster for debugging.
 
-Test files: `00_schema` (RLS on every table, no admin or anon policy on intake tables, all `*_cents` columns are integers, seed), `10_room_blocks`, `20_appointments`, `30_invoices`, `40_rls` (each role: therapist A/B, admin, client, anon), `50_retention`, `60_rent_and_money`.
+Test files: `00_schema` (RLS and the 2FA policy on every table, anon allow-lists, no TRUNCATE, clean default privileges, no admin or anon policy on intake tables, all `*_cents` columns are integers, seed), `10_room_blocks`, `20_appointments`, `30_invoices`, `40_rls` (each role: therapist A/B, admin, client, anon), `50_retention`, `60_rent_and_money`, `90_review` (the reviewer's proof tests, now asserting each fix).
 
-Last run:
+Last run (after the review fixes):
 ```
-PASS tests/db/00_schema.sql (12 assertions)
+PASS tests/db/00_schema.sql (20 assertions)
 PASS tests/db/10_room_blocks.sql (28 assertions)
 PASS tests/db/20_appointments.sql (49 assertions)
 PASS tests/db/30_invoices.sql (31 assertions)
 PASS tests/db/40_rls.sql (87 assertions)
 PASS tests/db/50_retention.sql (19 assertions)
 PASS tests/db/60_rent_and_money.sql (26 assertions)
+PASS tests/db/90_review.sql (61 assertions)
 PASS concurrency: two therapists reserve the same block (exactly one of two simultaneous sessions succeeded)
 PASS concurrency: two clients book the same slot (exactly one of two simultaneous sessions succeeded)
-test-db: 9 passed, 0 failed, 254 assertions
+test-db: 10 passed, 0 failed, 323 assertions
 ```
 `pnpm typecheck` passes.
+
+## Review fixes (privacy-security review, BLOCK → fixed)
+
+All fixes are in one new migration, `supabase/migrations/20261025000010_review_fixes.sql`, so the review diff is in one place. The earlier migrations are unchanged. Every `HOLE:` assertion in `tests/db/90_review.sql` is now inverted (`Rn FIXED`).
+
+| # | Fix |
+|---|---|
+| F1 | Only the server (service role) can set a non-null `clients.profile_id`, and only to a profile with role `client`. Client self-insert through the API was removed (`client_insert_own` dropped). `appointments.client_id` and `therapist_id` cannot be changed by API users once set (`trg_appointments_0_guard`, TH005); admin can still reschedule. As a belt, `current_client_ids()` counts only accounts with role `client`. |
+| F2 | D17: a RESTRICTIVE `require_mfa` policy on **every** table. Admin and therapist need `auth.jwt() ->> 'aal' = 'aal2'`; clients work at aal1. The own `profiles` row stays readable at aal1. `read_intake`, `log_intake_access` and `job_health` check this too. The local auth stub's `auth.jwt()` now carries `aal`; `tests.login(name, aal default 'aal2')`. |
+| F3 | Admin is read-only on `profiles` (`admin_all` replaced by `admin_select`). `profiles_guard` now covers INSERT, UPDATE and DELETE for API users. |
+| F4 | The migration creates pg_cron if it is available, otherwise **fails** with a clear message. Only `thnhc.allow_missing_pg_cron=on` skips this (set by `scripts/test-db.sh`, local only). Verified: without that setting, migration 0010 stops with an error. New `job_health()` (admin with 2FA, or server) returns, per job: scheduled, schedule, last run, last status, healthy (succeeded within 5 min for holds, 48 h for the purge). |
+| F5 | D18: when an appointment becomes `cancelled` before its session starts (incl. expired holds via `expire_stale_holds()`), its intake gets `delete_after = now()`. An intake stored for an already-cancelled booking is also due at once. |
+| F6 | `alter default privileges`: future tables/sequences/functions in `public` are not granted to anon/authenticated, and functions are not executable by PUBLIC. Existing functions: anon can execute only `is_bookable_therapist` and `is_public_service`. `00_schema` asserts the anon allow-lists (tables, columns, functions), the 2FA policy on every table and clean default ACLs. |
+| F7 | `purge_expired_intakes()` writes its own `retention_expired` log rows in the same statement as the delete. Every other deletion is logged `manual` by the trigger. No session setting is involved. |
+| F8 | `intakes.answers` cannot be selected directly by `authenticated` (column grants cover metadata only). The treating therapist and the client read content only through `read_intake(id)`, which checks access + 2FA and writes `intake_access_log`. |
+| F9 | `onboarding_status` is admin/server-only. |
+| F10 | TRUNCATE, REFERENCES and TRIGGER revoked from anon and authenticated on all tables. |
+
+**Consequences for app code (later phases)**
+- Read intake content with `rpc('read_intake', { p_intake_id })`, never `select answers`. Listing intakes (`id, appointment_id, delete_after, …`) still works, but `select *` on `intakes` is refused.
+- Linking a guest client record to a new account, and storing intakes, is server work (service role).
+- Admin/therapist UI must complete Supabase MFA (TOTP → aal2) before loading data. At aal1 every query returns nothing (or `42501` on writes). Use `auth_role()` and the own profile row to decide whether to show the TOTP prompt.
+- **Every new migration** must `grant` explicitly what anon/authenticated need, `enable row level security`, add policies **and** a `require_mfa` restrictive policy, and add `trg_set_updated_at`. `00_schema` fails otherwise.
+- Supabase: enable pg_cron (Database → Extensions) before applying migration 0010. Use `select * from job_health()` in the admin dashboard and `MAINTENANCE.md`.
+- From the reviewer's later-phase notes (not done here): send intake e-mails to the therapist's **login e-mail**, not `public_email` (which the admin can edit), and log changes of `intake_delivery`. Add storage bucket policies, security headers and rate limiting in their phases.
+
+**Still open after the review**
+- D18 covers cancellations before the session. Should cancellations by the therapist *after* a session started, or no-shows, also purge early? (Default: no, keep the retention period.)
+- Owner/DPO: the admin calendar shows client names with therapy type (e.g. "Psychology"). Is that acceptable, or should the admin see initials only?
 
 ## Notes for other agents
 
@@ -64,7 +95,7 @@ test-db: 9 passed, 0 failed, 254 assertions
 - **Anon queries on `therapists` must name columns** (`id, slug, display_name, bio_nl, bio_en, photo_path, public_email`): `select *` is refused by the column grants.
 - `calendar_connections` token columns cannot be selected through the API. The server writes them with the service role. Feed links store only `hash_feed_token(token)`.
 - New tables in later migrations need their own `enable row level security`, policies and `trg_set_updated_at` trigger, because the loop in 0008 ran only once.
-- Requires **Postgres 15+** (`unique nulls not distinct`). Enable **pg_cron** in Supabase before applying 0009, or re-run its `DO` block afterwards.
+- Requires **Postgres 15+** (`unique nulls not distinct`). Enable **pg_cron** in Supabase before applying the migrations; 0010 fails without it.
 - `supabase/test-support/` is for local tests only. **Never apply it to Supabase.**
 
 ## Open questions (for the orchestrator / owner)

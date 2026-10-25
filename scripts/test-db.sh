@@ -81,6 +81,9 @@ apply() {
 }
 
 echo "test-db: applying auth stub, migrations, seed"
+# pg_cron is not available locally; migration 0010 refuses to run without it
+# unless this (local-only) setting is on.
+export PGOPTIONS="-c thnhc.allow_missing_pg_cron=on"
 apply "$ROOT/supabase/test-support/auth_stub.sql"
 shopt -s nullglob
 migrations=("$ROOT"/supabase/migrations/*.sql)

@@ -6,7 +6,7 @@
 -- Pattern in a test file:
 --   begin;
 --   select tests.setup();                      -- users, profiles, clients
---   select tests.login('ta');                  -- JWT sub of therapist A
+--   select tests.login('ta');                  -- JWT of therapist A (aal2)
 --   set local role authenticated;              -- act as that user (RLS on)
 --   do $$ begin perform tests.assert_eq(...); end $$;
 --   reset role;
@@ -149,15 +149,19 @@ end;
 $$;
 
 -- "Log in" as a fixture user for the rest of the transaction (use with SET LOCAL ROLE).
-create or replace function tests.login(p_name text) returns void language plpgsql as $$
+-- p_aal: 'aal2' = passed TOTP (default, needed by admin/therapist, D17); 'aal1' = magic link only.
+create or replace function tests.login(p_name text, p_aal text default 'aal2') returns void language plpgsql as $$
 begin
   perform set_config('request.jwt.claim.sub', coalesce(tests.uid(p_name)::text, ''), true);
+  perform set_config('request.jwt.claims',
+                     jsonb_build_object('sub', tests.uid(p_name), 'role', 'authenticated', 'aal', p_aal)::text, true);
 end;
 $$;
 
 create or replace function tests.logout() returns void language plpgsql as $$
 begin
   perform set_config('request.jwt.claim.sub', '', true);
+  perform set_config('request.jwt.claims', '', true);
 end;
 $$;
 

@@ -7,7 +7,8 @@
 --   * schema extensions
 --   * Supabase's default privileges on schema public
 -- auth.uid() reads request.jwt.claim.sub (or request.jwt.claims ->> 'sub'),
--- exactly like Supabase. Tests "log in" with set_config(...) + SET ROLE.
+-- exactly like Supabase; auth.jwt() ->> 'aal' gives the MFA assurance level.
+-- Tests "log in" with set_config(...) + SET ROLE (see tests.login()).
 -- =============================================================================
 
 do $$
@@ -60,11 +61,20 @@ as $$
   );
 $$;
 
+-- Full claims from request.jwt.claims (as Supabase/PostgREST sets them). If
+-- only single claims are set (request.jwt.claim.sub / .role / .aal), they are
+-- assembled into an object, so tests can set the assurance level (aal1/aal2).
 create or replace function auth.jwt()
 returns jsonb
 language sql stable
 as $$
-  select coalesce(nullif(current_setting('request.jwt.claims', true), ''), '{}')::jsonb;
+  select coalesce(
+    nullif(current_setting('request.jwt.claims', true), '')::jsonb,
+    jsonb_strip_nulls(jsonb_build_object(
+      'sub',  nullif(current_setting('request.jwt.claim.sub', true), ''),
+      'role', nullif(current_setting('request.jwt.claim.role', true), ''),
+      'aal',  nullif(current_setting('request.jwt.claim.aal', true), '')))
+  );
 $$;
 
 grant execute on function auth.uid(), auth.role(), auth.jwt() to anon, authenticated, service_role;
