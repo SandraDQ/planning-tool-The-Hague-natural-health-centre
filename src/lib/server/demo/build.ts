@@ -18,6 +18,8 @@ export function sessionTypeContext(state: DemoState, sessionTypeId: Id) {
 export function makeAppointment(
   state: DemoState,
   input: {
+    /** Seeded rows pass a stable id; runtime rows get a random one. */
+    id?: Id;
     sessionTypeId: Id;
     roomId: Id;
     roomBlockId: Id | null;
@@ -34,7 +36,7 @@ export function makeAppointment(
   const session: Interval = { start: iso(start), end: iso(start + sessionType.durationMin * MINUTE) };
   const occupied: Interval = { start: session.start, end: iso(start + (sessionType.durationMin + therapist.bufferMinutes) * MINUTE) };
   return {
-    id: randomUUID(),
+    id: input.id ?? randomUUID(),
     therapistId: therapist.id,
     roomId: input.roomId,
     roomBlockId: input.roomBlockId,

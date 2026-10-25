@@ -1,6 +1,6 @@
 // Step 1 and 2 of PLAN.md 4: candidate windows per therapist, minus busy time.
 import type { AvailabilityRule, Id, Interval, Iso, PaperWindow, Room, RoomBlock, Therapist } from "@/lib/domain/types";
-import { contains, isValidInterval, mergeIntervals, msInterval, overlaps, subtractIntervals, toIso } from "./intervals";
+import { type MsInterval, contains, isValidInterval, mergeIntervals, msInterval, overlaps, subtractIntervals, toIso } from "./intervals";
 import { CENTRE_TIME_ZONE, addDays, datesBetween, isoWeekday, localToUtcMs, parseTime, utcToLocal } from "./tz";
 
 export type WindowSource = "block" | "paper" | "availability";
@@ -47,9 +47,11 @@ export function sortWindows(windows: CandidateWindow[]): CandidateWindow[] {
 /**
  * Where may this therapist be booked?
  *  - paper-calendar therapist: open paper windows only (in a shared room inside one of their reserved blocks);
- *  - otherwise: their reserved blocks in active shared rooms
+ *  - otherwise: their reserved blocks in active shared rooms, intersected with their weekly
+ *    working hours when they have set any (D24; no hours set = the whole block),
  *    + their weekly working hours in an active private room assigned to them.
  * Working hours never open a shared room: a shared-room therapist without a block has no windows.
+ * Paper windows are opened by the admin and are not narrowed by working hours.
  */
 export function candidateWindows(input: CandidateWindowsInput): CandidateWindow[] {
   const { therapist, rooms, range } = input;
@@ -85,23 +87,28 @@ export function candidateWindows(input: CandidateWindowsInput): CandidateWindow[
     return sortWindows(out);
   }
 
+  const rules = input.availabilityRules.filter((rule) => rule.therapistId === therapist.id);
+  const ruleIntervals = rules.length > 0 ? expandRules(rules, r.start, r.end, tz) : [];
+
+  // D24: a block is bookable where it meets the therapist's working hours; with no hours set, all of it.
   for (const b of ownBlocks) {
     const room = roomById.get(b.roomId);
     if (!room?.active || room.kind !== "shared") continue;
     const p = msInterval(b.period);
     if (!isValidInterval(p) || !overlaps(p, r)) continue;
-    out.push({
-      therapistId: therapist.id, roomId: room.id, roomBlockId: b.id, paperWindowId: null, source: "block",
-      start: b.period.start, end: b.period.end, fit: "occupied", occupiedLimit: null,
-    });
+    const pieces = rules.length === 0 ? [p] : intersectWith(p, ruleIntervals);
+    for (const piece of pieces) {
+      out.push({
+        therapistId: therapist.id, roomId: room.id, roomBlockId: b.id, paperWindowId: null, source: "block",
+        start: toIso(piece.start), end: toIso(piece.end), fit: "occupied", occupiedLimit: null,
+      });
+    }
   }
 
   const privateRooms = rooms.filter((room) => room.active && room.kind === "private" && room.privateTherapistId === therapist.id);
-  const rules = input.availabilityRules.filter((rule) => rule.therapistId === therapist.id);
   if (privateRooms.length > 0 && rules.length > 0) {
-    const ruleIntervals = expandRules(rules, r.start, r.end, tz).filter((i) => overlaps(i, r));
     for (const room of privateRooms) {
-      for (const i of ruleIntervals) {
+      for (const i of ruleIntervals.filter((x) => overlaps(x, r))) {
         out.push({
           therapistId: therapist.id, roomId: room.id, roomBlockId: null, paperWindowId: null, source: "availability",
           start: toIso(i.start), end: toIso(i.end), fit: "occupied", occupiedLimit: null,
@@ -110,6 +117,17 @@ export function candidateWindows(input: CandidateWindowsInput): CandidateWindow[
     }
   }
   return sortWindows(out);
+}
+
+/** Parts of `base` covered by `list` (list is merged, so pieces never overlap). */
+function intersectWith(base: MsInterval, list: MsInterval[]): MsInterval[] {
+  const out: MsInterval[] = [];
+  for (const i of list) {
+    const start = Math.max(base.start, i.start);
+    const end = Math.min(base.end, i.end);
+    if (start < end) out.push({ start, end });
+  }
+  return out;
 }
 
 /** Weekly rules -> concrete merged UTC intervals for every local date touching [fromMs, toMs). */

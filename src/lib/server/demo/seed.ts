@@ -1,4 +1,6 @@
-// Demo seed: fake but realistic data, relative to "now" so the demo always looks current.
+// Demo seed: fake but realistic data, relative to the current week so the demo always looks current.
+// Deterministic: every server instance seeded in the same week (Europe/Amsterdam) holds identical
+// data, with the same ids (readable keys or UUIDv5 from ./ids). Nothing depends on the time of day.
 // Rooms, block templates and therapies mirror supabase/seed.sql. Every person here is
 // FICTIONAL ("Demo – …" names, e-mail addresses on the reserved .invalid domain).
 
@@ -17,7 +19,8 @@ import type {
   Therapy,
 } from "@/lib/domain/types";
 import { makeAppointment } from "./build";
-import { HOLD_MINUTES, candidateWindows, validateInState } from "./rules";
+import { stableId } from "./ids";
+import { candidateWindows, validateInState } from "./rules";
 import { SERIES_HORIZON_WEEKS, materializeSeries } from "./series";
 import type { DemoState } from "./state";
 import { MINUTE, addDays, iso, localDateOf, localToUtcIso, mondayOf, ms, overlaps } from "./time";
@@ -341,11 +344,12 @@ function prng(seed: number) {
 }
 
 export function createSeedState(now: Date = new Date()): DemoState {
-  const nowMs = now.getTime();
-  const today = localDateOf(nowMs);
-  const firstMonday = addDays(mondayOf(today), -7);
-  const horizon = addDays(today, SERIES_HORIZON_WEEKS * 7);
-  const year = today.slice(0, 4);
+  // The reference instant is Monday 00:00 of the current week, never "now" itself.
+  const weekStart = mondayOf(localDateOf(now.getTime()));
+  const refMs = ms(localToUtcIso(weekStart, "00:00"));
+  const firstMonday = addDays(weekStart, -7);
+  const horizon = addDays(weekStart, SERIES_HORIZON_WEEKS * 7);
+  const year = weekStart.slice(0, 4);
   const rnd = prng(20261025);
 
   const therapies: Therapy[] = THERAPIES.map(([slug, nl, en]) => ({ id: therapyId(slug), name: t(nl, en), active: true }));
@@ -435,7 +439,7 @@ export function createSeedState(now: Date = new Date()): DemoState {
       {
         id: "timeoff-anna",
         therapistId: T.anna,
-        period: { start: localToUtcIso(addDays(mondayOf(today), 14 + 3), "00:00"), end: localToUtcIso(addDays(mondayOf(today), 14 + 4), "00:00") },
+        period: { start: localToUtcIso(addDays(weekStart, 14 + 3), "00:00"), end: localToUtcIso(addDays(weekStart, 14 + 4), "00:00") },
         note: "Demo: vrije dag",
       },
     ],
@@ -456,7 +460,7 @@ export function createSeedState(now: Date = new Date()): DemoState {
     ],
     rentSettings: { billingDay: 1, paymentTermDays: 14, autoSend: false },
     materializedUntil: horizon,
-    seededAt: now.toISOString(),
+    seededAt: iso(refMs),
   };
 
   // Weekly block series, materialised from last week up to the horizon.
@@ -476,7 +480,7 @@ export function createSeedState(now: Date = new Date()): DemoState {
 
   // Paper windows for the paper-calendar therapist: Monday 14–16 inside her room-2 block.
   for (let week = 0; week < 4; week++) {
-    const date = addDays(mondayOf(today), 7 * (week + 1));
+    const date = addDays(weekStart, 7 * (week + 1));
     state.paperWindows.push({
       id: `paper-${week + 1}`,
       therapistId: T.femke,
@@ -486,10 +490,11 @@ export function createSeedState(now: Date = new Date()): DemoState {
     });
   }
 
-  seedAppointments(state, { nowMs, from: firstMonday, to: addDays(today, 21), rnd });
+  seedAppointments(state, { nowMs: refMs, from: firstMonday, to: addDays(weekStart, 27), rnd });
   return state;
 }
 
+/** `nowMs` is the seed's reference instant (Monday 00:00 of this week), not the real time. */
 function seedAppointments(state: DemoState, opts: { nowMs: number; from: string; to: string; rnd: () => number }) {
   const { nowMs, rnd } = opts;
   const range = { start: localToUtcIso(opts.from, "00:00"), end: localToUtcIso(opts.to, "23:59") };
@@ -500,6 +505,7 @@ function seedAppointments(state: DemoState, opts: { nowMs: number; from: string;
 
   const place = (therapistId: Id, sessionTypeId: Id, roomId: Id, start: number, source: "online" | "manual", forced?: Appointment["status"]) => {
     const appt = makeAppointment(state, {
+      id: stableId(`appointment:${therapistId}:${roomId}:${iso(start)}`),
       sessionTypeId,
       roomId,
       roomBlockId: null,
@@ -560,7 +566,7 @@ function seedAppointments(state: DemoState, opts: { nowMs: number; from: string;
   // The demo client (login "client") gets one past and one upcoming booking.
   const byStart = [...state.appointments].sort((a, b) => ms(a.session.start) - ms(b.session.start));
   const past = byStart.find((a) => a.status === "completed" && a.source === "online");
-  const upcoming = byStart.find((a) => a.status === "confirmed" && a.source === "online" && ms(a.session.start) > nowMs + 86_400_000);
+  const upcoming = byStart.find((a) => a.status === "confirmed" && a.source === "online" && ms(a.session.start) > nowMs + 7 * 86_400_000); // next week: always still upcoming
   if (past) past.clientId = DEMO_IDS.clientLotte;
   if (upcoming) upcoming.clientId = DEMO_IDS.clientLotte;
 
@@ -573,30 +579,8 @@ function seedAppointments(state: DemoState, opts: { nowMs: number; from: string;
       window.status = "filled";
     }
   }
-
-  // One checkout in progress (held), so a calendar shows the "held" state.
-  const daanType = "st-daan-30";
-  const nextDaanBlock = state.blocks
-    .filter((b) => b.therapistId === T.daan && ms(b.period.start) > nowMs + 86_400_000)
-    .sort((a, b) => ms(a.period.start) - ms(b.period.start))[0];
-  if (nextDaanBlock) {
-    for (let start = ms(nextDaanBlock.period.start); start + 30 * MINUTE <= ms(nextDaanBlock.period.end); start += 30 * MINUTE) {
-      const appt = makeAppointment(state, {
-        sessionTypeId: daanType,
-        roomId: nextDaanBlock.roomId,
-        roomBlockId: nextDaanBlock.id,
-        clientId: "client-julia",
-        start: iso(start),
-        status: "held",
-        source: "online",
-        holdExpiresAt: iso(nowMs + (HOLD_MINUTES - 1) * MINUTE),
-      });
-      if (validateInState(state, { therapistId: T.daan, roomId: appt.roomId, session: appt.session, bufferMinutes: appt.snapshot.bufferMinutes }, { nowMs }).code) continue;
-      state.appointments.push(appt);
-      storeIntake(state, appt, REASONS[3], true);
-      break;
-    }
-  }
+  // No seeded holds: a hold lives 15 minutes from the moment it is made, which would make
+  // instances differ. The booking flow creates real (demo) holds.
 }
 
 function storeIntake(state: DemoState, appt: Appointment, reason: string, newClient: boolean) {

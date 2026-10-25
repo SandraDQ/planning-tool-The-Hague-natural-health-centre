@@ -26,7 +26,7 @@ import { makeAppointment, sessionTypeContext } from "./build";
 import { checkReleaseBlock, checkReserveBlock, findSlots, occupies, roomHasFutureBookings, validateInState } from "./rules";
 import { SERIES_HORIZON_WEEKS, materializeSeries } from "./series";
 import type { DemoState } from "./state";
-import { MINUTE, addDays, contains, isDate, isTime, isValidInterval, iso, isoWeekday, localDateOf, localToUtcIso, ms, overlaps } from "./time";
+import { MINUTE, addDays, mondayOf, contains, isDate, isTime, isValidInterval, iso, isoWeekday, localDateOf, localToUtcIso, ms, overlaps } from "./time";
 
 /** Longest range findSlots / calendars may ask for in one call. */
 const MAX_RANGE_DAYS = 62;
@@ -77,7 +77,8 @@ export function createDemoStore(state: DemoState, options: DemoStoreOptions = {}
     for (const a of state.appointments) {
       if (a.status === "held" && a.holdExpiresAt && ms(a.holdExpiresAt) <= t) cancel(a, "hold_expired");
     }
-    const until = addDays(localDateOf(t), SERIES_HORIZON_WEEKS * 7);
+    // Week-based, like the seed, so instances started on different days of a week agree.
+    const until = addDays(mondayOf(localDateOf(t)), SERIES_HORIZON_WEEKS * 7);
     if (until > state.materializedUntil) {
       for (const s of state.blockSeries) materializeSeries(state, s, until);
       state.materializedUntil = until;

@@ -21,12 +21,12 @@
 ## How demo mode works
 
 - **State** is one module-level object (kept on `globalThis`, so dev hot reloads don't wipe it). It survives across requests in one server process and resets on restart or redeploy. On serverless hosting every instance has its own copy, so changes made on one instance may not show on another. That is fine for a demo, but use a single instance (or `next start`) when showing the MVP.
-- **Seed** (`createSeedState(now)`), relative to the current week, so the demo always looks current:
+- **Seed** (`createSeedState(now)`) is **deterministic per week**. Everything is derived from Monday 00:00 (Europe/Amsterdam) of the current week, never from the time of day, and every seeded row has a stable id: readable keys (`th-anna`, `room-3`, `series-1:2026-11-02`, …) or UUIDv5 from a stable key (`appointment:<therapist>:<room>:<start>`, `src/lib/server/demo/ids.ts`). Two instances started in the same week (e.g. several Vercel instances) hold identical data, and sessions reference those stable ids. Only rows created at runtime get `randomUUID()`. The series horizon in `tick()` is week-based too. Contents:
   - Rooms 1, 2, 5 shared and 3, 4, 6 private. Block templates 08–12, 13–17, 18–22. The 13 therapies.
   - 7 fictional therapists, all named "Demo – …" with `@example.invalid` e-mails. **Anna de Vries** (acupuncture and Chinese herbs, private room 3, Mon/Tue/Thu 09–17). **Bram Jansen** (massage, room 4, Tue–Fri 10–18). **Carla Mendes** (psychology and coaching, room 6, Mon/Wed/Fri 09–16). **Daan Bakker** (reiki), **Eva Smit** (ayurveda and nutrition) and **Femke Visser** (homeopathy and orthomolecular, *paper calendar*) share rooms 1, 2 and 5, three therapists per room, through weekly series. **Gijs Mulder** (shamanism) is *invited*, not bookable and has no services.
   - Each therapist has services and session types (durations 30–90 min, prices, fixed or percentage deposits), a cancellation policy, and fake business details.
   - Block series run from last Monday to 8 weeks ahead. Femke has 4 paper windows (Mondays 14–16 inside her room 2 block); the first one is booked (`filled`).
-  - About 250 appointments, from two weeks ago to three weeks ahead: `completed`/`no_show` in the past, `confirmed`/`cancelled` in the future, one `held` (expires 14 min after startup). Online bookings have fake intakes. The demo client **Lotte Willems** has one past and one upcoming appointment.
+  - About 250 appointments, from last week to four weeks ahead: `completed`/`no_show` before this week, `confirmed`/`cancelled` from this week on. Earlier days of this week stay `confirmed`, as if the therapist hasn't marked them yet. **No seeded holds**: a hold lives 15 minutes from when it is made, which would make instances differ. Holds come from the booking flow. Online bookings have fake intakes. The demo client **Lotte Willems** has one past and one upcoming appointment.
   - Rent: `fixed_monthly` for rooms 3/4/6 (€650/€600/€725), default `per_block` €40, BTW `exempt` (placeholder until the accountant answers). Rent settings: billing day 1, 14 days to pay, no auto-send.
 - **Rules** come from the scheduling engine: `findSlots`, `validateAppointment`, `canReserveBlock`, `canReleaseBlock`, `expandBlockSeries`, `holdExpiresAt`. The store adds what the engine leaves to the DB:
   - Every call first runs `tick()`. It cancels expired holds (like pg_cron; this always happens before a block release, see engine S9) and extends the series horizon.
@@ -79,7 +79,8 @@ await store.therapist.listMyAppointments(session, { start, end }); // ranges up 
 
 ## Tests
 
-`src/lib/server/demo/store.test.ts` (15 tests) and `session-token.test.ts` (2 tests) cover:
+`src/lib/server/demo/store.test.ts` (16 tests) and `session-token.test.ts` (2 tests) cover:
+- the seed is deterministic: two fresh seeds at the same `now`, and one later in the same week, are deeply equal (ids included), and stores built from them return the same room grid;
 - the seed: every live appointment passes `validateAppointment`, every bookable therapist has slots, and each shared room is shared by 3 therapists;
 - hold → confirm → idempotent confirm, and a different payment id is refused;
 - a taken slot is refused and disappears from `findSlots`;

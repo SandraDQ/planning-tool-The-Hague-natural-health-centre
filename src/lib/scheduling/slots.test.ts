@@ -48,6 +48,50 @@ describe("candidateWindows", () => {
     expect(w[0]).toMatchObject({ roomId: sharedRoom.id, roomBlockId: `blk-${MON}-08:00`, start: at(MON, "08:00"), end: at(MON, "12:00"), fit: "occupied" });
   });
 
+  describe("D24: shared-room blocks intersected with working hours", () => {
+    const blocks = [block(MON), block(MON, "13:00", "17:00")];
+    const win = (availabilityRules: ReturnType<typeof rule>[]) =>
+      candidateWindows({ therapist: shared, rooms, availabilityRules, roomBlocks: blocks, paperWindows: [], range: day(MON) });
+
+    it("no working hours set: the whole block is bookable", () => {
+      expect(win([]).map((w) => [w.start, w.end])).toEqual([
+        [at(MON, "08:00"), at(MON, "12:00")],
+        [at(MON, "13:00"), at(MON, "17:00")],
+      ]);
+    });
+
+    it("working hours narrow each block; the block id is kept", () => {
+      const w = win([rule(1, "09:30", "15:00", shared.id)]);
+      expect(w.map((x) => [x.start, x.end, x.roomBlockId])).toEqual([
+        [at(MON, "09:30"), at(MON, "12:00"), `blk-${MON}-08:00`],
+        [at(MON, "13:00"), at(MON, "15:00"), `blk-${MON}-13:00`],
+      ]);
+      const slots = findSlots({
+        therapist: shared, rooms, durationMin: 60, availabilityRules: [rule(1, "09:30", "15:00", shared.id)], roomBlocks: blocks,
+        paperWindows: [], timeOff: [], externalBusy: [], appointments: [], range: day(MON),
+      });
+      expect(localStarts(slots)[0]).toBe("09:30");
+      expect(localStarts(slots).at(-1)).toBe("14:00");
+      expect(slots.every((s) => s.roomBlockId)).toBe(true);
+    });
+
+    it("split working hours give split windows inside one block", () => {
+      const w = win([rule(1, "08:00", "09:00", shared.id), rule(1, "10:00", "11:00", shared.id)]);
+      expect(w.filter((x) => x.roomBlockId === `blk-${MON}-08:00`).map((x) => [x.start, x.end])).toEqual([
+        [at(MON, "08:00"), at(MON, "09:00")],
+        [at(MON, "10:00"), at(MON, "11:00")],
+      ]);
+    });
+
+    it("working hours on other weekdays only: the block has no bookable time that day", () => {
+      expect(win([rule(2, "08:00", "17:00", shared.id)])).toEqual([]);
+    });
+
+    it("another therapist's rules do not narrow this therapist's blocks", () => {
+      expect(win([rule(1, "09:00", "10:00", "someone-else")])).toHaveLength(2);
+    });
+  });
+
   it("private-room therapist: weekly working hours in their own room, overlapping rules merged", () => {
     const w = candidateWindows({
       therapist: priv,

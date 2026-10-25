@@ -54,7 +54,6 @@ describe("demo seed", () => {
       expect(new Set(state.blockSeries.filter((s) => s.roomId === room.id).map((s) => s.therapistId)).size).toBe(3);
     }
     expect(state.appointments.some((a) => a.status === "confirmed")).toBe(true);
-    expect(state.appointments.some((a) => a.status === "held")).toBe(true);
     expect(state.appointments.some((a) => a.status === "cancelled")).toBe(true);
     expect(state.therapists.every((t) => t.displayName.startsWith("Demo – "))).toBe(true);
     // Every seeded live appointment obeys the database rules.
@@ -68,6 +67,27 @@ describe("demo seed", () => {
       });
       expect(result, a.id).toBeNull();
     }
+  });
+
+  it("is deterministic: two fresh stores in the same week have identical data and ids", async () => {
+    const a = createSeedState(new Date(T0));
+    const b = createSeedState(new Date(T0));
+    const later = createSeedState(new Date(T0 + 3 * DAY + 5 * 3_600_000)); // Thursday afternoon, same week
+    expect(b).toEqual(a);
+    expect(later).toEqual(a);
+    const ids = (s: typeof a) => [...s.appointments, ...s.blocks, ...s.blockSeries, ...s.paperWindows, ...s.clients, ...s.therapists].map((x) => x.id);
+    expect(ids(a).length).toBeGreaterThan(300);
+    expect(new Set(ids(a)).size).toBe(ids(a).length); // unique
+    expect(ids(later)).toEqual(ids(a));
+    // Stores built from them answer the same, and sessions point at the stable ids.
+    const sa = createDemoStore(a, { now: () => T0 });
+    const sb = createDemoStore(b, { now: () => T0 });
+    const r = range(T0 - 7 * DAY, 35);
+    expect(await sb.admin.roomGrid(as.admin, r)).toEqual(await sa.admin.roomGrid(as.admin, r));
+    expect((await sa.therapist.getMe(as.therapist(DEMO_IDS.therapists.anna))).id).toBe("th-anna");
+    expect(await code(sb.client.getMe(as.client))).toBe("ok");
+    // A different week gives a different (but equally stable) calendar.
+    expect(createSeedState(new Date(T0 + 7 * DAY)).seededAt).not.toBe(a.seededAt);
   });
 
   it("offers online slots for every bookable therapist", async () => {

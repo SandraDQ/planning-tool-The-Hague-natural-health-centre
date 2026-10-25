@@ -31,6 +31,18 @@ describe.each(DST_SUNDAYS)("DST Sunday $date ($kind)", ({ date, offsetAfter }) =
     expect(local(slots.at(-1)!.session.start)).toContain("11:00");
   });
 
+  it("D24: block narrowed by Sunday working hours 09:00-11:30 keeps local times", () => {
+    const windows = candidateWindows({
+      therapist: shared, rooms, availabilityRules: [rule(7, "09:00", "11:30", shared.id)], roomBlocks: [block(date)], paperWindows: [], range: day(date),
+    });
+    expect(windows).toHaveLength(1);
+    expect(windows[0].start).toBe(new Date(Date.parse(`${date}T09:00:00Z`) - offsetAfter * 60_000).toISOString());
+    expect(windows[0].end).toBe(new Date(Date.parse(`${date}T11:30:00Z`) - offsetAfter * 60_000).toISOString());
+    const slots = generateSlots({ windows, durationMin: 60, bufferMinutes: 15 });
+    expect(local(slots[0].session.start)).toContain("09:00");
+    expect(local(slots.at(-1)!.session.start)).toContain("10:15");
+  });
+
   it("evening block 18:00-22:00 is correct too", () => {
     const windows = candidateWindows({ therapist: shared, rooms, availabilityRules: [], roomBlocks: [block(date, "18:00", "22:00")], paperWindows: [], range: day(date) });
     const slots = generateSlots({ windows, durationMin: 90, bufferMinutes: 15 });

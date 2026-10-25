@@ -1,7 +1,7 @@
 # MVP · scheduling-engine handoff
 
 **What:** the pure scheduling engine in `src/lib/scheduling/`: no I/O, no hidden clock (every time-dependent function takes `now`), no new dependencies.
-**Status:** 76 tests in 5 files, all passing (`pnpm test`). No type errors and no lint errors in `src/lib/scheduling/`.
+**Status:** 85 tests in 5 files, all passing (`pnpm test`). No type errors and no lint errors in `src/lib/scheduling/`.
 **Test it:** `pnpm vitest run src/lib/scheduling`
 
 ## Decisions
@@ -14,6 +14,7 @@
 | S4 | Slot starts sit on a **15-minute local grid** (D2). Starts are stepped in real elapsed time, so the repeated autumn hour gets slots twice and the missing spring hour gets none. A session's end is its start plus duration in real minutes. | DST correctness. |
 | S5 | `occupied` = session + buffer. Existing appointments always use their **stored** `occupied` and `snapshot`, never the therapist's current buffer or duration (D6). | Changing a buffer or duration never moves existing bookings. |
 | S6 | A shared-room therapist's slots come **only** from their reserved blocks. Weekly working hours open slots only in an active private room assigned to that therapist. Working hours never open a shared room. | Master prompt 3.2. Section 15: a shared-room therapist without a block has no slots. |
+| S6a | **D24:** if a shared-room therapist has set any working hours, each reserved block is narrowed to where it meets those hours. Session **and buffer** must fit inside the narrowed window. The window keeps its `roomBlockId`, and one block can split into several windows. With no hours set, the whole block is bookable. A day with no rule for that weekday means no bookable time in that day's blocks. Paper windows are not narrowed. | D24, master prompt 3.2. |
 | S7 | Paper windows: the **session** must fit inside the window, as `appointments_check_room` checks (`period @> session_period`). The buffer may run past the window, but not into busy time and, in a shared room, not past the therapist's block. In a shared room the window must lie inside a reserved block of that therapist; in a private room, the room must be theirs. | Matches the database. Without this, a 60-minute window would give no slot to a therapist who has a buffer. |
 | S8 | A paper window counts as closed when its status is not `open`, **or** when a live hold or confirmed appointment of that therapist overlaps it, even if the store has not yet set it to `filled`. | "Closes after one booking", even when the store is slow to update. |
 | S9 | Expired holds (`holdExpiresAt <= now`) block nothing when `now` is passed. Without `now`, every hold counts, which is the database's cautious view. `canReleaseBlock` also ignores expired holds, so **the store must cancel expired holds before it releases a block**, as pg_cron and the booking transaction do. Otherwise the database (TH004) refuses the release. | D5, D14. |
@@ -96,6 +97,7 @@ canReleaseBlock({ block, appointments, actor, now })
 | Scenario | Test |
 |---|---|
 | Shared-room therapist without a block has no slots | `slots.test.ts` › candidateWindows |
+| D24: blocks intersected with working hours, or the whole block when none are set | `slots.test.ts` › "D24"; `dst.test.ts` (all four DST Sundays) |
 | A session cannot run past the block end | `slots.test.ts` › generateSlots; `validate.test.ts` (`outside_block`) |
 | Buffer 0 / 15 / 45 changes the slots | `slots.test.ts` (last start 11:00 / 10:45 / 10:15; 13 / 12 / 10 slots) |
 | Price or duration change leaves existing bookings alone (snapshot) | `slots.test.ts` › "buffer change applies to new slots only" |
@@ -120,5 +122,4 @@ Tests that need real concurrency stay with the database tests (`pnpm test:db`).
 4. The parked 3.4 booking window (`minNoticeMin` / maximum horizon) is supported by `generateSlots` and `findSlots` (`minNoticeMin`; the horizon is simply `range.end`), but `Therapist` has no field for it yet.
 
 ## Open questions
-- **3.2 "intersected with their availability"** for shared-room therapists: right now a reserved block is treated as fully available, minus time off and external busy. Should a shared-room therapist also be able to set working hours that narrow their own blocks? Easy to add (intersect the block windows with the rule windows) if the owner wants it.
 - **Manual bookings and time off:** `validateAppointment` checks time off only when `busy` is passed, as the database does. Should a therapist be warned, rather than refused, when entering a manual booking during their own time off?
