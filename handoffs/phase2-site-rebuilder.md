@@ -8,12 +8,9 @@ Since the first version of this handoff, the second export batch arrived: live s
 
 ## Checks
 
-- **My files pass.** `tsc --noEmit` and `eslint` report nothing in `src/app/[locale]/(site)/`, `src/design-system/`, `src/content/`, `sitemap.ts` or `robots.ts`.
-- **`pnpm build` in the shared tree fails right now, and not because of the site.** Other agents' unfinished work breaks it:
-  - `src/features/dashboard/components/DashboardShell.tsx` imports a `DemoBanner` that doesn't exist yet.
-  - `src/features/dashboard/therapist/TherapistCalendar.tsx` imports `./AppointmentSheet` and `./ManualBookingSheet`, which don't exist yet.
-  - The test-first files in `src/lib/scheduling/*.test.ts` import functions that haven't been written yet.
-- **To verify the site anyway**, I built a scratch copy of the tree. It leaves out the unfinished `admin`, `therapist` and `account` routes and skips type validation, since the site's own types are checked separately above. That copy builds; all site pages are generated statically, and it is what I screenshotted.
+- **Typecheck, lint and build pass.** `pnpm typecheck` and `pnpm lint` report no errors; the only 2 lint warnings are in `scripts/wix-export/layout.mjs`. `pnpm build` passes in the shared tree and generates 172 pages.
+- **Demo mode was checked separately.** The local `.env` switches demo mode off, so I also built a scratch copy without `.env` and tested sign-in there (section 11).
+- **The screenshots came from an earlier scratch copy.** The shared build was broken by unfinished dashboard and scheduling work at the time.
 - **Screenshots:** 68 shots (17 pages × nl/en × 390 and 1280). None has horizontal overflow or a broken image.
 
 ## 1. Pages and URLs
@@ -63,7 +60,7 @@ Dutch (`nl`, still the default locale) is a full draft translation. The root `/`
 
 The 24 blog posts and the event descriptions are **not** translated. On `/nl` they show in English, marked `lang="en"`, with a short Dutch note.
 
-All **358** drafted Dutch strings are in `handoffs/phase2-site-rebuilder-nl-drafts.md` for approval. The list is regenerated after this round; it includes the new event labels "Tijd en locatie", "Over het evenement" and "Tickets".
+All **362** drafted Dutch strings are in `handoffs/phase2-site-rebuilder-nl-drafts.md` for approval. The list is regenerated after this round; it includes the new event labels "Tijd en locatie", "Over het evenement" and "Tickets", and the header and booking labels "mijn omgeving", "Uitloggen", "Boeken" and "Afspraak maken".
 
 ## 3. Redirect map (old Wix URL → new)
 
@@ -233,6 +230,23 @@ Scratch tools, not part of the repo, in `/tmp/…/scratchpad/`:
 - `media.js`: copies images and writes `media.json`.
 
 The content generator (`gen.py`) doesn't include the hand fixes, so edit `src/content/` directly from now on.
+
+## 11. Follow-up: links to the booking flow and signed-in header
+
+**Booking links.** They live in `src/app/[locale]/(site)/_lib/booking.ts`.
+- The header and hero "Book" buttons go to `/book`.
+- **Therapies page:** each therapy card has a "Book" pill that goes to `/book/therapy/<id>` when the booking catalogue has that therapy. The ids come from `src/lib/server/demo/seed.ts`, matched on the English title.
+  - Matched: Homeopathy, Acupuncture, Jungian Psychology → psychology, massage, Chinese Herbalism, Reiki, Ayurveda, Nutrition.
+  - The rest go to `/book`. In the demo data, High Power Laser, Shamanism and Orthomolecular have no bookable service, so their pages say "We couldn't find that".
+- **Old `/booking` page and service pages:** same look; "Book Now" goes to `/book/therapy/therapy-homeopathy` (both homeopathy consultations) or `/book/therapy/therapy-reiki`.
+- **Therapist cards:** the home "How to engage?" cards (beside WhatsApp) and the About profiles each have a Book button. These go to `/book` for now, because the demo catalogue has none of the centre's real therapists. Once they are in the catalogue, add each slug to `THERAPIST_SLUGS` in `_lib/booking.ts`.
+
+**Signed-in header:**
+- `SiteShell` (server component) reads `getSession()`.
+- When signed in, "Log in" becomes the person's first name, linking to `/admin`, `/therapist` or `/account`. The name is read out as "Anna, my account".
+- A "Log out" button (`signOutAction`) sits next to it: an icon on desktop, a text button in the menu sheet.
+- `SiteHeader` only gets new props (`account.hint`, `accountActions`). It never reads the session itself.
+- Tested in demo mode: sign in, see the name, log out. No overflow from 360 to 1536px.
 
 ## Open questions for the owner
 

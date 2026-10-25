@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { BrandLink } from "./BrandLink";
@@ -17,7 +18,9 @@ import { cn } from "../utils";
  * - Phones/tablets/small laptops (< 1280px): logo + "Book" button + menu sheet (menu, log in, language).
  * - Desktop (xl+): one 120px row like the live site: logo left, menu, then language, log in and book.
  *
- * Pass `account` when someone is signed in: the "Log in" link becomes a link to their dashboard.
+ * Pass `account` when someone is signed in: the "Log in" link becomes a link to their dashboard
+ * (`hint` is read out after the name, e.g. "Anna, my account"), and `accountActions` (e.g. a sign-out form)
+ * appears next to it on desktop and in the menu sheet below 1280px. The header itself never reads the session.
  * Pass `nav` / `bookHref` only to override the site's own menu (e.g. in mock-ups).
  */
 export function SiteHeader({
@@ -26,13 +29,15 @@ export function SiteHeader({
   loginHref = siteActions.login,
   homeHref = "/",
   account,
+  accountActions,
   className,
 }: {
   nav?: NavItem[];
   bookHref?: string;
   loginHref?: string;
   homeHref?: string;
-  account?: { label: string; href: string };
+  account?: { label: string; href: string; hint?: string };
+  accountActions?: ReactNode;
   className?: string;
 }) {
   const t = useTranslations("design.site");
@@ -68,8 +73,10 @@ export function SiteHeader({
               >
                 <User className="size-5" />
                 {accountLink.label}
+                {account?.hint && <span className="sr-only">, {account.hint}</span>}
               </Link>
             </div>
+            {accountActions && <div className="hidden xl:block">{accountActions}</div>}
             <div className="sm:hidden">
               <ButtonLink href={bookHref} size="sm">
                 {t("bookShort")}
@@ -97,7 +104,9 @@ export function SiteHeader({
                     >
                       <User className="size-5" />
                       {accountLink.label}
+                      {account?.hint && <span className="sr-only">, {account.hint}</span>}
                     </Link>
+                    {accountActions}
                     <div className="flex items-center justify-between gap-3 px-2">
                       <span className="text-base text-fg-muted">{tu("chooseLanguage")}</span>
                       <LanguageSwitch />

@@ -356,7 +356,9 @@
     },
     "booking": {
       "duration": "Duration",
-      "price": "Price"
+      "price": "Price",
+      "book": "Book",
+      "bookWith": "Book an appointment"
     },
     "book": {
       "title": "Book an appointment",
@@ -384,6 +386,8 @@
       "ceremonies": "Ceremonies",
       "counselling-coaching": "Counselling & Coaching",
       "natural-remedies": "Natural Remedies"
-    }
+    },
+    "myAccount": "my account",
+    "signOut": "Log out"
   }
 }

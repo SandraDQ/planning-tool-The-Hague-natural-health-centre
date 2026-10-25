@@ -356,7 +356,9 @@
     },
     "booking": {
       "duration": "Duur",
-      "price": "Prijs"
+      "price": "Prijs",
+      "book": "Boeken",
+      "bookWith": "Afspraak maken"
     },
     "book": {
       "title": "Afspraak maken",
@@ -384,6 +386,8 @@
       "ceremonies": "Ceremonies",
       "counselling-coaching": "Counseling & coaching",
       "natural-remedies": "Natuurlijke middelen"
-    }
+    },
+    "myAccount": "mijn omgeving",
+    "signOut": "Uitloggen"
   }
 }

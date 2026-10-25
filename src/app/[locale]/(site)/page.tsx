@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ButtonLink, DisplayHeading, Icons, Logo } from "@/design-system";
 import { getPage } from "@/content";
 import { asLocale, pageMetadata } from "./_lib/metadata";
@@ -8,6 +8,7 @@ import { NewsletterBand } from "./_components/NewsletterBand";
 import { MapBand } from "./_components/MapBand";
 import { WhatsAppIconButton } from "./_components/ContactButtons";
 import { BOOK_HREF } from "./_components/SiteShell";
+import { therapistBookHref } from "./_lib/booking";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -26,6 +27,7 @@ export default async function HomePage({ params }: Props) {
   const locale = asLocale((await params).locale);
   setRequestLocale(locale);
   const c = getPage("home", locale);
+  const tb = await getTranslations("site.booking");
 
   return (
     <>
@@ -120,7 +122,13 @@ export default async function HomePage({ params }: Props) {
               <SiteImage image={p.image} sizes="139px" fill className="aspect-square w-[8.7rem] rounded-full" position="50% 30%" />
               <h3 className="mt-5 font-heading text-lg font-normal">{p.name}</h3>
               <p className="mt-3 max-w-[18rem] text-lg leading-relaxed font-light">{p.text}</p>
-              <WhatsAppIconButton href={p.whatsapp.href} label={p.whatsapp.label} className="mt-5" />
+              <div className="mt-5 flex items-center gap-3">
+                <WhatsAppIconButton href={p.whatsapp.href} label={p.whatsapp.label} />
+                <ButtonLink href={therapistBookHref(p.name)} size="sm" variant="secondary">
+                  {tb("book")}
+                  <span className="sr-only">: {p.name}</span>
+                </ButtonLink>
+              </div>
             </li>
           ))}
         </ul>

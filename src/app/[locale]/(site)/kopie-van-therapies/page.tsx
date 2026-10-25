@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ButtonLink } from "@/design-system";
 import { getPage } from "@/content";
 import { asLocale, pageMetadata } from "../_lib/metadata";
 import { SiteImage } from "../_components/SiteImage";
 import { Markdown } from "../_components/Markdown";
 import { ImageBanner, PageTitle } from "../_components/PageIntro";
+import { therapyBookHref } from "../_lib/booking";
 
 type Props = { params: Promise<{ locale: string }> };
 const PATH = "/kopie-van-therapies";
@@ -21,6 +22,8 @@ export default async function TherapiesPage({ params }: Props) {
   const locale = asLocale((await params).locale);
   setRequestLocale(locale);
   const c = getPage("therapies", locale);
+  const en = getPage("therapies", "en");
+  const tb = await getTranslations("site.booking");
   return (
     <>
       <PageTitle>{c.title}</PageTitle>
@@ -45,11 +48,15 @@ export default async function TherapiesPage({ params }: Props) {
       {/* The therapies: linen cards, three per row */}
       <section className="bg-canvas px-3 py-10 sm:px-gutter" aria-label={c.title}>
         <ul className="mx-auto grid max-w-[79rem] gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {c.items.map((it) => (
+          {c.items.map((it, i) => (
             <li key={it.title} className="flex flex-col items-center bg-linen px-5 pt-5 pb-10 text-center sm:px-8">
               <SiteImage image={it.image} sizes="(min-width: 1024px) 320px, (min-width: 640px) 50vw, 100vw" fill className="aspect-[320/190] w-full max-w-80" />
               <h2 className="mt-6 font-sans text-[1.375rem] font-light text-taupe sm:text-[1.5rem]">{it.title}</h2>
               <Markdown source={it.body} className="mt-4 text-lg leading-relaxed font-light text-fg-muted" />
+              <ButtonLink href={therapyBookHref(en.items[i]?.title ?? it.title)} size="sm" className="mt-6">
+                {tb("book")}
+                <span className="sr-only">: {it.title}</span>
+              </ButtonLink>
             </li>
           ))}
         </ul>

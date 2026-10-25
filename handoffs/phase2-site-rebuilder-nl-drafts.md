@@ -6,7 +6,7 @@ The live site has no Dutch. Every Dutch string below was drafted by the agent fr
 Edit them directly in the file named in each section heading. Strings that are the same in both languages (names, addresses, prices, brand words) are not listed.
 Blog posts (24) and event descriptions are **not** translated: on /nl pages they are shown in English with a short "only available in English" note.
 
-**358 drafted strings in total.** Alt texts are included (keys ending in `.alt`).
+**362 drafted strings in total.** Alt texts are included (keys ending in `.alt`).
 
 ## `src/content/pages/about.nl.json` (101 strings)
 
@@ -357,7 +357,7 @@ Blog posts (24) and event descriptions are **not** translated: on /nl pages they
 | `items[14].title` | Hypnotherapy | Hypnotherapie |
 | `items[14].body` | It is a therapeutic process that uses focused relaxation and guided imagery to access a receptive, goal‑oriented state of mind. In this state, unhelpful patterns can be identified and reshaped. Benefits include reducing anxiety and stress, easing chronic pain, improving sleep, and supporting behavior change (such as habits or confidence). It can also complement medical care by calming the nervous system and enhancing resilience and self‑regulation. | Hypnotherapie is een therapeutisch proces dat met gerichte ontspanning en geleide verbeelding een ontvankelijke, doelgerichte toestand van de geest bereikt. In die toestand kunnen onbehulpzame patronen worden herkend en omgevormd. Voordelen zijn onder meer minder angst en stress, verlichting van chronische pijn, beter slapen en steun bij gedragsverandering (zoals gewoonten of zelfvertrouwen). Het kan ook medische zorg aanvullen door het zenuwstelsel te kalmeren en veerkracht en zelfregulatie te versterken. |
 
-## `messages/nl.json (namespace "site")` (59 strings)
+## `messages/nl.json (namespace "site")` (63 strings)
 
 | Key | English (live site) | Dutch draft |
 |---|---|---|
@@ -400,6 +400,8 @@ Blog posts (24) and event descriptions are **not** translated: on /nl pages they
 | `site.about.team` | Our therapists | Onze therapeuten |
 | `site.booking.duration` | Duration | Duur |
 | `site.booking.price` | Price | Prijs |
+| `site.booking.book` | Book | Boeken |
+| `site.booking.bookWith` | Book an appointment | Afspraak maken |
 | `site.book.title` | Book an appointment | Afspraak maken |
 | `site.book.lead` | Online booking is coming soon. | Online afspraken maken kan binnenkort. |
 | `site.book.text` | Soon you will be able to choose a therapist, a treatment and a time here, and book straight away. Until then, please contact the therapist you would like to see, or contact us and we will help you. | Binnenkort kies je hier een therapeut, een behandeling en een tijd, en boek je direct. Tot die tijd kun je contact opnemen met de therapeut die je wilt zien, of met ons, dan helpen we je verder. |
@@ -420,3 +422,5 @@ Blog posts (24) and event descriptions are **not** translated: on /nl pages they
 | `site.categoryNames.holistic-health` | Holistic Health | Holistische gezondheid |
 | `site.categoryNames.counselling-coaching` | Counselling & Coaching | Counseling & coaching |
 | `site.categoryNames.natural-remedies` | Natural Remedies | Natuurlijke middelen |
+| `site.myAccount` | my account | mijn omgeving |
+| `site.signOut` | Log out | Uitloggen |

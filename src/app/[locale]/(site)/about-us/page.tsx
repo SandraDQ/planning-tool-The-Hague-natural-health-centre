@@ -10,6 +10,7 @@ import { Gallery } from "../_components/Gallery";
 import { ContactButtons } from "../_components/ContactButtons";
 import { NewsletterBand } from "../_components/NewsletterBand";
 import { MapBand } from "../_components/MapBand";
+import { therapistBookHref } from "../_lib/booking";
 
 type Props = { params: Promise<{ locale: string }> };
 const PATH = "/about-us";
@@ -26,6 +27,7 @@ export default async function AboutPage({ params }: Props) {
   setRequestLocale(locale);
   const c = getPage("about", locale);
   const t = await getTranslations("site.about");
+  const tb = await getTranslations("site.booking");
   const [storyStart, storyRest] = splitStory(c.story.body);
 
   return (
@@ -138,6 +140,10 @@ export default async function AboutPage({ params }: Props) {
                   </h2>
                   <p className="text-base whitespace-pre-line">{p.roles.join("\n")}</p>
                   <ContactButtons links={p.contacts} />
+                  <ButtonLink href={therapistBookHref(p.name)} size="sm">
+                    {tb("bookWith")}
+                    <span className="sr-only">: {p.name}</span>
+                  </ButtonLink>
                   <p className="text-sm whitespace-pre-line">
                     {p.languages.href ? <SmartLink href={p.languages.href}>{p.languages.text}</SmartLink> : p.languages.text}
                   </p>

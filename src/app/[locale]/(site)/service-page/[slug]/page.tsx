@@ -5,7 +5,7 @@ import { ButtonLink, Icons, SiteSection, siteContact } from "@/design-system";
 import { getPage } from "@/content";
 import { routing } from "@/i18n/routing";
 import { asLocale, pageMetadata } from "../../_lib/metadata";
-import { BOOK_HREF } from "../../_components/SiteShell";
+import { serviceBookHref } from "../../_lib/booking";
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
@@ -58,7 +58,7 @@ export default async function ServicePage({ params }: Props) {
           </div>
         </dl>
         <div className="mt-6 border-b border-border-strong/40 pb-6">
-          <ButtonLink href={BOOK_HREF}>
+          <ButtonLink href={serviceBookHref(s.slug)}>
             {c.bookNow}
           </ButtonLink>
         </div>

@@ -5,7 +5,7 @@ import { getPage } from "@/content";
 import { Link } from "@/i18n/navigation";
 import { asLocale, pageMetadata } from "../_lib/metadata";
 import { SiteImage } from "../_components/SiteImage";
-import { BOOK_HREF } from "../_components/SiteShell";
+import { serviceBookHref } from "../_lib/booking";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -57,8 +57,9 @@ export default async function BookingPage({ params }: Props) {
               {s.price}
             </p>
             <div className="w-full sm:w-auto">
-              <ButtonLink href={BOOK_HREF} className="w-full sm:w-auto sm:min-w-36">
+              <ButtonLink href={serviceBookHref(s.slug)} className="w-full sm:w-auto sm:min-w-36">
                 {c.bookNow}
+                <span className="sr-only">: {s.title}</span>
               </ButtonLink>
             </div>
           </li>
