@@ -21,3 +21,7 @@ test-results/
 .vscode/
 .idea/
 *.tsbuildinfo
+
+# Full Wix media originals (~1.3 GB): kept outside git; only manifest.json and used images are committed
+/wix-export/media/*
+!/wix-export/media/manifest.json
