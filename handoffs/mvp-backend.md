@@ -6,8 +6,8 @@
 
 | Path | What |
 |---|---|
-| `src/lib/server/data.ts` | `getStore(): AppStore`. This is the `DataStore` contract plus a few extras (below). Returns the in-memory demo store. If `SUPABASE_URL` **and** `SUPABASE_SERVICE_ROLE_KEY` are set, it throws instead, so a deployment with real keys never serves demo data (D22). |
-| `src/lib/server/mode.ts` | `isDemoMode()` / `hasRealBackend()`. |
+| `src/lib/server/data.ts` | `getStore(): AppStore`. This is the `DataStore` contract plus a few extras (below). Returns the in-memory demo store only in demo mode (D28, see "Security review fixes"); otherwise it throws. |
+| `src/lib/server/mode.ts` (+ `mode-core.ts`, `src/instrumentation.ts`) | `isDemoMode()`, `hasRealBackend()`, `assertSafeMode()`, `realKeysPresent()`. |
 | `src/lib/server/extensions.ts` | `AppStore`, `TherapistExtras`, `AdminExtras`, `ClientStore` (methods the screens need that are not in the contract yet). |
 | `src/lib/server/demo/` | `seed.ts` (fake data relative to "now"), `store.ts` (`createDemoStore(state, { now })`), `rules.ts` (wraps `@/lib/scheduling`), `series.ts` (weekly series → blocks via `expandBlockSeries`), `build.ts` (appointment + snapshot), `time.ts` (wraps the engine's tz helpers), `index.ts` (singleton, `resetDemoStore()`, `listDemoAccounts()`). |
 | `src/lib/server/session.ts` | `getSession()`, `requireRole(role, locale)` (redirects to `/[locale]/login`), `homeFor(role)`, `signInDemo()`, `signOut()`. |
@@ -17,6 +17,34 @@
 | `src/design-system/components/DemoBanner.tsx` | "Demo — test data, nothing is real" (NL/EN). Exported from `@/design-system`. |
 | `messages/{nl,en}/auth.json`, `messages/{nl,en}/demo.json` | Strings (`auth.login.*`, `demo.banner.*`). |
 | `.env.example` | `DEMO_SESSION_SECRET=` |
+
+## Security review fixes (handoffs/reviews/mvp-app-review.md)
+
+Every former `HOLE:` test in `src/lib/server/__security__/mvp-app.test.ts` is now `FIXED:`, except A3 (F4, later).
+
+| # | Fix |
+|---|---|
+| F1 | `thnhc_bookings` entries are HMAC-signed (`signValue("booking", id)` in `session-token.ts`, same secret as the session cookie). `ownsBooking` accepts only valid signatures, so a typed or computed id no longer works. The demo payment actions (`demoPaySucceeded` / `Failed` / `Abandoned`) already check ownership before calling the store; a test proves a forged cookie cannot release someone's hold. Old unsigned cookies are ignored. In the real store, `confirmPayment`/`failPayment` must be server-to-server only (Mollie webhook → fetch the payment from Mollie, check the amount). |
+| F2 / D26 | `booking.holdSlot` takes `session`. A signed-in client always books as themselves; typed details are ignored. A guest booking always creates a new client record and never attaches to an existing one by e-mail. `src/features/booking/server/actions.ts` passes the session. |
+| F3 / D28 | Demo mode is on only with `DEMO_MODE=1` **and** no real key set. Real keys: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `NEXT_PUBLIC_SUPABASE_URL`/`_ANON_KEY`, `DATABASE_URL`, `MOLLIE_API_KEY`, `MONEYBIRD_TOKEN`, `EMAIL_API_KEY`, `GOOGLE_CLIENT_SECRET`, `MICROSOFT_CLIENT_SECRET`. `assertSafeMode()` (`mode-core.ts`) throws when `DEMO_MODE=1` sits next to any of them (names only, never values), and in production without a `DEMO_SESSION_SECRET` of 32+ characters. It runs at startup in `src/instrumentation.ts` (verified: the server answers 500 to everything) and again in `getStore()`/`getSession()`. Without `DEMO_MODE`, `getStore()` throws and `getSession()` returns null. `getSession()` always reads cookies first, so a build without `DEMO_MODE` can't prerender a static "redirect to login" for the dashboards (I found that during the isolated build). |
+| F5 | `next.config.ts`: `poweredByHeader: false`, plus the review's headers: CSP, HSTS, nosniff, `X-Frame-Options: DENY`, Referrer-Policy, Permissions-Policy, COOP, and `no-referrer` + `Cache-Control: private, no-store` on admin/therapist/account/book/login. One deviation: `upgrade-insecure-requests` is left out in dev (localhost over http). Wix redirects unchanged. |
+| F7 | `src/lib/server/errors.ts`: `logSafeError(label, e)` logs `{ name, code, digest }` only; `publicErrorDetail(message, code)` returns the detail only in demo/dev. **Not wired yet:** `src/features/dashboard/actions/run.ts` is the dashboard agent's file. It needs `console.error(..., e)` → `logSafeError("[dashboard action]", e)` and `detail: …` → `publicErrorDetail(err.message, err.code)`. |
+| F9 | `photoUrl`: same-origin paths only (`/media/x.jpg`). `//host`, `/\host`, `https://…` and `javascript:` are refused. |
+| F10 | `setBusiness` stores only the known fields. |
+| F13 | `import "server-only"` in `demo/index.ts` and `mode.ts`. The pure checks live in `mode-core.ts`, so `instrumentation.ts` can import them. `demo/store.ts`/`seed.ts` stay importable by Vitest; they are only reached through `demo/index.ts`. |
+
+**Later (noted, not done):**
+- F4: rate limits / bot protection on holds and sign-in (A3 still `HOLE`).
+- F8: `__Host-` cookie prefix, server-side revocation, warn on short secret. Replaced by Supabase Auth.
+- F11: intake reads must be logged; Supabase: read only through the DB function.
+- F12: `requireRole` must check `aal2` for admin/therapist once Supabase Auth lands.
+- F6 is with the booking-frontend agent.
+
+**How to run now:**
+- `pnpm dev` works as before: `next.config.ts` sets `DEMO_MODE=1` when `NODE_ENV=development` and it is unset.
+- `pnpm build` + `pnpm start`, Vercel and any shared preview need **`DEMO_MODE=1` and `DEMO_SESSION_SECRET` (32+ chars)** in the environment. `tests/e2e/serve-isolated.sh` now exports `DEMO_MODE=1`.
+- A `.env` holding `DATABASE_URL`, Mollie, e-mail or Supabase keys stops demo mode, and in `next dev` the server refuses to start. Remove them (or `DEMO_MODE`) for the demo. `WIX_*` keys are fine.
+- Vitest: tests that need demo mode set it with `vi.stubEnv("DEMO_MODE", "1")`.
 
 ## How demo mode works
 

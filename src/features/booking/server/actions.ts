@@ -59,6 +59,8 @@ export async function holdBooking(_prev: HoldState, form: FormData): Promise<Hol
     const appointment = await store.booking.holdSlot({
       sessionTypeId,
       slot,
+      // D26: a signed-in client books as themselves; the typed e-mail never picks the record.
+      session: signedInClient ? session : null,
       client: { firstName: values.firstName, lastName: values.lastName, email: values.email, phone: values.phone, locale },
       intake: {
         reason: values.reason,

@@ -2,7 +2,7 @@
 // (src/lib/domain/store.ts). Proposed for the contract in handoffs/mvp-backend.md;
 // the Supabase implementation must provide them too.
 
-import type { AdminStore, DataStore, TherapistStore } from "@/lib/domain/store";
+import type { AdminStore, BookingStore, DataStore, TherapistStore } from "@/lib/domain/store";
 import type {
   Appointment,
   BalancePayment,
@@ -47,6 +47,15 @@ export interface ClientCancellation {
   refundCents: number;
 }
 
+export interface BookingExtras {
+  /**
+   * Replaces the contract version (D26). Pass the viewer's session: a signed-in client
+   * always books as themselves (typed details are ignored). Without a client session the
+   * booking gets a new guest client record; it never attaches to an existing one by e-mail.
+   */
+  holdSlot(input: { sessionTypeId: Id; slot: Slot; client: Omit<Client, "id">; intake: IntakeInput; session?: Session | null }): Promise<Appointment>;
+}
+
 export interface TherapistExtras {
   /** Replaces the contract version: phone/paper clients need only a first name. */
   addManualBooking(session: Session, input: { sessionTypeId: Id; slot: Slot; client: ManualClientInput }): Promise<Appointment>;
@@ -85,7 +94,8 @@ export interface ClientStore {
   cancelAppointment(session: Session, appointmentId: Id, by: "client"): Promise<ClientCancellation>;
 }
 
-export type AppStore = Omit<DataStore, "therapist" | "admin"> & {
+export type AppStore = Omit<DataStore, "booking" | "therapist" | "admin"> & {
+  booking: Omit<BookingStore, "holdSlot"> & BookingExtras;
   therapist: Omit<TherapistStore, "addManualBooking"> & TherapistExtras;
   admin: Omit<AdminStore, "roomGrid"> & AdminExtras;
   client: ClientStore;

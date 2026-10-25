@@ -1,3 +1,5 @@
+import "server-only";
+
 // Demo-mode singleton (D21). Module-level state survives across requests in one
 // server process and resets on restart/redeploy. Kept on globalThis so Next.js
 // dev hot reloads do not wipe it.

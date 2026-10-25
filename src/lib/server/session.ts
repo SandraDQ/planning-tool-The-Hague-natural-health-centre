@@ -3,14 +3,18 @@ import { cookies } from "next/headers";
 import { redirect } from "@/i18n/navigation";
 import type { Role, Session } from "@/lib/domain/types";
 import { findDemoAccount } from "./demo";
-import { isDemoMode } from "./mode";
+import { assertSafeMode, isDemoMode } from "./mode";
 import { SESSION_COOKIE, SESSION_MAX_AGE_SECONDS, createSessionToken, verifySessionToken } from "./session-token";
 
 // Current viewer. Demo sign-in cookie until Supabase Auth is connected (D22).
 
 export async function getSession(): Promise<Session | null> {
-  if (!isDemoMode()) return null; // TODO(phase 3): Supabase Auth (magic link + TOTP, D17)
+  // Read the cookies first, always: it marks every page that asks for the viewer as dynamic.
+  // Otherwise a build without DEMO_MODE would prerender a static "redirect to login" for
+  // /admin, /therapist and /account, and serve it even after demo mode is switched on.
   const jar = await cookies();
+  assertSafeMode();
+  if (!isDemoMode()) return null; // TODO(phase 3): Supabase Auth (magic link + TOTP, D17)
   const accountId = verifySessionToken(jar.get(SESSION_COOKIE)?.value);
   if (!accountId) return null;
   return findDemoAccount(accountId)?.session ?? null;

@@ -46,7 +46,57 @@ const wixRedirects = [
   { source: "/event-info/:path*", destination: "/en/events" },
 ].map((r) => ({ ...r, permanent: true }));
 
+// D28: demo mode needs an explicit DEMO_MODE=1. Local `next dev` gets it by default so the
+// MVP runs out of the box; `next build` / `next start` / Vercel never do (set it there on purpose).
+// The server still refuses it next to real service keys (src/lib/server/mode-core.ts).
+if (process.env.NODE_ENV === "development" && process.env.DEMO_MODE === undefined) {
+  process.env.DEMO_MODE = "1";
+}
+
+// Security headers (handoffs/reviews/mvp-app-review.md, F5).
+const isDev = process.env.NODE_ENV !== "production";
+const csp = [
+  "default-src 'self'",
+  // Next's App Router injects inline bootstrap scripts; move to a nonce (middleware) later to drop 'unsafe-inline'.
+  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}`,
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: blob:",
+  "font-src 'self'",
+  "connect-src 'self'",
+  "frame-src https://www.google.com", // MapBand embed
+  "frame-ancestors 'none'",
+  "form-action 'self'", // Phase 5: add https://www.mollie.com
+  "base-uri 'self'",
+  "object-src 'none'",
+  ...(isDev ? [] : ["upgrade-insecure-requests"]),
+].join("; ");
+
 const nextConfig: NextConfig = {
+  poweredByHeader: false,
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          { key: "Content-Security-Policy", value: csp },
+          { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains" }, // add "; preload" once the domain is final
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "X-Frame-Options", value: "DENY" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()" },
+          { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
+        ],
+      },
+      {
+        // Personal pages: never leak the URL (booking ids) and never cache.
+        source: "/:locale(nl|en)/:area(admin|therapist|account|book|login)/:path*",
+        headers: [
+          { key: "Referrer-Policy", value: "no-referrer" },
+          { key: "Cache-Control", value: "private, no-store" },
+        ],
+      },
+    ];
+  },
   async redirects() {
     return wixRedirects;
   },

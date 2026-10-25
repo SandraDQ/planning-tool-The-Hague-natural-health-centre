@@ -29,9 +29,11 @@ async function code(p: Promise<unknown>) {
   return "ok";
 }
 
+/** Books and pays as signed-in Lotte by default (D26), or as a guest. */
 async function bookPaid(store: ReturnType<typeof setup>["store"], sessionTypeId: string, client = lotte) {
   const [slot] = await store.public.findSlots(sessionTypeId, range(T0 + 3 * DAY, 14));
-  const held = await store.booking.holdSlot({ sessionTypeId, slot, client, intake });
+  const session = client === lotte ? lotteSession : null;
+  const held = await store.booking.holdSlot({ sessionTypeId, slot, client, intake, session });
   await store.booking.confirmPayment(held.id, `tr_${held.id}`);
   return { slot, appt: held };
 }

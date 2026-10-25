@@ -52,3 +52,22 @@ export function verifySessionToken(token: string | undefined, secret = sessionSe
     return null;
   }
 }
+
+/**
+ * Signs a short value for one purpose (e.g. a booking id in the thnhc_bookings cookie),
+ * with the same secret as the session cookie: "<value>.<HMAC(purpose:value)>".
+ */
+export function signValue(purpose: string, value: string, secret = sessionSecret()): string {
+  return `${value}.${sign(`${purpose}:${value}`, secret)}`;
+}
+
+/** Returns the value when the signature is valid for this purpose, otherwise null. */
+export function verifySignedValue(purpose: string, signed: string, secret = sessionSecret()): string | null {
+  if (!signed || signed.length > 512) return null;
+  const dot = signed.lastIndexOf(".");
+  if (dot <= 0) return null;
+  const value = signed.slice(0, dot);
+  const expected = Buffer.from(sign(`${purpose}:${value}`, secret));
+  const given = Buffer.from(signed.slice(dot + 1));
+  return expected.length === given.length && timingSafeEqual(expected, given) ? value : null;
+}

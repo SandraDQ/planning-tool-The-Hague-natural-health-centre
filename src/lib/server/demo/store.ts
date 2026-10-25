@@ -19,6 +19,7 @@ import type {
   Session,
   Slot,
   Therapist,
+  TherapistBusiness,
 } from "@/lib/domain/types";
 import type { AppStore, ManualClientInput } from "../extensions";
 import { holdExpiresAt } from "@/lib/scheduling";
@@ -149,23 +150,23 @@ export function createDemoStore(state: DemoState, options: DemoStoreOptions = {}
 
   // ---------- shared helpers ----------
 
-  function findOrCreateClient(input: Omit<Client, "id">, createdBy?: Id): Client {
+  /**
+   * D26 (review F2): a guest booking always gets its own new client record, even when the
+   * e-mail matches an existing client. Linking to an account happens only after the person
+   * confirms by magic link (Supabase Auth). A signed-in client books as themselves.
+   */
+  function bookingClient(input: Omit<Client, "id">, session: Session | null | undefined): Client {
+    if (session?.role === "client") return asClient(session);
     checkClientInput(input);
-    const email = input.email.trim().toLowerCase();
-    // Manual bookings always get their own record; online bookings reuse a matching
-    // e-mail without changing the stored details (nothing is returned to the guest).
-    const existing = createdBy ? undefined : state.clients.find((c) => c.email.toLowerCase() === email);
-    if (existing) return existing;
     const client: Client = {
       id: randomUUID(),
       firstName: input.firstName.trim(),
       lastName: input.lastName.trim(),
-      email,
+      email: input.email.trim().toLowerCase(),
       phone: input.phone.trim(),
       locale: input.locale,
     };
     state.clients.push(client);
-    if (createdBy) state.clientCreatedBy[client.id] = createdBy;
     return client;
   }
 
@@ -313,7 +314,7 @@ export function createDemoStore(state: DemoState, options: DemoStoreOptions = {}
           fail("invalid", "Intake form is incomplete");
         }
         checkSlotShape(input.slot);
-        checkClientInput(input.client);
+        if (input.session?.role !== "client") checkClientInput(input.client);
         const { sessionType, service, therapist } = sessionTypeContext(state, input.sessionTypeId);
         if (!therapist.bookable || service.archived) fail("invalid", "This service cannot be booked online");
         if (input.slot.therapistId !== therapist.id) fail("invalid", "Slot belongs to another therapist");
@@ -340,7 +341,7 @@ export function createDemoStore(state: DemoState, options: DemoStoreOptions = {}
         );
         if (!offered) fail("outside_block", "This time is not available");
 
-        const client = findOrCreateClient(input.client);
+        const client = bookingClient(input.client, input.session);
         const appt = makeAppointment(state, {
           sessionTypeId: sessionType.id,
           roomId: input.slot.roomId,
@@ -397,7 +398,10 @@ export function createDemoStore(state: DemoState, options: DemoStoreOptions = {}
         const me = asTherapist(session);
         const p = patch ?? {};
         if (p.bio !== undefined && !isLocaleText(p.bio, false)) fail("invalid", "Invalid bio");
-        if (p.photoUrl !== undefined && p.photoUrl !== null && !(typeof p.photoUrl === "string" && /^(https:\/\/|\/)/.test(p.photoUrl))) fail("invalid", "Invalid photo");
+        // Review F9: same-origin paths only ("/media/x.jpg"), never "//host" or "/\host" (third-party trackers).
+        if (p.photoUrl !== undefined && p.photoUrl !== null && !(typeof p.photoUrl === "string" && p.photoUrl.length <= 500 && /^\/(?![/\\])[^\s]*$/.test(p.photoUrl))) {
+          fail("invalid", "Invalid photo");
+        }
         if (p.publicEmail !== undefined && p.publicEmail !== null && !isEmail(p.publicEmail)) fail("invalid", "Invalid e-mail");
         if (p.bufferMinutes !== undefined && !(isInt(p.bufferMinutes, 0, 240) && p.bufferMinutes % 5 === 0)) fail("invalid", "Buffer must be 0–240 minutes in steps of 5");
         if (p.reminderHours !== undefined && !isInt(p.reminderHours, 0, 168)) fail("invalid", "Invalid reminder time");
@@ -775,7 +779,16 @@ export function createDemoStore(state: DemoState, options: DemoStoreOptions = {}
         if (!isText(business.legalName, 200) || typeof business.kor !== "boolean") fail("invalid", "Legal name is required");
         const optional = (v: unknown) => v === null || (typeof v === "string" && v.length <= 300);
         if (![business.tradeName, business.address, business.kvk, business.btwNumber].every(optional)) fail("invalid");
-        const row = clone(business);
+        // Review F10: store only the known fields (no mass assignment).
+        const row: TherapistBusiness = {
+          therapistId: business.therapistId,
+          legalName: business.legalName.trim(),
+          tradeName: business.tradeName,
+          address: business.address,
+          kvk: business.kvk,
+          btwNumber: business.btwNumber,
+          kor: business.kor,
+        };
         state.business = [...state.business.filter((b) => b.therapistId !== row.therapistId), row];
         return clone(row);
       },
