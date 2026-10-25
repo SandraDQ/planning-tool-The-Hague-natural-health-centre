@@ -56,12 +56,12 @@ Open `/nl/login` → **Owner (admin)** → `/nl/admin`; or a therapist (Daan/Eva
 **Screenshots:** `/mnt/project-files/thnhc-plan/mvp/dashboards/`. Admin `admin-*.png` at 1280×800 (plus 2 phone shots); therapist `therapist-*.png` at 390×844 @2x (plus one desktop shot).
 
 ## Gaps and questions
-1. **Admin can't see the client's first name** in the room grid: `roomGrid` returns client ids only, and there is no admin method to get first names. The grid shows time + service. Add `clientFirstName` to the roomGrid appointments if the owner wants it (7A allows first name + service).
-2. **No list of balance payments** (`TherapistStore` has none), so the sheet can't show "already paid" and lets them record a payment again. The store also accepts a payment for a future appointment. Suggest `listBalancePayments(session, appointmentIds)` and a rule "only after the session starts".
-3. **Manual bookings need e-mail and phone** (store rule). Is that right for phone/paper clients without e-mail?
+1. ~~**Admin can't see the client's first name** in the room grid: `roomGrid` returns client ids only, and there is no admin method to get first names. The grid shows time + service. Add `clientFirstName` to the roomGrid appointments if the owner wants it (7A allows first name + service).~~ **Done:** the grid sheets show the first name (`GridAppointment.clientFirstName`).
+2. ~~**No list of balance payments** (`TherapistStore` has none), so the sheet can't show "already paid" and lets them record a payment again. The store also accepts a payment for a future appointment. Suggest `listBalancePayments(session, appointmentIds)` and a rule "only after the session starts".~~ **Done:** the sheet lists recorded payments, shows what is still to pay, and hides "Payment" until the session has started.
+3. ~~**Manual bookings need e-mail and phone** (store rule). Is that right for phone/paper clients without e-mail?~~ **Done:** only the first name is required; e-mail is checked only when given.
 4. **Admin can assign a block on a past date** (the store allows it). The UI hides past free slots; the store could refuse it too.
 5. **Working hours**: one range per day in the UI (e.g. 09–12 and 14–17 is not possible yet). The contract allows several; I can add "+ another range" if wanted.
-6. **Time off can't be removed** (there is no delete method). The list shows upcoming time off only.
-7. **Paper-calendar windows** (`openPaperWindow`) have no admin screen yet. That is left out of this MVP; it would go on the renter page.
+6. ~~**Time off can't be removed** (there is no delete method). The list shows upcoming time off only.~~ **Done:** each upcoming item has a delete button.
+7. ~~**Paper-calendar windows** (`openPaperWindow`) have no admin screen yet. That is left out of this MVP; it would go on the renter page.~~ **Done:** `/admin/paper` ("Paper calendar" in the admin nav) lists upcoming windows with status and bookings, opens a window inside one of the therapist's blocks (next 8 weeks) or their private room, and closes open windows without bookings.
 8. Ranges are capped at 62 days by the store, so Blocks shows 8 weeks ahead.
 9. Date and time inputs follow the browser's locale (the screenshots show US format because headless Chromium runs in en-US; Dutch browsers show dd-mm-yyyy and 24h).

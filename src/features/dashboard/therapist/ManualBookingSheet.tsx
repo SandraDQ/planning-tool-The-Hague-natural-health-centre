@@ -55,8 +55,9 @@ export function ManualBookingSheet({ data, initialDay, onClose }: { data: Calend
     otherSlot != null && data.timeOff.some((p) => p.start < otherSlot.session.end && p.end > otherSlot.session.start);
 
   const chosen: Slot | null = other ? otherSlot : (slots.find((s) => localTime(s.session.start) === time) ?? null);
-  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(client.email.trim());
-  const clientOk = client.firstName.trim() && client.lastName.trim() && emailOk && client.phone.trim();
+  // Only the first name is required; an e-mail address is checked only when given.
+  const emailOk = !client.email.trim() || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(client.email.trim());
+  const clientOk = client.firstName.trim() && emailOk;
 
   const submit = () => {
     setTried(true);
@@ -68,9 +69,9 @@ export function ManualBookingSheet({ data, initialDay, onClose }: { data: Calend
           slot: chosen,
           client: {
             firstName: client.firstName.trim(),
-            lastName: client.lastName.trim(),
-            email: client.email.trim(),
-            phone: client.phone.trim(),
+            lastName: client.lastName.trim() || undefined,
+            email: client.email.trim() || undefined,
+            phone: client.phone.trim() || undefined,
             locale,
           },
         }),
@@ -166,7 +167,7 @@ export function ManualBookingSheet({ data, initialDay, onClose }: { data: Calend
                 value={client.lastName}
                 onChange={(e) => setClient({ ...client, lastName: e.target.value })}
                 autoComplete="off"
-                error={tried && !client.lastName.trim() ? t("lastNameError") : undefined}
+                optional
               />
             </div>
             <TextField
@@ -176,6 +177,7 @@ export function ManualBookingSheet({ data, initialDay, onClose }: { data: Calend
               value={client.email}
               onChange={(e) => setClient({ ...client, email: e.target.value })}
               autoComplete="off"
+              optional
               hint={t("emailHint")}
               error={tried && !emailOk ? t("emailError") : undefined}
             />
@@ -186,7 +188,7 @@ export function ManualBookingSheet({ data, initialDay, onClose }: { data: Calend
               value={client.phone}
               onChange={(e) => setClient({ ...client, phone: e.target.value })}
               autoComplete="off"
-              error={tried && !client.phone.trim() ? t("phoneError") : undefined}
+              optional
             />
           </fieldset>
         </div>

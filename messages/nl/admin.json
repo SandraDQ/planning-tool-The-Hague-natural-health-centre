@@ -13,7 +13,8 @@
     "rooms": "Kamers",
     "renters": "Huurders",
     "rent": "Huur",
-    "therapies": "Therapieën"
+    "therapies": "Therapieën",
+    "paper": "Papieren agenda"
   },
   "errors": {
     "slot_taken": "Die tijd is net bezet. Kies een andere.",
@@ -315,5 +316,51 @@
     "save": "Opslaan",
     "saved": "Opgeslagen",
     "cancel": "Annuleren"
+  },
+  "paper": {
+    "title": "Papieren agenda",
+    "lead": "Sommige therapeuten houden hun eigen agenda bij. Open de tijden waarin cliënten hen online kunnen boeken; de rest blijft dicht.",
+    "open": "Venster openen",
+    "filter": "Therapeut",
+    "allTherapists": "Alle therapeuten",
+    "roomNumber": "Kamer {number}",
+    "unknownRoom": "Kamer",
+    "unknownTherapist": "Therapeut",
+    "status": {
+      "open": "Open",
+      "filled": "Volgeboekt",
+      "closed": "Gesloten"
+    },
+    "bookedCount": "{count, plural, one {# boeking} other {# boekingen}}",
+    "close": "Sluiten",
+    "closeNamed": "Venster van {name} op {time} sluiten",
+    "closed": "Venster gesloten",
+    "closeBooked": "Dit venster heeft boekingen en kan niet dicht. Vraag de therapeut die eerst te verzetten of te annuleren.",
+    "closeHint": "Een venster met boekingen kan niet dicht. Een venster dat helemaal geboekt is, staat vanzelf op volgeboekt.",
+    "emptyTitle": "Geen open vensters",
+    "emptyText": "Open een venster zodat cliënten online kunnen boeken.",
+    "noTherapistsTitle": "Geen therapeut met een papieren agenda",
+    "noTherapistsText": "Zet eerst “papieren agenda” aan bij een huurder.",
+    "toRenters": "Naar huurders",
+    "openTitle": "Venster openen",
+    "openText": "Cliënten kunnen deze therapeut alleen binnen open vensters online boeken.",
+    "therapist": "Therapeut",
+    "place": "Kamer en tijd",
+    "placePlaceholder": "Kies een blok of kamer",
+    "placeHint": "In een gedeelde kamer moet een venster binnen een blok liggen dat de therapeut heeft gereserveerd.",
+    "placeError": "Kies waar het venster komt.",
+    "privateRoom": "{room} (eigen kamer, elke dag)",
+    "noPlacesTitle": "Nergens een venster mogelijk",
+    "noPlacesText": "Deze therapeut heeft de komende 8 weken geen kamerblokken en geen eigen kamer. Wijs eerst een blok toe in het kamerrooster.",
+    "date": "Datum",
+    "start": "Van",
+    "end": "Tot",
+    "timeError": "Het einde moet na het begin liggen.",
+    "outsideBlock": "Blijf binnen het blok: {start}–{end}.",
+    "pastError": "Deze tijd is al voorbij.",
+    "cancel": "Annuleren",
+    "save": "Venster openen",
+    "opened": "Venster geopend",
+    "openedText": "Cliënten kunnen deze tijd nu online boeken."
   }
 }

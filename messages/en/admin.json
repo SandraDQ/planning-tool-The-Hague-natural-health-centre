@@ -13,7 +13,8 @@
     "rooms": "Rooms",
     "renters": "Renters",
     "rent": "Rent",
-    "therapies": "Therapies"
+    "therapies": "Therapies",
+    "paper": "Paper calendar"
   },
   "errors": {
     "slot_taken": "That time has just been taken. Please choose another.",
@@ -315,5 +316,51 @@
     "save": "Save",
     "saved": "Saved",
     "cancel": "Cancel"
+  },
+  "paper": {
+    "title": "Paper calendar",
+    "lead": "Some therapists keep their own diary. Open the times in which clients can book them online; everything else stays closed.",
+    "open": "Open a window",
+    "filter": "Therapist",
+    "allTherapists": "All therapists",
+    "roomNumber": "Room {number}",
+    "unknownRoom": "Room",
+    "unknownTherapist": "Therapist",
+    "status": {
+      "open": "Open",
+      "filled": "Fully booked",
+      "closed": "Closed"
+    },
+    "bookedCount": "{count, plural, one {# booking} other {# bookings}}",
+    "close": "Close",
+    "closeNamed": "Close the window of {name} on {time}",
+    "closed": "Window closed",
+    "closeBooked": "This window has bookings, so it can't be closed. Ask the therapist to move or cancel them first.",
+    "closeHint": "A window with bookings can't be closed. A window fills up by itself when it is fully booked.",
+    "emptyTitle": "No open windows",
+    "emptyText": "Open a window so clients can book online.",
+    "noTherapistsTitle": "No therapist uses a paper calendar",
+    "noTherapistsText": "Turn on “paper calendar” for a renter first.",
+    "toRenters": "Go to renters",
+    "openTitle": "Open a window",
+    "openText": "Clients can book this therapist online only inside open windows.",
+    "therapist": "Therapist",
+    "place": "Room and time",
+    "placePlaceholder": "Choose a block or room",
+    "placeHint": "In a shared room, a window must lie inside a block the therapist has reserved.",
+    "placeError": "Choose where the window is.",
+    "privateRoom": "{room} (own room, any day)",
+    "noPlacesTitle": "Nowhere to open a window",
+    "noPlacesText": "This therapist has no room blocks in the next 8 weeks and no private room. Assign a block in the room grid first.",
+    "date": "Date",
+    "start": "From",
+    "end": "Until",
+    "timeError": "The end must be after the start.",
+    "outsideBlock": "Stay inside the block: {start}–{end}.",
+    "pastError": "This time has already passed.",
+    "cancel": "Cancel",
+    "save": "Open window",
+    "opened": "Window opened",
+    "openedText": "Clients can now book this time online."
   }
 }

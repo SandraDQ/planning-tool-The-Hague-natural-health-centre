@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { getLocale } from "next-intl/server";
 import { getStore } from "@/lib/server/data";
 import { requireRole } from "@/lib/server/session";
-import type { BlockTemplate, Id, RentRate, RentSettings, Room, Therapist, TherapistBusiness, Therapy } from "@/lib/domain/types";
+import type { BlockTemplate, Id, Interval, RentRate, RentSettings, Room, Therapist, TherapistBusiness, Therapy } from "@/lib/domain/types";
 import { run } from "./run";
 import { addDays } from "../time";
 
@@ -103,6 +103,20 @@ export async function changeRentRate(input: Omit<RentRate, "id" | "validTo">) {
     if (running) await store.upsertRentRate(session, { ...running, validTo: addDays(input.validFrom, -1) });
     return store.upsertRentRate(session, { ...input, validTo: next ? addDays(next.validFrom, -1) : null });
   });
+  done();
+  return result;
+}
+
+export async function openPaperWindow(input: { therapistId: Id; roomId: Id; period: Interval }) {
+  const { session, store } = await admin();
+  const result = await run(() => store.openPaperWindow(session, input));
+  done();
+  return result;
+}
+
+export async function closePaperWindow(windowId: Id) {
+  const { session, store } = await admin();
+  const result = await run(() => store.closePaperWindow(session, windowId));
   done();
   return result;
 }

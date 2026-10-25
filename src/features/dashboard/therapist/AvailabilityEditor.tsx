@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import { useFormatter, useTranslations } from "next-intl";
-import { Button, Card, Checkbox, Icons, Select, TextField, Textarea } from "@/design-system";
+import { Button, Card, Checkbox, IconButton, Icons, Select, TextField, Textarea } from "@/design-system";
 import type { AvailabilityRule, TimeOff } from "@/lib/domain/types";
-import { addTimeOff, saveAvailability, updateProfile } from "../actions/therapist";
+import { addTimeOff, deleteTimeOff, saveAvailability, updateProfile } from "../actions/therapist";
 import { sessionsInBlock } from "../sessions";
 import { addDays, localToIso } from "../time";
 import { useRunAction } from "../useRunAction";
@@ -169,12 +169,20 @@ function TimeOffCard({ timeOff, today }: { timeOff: TimeOff[]; today: string }) 
       {upcoming.length > 0 && (
         <ul className="mt-4 divide-y divide-border rounded-md border border-border">
           {upcoming.map((x) => (
-            <li key={x.id} className="flex items-start gap-3 px-3 py-2 text-sm">
-              <Icons.CalendarIcon className="mt-0.5 size-4 shrink-0 text-fg-muted" />
-              <span>
+            <li key={x.id} className="flex items-center gap-3 px-3 py-2 text-sm">
+              <Icons.CalendarIcon className="size-4 shrink-0 text-fg-muted" />
+              <span className="min-w-0 flex-1">
                 {fmt(x.period.start)} – {fmt(x.period.end)}
                 {x.note && <span className="block text-fg-muted">{x.note}</span>}
               </span>
+              <IconButton
+                aria-label={t("deleteTimeOff", { period: `${fmt(x.period.start)} – ${fmt(x.period.end)}` })}
+                className="-my-2 -mr-2 text-fg-muted hover:text-danger"
+                disabled={pending}
+                onClick={() => exec(() => deleteTimeOff(x.id), { success: t("timeOffDeleted") })}
+              >
+                <Icons.Trash />
+              </IconButton>
             </li>
           ))}
         </ul>

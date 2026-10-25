@@ -8,7 +8,6 @@ import type {
   AvailabilityRule,
   BalancePayment,
   CancellationPolicy,
-  Client,
   Id,
   Interval,
   Service,
@@ -16,6 +15,7 @@ import type {
   Slot,
   Therapist,
 } from "@/lib/domain/types";
+import type { ManualClientInput } from "@/lib/server/extensions";
 import { run } from "./run";
 import { dayRange } from "../time";
 
@@ -51,7 +51,7 @@ export async function manualSlots(sessionTypeId: Id, day: string) {
   });
 }
 
-export async function addManualBooking(input: { sessionTypeId: Id; slot: Slot; client: Omit<Client, "id"> }) {
+export async function addManualBooking(input: { sessionTypeId: Id; slot: Slot; client: ManualClientInput }) {
   const { session, store } = await therapist();
   const result = await run(() => store.therapist.addManualBooking(session, input));
   done();
@@ -119,6 +119,13 @@ export async function addTimeOff(period: Interval, note?: string) {
 export async function savePolicy(policy: Omit<CancellationPolicy, "therapistId">) {
   const { session, store } = await therapist();
   const result = await run(() => store.therapist.setMyPolicy(session, policy));
+  done();
+  return result;
+}
+
+export async function deleteTimeOff(timeOffId: Id) {
+  const { session, store } = await therapist();
+  const result = await run(() => store.therapist.deleteTimeOff(session, timeOffId).then(() => null));
   done();
   return result;
 }

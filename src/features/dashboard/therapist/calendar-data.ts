@@ -1,5 +1,5 @@
 import "server-only";
-import type { Appointment, Client, Interval, Room, Service, Session, SessionType } from "@/lib/domain/types";
+import type { Appointment, BalancePayment, Client, Interval, Room, Service, Session, SessionType } from "@/lib/domain/types";
 import { getStore } from "@/lib/server/data";
 import { addDays, isoWeekday, localDay, localToIso, weekDays, weekRange } from "../time";
 
@@ -19,6 +19,8 @@ export type CalendarWindow = {
 export type CalendarAppointment = Appointment & {
   roomNumber: number | null;
   client: Pick<Client, "firstName" | "lastName" | "email" | "phone"> | null;
+  /** Balance payments recorded so far, oldest first. */
+  payments: BalancePayment[];
 };
 
 export type CalendarData = {
@@ -48,7 +50,13 @@ export async function loadCalendarData(session: Session, monday: string): Promis
     store.listMyTimeOff(session),
   ]);
   const clientIds = [...new Set(appointments.map((a) => a.clientId))];
-  const clients = clientIds.length ? await store.listClients(session, clientIds) : [];
+  const appointmentIds = appointments.map((a) => a.id);
+  const [clients, payments] = await Promise.all([
+    clientIds.length ? store.listClients(session, clientIds) : Promise.resolve([]),
+    appointmentIds.length ? store.listBalancePayments(session, appointmentIds) : Promise.resolve([]),
+  ]);
+  const paymentsByAppointment = new Map<string, BalancePayment[]>();
+  for (const p of payments) paymentsByAppointment.set(p.appointmentId, [...(paymentsByAppointment.get(p.appointmentId) ?? []), p]);
   const clientById = new Map(clients.map((c) => [c.id, c]));
   const roomById = new Map(rooms.map((r) => [r.id, r]));
   const privateRoom = rooms.find((r) => r.kind === "private" && r.privateTherapistId === me.id) ?? null;
@@ -96,6 +104,7 @@ export async function loadCalendarData(session: Session, monday: string): Promis
         ...a,
         roomNumber: roomById.get(a.roomId)?.number ?? null,
         client: c ? { firstName: c.firstName, lastName: c.lastName, email: c.email, phone: c.phone } : null,
+        payments: (paymentsByAppointment.get(a.id) ?? []).sort((x, y) => x.paidOn.localeCompare(y.paidOn)),
       };
     }),
     timeOff: timeOff.map((x) => x.period).filter((p) => p.start < range.end && p.end > range.start),

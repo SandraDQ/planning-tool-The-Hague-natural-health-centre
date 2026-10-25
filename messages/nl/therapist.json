@@ -83,7 +83,7 @@
     "deposit": "Aanbetaald",
     "balance": "Nog te betalen",
     "heldText": "De cliënt is de aanbetaling aan het doen. Lukt dat niet binnen 15 minuten, dan komt de tijd weer vrij.",
-    "balanceHint": "Leg na de sessie de rest van de betaling vast; de eindfactuur wordt dan voor je gemaakt.",
+    "balanceHint": "Je kunt de rest van de betaling vastleggen zodra de sessie begonnen is; de eindfactuur wordt dan voor je gemaakt.",
     "intakeNote": "Het intakeformulier is per e-mail naar je gestuurd en staat hier niet.",
     "cancelAppointment": "Annuleren",
     "noShow": "Niet gekomen",
@@ -117,7 +117,9 @@
     "noShowText": "{name} is niet gekomen. Je houdt de aanbetaling, zoals in je voorwaarden staat.",
     "noShowEarly": "Deze sessie is nog niet begonnen.",
     "confirmNoShow": "Markeren als niet gekomen",
-    "noShowSaved": "Gemarkeerd als niet gekomen"
+    "noShowSaved": "Gemarkeerd als niet gekomen",
+    "paymentsTitle": "Vastgelegde betalingen",
+    "paidInFull": "Helemaal betaald."
   },
   "manual": {
     "title": "Afspraak toevoegen",
@@ -145,10 +147,8 @@
     "save": "Afspraak opslaan",
     "saved": "Afspraak toegevoegd",
     "savedText": "Hij staat in je agenda.",
-    "lastNameError": "Vul een achternaam in.",
-    "emailHint": "Hier krijgt de cliënt de bevestiging van de afspraak.",
-    "emailError": "Vul een geldig e-mailadres in.",
-    "phoneError": "Vul een telefoonnummer in."
+    "emailHint": "Vul je het in, dan krijgt de cliënt hier de bevestiging van de afspraak.",
+    "emailError": "Vul een geldig e-mailadres in."
   },
   "blocks": {
     "title": "Kamerblokken",
@@ -297,7 +297,9 @@
     "note": "Notitie",
     "noteHint": "Alleen jij ziet dit.",
     "addTimeOff": "Vrije tijd toevoegen",
-    "timeOffSaved": "Vrije tijd toegevoegd"
+    "timeOffSaved": "Vrije tijd toegevoegd",
+    "deleteTimeOff": "Vrije tijd {period} verwijderen",
+    "timeOffDeleted": "Vrije tijd verwijderd"
   },
   "policy": {
     "title": "Annuleringsvoorwaarden",

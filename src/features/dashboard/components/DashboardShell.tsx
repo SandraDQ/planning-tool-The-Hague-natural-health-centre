@@ -37,6 +37,7 @@ export async function DashboardShell({
       ? [
           { href: "/admin", label: t("nav.overview"), icon: <Icons.Home />, match: "exact" },
           { href: "/admin/grid", label: t("nav.grid"), icon: <Icons.Grid /> },
+          { href: "/admin/paper", label: t("nav.paper"), icon: <Icons.CalendarIcon /> },
           { href: "/admin/rooms", label: t("nav.rooms"), icon: <Icons.Door /> },
           { href: "/admin/renters", label: t("nav.renters"), icon: <Icons.Users /> },
           { href: "/admin/rent", label: t("nav.rent"), icon: <Icons.Euro /> },

@@ -83,7 +83,7 @@
     "deposit": "Deposit paid",
     "balance": "Still to pay",
     "heldText": "The client is paying the deposit. If they don't finish within 15 minutes, the time becomes free again.",
-    "balanceHint": "Record the rest of the payment after the session; the final invoice is then made for you.",
+    "balanceHint": "You can record the rest of the payment once the session has started; the final invoice is then made for you.",
     "intakeNote": "The intake form was sent to you by e-mail and is not shown here.",
     "cancelAppointment": "Cancel",
     "noShow": "No-show",
@@ -117,7 +117,9 @@
     "noShowText": "{name} didn't come. You keep the deposit, as your policy says.",
     "noShowEarly": "This session hasn't started yet.",
     "confirmNoShow": "Mark as no-show",
-    "noShowSaved": "Marked as no-show"
+    "noShowSaved": "Marked as no-show",
+    "paymentsTitle": "Payments recorded",
+    "paidInFull": "Paid in full."
   },
   "manual": {
     "title": "Add a booking",
@@ -145,10 +147,8 @@
     "save": "Save booking",
     "saved": "Booking added",
     "savedText": "It's in your calendar.",
-    "lastNameError": "Enter a last name.",
-    "emailHint": "The client gets the booking confirmation here.",
-    "emailError": "Enter a valid e-mail address.",
-    "phoneError": "Enter a phone number."
+    "emailHint": "If you add it, the client gets the booking confirmation here.",
+    "emailError": "Enter a valid e-mail address."
   },
   "blocks": {
     "title": "Room blocks",
@@ -297,7 +297,9 @@
     "note": "Note",
     "noteHint": "Only you see this.",
     "addTimeOff": "Add time off",
-    "timeOffSaved": "Time off added"
+    "timeOffSaved": "Time off added",
+    "deleteTimeOff": "Delete time off {period}",
+    "timeOffDeleted": "Time off deleted"
   },
   "policy": {
     "title": "Cancellation policy",

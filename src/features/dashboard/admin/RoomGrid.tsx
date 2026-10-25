@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { useFormatter, useLocale, useTranslations } from "next-intl";
 import { Badge, Button, ButtonLink, Card, Checkbox, DatePicker, Icons, Select, Sheet, cn, dayToDate } from "@/design-system";
-import type { Appointment, BlockTemplate, Locale, Room, RoomBlock, Therapist } from "@/lib/domain/types";
+import type { BlockTemplate, Locale, Room, RoomBlock, Therapist } from "@/lib/domain/types";
+import type { GridAppointment } from "@/lib/server/extensions";
 import { assignBlock, releaseBlockAsAdmin } from "../actions/admin";
 import { useRunAction } from "../useRunAction";
 import { addDays, isoWeekNumber, localDay, localTime, overlaps, todayLocal } from "../time";
@@ -14,7 +15,7 @@ type Props = {
   days: string[];
   rooms: Room[];
   blocks: RoomBlock[];
-  appointments: Appointment[];
+  appointments: GridAppointment[];
   templates: BlockTemplate[];
   therapists: Therapist[];
 };
@@ -256,7 +257,7 @@ function BlockChip({ block, name, count, onOpen }: { block: RoomBlock; name: str
   );
 }
 
-function AppointmentList({ appointments }: { appointments: Appointment[] }) {
+function AppointmentList({ appointments }: { appointments: GridAppointment[] }) {
   const t = useTranslations("admin.grid");
   const locale = useLocale() as Locale;
   if (appointments.length === 0) return <p className="text-sm text-fg-muted">{t("noAppointments")}</p>;
@@ -270,7 +271,10 @@ function AppointmentList({ appointments }: { appointments: Appointment[] }) {
             <span className="tabular-nums">
               {localTime(a.session.start)}–{localTime(a.session.end)}
             </span>
-            <span className="min-w-0 flex-1 truncate">{a.snapshot.serviceName[locale]}</span>
+            <span className="min-w-0 flex-1 truncate">
+              {a.clientFirstName && <span className="font-medium">{a.clientFirstName} · </span>}
+              {a.snapshot.serviceName[locale]}
+            </span>
             {a.status === "held" && <Badge tone="warning">{t("held")}</Badge>}
           </li>
         ))}
@@ -288,7 +292,7 @@ function BlockSheet({
   block: RoomBlock;
   room?: Room;
   name: string;
-  appointments: Appointment[];
+  appointments: GridAppointment[];
   onClose: () => void;
 }) {
   const t = useTranslations("admin.grid");
@@ -365,7 +369,7 @@ function PrivateDaySheet({
   room: Room;
   day: string;
   name?: string;
-  appointments: Appointment[];
+  appointments: GridAppointment[];
   onClose: () => void;
 }) {
   const t = useTranslations("admin.grid");

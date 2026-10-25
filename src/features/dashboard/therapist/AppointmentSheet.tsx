@@ -21,8 +21,10 @@ export function AppointmentSheet({ appointment: a, today, onClose }: { appointme
   const { pending, exec } = useRunAction("therapist");
   const [mode, setMode] = useState<Mode>("details");
   const balance = Math.max(0, a.snapshot.priceCents - a.snapshot.depositCents);
+  const paid = a.payments.reduce((sum, p) => sum + p.amountCents, 0);
+  const remaining = Math.max(0, balance - paid);
   const [method, setMethod] = useState<BalancePayment["method"]>("pin");
-  const [amount, setAmount] = useState(centsToInput(balance));
+  const [amount, setAmount] = useState(centsToInput(remaining));
   const [paidOn, setPaidOn] = useState(today);
   const cents = parseEuroInput(amount);
 
@@ -30,6 +32,13 @@ export function AppointmentSheet({ appointment: a, today, onClose }: { appointme
   const name = a.client ? `${a.client.firstName} ${a.client.lastName}`.trim() : t("unknownClient");
   const started = Date.parse(a.session.start) <= Date.now();
   const canAct = a.status === "confirmed";
+  // The balance is paid at or after the session; the store refuses earlier payments.
+  const canPay = started && (a.status === "confirmed" || a.status === "no_show" || a.status === "completed");
+  const payButton = (
+    <Button onClick={() => setMode("pay")} leadingIcon={<Icons.Euro />}>
+      {t("recordPayment")}
+    </Button>
+  );
 
   const footer =
     mode === "details" ? (
@@ -41,14 +50,10 @@ export function AppointmentSheet({ appointment: a, today, onClose }: { appointme
           <Button variant="secondary" onClick={() => setMode("noshow")}>
             {t("noShow")}
           </Button>
-          <Button onClick={() => setMode("pay")} leadingIcon={<Icons.Euro />}>
-            {t("recordPayment")}
-          </Button>
+          {canPay && payButton}
         </>
-      ) : a.status === "no_show" || a.status === "completed" ? (
-        <Button onClick={() => setMode("pay")} leadingIcon={<Icons.Euro />}>
-          {t("recordPayment")}
-        </Button>
+      ) : canPay ? (
+        payButton
       ) : (
         <Button variant="ghost" onClick={onClose}>
           {t("close")}
@@ -145,8 +150,25 @@ export function AppointmentSheet({ appointment: a, today, onClose }: { appointme
           <div className="grid grid-cols-3 gap-2 rounded-md bg-surface-2 p-4 text-center">
             <Money label={t("price")} cents={a.snapshot.priceCents} locale={locale} />
             <Money label={t("deposit")} cents={a.snapshot.depositCents} locale={locale} />
-            <Money label={t("balance")} cents={balance} locale={locale} />
+            <Money label={t("balance")} cents={remaining} locale={locale} />
           </div>
+          {a.payments.length > 0 && (
+            <div className="flex flex-col gap-2">
+              <h3 className="text-sm font-medium text-fg-muted">{t("paymentsTitle")}</h3>
+              <ul className="divide-y divide-border rounded-md border border-border">
+                {a.payments.map((p) => (
+                  <li key={p.id} className="flex items-center justify-between gap-3 px-3 py-2 text-sm">
+                    <span className="min-w-0 flex-1 truncate">
+                      {t(`methods.${p.method}`)}
+                      <span className="text-fg-muted"> · {format.dateTime(dayToDate(p.paidOn), { day: "numeric", month: "short", year: "numeric" })}</span>
+                    </span>
+                    <span className="tabular-nums">{formatEuro(p.amountCents, locale)}</span>
+                  </li>
+                ))}
+              </ul>
+              {remaining === 0 && balance > 0 && <p className="text-sm text-success">{t("paidInFull")}</p>}
+            </div>
+          )}
           {a.status === "held" && <p className="text-sm text-fg-muted">{t("heldText")}</p>}
           {canAct && !started && <p className="text-sm text-fg-muted">{t("balanceHint")}</p>}
           <p className="flex items-start gap-2 text-sm text-fg-muted">
@@ -158,7 +180,7 @@ export function AppointmentSheet({ appointment: a, today, onClose }: { appointme
 
       {mode === "pay" && (
         <div className="flex flex-col gap-4 pb-2">
-          <p className="text-base">{t("payText", { name, amount: formatEuro(balance, locale) })}</p>
+          <p className="text-base">{t("payText", { name, amount: formatEuro(remaining, locale) })}</p>
           <Select
             label={t("method")}
             value={method}
