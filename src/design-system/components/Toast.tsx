@@ -48,7 +48,10 @@ export function Toast({ title, description, tone = "neutral", onDismiss }: Toast
 
 const ToastContext = createContext<{ show: (toast: ToastInput) => void } | null>(null);
 
-export function ToastProvider({ children }: { children: ReactNode }) {
+/**
+ * `aboveTabBar`: lift toasts above a phone tab bar (<BottomNav>) so they never cover it.
+ */
+export function ToastProvider({ children, aboveTabBar }: { children: ReactNode; aboveTabBar?: boolean }) {
   const [items, setItems] = useState<ToastItem[]>([]);
   const nextId = useRef(1);
   const t = useTranslations("design.ui");
@@ -65,7 +68,10 @@ export function ToastProvider({ children }: { children: ReactNode }) {
       <section
         aria-label={t("notifications")}
         aria-live="polite"
-        className="pointer-events-none fixed inset-x-0 bottom-0 z-50 mx-auto flex max-w-md flex-col gap-2 px-4 pb-[max(1rem,env(safe-area-inset-bottom))]"
+        className={cn(
+          "pointer-events-none fixed inset-x-0 bottom-0 z-50 mx-auto flex max-w-md flex-col gap-2 px-4",
+          aboveTabBar ? "pb-[calc(4.5rem+env(safe-area-inset-bottom))] lg:pb-4" : "pb-[max(1rem,env(safe-area-inset-bottom))]",
+        )}
       >
         {items.map((item) => (
           <AutoDismiss key={item.id} item={item} onDismiss={() => dismiss(item.id)} />
