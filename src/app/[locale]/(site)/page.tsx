@@ -60,7 +60,7 @@ export default async function HomePage({ params }: Props) {
       {/* 2. Nature inspired healthcare: sand band, centred */}
       <section className="bg-sand px-gutter py-12 text-center sm:py-14" aria-labelledby="nature">
         <div className="mx-auto max-w-[61.25rem]">
-          <DisplayHeading id="nature">{c.nature.title}</DisplayHeading>
+          <DisplayHeading id="nature" tone="muted">{c.nature.title}</DisplayHeading>
           <p className="mx-auto mt-6 max-w-[61.25rem] text-lead font-light text-fg-muted">
             {c.nature.lead}
             <br />
@@ -100,7 +100,7 @@ export default async function HomePage({ params }: Props) {
           <blockquote className="mx-auto max-w-[55rem] font-heading text-[1.625rem] leading-snug font-light sm:text-[2.75rem]">
             {c.quote.text}
           </blockquote>
-          <figcaption className="mt-6 font-heading text-[1.375rem] font-light sm:text-[1.625rem]">{c.quote.by}</figcaption>
+          <figcaption className="mt-6 font-heading text-[1.5rem] font-light sm:text-[1.625rem]">{c.quote.by}</figcaption>
         </figure>
       </section>
 

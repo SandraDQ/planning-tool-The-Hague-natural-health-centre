@@ -12,7 +12,7 @@ export function NewsletterBand({ title, text }: { title: string; text: string })
   const t = useTranslations("site.newsletter");
   const action = `mailto:${siteContact.email}?subject=${encodeURIComponent("Events newsletter sign-up")}`;
   return (
-    <section aria-labelledby="newsletter-title" className="bg-canvas py-10 sm:py-12">
+    <section id="newsletter" aria-labelledby="newsletter-title" className="scroll-mt-4 bg-canvas py-10 sm:py-12">
       <div className="mx-auto max-w-[82.5rem] sm:px-gutter">
         <div className="bg-accent px-gutter py-12 text-center text-on-accent sm:py-16">
           <DisplayHeading id="newsletter-title" tone="inherit">

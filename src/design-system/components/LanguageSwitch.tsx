@@ -25,7 +25,7 @@ export function LanguageSwitch({ className }: { className?: string }) {
                 hrefLang={l}
                 lang={l}
                 aria-current={active ? "true" : undefined}
-                aria-label={names[l]}
+                aria-label={`${l.toUpperCase()} – ${names[l]}`} // contains the visible "NL"/"EN" (label in name)
                 className={cn(
                   "inline-flex size-11 items-center justify-center rounded-sm text-sm tracking-[0.12em] underline-offset-[6px] transition-colors duration-150",
                   active ? "font-bold text-accent underline decoration-1" : "text-fg-muted hover:text-fg hover:underline",

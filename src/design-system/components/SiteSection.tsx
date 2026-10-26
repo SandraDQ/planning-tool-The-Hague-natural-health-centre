@@ -57,7 +57,8 @@ export function SiteSection<T extends ElementType = "section">({
  * The site's page and section titles ("THERAPIES", "NATURE INSPIRED HEALTHCARE",
  * "ACCESSIBLE TO ALL"): condensed extra-light display face, uppercase, widely spaced.
  * - tone "taupe" (default): the live site's #9f8c82, 26–36px, large text only (3.2:1).
- * - tone "accent": brand green; "inherit": current colour (e.g. white on a photo or green band).
+ * - tone "accent": brand green; "muted": the darker brown, for titles on sand/stone bands where taupe
+ *   is too light (taupe on sand is 2.5:1); "inherit": current colour (e.g. white on a photo or green band).
  * - size "title" (default) = 26–36px like the site; "lg" = the hero size.
  * - caps={false} for the few titles the site writes in normal case ("Privacy", "Sustainable Living").
  */
@@ -71,7 +72,7 @@ export function DisplayHeading({
   ...props
 }: {
   as?: "h1" | "h2" | "h3" | "p";
-  tone?: "taupe" | "accent" | "inherit";
+  tone?: "taupe" | "accent" | "muted" | "inherit";
   size?: "title" | "lg";
   caps?: boolean;
   className?: string;
@@ -83,7 +84,7 @@ export function DisplayHeading({
         "font-display font-extralight",
         caps && "uppercase",
         size === "lg" ? "text-2xl tracking-[0.04em]" : "text-title tracking-[0.1em]",
-        tone === "taupe" ? "text-taupe" : tone === "accent" ? "text-accent" : "text-current",
+        tone === "taupe" ? "text-taupe" : tone === "accent" ? "text-accent" : tone === "muted" ? "text-fg-muted" : "text-current",
         className,
       )}
       {...props}

@@ -82,14 +82,14 @@ export function SiteHeader({
                 {t("bookShort")}
               </ButtonLink>
             </div>
-            {/* Full label on tablets and wide screens; next to the desktop menu (1280–1535px) the short one, so the row fits */}
+            {/* Full label on tablets and wide screens; next to the desktop menu (1280–1535px) the short one ("Book"), so the row fits */}
             <div className="hidden sm:block xl:hidden 2xl:block">
               <ButtonLink href={bookHref} leadingIcon={<CalendarIcon />} className="whitespace-nowrap">
                 {t("book")}
               </ButtonLink>
             </div>
             <div className="hidden xl:block 2xl:hidden">
-              <ButtonLink href={bookHref} leadingIcon={<CalendarIcon />} className="whitespace-nowrap" aria-label={t("book")}>
+              <ButtonLink href={bookHref} leadingIcon={<CalendarIcon />} className="whitespace-nowrap">
                 {t("bookShort")}
               </ButtonLink>
             </div>
