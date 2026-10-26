@@ -46,12 +46,17 @@ export default async function AccountPage({ params }: Props) {
   ]);
   const names = new Map(catalog?.therapists.map((th) => [th.id, th.displayName]) ?? []);
   const now = Date.now();
-  const upcoming = (appointments ?? [])
-    .filter((a) => (a.status === "confirmed" || a.status === "held") && Date.parse(a.session.end) > now)
-    .filter((a) => a.status !== "held" || (a.holdExpiresAt && Date.parse(a.holdExpiresAt) > now))
+  // Holds that were never paid (abandoned, failed, expired) are not appointments to the client.
+  // A confirmed booking has holdExpiresAt cleared, so a cancelled one with it still set was never paid.
+  const visible = (appointments ?? []).filter((a) =>
+    a.status === "held" ? !!a.holdExpiresAt && Date.parse(a.holdExpiresAt) > now : !(a.status === "cancelled" && a.holdExpiresAt),
+  );
+  // Sorted by when the session is, not by status: a cancelled future appointment stays in date order.
+  const upcoming = visible
+    .filter((a) => Date.parse(a.session.end) > now)
     .sort((a, b) => a.session.start.localeCompare(b.session.start));
-  const past = (appointments ?? [])
-    .filter((a) => !upcoming.includes(a) && a.status !== "held")
+  const past = visible
+    .filter((a) => Date.parse(a.session.end) <= now && a.status !== "held")
     .sort((a, b) => b.session.start.localeCompare(a.session.start))
     .slice(0, 10);
   const policies = new Map(
@@ -108,7 +113,9 @@ export default async function AccountPage({ params }: Props) {
               {t("depositPaid", { deposit: euro(a.snapshot.depositCents), balance: euro(Math.max(0, a.snapshot.priceCents - a.snapshot.depositCents)) })}
             </p>
           )}
-          {canCancel && a.status === "confirmed" && <CancelAppointment appointmentId={a.id} consequence={consequence(a)} />}
+          {canCancel && (a.status === "confirmed" || a.status === "cancelled") && (
+            <CancelAppointment appointmentId={a.id} consequence={consequence(a)} cancellable={a.status === "confirmed"} />
+          )}
         </Card>
       </li>
     );

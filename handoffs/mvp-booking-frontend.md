@@ -63,3 +63,20 @@ pnpm dev   # or pnpm build && pnpm start
 5. **Abandon:** in the demo nothing is called and the hold simply expires. Should a real Mollie "canceled" status release the slot straight away instead? Today `failPayment` already releases it.
 6. **Site links (site-rebuilder):** the therapist sections and therapy pages can deep-link to `/book/therapist/<slug>` or `/book/therapy/<id>`, since the slugs/ids come from the store. `SiteShell` doesn't yet show the signed-in client's name or a link to `/account`.
 7. The labels in the demo seed repeat the duration, for example "Massage 60 min" next to "60 min". That is a data issue, not a UI one.
+
+## QA follow-up (2026-10-26, after `handoffs/mvp-qa.md`)
+
+1. **Client cancel:**
+   - A new server action `src/app/[locale]/account/actions.ts` (`cancelOwnAppointment`) calls `store.client.cancelAppointment` and returns `refundCents`/`feeCents`.
+   - `CancelAppointment` stays mounted after the re-render and shows "Your appointment is cancelled." plus the actual refund: full, partial with fee, kept, or nothing paid.
+   - The account lists are now split by session time, not status, so a cancelled future appointment stays under Upcoming in date order, marked Cancelled.
+   - Never-paid holds (cancelled with `holdExpiresAt` still set) are hidden.
+   - `cancelMyAppointment` in `server/actions.ts` is now unused; the backend can remove it.
+2. **Abandon:** the "time released" branch of the pay page now tells abandon, failed and expired apart. `abandonedText` says the time was released.
+3. **Label in name:**
+   - Booking rows: the aria-label is "Choose" followed by all visible text in reading order.
+   - Day buttons in `DatePicker`: "Mon 26, Monday, October 26[, no times]".
+   - Explicit spaces between the inner spans, so axe's visible text doesn't run words together.
+4. **Confirmation title:** the confirmation page also renders `<title>` in the page (React hoists it), because metadata can arrive late after the payment's client-side redirect.
+
+`booking.spec.ts` and `a11y.spec.ts` against a build of the working tree: 12 passed, 1 skipped (server hold expiry).

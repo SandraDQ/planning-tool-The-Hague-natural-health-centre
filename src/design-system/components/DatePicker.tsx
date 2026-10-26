@@ -88,7 +88,8 @@ export function DatePicker({
               type="button"
               disabled={!day.available}
               aria-pressed={isSelected}
-              aria-label={`${format.dateTime(date, { weekday: "long", day: "numeric", month: "long" })}${day.available ? "" : `, ${t("noTimesShort")}`}`}
+              // Starts with the visible "Mon 26" (WCAG 2.5.3 label in name), then the full date.
+              aria-label={`${format.dateTime(date, { weekday: "short" }).replace(".", "")} ${format.dateTime(date, { day: "numeric" })}, ${format.dateTime(date, { weekday: "long", day: "numeric", month: "long" })}${day.available ? "" : `, ${t("noTimesShort")}`}`}
               onClick={() => onSelect(day.date)}
               className={cn(
                 "flex h-18 min-w-11 flex-1 flex-col items-center justify-center gap-0.5 rounded-sm transition-[background-color,color] duration-150",
@@ -98,7 +99,7 @@ export function DatePicker({
             >
               <span className={cn("text-sm", isSelected ? "text-on-accent" : "text-fg-muted")}>
                 {format.dateTime(date, { weekday: "short" }).replace(".", "")}
-              </span>
+              </span>{" "}
               <span className={cn("font-heading text-lg leading-none tabular-nums", !day.available && "line-through decoration-1")}>
                 {format.dateTime(date, { day: "numeric" })}
               </span>

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useFormatter, useLocale, useTranslations } from "next-intl";
-import { Badge, Button, Icons, Select, Sheet, TextField, dayToDate } from "@/design-system";
+import { Badge, Button, Icons, Select, Sheet, TextField, dayToDate, useToast } from "@/design-system";
 import type { BalancePayment, Locale } from "@/lib/domain/types";
 import { cancelAppointment, markNoShow, recordBalancePayment } from "../actions/therapist";
 import { centsToInput, formatEuro, parseEuroInput } from "../money";
@@ -19,6 +19,7 @@ export function AppointmentSheet({ appointment: a, today, onClose }: { appointme
   const format = useFormatter();
   const locale = useLocale() as Locale;
   const { pending, exec } = useRunAction("therapist");
+  const toast = useToast();
   const [mode, setMode] = useState<Mode>("details");
   const balance = Math.max(0, a.snapshot.priceCents - a.snapshot.depositCents);
   const paid = a.payments.reduce((sum, p) => sum + p.amountCents, 0);
@@ -47,10 +48,21 @@ export function AppointmentSheet({ appointment: a, today, onClose }: { appointme
           <Button variant="ghost" onClick={() => setMode("cancel")}>
             {t("cancelAppointment")}
           </Button>
+          {/* A no-show and the balance can only be recorded once the session has started (the store refuses earlier). */}
+          {started && (
+            <Button variant="secondary" onClick={() => setMode("noshow")}>
+              {t("noShow")}
+            </Button>
+          )}
+          {canPay && payButton}
+        </>
+      ) : a.status === "completed" ? (
+        // Past sessions are marked done automatically; the therapist can still record that the client didn't come.
+        <>
           <Button variant="secondary" onClick={() => setMode("noshow")}>
             {t("noShow")}
           </Button>
-          {canPay && payButton}
+          {payButton}
         </>
       ) : canPay ? (
         payButton
@@ -95,7 +107,17 @@ export function AppointmentSheet({ appointment: a, today, onClose }: { appointme
         <Button variant="ghost" onClick={() => setMode("details")}>
           {t("back")}
         </Button>
-        <Button disabled={pending} onClick={() => exec(() => markNoShow(a.id), { success: t("noShowSaved"), onSuccess: onClose })}>
+        <Button disabled={pending} onClick={() =>
+            exec(() => markNoShow(a.id), {
+              success: t("noShowSaved"),
+              onSuccess: onClose,
+              onError: (r) => {
+                if (r.code !== "invalid") return false;
+                toast.show({ title: t("noShowNotYet"), tone: "danger" });
+                return true;
+              },
+            })
+          }>
           {t("confirmNoShow")}
         </Button>
       </>
@@ -211,7 +233,6 @@ export function AppointmentSheet({ appointment: a, today, onClose }: { appointme
       {mode === "noshow" && (
         <div className="flex flex-col gap-3 pb-2">
           <p className="text-base">{t("noShowText", { name })}</p>
-          {!started && <p className="rounded-md bg-warning-soft p-3 text-sm text-warning">{t("noShowEarly")}</p>}
         </div>
       )}
     </Sheet>

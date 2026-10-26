@@ -83,7 +83,7 @@
     "deposit": "Deposit paid",
     "balance": "Still to pay",
     "heldText": "The client is paying the deposit. If they don't finish within 15 minutes, the time becomes free again.",
-    "balanceHint": "You can record the rest of the payment once the session has started; the final invoice is then made for you.",
+    "balanceHint": "Once the session has started, you can mark a no-show or record the rest of the payment; the final invoice is then made for you.",
     "intakeNote": "The intake form was sent to you by e-mail and is not shown here.",
     "cancelAppointment": "Cancel",
     "noShow": "No-show",
@@ -115,11 +115,11 @@
     "cancelledText": "The client gets the full deposit back.",
     "noShowTitle": "Mark as no-show?",
     "noShowText": "{name} didn't come. You keep the deposit, as your policy says.",
-    "noShowEarly": "This session hasn't started yet.",
     "confirmNoShow": "Mark as no-show",
     "noShowSaved": "Marked as no-show",
     "paymentsTitle": "Payments recorded",
-    "paidInFull": "Paid in full."
+    "paidInFull": "Paid in full.",
+    "noShowNotYet": "You can mark a no-show once the session has started."
   },
   "manual": {
     "title": "Add a booking",

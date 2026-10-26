@@ -27,14 +27,14 @@
     "deposit": "{deposit} aanbetaling nu, {balance} bij de afspraak",
     "depositFull": "{deposit} betaalt u volledig bij het boeken",
     "choose": "Kiezen",
-    "chooseItem": "Kies {name}, {duration}, {price}",
     "therapistTitle": "Boeken bij {name}",
     "therapyTitle": "{therapy} boeken",
     "seeAll": "Alle behandelingen bekijken",
     "emptyTitle": "Nog niets te boeken",
     "emptyText": "Er zijn op dit moment geen behandelingen online te boeken. Neem contact met ons op, dan helpen we u.",
     "notFoundTitle": "Dat konden we niet vinden",
-    "notFoundText": "Deze therapeut of therapie is nu niet online te boeken. Bekijk alle behandelingen."
+    "notFoundText": "Deze therapeut of therapie is nu niet online te boeken. Bekijk alle behandelingen.",
+    "chooseRow": "Kies {details}"
   },
   "time": {
     "title": "Kies een tijd",
@@ -130,7 +130,7 @@
     "failedText": "Er is geen geld afgeschreven. U kunt het opnieuw proberen zolang we uw tijd vasthouden.",
     "failedReleasedText": "Er is geen geld afgeschreven en de tijd is weer vrijgegeven. Kies opnieuw een tijd.",
     "abandonedTitle": "U heeft de betaling verlaten",
-    "abandonedText": "Er is geen geld afgeschreven. U kunt nog betalen zolang we uw tijd vasthouden.",
+    "abandonedText": "Er is geen geld afgeschreven en de tijd is weer vrijgegeven. Kies opnieuw een tijd.",
     "errorTitle": "Er ging iets mis",
     "errorText": "Er is geen geld afgeschreven. Probeer het opnieuw.",
     "chooseAgain": "Opnieuw een tijd kiezen",
@@ -186,6 +186,10 @@
     "cancelError": "We konden deze afspraak niet annuleren. Probeer het opnieuw of neem contact op met uw therapeut.",
     "notReadyTitle": "Uw afspraken verschijnen hier binnenkort",
     "notReadyText": "Het klantgedeelte wordt nog gekoppeld. Uw boekingen zijn veilig; neem contact op met uw therapeut als u er een wilt wijzigen.",
-    "rebook": "Opnieuw boeken"
+    "rebook": "Opnieuw boeken",
+    "refundFull": "U krijgt {refund} van uw aanbetaling terug.",
+    "refundPartial": "U krijgt {refund} van uw aanbetaling terug; {fee} wordt ingehouden als annuleringskosten.",
+    "refundNone": "Volgens de annuleringsvoorwaarden wordt de aanbetaling van {fee} ingehouden.",
+    "refundNothingPaid": "Er was geen aanbetaling gedaan, dus er wordt niets terugbetaald."
   }
 }

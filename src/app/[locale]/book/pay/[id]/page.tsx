@@ -61,6 +61,13 @@ export default async function BookPayPage({ params, searchParams }: Props) {
   const chooseAgainHref = `/book/time?st=${encodeURIComponent(appointment.sessionTypeId)}&week=${mondayOf(day)}&day=${day}`;
   const euro = (cents: number) => format.number(cents / 100, { style: "currency", currency: "EUR" });
 
+  // The time is no longer held: say why in the words of what the client did.
+  const released =
+    status === "failed"
+      ? { title: t("failedTitle"), text: t("failedReleasedText") }
+      : status === "abandoned"
+        ? { title: t("abandonedTitle"), text: t("abandonedText") }
+        : { title: t("expiredTitle"), text: t("expiredText") };
   const outcome =
     status === "failed"
       ? { tone: "danger" as const, title: t("failedTitle"), text: held ? t("failedText") : t("failedReleasedText") }
@@ -110,10 +117,10 @@ export default async function BookPayPage({ params, searchParams }: Props) {
           <Notice
             tone="warning"
             role="alert"
-            title={status === "failed" ? t("failedTitle") : t("expiredTitle")}
+            title={released.title}
             action={<ButtonLink href={chooseAgainHref}>{t("chooseAgain")}</ButtonLink>}
           >
-            {status === "failed" ? t("failedReleasedText") : t("expiredText")}
+            {released.text}
           </Notice>
         </FocusOnMount>
       )}

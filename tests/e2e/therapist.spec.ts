@@ -77,7 +77,8 @@ test.describe("therapist @mobile", () => {
 
   test("mark a started appointment as no-show", async ({ page }, testInfo) => {
     await signIn(page, "Demo – Anna de Vries");
-    // Seeded: days of this week before today stay "confirmed", as if not marked yet.
+    // Seeded: days of this week before today stay "confirmed", as if not marked yet; older ones are "done".
+    // Both can be marked as no-show once the session has started (the button is hidden before that).
     const today = amsDay();
     let found = false;
     for (let d = mondayOf(today); d <= today && !found; d = addDays(d, 1)) {
@@ -86,24 +87,22 @@ test.describe("therapist @mobile", () => {
       for (let i = 0; i < (await cards.count()); i++) {
         await cards.nth(i).click();
         const sheet = page.getByRole("dialog");
-        if (await sheet.getByText("Confirmed", { exact: true }).count()) {
+        if (await sheet.getByText(/^(Confirmed|Done)$/).count()) {
           const noShow = sheet.getByRole("button", { name: "No-show" });
           if (await noShow.count()) {
             await noShow.click();
             const confirm = page.getByRole("dialog", { name: "Mark as no-show?" });
-            if ((await confirm.getByText("This session hasn't started yet.").count()) === 0) {
-              await confirm.getByRole("button", { name: "Mark as no-show" }).click();
-              await expect(page.getByText("Marked as no-show")).toBeVisible();
-              await shot(page, "therapist-no-show", testInfo);
-              found = true;
-              break;
-            }
+            await confirm.getByRole("button", { name: "Mark as no-show" }).click();
+            await expect(page.getByText("Marked as no-show")).toBeVisible();
+            await shot(page, "therapist-no-show", testInfo);
+            found = true;
+            break;
           }
         }
         await page.keyboard.press("Escape");
       }
     }
-    test.skip(!found, "No confirmed appointment that has already started this week (e.g. the run is early on a Monday).");
+    test.skip(!found, "No confirmed or done appointment that has already started this week (e.g. the run is early on a Monday).");
   });
 
   test("a future appointment cannot be marked as no-show", async ({ page }, testInfo) => {
@@ -112,28 +111,11 @@ test.describe("therapist @mobile", () => {
     await openDay(page, day);
     await page.getByRole("button", { name: APPT }).first().click();
     const sheet = page.getByRole("dialog");
-    const noShow = sheet.getByRole("button", { name: "No-show" });
-    if ((await noShow.count()) === 0) return; // hidden: fine
-    await noShow.click();
-    const confirm = page.getByRole("dialog", { name: "Mark as no-show?" });
-    await expect(confirm.getByText("This session hasn't started yet.")).toBeVisible();
+    // No-show and payment only appear once the session has started; a hint says so.
+    await expect(sheet.getByText(/Once the session has started, you can mark a no-show/)).toBeVisible();
+    await expect(sheet.getByRole("button", { name: "No-show" })).toHaveCount(0);
+    await expect(sheet.getByRole("button", { name: "Payment", exact: true })).toHaveCount(0);
     await shot(page, "therapist-no-show-future", testInfo);
-    const confirmBtn = confirm.getByRole("button", { name: "Mark as no-show" });
-    if (await confirmBtn.isEnabled()) {
-      const card = (await page.getByRole("button", { name: APPT }).first().textContent()) ?? "";
-      await confirmBtn.click();
-      await page.waitForTimeout(3000);
-      const toast = (await page.getByRole("region", { name: "Notifications" }).textContent()) ?? "";
-      testInfo.annotations.push({ type: "future-no-show-toast", description: toast || "(no toast)" });
-      await shot(page, "therapist-no-show-future-after", testInfo);
-      // Re-open the appointment after a reload: it must not be a no-show.
-      await openDay(page, day);
-      await page.getByRole("button", { name: APPT }).first().click();
-      const status = page.getByRole("dialog").getByText(/^(Confirmed|No-show)$/).first();
-      testInfo.annotations.push({ type: "future-no-show-status", description: `${card.slice(0, 20)} → ${await status.textContent()}` });
-      await expect.soft(status, "future session was marked as no-show").toHaveText("Confirmed");
-      await shot(page, "therapist-no-show-future-reopened", testInfo);
-    }
   });
 
   test("reserve a block and release it", async ({ page }, testInfo) => {

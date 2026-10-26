@@ -53,6 +53,9 @@ export default async function BookConfirmedPage({ params }: Props) {
 
   return (
     <div className="mx-auto max-w-content px-gutter pt-10 pb-12 sm:pt-14 lg:pb-20">
+      {/* Also rendered here (React hoists it to <head>): after the payment's client-side
+          redirect, streamed metadata can arrive after the page, leaving no title for a moment. */}
+      <title>{`${t("title")} | The Hague Natural Health Centre`}</title>
       <ClearDraft />
       <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_22rem] lg:gap-10">
         <div className="flex min-w-0 flex-col gap-8">

@@ -118,31 +118,27 @@ function MenuRow({ item, showTherapist }: { item: MenuEntry; showTherapist: bool
   const duration = t("minutes", { minutes: item.durationMin });
   const balance = item.priceCents - item.depositCents;
   const sub = item.sessionTypeName && item.sessionTypeName !== item.serviceName ? item.sessionTypeName : null;
+  const subLine = [sub, showTherapist ? t("choose.with", { name: item.therapistName }) : null].filter(Boolean).join(" · ");
+  const depositLine =
+    balance > 0
+      ? t("choose.deposit", { deposit: euro(item.depositCents), balance: euro(balance) })
+      : t("choose.depositFull", { deposit: euro(item.depositCents) });
+  // The name holds all visible text in reading order (WCAG 2.5.3 label in name), led by "Choose".
+  const label = t("choose.chooseRow", { details: [item.serviceName, subLine, depositLine, euro(item.priceCents), duration].filter(Boolean).join(", ") });
   return (
     <Link
       href={{ pathname: "/book/time", query: { st: item.sessionTypeId } }}
-      aria-label={t("choose.chooseItem", {
-        name: [item.serviceName, sub, showTherapist ? t("choose.with", { name: item.therapistName }) : null].filter(Boolean).join(", "),
-        duration,
-        price: euro(item.priceCents),
-      })}
+      aria-label={label}
       className="group flex min-h-11 items-center gap-4 rounded-md border border-border bg-surface p-4 transition-[border-color,background-color] duration-150 hover:border-sage hover:bg-surface-2/40"
     >
       <span className="flex min-w-0 flex-1 flex-col gap-0.5">
-        <span className="text-base font-bold text-fg">{item.serviceName}</span>
-        {(sub || showTherapist) && (
-          <span className="text-sm text-fg-muted">
-            {[sub, showTherapist ? t("choose.with", { name: item.therapistName }) : null].filter(Boolean).join(" · ")}
-          </span>
-        )}
-        <span className="text-sm text-fg-muted">
-          {balance > 0
-            ? t("choose.deposit", { deposit: euro(item.depositCents), balance: euro(balance) })
-            : t("choose.depositFull", { deposit: euro(item.depositCents) })}
-        </span>
-      </span>
+        {/* The {" "} keep words apart in the visible text that label-in-name checks compare. */}
+        <span className="text-base font-bold text-fg">{item.serviceName}</span>{" "}
+        {subLine && <span className="text-sm text-fg-muted">{subLine}</span>}{" "}
+        <span className="text-sm text-fg-muted">{depositLine}</span>
+      </span>{" "}
       <span className="flex shrink-0 flex-col items-end text-right">
-        <span className="text-base font-bold tabular-nums">{euro(item.priceCents)}</span>
+        <span className="text-base font-bold tabular-nums">{euro(item.priceCents)}</span>{" "}
         <span className="text-sm text-fg-muted tabular-nums">{duration}</span>
       </span>
       <Icons.ChevronRight className="size-5 shrink-0 text-accent transition-transform duration-150 group-hover:translate-x-0.5 motion-reduce:transition-none" />

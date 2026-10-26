@@ -83,7 +83,7 @@
     "deposit": "Aanbetaald",
     "balance": "Nog te betalen",
     "heldText": "De cliënt is de aanbetaling aan het doen. Lukt dat niet binnen 15 minuten, dan komt de tijd weer vrij.",
-    "balanceHint": "Je kunt de rest van de betaling vastleggen zodra de sessie begonnen is; de eindfactuur wordt dan voor je gemaakt.",
+    "balanceHint": "Zodra de sessie begonnen is, kun je een no-show aangeven of de rest van de betaling vastleggen; de eindfactuur wordt dan voor je gemaakt.",
     "intakeNote": "Het intakeformulier is per e-mail naar je gestuurd en staat hier niet.",
     "cancelAppointment": "Annuleren",
     "noShow": "Niet gekomen",
@@ -115,11 +115,11 @@
     "cancelledText": "De cliënt krijgt de hele aanbetaling terug.",
     "noShowTitle": "Markeren als niet gekomen?",
     "noShowText": "{name} is niet gekomen. Je houdt de aanbetaling, zoals in je voorwaarden staat.",
-    "noShowEarly": "Deze sessie is nog niet begonnen.",
     "confirmNoShow": "Markeren als niet gekomen",
     "noShowSaved": "Gemarkeerd als niet gekomen",
     "paymentsTitle": "Vastgelegde betalingen",
-    "paidInFull": "Helemaal betaald."
+    "paidInFull": "Helemaal betaald.",
+    "noShowNotYet": "Je kunt een no-show pas aangeven als de sessie begonnen is."
   },
   "manual": {
     "title": "Afspraak toevoegen",

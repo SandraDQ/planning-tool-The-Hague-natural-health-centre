@@ -1,7 +1,6 @@
 "use server";
 
 import { randomUUID } from "node:crypto";
-import { revalidatePath } from "next/cache";
 import { redirect } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { getStore } from "@/lib/server/data";
@@ -136,24 +135,4 @@ export async function demoPayAbandoned(form: FormData) {
     console.error("[booking] demo abandon failed", errorCode(err) ?? "unknown");
   }
   redirect({ href: { pathname: `/book/pay/${id}`, query: { status: "abandoned" } }, locale });
-}
-
-export type CancelState = { status: "idle" | "done" | "error" | "unavailable" };
-
-/** Client area: cancel one of my upcoming appointments. */
-export async function cancelMyAppointment(_prev: CancelState, form: FormData): Promise<CancelState> {
-  const locale = asLocale(String(form.get("locale") ?? ""));
-  const id = String(form.get("id") ?? "");
-  const session = await getSession();
-  if (!session || session.role !== "client") redirect({ href: "/login", locale });
-  const cancel = clientArea(getStore()).cancelAppointment;
-  if (!cancel) return { status: "unavailable" };
-  try {
-    await cancel(session!, id, "client");
-  } catch (err) {
-    console.error("[booking] client cancel failed", errorCode(err) ?? "unknown");
-    return { status: "error" };
-  }
-  revalidatePath(`/${locale}/account`);
-  return { status: "done" };
 }

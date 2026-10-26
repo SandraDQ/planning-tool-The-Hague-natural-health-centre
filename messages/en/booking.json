@@ -27,14 +27,14 @@
     "deposit": "{deposit} deposit now, {balance} at the session",
     "depositFull": "{deposit} paid in full when you book",
     "choose": "Choose",
-    "chooseItem": "Choose {name}, {duration}, {price}",
     "therapistTitle": "Book with {name}",
     "therapyTitle": "Book {therapy}",
     "seeAll": "See all treatments",
     "emptyTitle": "Nothing to book yet",
     "emptyText": "No treatments can be booked online at the moment. Please contact us and we will help you.",
     "notFoundTitle": "We couldn't find that",
-    "notFoundText": "This therapist or therapy can't be booked online right now. Have a look at all treatments instead."
+    "notFoundText": "This therapist or therapy can't be booked online right now. Have a look at all treatments instead.",
+    "chooseRow": "Choose {details}"
   },
   "time": {
     "title": "Choose a time",
@@ -130,7 +130,7 @@
     "failedText": "No money was taken. You can try again while we still hold your time.",
     "failedReleasedText": "No money was taken and the time was released. Please choose a time again.",
     "abandonedTitle": "You left the payment",
-    "abandonedText": "No money was taken. You can still pay while we hold your time.",
+    "abandonedText": "No money was taken and the time was released. Please choose a time again.",
     "errorTitle": "Something went wrong",
     "errorText": "No money was taken. Please try again.",
     "chooseAgain": "Choose a time again",
@@ -186,6 +186,10 @@
     "cancelError": "We couldn't cancel this appointment. Please try again or contact your therapist.",
     "notReadyTitle": "Your appointments will appear here soon",
     "notReadyText": "The client area is still being connected. Your bookings are safe; contact your therapist if you need to change one.",
-    "rebook": "Book again"
+    "rebook": "Book again",
+    "refundFull": "{refund} of your deposit is refunded to you.",
+    "refundPartial": "{refund} of your deposit is refunded to you; {fee} is kept as a cancellation fee.",
+    "refundNone": "Under the cancellation policy the deposit of {fee} is kept.",
+    "refundNothingPaid": "No deposit had been paid, so nothing is refunded."
   }
 }
