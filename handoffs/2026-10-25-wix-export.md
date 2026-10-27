@@ -10,7 +10,8 @@ Branch `claude/project-thread-3cunpa`. Everything is under `wix-export/`; script
 - `layout/<page>/layout.md` + section shots; `layout/navigation.md` (header, footer, mobile menu).
 - `pages/`: text per page as Markdown, `_site-chrome.md`, `events.json` (267 events).
 - `sitemap/urls.csv`: all 309 public URLs for redirects.
-- `media/manifest.json`: all 871 Media Manager files. Binaries are not in git; full backup in the project files folder `wix-export/media/`.
+- `media/manifest.json`: list of all 871 Media Manager files. **Owner decided (2026-10-27) not to keep the full library**; the 1.3 GB copy was deleted.
+- **Images for the new site:** project files folder `wix-export/site-images/` (201 images, 35 MB): every photo shown on a non-event page, resized to max 2000px, JPEG or WebP; logos unchanged. `index.json` maps each file to its Wix id and pages. Copy the ones you use into the site (e.g. `public/images/`); rebuild with `python3 -I scripts/wix-export/site_images.py <out>`.
 - `media-used.json`: which photos each page uses (201 on non-event pages).
 
 ## Watch out for
@@ -22,5 +23,4 @@ Branch `claude/project-thread-3cunpa`. Everything is under `wix-export/`; script
 - No client data: Google Reviews widget, comments and member areas are masked/excluded. Public therapist contact details are kept.
 
 ## Still open
-- Owner decision: where the full media originals live (git vs. outside).
 - Revoke the read-only Wix API key once migration is done.
