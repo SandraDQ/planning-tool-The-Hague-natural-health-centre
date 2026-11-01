@@ -33,6 +33,14 @@ Every decision, with date and who made it. Decisions 1–18 from the master prom
 | D27 | 2026-10-25 | The booking form keeps only name, e-mail and phone in the browser between steps; complaint, date of birth and address are never stored client-side and must be retyped if a slot is lost. | Orchestrator (default, security review F6) | Decided |
 | D28 | 2026-10-25 | Demo mode needs an explicit `DEMO_MODE=1` and refuses to start when any real service key is set. | Orchestrator (security review F3) | Decided |
 | D29 | 2026-11-01 | An unsafe demo configuration no longer stops the whole server at startup; it is logged, and only demo data, login and booking refuse (via `getStore()`/`getSession()`). The public website stays online. | Orchestrator (default) | Decided |
+| D31 | 2026-11-01 | The admin sees **room-rent invoices only**, never therapists' invoices to clients (those name the client and the treatment). A client sees own invoices; a therapist sees the invoices they issued and the rent invoices they received. Anyone else gets "not found" for an invoice PDF. | Orchestrator (default) | Decided |
+| D32 | 2026-11-01 | BTW on client invoices is set **per therapist** by the admin (`therapist_business`: 21% / 9% / exempt + legal ground); KOR means no BTW. A per-service override (`services.btw_treatment`) stays possible later. Client prices include BTW. Demo rates are placeholders until the accountant answers. | Orchestrator (default) | Proposed, waiting on the accountant |
+| D33 | 2026-11-01 | Client invoice structure: a **deposit invoice** when the deposit is paid (BTW on the deposit), a **final invoice** for the whole session minus the deposit invoice (same BTW treatment), so deposit + final = the session price and BTW is charged once. A refunded deposit gets a **credit note** against the deposit invoice. | Orchestrator (default) | Proposed, waiting on the accountant |
+| D34 | 2026-11-01 | The final invoice is made automatically once a session is fully paid, or earlier when the therapist taps "Send invoice" (14 days to pay). One final invoice per appointment; later payments only update its paid amount and payment notes, never its lines. | Orchestrator (default) | Decided |
+| D35 | 2026-11-01 | Room rent: the admin prepares a month's invoices as drafts, checks them, then sends them (number + due date = send date + payment term). Payment is marked by hand until the bank feed matches it (phase 4). The "auto-send" setting is not used yet. | Orchestrator (default) | Decided |
+| D36 | 2026-11-01 | Invoice PDFs are rendered on request with `pdf-lib` (standard fonts, no files on disk) at `/api/invoices/:id`. With Supabase the first render is stored once (`invoices.pdf_path`). | Orchestrator (default) | Decided |
+| D37 | 2026-11-01 | Invoice e-mails (deposit, final, credit note, rent) go through the platform's one shared e-mail sender, with the PDF attached and the therapist as reply-to; no second e-mail provider. Seeded demo invoices count as already sent. | Orchestrator (default) | Decided |
+| D38 | 2026-11-01 | Every invoice screen follows D30 and opens with a three-step welcome card that folds away after "Got it" and can be reopened ("How does this page work?"). | Orchestrator (Sandra's standing rule) | Decided |
 
 ## Open questions (defaults apply unless the owner says otherwise)
 
@@ -43,8 +51,11 @@ Every decision, with date and who made it. Decisions 1–18 from the master prom
 | Q3 | Which room does a paper-calendar window use? | Admin picks the room; in a shared room it must sit inside a block that therapist holds |
 | Q4 | Can a therapist release a block that has bookings? | No, until bookings are moved or cancelled; admin can override |
 | Q5 | Apple iCloud two-way sync at launch? | No, ICS feed only for Apple at launch |
+| Q6 | Accounting tool (costs, receipts, BTW, bank feed) built inside the portal and offered to therapists as a paid add-on, or Moneybird for everyone? Overrides master prompt 0.5, 9.5 and decision 12 if built in. | Built in the portal, bank via a licensed AISP (Enable Banking; Ponto as backup). Asked 2026-11-01. |
 
 ## Waiting on the accountant (before Phase 2 gate)
 - Structure of deposit invoice vs. final invoice, and BTW timing (at deposit or at session).
 - BTW on room rent (exempt or 21%, option for taxed letting).
 - BTW status per therapist (21%, 9%, exempt + legal ground, KOR).
+- Confirm D33 (deposit invoice + final invoice minus deposit, credit note on refund).
+- If the accounting add-on goes ahead: BTW on the add-on fee (expected 21%), and whether a spreadsheet + receipts zip suits them as export.
