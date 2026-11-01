@@ -28,6 +28,7 @@ import { cancellationTerms } from "./cancellation";
 import { checkReleaseBlock, checkReserveBlock, findSlots, occupies, roomHasFutureBookings, validateInState } from "./rules";
 import { SERIES_HORIZON_WEEKS, materializeSeries } from "./series";
 import type { DemoState } from "./state";
+import { createDemoEmailStore } from "./email-store";
 import { MINUTE, addDays, mondayOf, contains, isDate, isTime, isValidInterval, iso, isoWeekday, localDateOf, localToUtcIso, ms, overlaps } from "./time";
 
 /** Longest range findSlots / calendars may ask for in one call. */
@@ -266,6 +267,7 @@ export function createDemoStore(state: DemoState, options: DemoStoreOptions = {}
   // ---------- the store ----------
 
   return {
+    email: createDemoEmailStore(state, { asTherapist, asAdmin }),
     public: {
       async listTherapies() {
         tick();

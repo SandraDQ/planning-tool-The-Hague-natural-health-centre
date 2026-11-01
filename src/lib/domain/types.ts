@@ -237,3 +237,20 @@ export interface Slot {
   paperWindowId?: Id | null;
   session: Interval;
 }
+
+/**
+ * The therapist's own words in the booking confirmation e-mail (email_templates,
+ * kind "confirmation"). serviceId null = the message for all their treatments;
+ * a row with a serviceId replaces it for that one treatment.
+ */
+export interface EmailTemplate {
+  therapistId: Id;
+  serviceId: Id | null;
+  kind: "confirmation";
+  body: Record<Locale, string>;
+}
+
+/** Centre-wide practical information added to every confirmation (admin). */
+export interface CentreEmailSettings {
+  info: Record<Locale, string>;
+}

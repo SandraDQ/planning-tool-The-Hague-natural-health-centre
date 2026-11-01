@@ -9,6 +9,7 @@ import type { AppStore } from "../extensions";
 import { DEMO_IDS, createSeedState } from "./seed";
 import type { DemoState } from "./state";
 import { createDemoStore } from "./store";
+import { clearOutbox } from "@/lib/email/outbox";
 
 interface DemoRuntime {
   state: DemoState;
@@ -34,6 +35,7 @@ export function getDemoStore(): AppStore {
 /** Throws away all demo changes and seeds fresh data relative to now. */
 export function resetDemoStore(): void {
   delete (globalThis as WithRuntime)[KEY];
+  clearOutbox();
 }
 
 export interface DemoAccount {

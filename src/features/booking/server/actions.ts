@@ -4,6 +4,7 @@ import { randomUUID } from "node:crypto";
 import { redirect } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { getStore } from "@/lib/server/data";
+import { sendBookingConfirmation } from "@/lib/email/notify";
 import { getSession } from "@/lib/server/session";
 import type { DomainErrorCode } from "@/lib/domain/store";
 import type { Locale } from "@/lib/domain/types";
@@ -106,6 +107,8 @@ export async function demoPaySucceeded(form: FormData) {
     if (status === "error") console.error("[booking] demo confirm failed", errorCode(err) ?? "unknown");
   }
   if (status !== "ok") redirect({ href: { pathname: `/book/pay/${id}`, query: { status } }, locale });
+  // The Mollie webhook will make the same call. Never throws; a mail problem doesn't undo the booking.
+  await sendBookingConfirmation(getStore(), id);
   redirect({ href: `/book/confirmed/${id}`, locale });
 }
 

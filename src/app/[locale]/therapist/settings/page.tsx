@@ -10,12 +10,14 @@ export default async function TherapistSettingsPage({ params }: { params: Promis
   setRequestLocale(locale);
   const session = await requireRole("therapist", locale);
   const t = await getTranslations("therapist.settings");
+  const te = await getTranslations("email.therapist");
   const business = await getStore().therapist.getMyBusiness(session);
 
   const sections = [
     { href: "/therapist/settings/services", icon: <Icons.Leaf />, title: t("services"), text: t("servicesText") },
     { href: "/therapist/settings/availability", icon: <Icons.Clock />, title: t("availability"), text: t("availabilityText") },
     { href: "/therapist/settings/policy", icon: <Icons.Info />, title: t("policy"), text: t("policyText") },
+    { href: "/therapist/settings/emails", icon: <Icons.Mail />, title: te("settingsTitle"), text: te("settingsText") },
     { href: "/therapist/settings/profile", icon: <Icons.User />, title: t("profile"), text: t("profileText") },
   ];
 

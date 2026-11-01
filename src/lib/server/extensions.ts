@@ -5,8 +5,11 @@
 import type { AdminStore, BookingStore, DataStore, TherapistStore } from "@/lib/domain/store";
 import type {
   Appointment,
+  CancellationPolicy,
   BalancePayment,
+  CentreEmailSettings,
   Client,
+  EmailTemplate,
   Id,
   IntakeInput,
   Interval,
@@ -94,9 +97,39 @@ export interface ClientStore {
   cancelAppointment(session: Session, appointmentId: Id, by: "client"): Promise<ClientCancellation>;
 }
 
+/** Everything the booking confirmation e-mail needs (read with server rights, never shown raw). */
+export interface BookingEmailFacts {
+  appointment: Appointment;
+  client: Pick<Client, "firstName" | "email" | "locale">;
+  therapist: { displayName: string; publicEmail: string | null };
+  roomNumber: number | null;
+  /** Personal message for this treatment, or the therapist's general one; null = none written. */
+  template: EmailTemplate | null;
+  centre: CentreEmailSettings;
+  /** Policy frozen at booking (D6). */
+  policy: CancellationPolicy | null;
+  depositPaidCents: number;
+}
+
+/** Confirmation e-mail texts: therapists write their own message, the admin the centre info. */
+export interface EmailStore {
+  /** Own messages: the general one (serviceId null) and any per-treatment ones. */
+  listMyTemplates(session: Session): Promise<EmailTemplate[]>;
+  /** Saves own message. serviceId must be an own service, or null for all treatments. */
+  setMyTemplate(session: Session, input: { serviceId: Id | null; body: Record<Locale, string> }): Promise<EmailTemplate>;
+  /** Removes an own per-treatment message (that treatment then uses the general one). */
+  deleteMyTemplate(session: Session, serviceId: Id): Promise<void>;
+  /** Admin and therapists (for the preview). */
+  getCentreSettings(session: Session): Promise<CentreEmailSettings>;
+  setCentreSettings(session: Session, settings: CentreEmailSettings): Promise<CentreEmailSettings>;
+  /** Server only (payment webhook / booking flow): facts for one appointment's confirmation. */
+  bookingEmailFacts(appointmentId: Id): Promise<BookingEmailFacts | null>;
+}
+
 export type AppStore = Omit<DataStore, "booking" | "therapist" | "admin"> & {
   booking: Omit<BookingStore, "holdSlot"> & BookingExtras;
   therapist: Omit<TherapistStore, "addManualBooking"> & TherapistExtras;
   admin: Omit<AdminStore, "roomGrid"> & AdminExtras;
   client: ClientStore;
+  email: EmailStore;
 };

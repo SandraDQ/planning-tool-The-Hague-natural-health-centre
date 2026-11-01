@@ -31,6 +31,7 @@ export async function DashboardShell({
   const locale = await getLocale();
   const t = await getTranslations(area);
   const tc = await getTranslations(`${area}.shell`);
+  const te = await getTranslations("email.admin");
 
   const items: AppNavItem[] =
     area === "admin"
@@ -42,6 +43,7 @@ export async function DashboardShell({
           { href: "/admin/renters", label: t("nav.renters"), icon: <Icons.Users /> },
           { href: "/admin/rent", label: t("nav.rent"), icon: <Icons.Euro /> },
           { href: "/admin/therapies", label: t("nav.therapies"), icon: <Icons.Leaf /> },
+          { href: "/admin/emails", label: te("nav"), icon: <Icons.Mail /> },
         ]
       : [
           { href: "/therapist", label: t("nav.calendar"), icon: <Icons.CalendarIcon />, match: "exact" },

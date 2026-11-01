@@ -141,7 +141,7 @@
     "intro": "Thank you, {name}. We look forward to seeing you.",
     "introNoName": "Thank you. We look forward to seeing you.",
     "emailNote": "We have sent the details to your email address.",
-    "demoEmail": "Demo: no emails are sent.",
+    "demoEmail": "Demo: the e-mail is not really sent. The centre can view it in the admin portal under E-mails.",
     "nextTitle": "What happens next",
     "next1": "You receive a confirmation email with your deposit receipt.",
     "next2": "{name} receives your details and prepares for your visit.",
