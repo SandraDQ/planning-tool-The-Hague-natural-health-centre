@@ -190,4 +190,21 @@ test.describe("therapist @mobile", () => {
     // In-memory demo state lives per server instance; the E2E server is a single instance.
     expect((await request.get(oldLink)).status()).toBe(404);
   });
+
+  test("setup steps: progress, status per step and a button to each screen", async ({ page }, testInfo) => {
+    const errors = watchErrors(page);
+    await signIn(page, "Demo – Anna de Vries");
+    await page.goto("/en/therapist/settings");
+    await page.getByRole("link", { name: /Set up your practice/ }).click();
+    await expect(page).toHaveURL(/\/en\/therapist\/setup$/);
+    await expect(page.getByRole("heading", { level: 1, name: "Set up your practice" })).toBeVisible();
+    await expect(page.getByRole("progressbar", { name: "Setup progress" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Your treatments and prices" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Online payments" })).toBeVisible();
+    await expect(page.getByText("Coming soon")).toBeVisible();
+    await shot(page, "therapist-setup", testInfo);
+    await page.getByRole("link", { name: /^(Add a treatment|View or change)$/ }).first().click();
+    await expect(page).toHaveURL(/\/en\/therapist\/settings\/profile$|\/en\/therapist\/settings\/services$/);
+    expect(errors).toEqual([]);
+  });
 });
