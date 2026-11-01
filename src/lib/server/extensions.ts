@@ -211,6 +211,20 @@ export interface BooksStore {
   connectDemoBank(session: Session): Promise<BankConnection>;
   /** Demo: renews the bank consent for another 180 days. */
   renewBankConsent(session: Session): Promise<BankConnection>;
+  /** Admin: every therapist's add-on status, and the monthly fee. */
+  listAddons(session: Session): Promise<{ feeCents: number; therapists: BooksAddonRow[] }>;
+  /** Admin: switches a therapist's add-on on (from the next rent invoice the fee is charged) or off. Data is kept. */
+  setAddon(session: Session, therapistId: Id, on: boolean): Promise<BooksAddonRow>;
+  /** Admin: the monthly fee excl. BTW (21%). */
+  setAddonFee(session: Session, feeCents: number): Promise<number>;
+}
+
+export interface BooksAddonRow {
+  therapistId: Id;
+  name: string;
+  status: "off" | "requested" | "active";
+  since: string | null;
+  termsAccepted: boolean;
 }
 
 export type AppStore = Omit<DataStore, "booking" | "therapist" | "admin"> & {

@@ -117,3 +117,17 @@ export async function acceptBooksTerms() {
   done(session);
   return result;
 }
+
+export async function setBooksAddon(therapistId: Id, on: boolean) {
+  const { session, store } = await owner();
+  const result = await run(() => store.books.setAddon(session, therapistId, on));
+  done(session);
+  return result;
+}
+
+export async function setBooksAddonFee(feeCents: number) {
+  const { session, store } = await owner();
+  const result = await run(() => store.books.setAddonFee(session, feeCents));
+  done(session);
+  return result;
+}

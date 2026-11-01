@@ -20,6 +20,12 @@ export function monthBounds(day: string): { first: string; next: string } {
 export const rentInvoicesOf = (state: DemoState, monthFirstDay: string) =>
   state.invoices.filter((i) => i.kind === "room_rent" && i.rentMonth === monthFirstDay);
 
+/** The add-on fee is charged for every month in which the add-on was on (D44). */
+function addonFeeFor(state: DemoState, therapistId: Id, monthNextDay: string): number | null {
+  const a = state.booksAddon[therapistId];
+  return a?.status === "active" && a.since < monthNextDay ? state.booksAddonFeeCents : null;
+}
+
 /**
  * (Re)builds the draft rent invoices of a month. Therapists who already have an issued
  * rent invoice for that month are skipped; earlier drafts are replaced.
@@ -43,6 +49,7 @@ export function prepareRentRun(state: DemoState, day: string, atMs: number, seed
       monthNextDay: next,
       dueOn,
       localDayOf: (iso) => localDateOf(Date.parse(iso)),
+      booksAddonFeeCents: addonFeeFor(state, therapist.id, next),
     });
     if (!draft) continue;
     const inv = newInvoice(draft, seeded ? stableId(`invoice:rent:${first}:${therapist.id}`) : undefined);

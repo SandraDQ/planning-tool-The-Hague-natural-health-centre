@@ -215,6 +215,8 @@ export function rentInvoiceDraft(input: {
   monthNextDay: string;
   dueOn: string;
   localDayOf: (iso: string) => string;
+  /** Monthly fee of the bookkeeping add-on (excl. BTW, 21%), when it is on (D44). */
+  booksAddonFeeCents?: number | null;
 }): InvoiceDraft | null {
   const locale: Locale = "nl";
   const text = INVOICE_TEXT[locale];
@@ -250,6 +252,7 @@ export function rentInvoiceDraft(input: {
   for (const g of [...groups.values()].sort((a, b) => a.room.number - b.room.number)) {
     lines.push(lineFromNet(text.rentBlocks(g.room.number), g.count, g.rate.amountCents, g.rate.btwTreatment, ground(g.rate.btwTreatment)));
   }
+  if (input.booksAddonFeeCents) lines.push(lineFromNet(text.booksAddon(monthName(monthFirstDay, locale)), 1, input.booksAddonFeeCents, "21", null));
   if (lines.length === 0) return null;
 
   return base({

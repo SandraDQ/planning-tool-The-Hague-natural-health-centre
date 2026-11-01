@@ -217,7 +217,19 @@
     "termsAccepted": "Uw boekhouding staat klaar"
   },
   "export": {
-    "header": ["Soort", "Datum", "Nummer of leverancier", "Omschrijving", "Categorie", "Excl. btw", "Btw-tarief", "Btw", "Incl. btw", "Betaald op", "Bestand bon"],
+    "header": [
+      "Soort",
+      "Datum",
+      "Nummer of leverancier",
+      "Omschrijving",
+      "Categorie",
+      "Excl. btw",
+      "Btw-tarief",
+      "Btw",
+      "Incl. btw",
+      "Betaald op",
+      "Bestand bon"
+    ],
     "sale": "Verkoopfactuur",
     "creditNote": "Creditfactuur",
     "otherIncome": "Andere inkomsten",
@@ -236,5 +248,30 @@
     "balance": "Te betalen (negatief = terug te krijgen)",
     "note": "Gemaakt met het THNHC-portaal. Controleer vóór de aangifte.",
     "fileName": "boekhouding"
+  },
+  "addonAdmin": {
+    "title": "Boekhouding voor uw therapeuten",
+    "lead": "Therapeuten kunnen deze boekhouding ook gebruiken, voor een vast bedrag per maand. Dat bedrag komt vanzelf op hun huurfactuur.",
+    "requests": "{count, plural, one {# therapeut vraagt om de boekhouding} other {# therapeuten vragen om de boekhouding}}",
+    "requestsText": "Zet het voor hen aan onderaan deze pagina.",
+    "fee": "Bedrag per maand (excl. btw)",
+    "feeHint": "Op de huurfactuur komt er 21% btw bij.",
+    "feeError": "Vul een bedrag in, bijvoorbeeld 10,00.",
+    "saveFee": "Bedrag opslaan",
+    "feeSaved": "Bedrag opgeslagen",
+    "statusOff": "Uit",
+    "statusRequested": "Vraagt erom",
+    "statusActive": "Aan",
+    "since": "sinds {date}",
+    "termsPending": "is nog niet akkoord met de voorwaarden",
+    "switchOn": "Aanzetten",
+    "switchOff": "Uitzetten",
+    "switchedOn": "Boekhouding aangezet",
+    "switchedOnText": "Het bedrag staat op de volgende huurfactuur.",
+    "switchedOff": "Boekhouding uitgezet",
+    "offTitle": "Boekhouding uitzetten voor {name}?",
+    "offText": "Diegene kan het dan niet meer gebruiken en het maandbedrag stopt. De cijfers worden 7 jaar bewaard, zoals de wet vraagt.",
+    "offConfirm": "Ja, uitzetten",
+    "cancel": "Annuleren"
   }
 }

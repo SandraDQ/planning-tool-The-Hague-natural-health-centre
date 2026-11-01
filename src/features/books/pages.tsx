@@ -15,6 +15,8 @@ import { HowItWorks } from "@/features/invoices/components/HowItWorks";
 import { MonthNav, StatTile } from "@/features/invoices/components/InvoiceBits";
 import { AcceptTermsForm, ConnectBankButton, PaymentActions, RenewConsentButton, RequestAddonButton, UndoMatchButton } from "./BankActions";
 import { AddCostButton, EditCostButton, type BooksArea } from "./CostSheet";
+import { AddonManager } from "./AddonManager";
+import { Link } from "@/i18n/navigation";
 
 const buttonLinkClasses = (variant: "primary" | "secondary") => buttonClasses({ variant, size: "lg" });
 const basePath = (area: BooksArea) => (area === "admin" ? "/admin/books" : "/therapist/books");
@@ -86,17 +88,19 @@ function BackLink({ area, label }: { area: BooksArea; label: string }) {
   );
 }
 
-function LinkCard({ href, icon, title, text, badge }: { href: string; icon: ReactNode; title: string; text: string; badge?: ReactNode }) {
+function LinkCard({ href, icon, title, text }: { href: string; icon: ReactNode; title: string; text: string }) {
   return (
-    <ButtonLink href={href} variant="secondary" className="h-auto w-full justify-start gap-4 p-5 text-left whitespace-normal">
-      <span className="shrink-0 [&_svg]:size-7">{icon}</span>
+    <Link
+      href={href}
+      className="flex items-center gap-4 rounded-md border border-border bg-surface p-5 text-fg no-underline transition-colors hover:border-accent hover:bg-accent-soft/30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+    >
+      <span className="shrink-0 text-accent [&_svg]:size-7">{icon}</span>
       <span className="flex min-w-0 flex-1 flex-col gap-1">
         <span className="text-lg font-bold">{title}</span>
-        <span className="text-base font-normal text-fg-muted">{text}</span>
-        {badge}
+        <span className="text-base text-fg-muted">{text}</span>
       </span>
-      <Icons.ChevronRight className="shrink-0" />
-    </ButtonLink>
+      <Icons.ChevronRight className="shrink-0 text-fg-muted" />
+    </Link>
   );
 }
 
@@ -110,7 +114,12 @@ export async function BooksHomePage({ area, locale, month: monthParam }: { area:
   const tc = await getTranslations("invoices.common");
   const format = await getFormatter();
   const today = todayLocal();
-  const month = monthRange(parseDayParam(monthParam) ?? today);
+  // Early in a month there is little to show yet: open on last month until something is booked.
+  const thisMonth = monthRange(today);
+  const quiet = !books.expenses.some((e) => e.date >= thisMonth.first) && !books.invoices.some((i) => i.issuedAt && localDay(i.issuedAt) >= thisMonth.first);
+  const month = monthRange(parseDayParam(monthParam) ?? (quiet ? addDays(thisMonth.first, -1) : today));
+  const addons = area === "admin" ? await getStore().books.listAddons(await requireRole("admin", locale)) : null;
+  const requests = addons?.therapists.filter((r) => r.status === "requested").length ?? 0;
   const monthLabel = format.dateTime(new Date(`${month.first}T12:00:00Z`), { month: "long", year: "numeric" });
   const totals = periodTotals(input, month.first, month.next);
   const categories = costsByCategory(input, month.first, month.next);
@@ -125,8 +134,15 @@ export async function BooksHomePage({ area, locale, month: monthParam }: { area:
       <PageHeading title={t("title")} description={t("lead")} actions={<AddCostButton area={area} today={today} />} />
       <HowItWorks storageKey={`books-${area}`} title={t("welcomeTitle")} steps={[t("welcomeStep1"), t("welcomeStep2"), t("welcomeStep3")]} />
 
-      {(unmatched > 0 || missing.length > 0) && (
+      {(unmatched > 0 || missing.length > 0 || requests > 0) && (
         <div className="mt-6 flex flex-col gap-3">
+          {requests > 0 && (
+            <Notice title={t("addonAdmin.requests", { count: requests })}>
+              <a href="#addon-admin-title" className="underline">
+                {t("addonAdmin.requestsText")}
+              </a>
+            </Notice>
+          )}
           {unmatched > 0 && (
             <Notice
               tone="warning"
@@ -157,6 +173,7 @@ export async function BooksHomePage({ area, locale, month: monthParam }: { area:
             pathname={basePath(area)}
             prev={monthRange(addDays(month.first, -1)).first}
             next={month.next}
+            current={today}
             labels={{ previous: tc("previousMonth"), current: tc("thisMonth"), next: tc("nextMonth") }}
           />
         </div>
@@ -202,6 +219,7 @@ export async function BooksHomePage({ area, locale, month: monthParam }: { area:
           <LinkCard href={`${basePath(area)}/btw`} icon={<Icons.Download />} title={t("btwLink")} text={t("btwLinkText")} />
         </div>
       </section>
+      {addons && <AddonManager rows={addons.therapists} feeCents={addons.feeCents} />}
     </DashboardPage>
   );
 }

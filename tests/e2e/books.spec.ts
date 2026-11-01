@@ -65,6 +65,13 @@ test.describe("bookkeeping", () => {
     await page.locator("li", { hasText: "P. de Wit" }).getByRole("button", { name: "Undo" }).click();
     await expect(page.getByText("Undone. The payment is back under “Needs a look”.")).toBeVisible();
 
+    // Bram asked for bookkeeping: switch it on for him.
+    await page.goto("/en/admin/books");
+    await expect(page.getByText("1 therapist asks for bookkeeping")).toBeVisible();
+    const bram = page.locator("li", { hasText: "Bram" }).filter({ hasText: "Asks for it" });
+    await bram.getByRole("button", { name: "Switch on" }).click();
+    await expect(page.getByText("Bookkeeping switched on")).toBeVisible();
+
     // BTW quarter and the download.
     await page.goto("/en/admin/books/btw");
     await expect(page.getByRole("heading", { name: "For your accountant to check" }).or(page.getByText("For your accountant to check"))).toBeVisible();

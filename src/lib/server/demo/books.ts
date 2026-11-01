@@ -9,9 +9,9 @@ import { suggestMatch, type MatchSuggestion } from "@/lib/books/matching";
 import { RECEIPT_EXT, RECEIPT_MAX_BYTES, safeFileName, sniffReceipt } from "@/lib/books/receipt-file";
 import { DomainError, type DomainErrorCode } from "@/lib/domain/store";
 import type { BankConnection, BankTransaction, BtwTreatment, CostCategory, Expense, Id, Invoice, Session } from "@/lib/domain/types";
-import { splitGross } from "@/lib/invoicing/btw";
+import { btwByRate, splitGross } from "@/lib/invoicing/btw";
 import { amountDue } from "@/lib/invoicing/status";
-import type { BooksAccess, BooksData, BooksStore, ExpenseInput } from "../extensions";
+import type { BooksAccess, BooksAddonRow, BooksData, BooksStore, ExpenseInput } from "../extensions";
 import { stableId } from "./ids";
 import { syncFinalInvoice } from "./invoicing";
 import type { DemoState } from "./state";
@@ -142,6 +142,17 @@ export function createBooksArea(state: DemoState, deps: { now: () => number; tic
       const a = state.appointments.find((x) => x.id === inv.appointmentId);
       if (a) syncFinalInvoice(state, a, now());
     }
+  }
+
+  function asAdmin(session: Session) {
+    tick();
+    if (session?.role !== "admin") fail("forbidden");
+  }
+
+  function addonRow(therapistId: Id): BooksAddonRow {
+    const t = state.therapists.find((x) => x.id === therapistId)!;
+    const a = state.booksAddon[therapistId];
+    return { therapistId, name: t.displayName, status: a?.status ?? "off", since: a?.since ?? null, termsAccepted: !!a?.termsAcceptedAt };
   }
 
   function connectionOf(o: Id | null) {
@@ -313,6 +324,29 @@ export function createBooksArea(state: DemoState, deps: { now: () => number; tic
       return clone(c);
     },
 
+    async listAddons(session) {
+      asAdmin(session);
+      const order = { requested: 0, active: 1, off: 2 } as const;
+      const therapists = state.therapists.map((t) => addonRow(t.id)).sort((a, b) => order[a.status] - order[b.status] || a.name.localeCompare(b.name));
+      return { feeCents: state.booksAddonFeeCents, therapists };
+    },
+
+    async setAddon(session, therapistId, on) {
+      asAdmin(session);
+      if (!state.therapists.some((t) => t.id === therapistId) || typeof on !== "boolean") fail("not_found");
+      const current = state.booksAddon[therapistId];
+      if (on && current?.status !== "active") state.booksAddon[therapistId] = { status: "active", since: today(), termsAcceptedAt: null };
+      if (!on) delete state.booksAddon[therapistId]; // the books stay (retention); only access and the fee stop
+      return addonRow(therapistId);
+    },
+
+    async setAddonFee(session, feeCents) {
+      asAdmin(session);
+      if (!Number.isInteger(feeCents) || feeCents < 0 || feeCents > 100_000) fail("invalid", "Fill in a monthly amount");
+      state.booksAddonFeeCents = feeCents;
+      return feeCents;
+    },
+
     async renewBankConsent(session) {
       const o = owner(session);
       const c = connectionOf(o);
@@ -338,6 +372,17 @@ function demoConnection(owner: Id | null, holder: string, atMs: number, consentU
 }
 
 // --------------------------------------------------------------------- seed --
+
+/** Before the rent run is seeded, so last month's rent invoice carries Anna's add-on fee. */
+export function seedBooksAddons(state: DemoState, refMs: number): void {
+  const today = localDateOf(refMs);
+  const [y, m] = today.split("-").map(Number);
+  const d = new Date(Date.UTC(y, m - 3, 1));
+  const since = `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, "0")}-01`;
+  if (state.therapists.some((t) => t.id === "th-anna")) state.booksAddon["th-anna"] = { status: "active", since, termsAcceptedAt: `${since}T10:00:00.000Z` };
+  // Someone else asked for it: the admin sees the request.
+  if (state.therapists.some((t) => t.id === "th-bram")) state.booksAddon["th-bram"] = { status: "requested", since: addDays(today, -2), termsAcceptedAt: null };
+}
 
 interface SeedCost {
   key: string;
@@ -444,7 +489,6 @@ export function seedBooks(state: DemoState, refMs: number): void {
   // ---- Anna: bookkeeping add-on on ----
   const anna = "th-anna";
   if (!state.therapists.some((t) => t.id === anna)) return;
-  state.booksAddon[anna] = { status: "active", since: months[0], termsAcceptedAt: at(months[0]) };
   const annaName = ownerName(state, anna);
   state.bankConnections.push(demoConnection(anna, annaName, Date.parse(at(months[0])), addDays(months[0], CONSENT_DAYS)));
   const annaMonthly: Array<[number, SeedCost]> = [
@@ -458,9 +502,32 @@ export function seedBooks(state: DemoState, refMs: number): void {
   }
   addCost(anna, { key: "course", supplier: "Academie voor Natuurgeneeskunde", description: "Nascholing voetreflex", category: "training", grossCents: 19500, btwRate: "21", bank: "Cursusgeld nascholing" }, `${months[1].slice(0, 8)}10`);
   // Her room rent from the centre is a cost for her (the invoice is the receipt).
+  // One cost per BTW rate on the invoice (the rent without BTW, the add-on fee with 21%), paid in one transfer.
   for (const inv of state.invoices.filter((i) => i.kind === "room_rent" && i.status === "issued" && i.buyerTherapistId === anna && i.paidOn)) {
-    addCost(anna, { key: `rent:${inv.id}`, supplier: CENTRE_NAME, description: `Kamerhuur ${inv.number}`, category: "rent", grossCents: inv.totalCents, btwRate: "exempt", bank: `Huur ${inv.number}` }, addDays(inv.paidOn!, -1));
+    const costs = btwByRate(inv.lines).map((r) => {
+      const fee = r.treatment !== "exempt";
+      return addCost(
+        anna,
+        {
+          key: `rent:${inv.id}:${r.treatment}`,
+          supplier: CENTRE_NAME,
+          description: `${fee ? "Boekhoudmodule" : "Kamerhuur"} ${inv.number}`,
+          category: fee ? "software" : "rent",
+          grossCents: r.netCents + r.btwCents,
+          btwRate: r.treatment,
+          bank: null,
+        },
+        addDays(inv.paidOn!, -1),
+      );
+    });
+    const main = costs.find((e) => e?.category === "rent") ?? costs[0];
+    if (main) {
+      const id = stableId(`banktx:${anna}:rentpay:${inv.id}`);
+      main.bankTransactionId = id;
+      addTx(anna, `rentpay:${inv.id}`, { bookedOn: inv.paidOn!, amountCents: -inv.totalCents, counterparty: CENTRE_NAME, counterpartyIban: null, description: `Huur ${inv.number}`, match: { kind: "expense", expenseId: main.id } });
+    }
   }
+
   // Weekly payouts of online deposits: already counted on the deposit invoices.
   for (let w = 1; w <= 8; w++) {
     const day = addDays(today, -7 * w + 2);
@@ -469,6 +536,4 @@ export function seedBooks(state: DemoState, refMs: number): void {
   // A client paid an open final invoice by bank transfer: suggestion "this invoice".
   const open = state.invoices.find((i) => i.sellerTherapistId === anna && i.kind === "final" && i.status === "issued" && amountDue(i) > 0);
   if (open) addTx(anna, `client:${open.id}`, { bookedOn: addDays(today, -1), amountCents: amountDue(open), counterparty: open.buyer.name, counterpartyIban: null, description: `Betaling factuur ${open.number}`, match: null });
-  // Someone else asked for the add-on: shows a request in the admin's renters list (Phase 3).
-  if (state.therapists.some((t) => t.id === "th-bram")) state.booksAddon["th-bram"] = { status: "requested", since: addDays(today, -2), termsAcceptedAt: null };
 }

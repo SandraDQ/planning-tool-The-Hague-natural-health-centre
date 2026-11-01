@@ -52,11 +52,14 @@ export function MonthNav({
   pathname,
   prev,
   next,
+  current,
   labels,
 }: {
   pathname: string;
   prev: string;
   next: string;
+  /** A day in "this month", when the page may open on another month by default. */
+  current?: string;
   labels: { previous: string; current: string; next: string };
 }) {
   return (
@@ -64,7 +67,7 @@ export function MonthNav({
       <ButtonLink href={{ pathname, query: { month: prev } }} variant="ghost" size="sm" aria-label={labels.previous}>
         <Icons.ChevronLeft />
       </ButtonLink>
-      <ButtonLink href={pathname} variant="ghost" size="sm">
+      <ButtonLink href={current ? { pathname, query: { month: current } } : pathname} variant="ghost" size="sm">
         {labels.current}
       </ButtonLink>
       <ButtonLink href={{ pathname, query: { month: next } }} variant="ghost" size="sm" aria-label={labels.next}>

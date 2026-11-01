@@ -22,7 +22,7 @@ import { insertAppointment, makeAppointment } from "./build";
 import { stableId } from "./ids";
 import { seedInvoices } from "./invoicing";
 import { seedRentInvoices } from "./rent-run";
-import { seedBooks } from "./books";
+import { seedBooks, seedBooksAddons } from "./books";
 import { candidateWindows, validateInState } from "./rules";
 import { SERIES_HORIZON_WEEKS, materializeSeries } from "./series";
 import type { DemoState } from "./state";
@@ -508,6 +508,7 @@ export function createSeedState(now: Date = new Date()): DemoState {
 
   seedAppointments(state, { nowMs: refMs, from: firstMonday, to: addDays(weekStart, 27), rnd });
   seedInvoices(state, refMs);
+  seedBooksAddons(state, refMs);
   seedRentInvoices(state, refMs);
   // Seeded invoices count as already e-mailed, so the demo never sends a backlog.
   for (const inv of state.invoices) {

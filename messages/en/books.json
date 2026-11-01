@@ -217,7 +217,19 @@
     "termsAccepted": "Your bookkeeping is ready"
   },
   "export": {
-    "header": ["Type", "Date", "Number or supplier", "Description", "Category", "Excl. BTW", "BTW rate", "BTW", "Incl. BTW", "Paid on", "Receipt file"],
+    "header": [
+      "Type",
+      "Date",
+      "Number or supplier",
+      "Description",
+      "Category",
+      "Excl. BTW",
+      "BTW rate",
+      "BTW",
+      "Incl. BTW",
+      "Paid on",
+      "Receipt file"
+    ],
     "sale": "Sales invoice",
     "creditNote": "Credit note",
     "otherIncome": "Other income",
@@ -236,5 +248,30 @@
     "balance": "To pay (negative = to get back)",
     "note": "Made with the THNHC portal. Check before filing.",
     "fileName": "bookkeeping"
+  },
+  "addonAdmin": {
+    "title": "Bookkeeping for your therapists",
+    "lead": "Therapists can use this bookkeeping too, for a monthly fee. The fee is added to their rent invoice by itself.",
+    "requests": "{count, plural, one {# therapist asks for bookkeeping} other {# therapists ask for bookkeeping}}",
+    "requestsText": "Switch it on for them at the bottom of this page.",
+    "fee": "Monthly fee (excl. BTW)",
+    "feeHint": "21% BTW is added on the rent invoice.",
+    "feeError": "Fill in an amount, for example 10,00.",
+    "saveFee": "Save fee",
+    "feeSaved": "Fee saved",
+    "statusOff": "Off",
+    "statusRequested": "Asks for it",
+    "statusActive": "On",
+    "since": "since {date}",
+    "termsPending": "has not agreed to the terms yet",
+    "switchOn": "Switch on",
+    "switchOff": "Switch off",
+    "switchedOn": "Bookkeeping switched on",
+    "switchedOnText": "The fee is on the next rent invoice.",
+    "switchedOff": "Bookkeeping switched off",
+    "offTitle": "Switch off bookkeeping for {name}?",
+    "offText": "They can no longer use it and the fee stops. Their figures are kept for the 7 years the law requires.",
+    "offConfirm": "Yes, switch off",
+    "cancel": "Cancel"
   }
 }
