@@ -1,0 +1,55 @@
+{
+  "gotIt": "Got it, hide this",
+  "showAgain": "Help",
+  "therapist": {
+    "title": "Welcome to your practice, {name}",
+    "intro": "Here you keep your appointments and your room in one place. It works on your phone, tablet and computer. Take your time; we'll help you if anything is unclear.",
+    "step1": {
+      "title": "Your calendar",
+      "text": "See your appointments for today and this week. Tap an appointment to see the details."
+    },
+    "step2": {
+      "title": "Room blocks",
+      "text": "Reserve a room for the times you want to work. Clients can then book you online in those times."
+    },
+    "step3": {
+      "title": "Settings",
+      "text": "Add your treatments, prices and working hours, so clients see the right information."
+    },
+    "help": "Questions or stuck? Call <phone></phone> or email <email></email>. We're happy to help."
+  },
+  "admin": {
+    "title": "Welcome, {name}",
+    "intro": "This is where you run the centre: rooms, renters and rent. Everything is in the menu at the top.",
+    "step1": {
+      "title": "Room grid",
+      "text": "See at a glance which rooms are reserved, by whom and when."
+    },
+    "step2": {
+      "title": "Rooms and renters",
+      "text": "Add rooms and therapists, and choose who rents which room."
+    },
+    "step3": {
+      "title": "Rent",
+      "text": "Set the rent per room: a fixed amount per month or a price per block."
+    },
+    "help": "Questions or stuck? Call <phone></phone> or email <email></email>. We're happy to help."
+  },
+  "client": {
+    "title": "Welcome, {name}",
+    "intro": "This is your own page at The Hague Natural Health Centre. Here you find everything about your appointments.",
+    "step1": {
+      "title": "Your appointments",
+      "text": "Below you see your upcoming and past appointments, with the date, time and therapist."
+    },
+    "step2": {
+      "title": "Book",
+      "text": "Want a new appointment? Press the green button Book an appointment. You choose a treatment, a day and a time."
+    },
+    "step3": {
+      "title": "Cancel",
+      "text": "Can't make it? Press Cancel appointment. You'll see first whether you get money back."
+    },
+    "help": "Questions or stuck? Call us on <phone></phone> or email <email></email>. We're happy to help."
+  }
+}

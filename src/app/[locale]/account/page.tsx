@@ -12,6 +12,7 @@ import { freeCancelDeadline } from "@/features/booking/policy";
 import { TIME_ZONE } from "@/features/booking/time";
 import { todayLocal } from "@/features/dashboard/time";
 import { InvoiceList } from "@/features/invoices/components/InvoiceList";
+import { Welcome } from "@/features/onboarding/Welcome";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -127,6 +128,9 @@ export default async function AccountPage({ params }: Props) {
 
   return (
     <div className="mx-auto max-w-reading px-gutter pt-8 pb-12 sm:pt-12 lg:pb-20">
+      <div className="mb-8">
+        <Welcome area="client" name={me?.firstName ?? session.displayName} narrow />
+      </div>
       <p className="text-base text-fg-muted">{t("hello", { name: me?.firstName ?? session.displayName })}</p>
       <div className="mt-1 flex flex-wrap items-center justify-between gap-4">
         <h1 id="page-title" className="text-xl">
