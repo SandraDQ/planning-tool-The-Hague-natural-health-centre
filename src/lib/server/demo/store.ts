@@ -24,6 +24,7 @@ import type {
 } from "@/lib/domain/types";
 import type { AppStore, ManualClientInput } from "../extensions";
 import { holdExpiresAt } from "@/lib/scheduling";
+import { createBooksArea } from "./books";
 import { insertAppointment, makeAppointment, sessionTypeContext } from "./build";
 import { cancellationTerms } from "./cancellation";
 import { appointmentMoney, invoicesOf, onDepositPaid, onDepositRefunded, syncFinalInvoice } from "./invoicing";
@@ -1055,6 +1056,8 @@ export function createDemoStore(state: DemoState, options: DemoStoreOptions = {}
         return clone(newestFirst(state.invoices.filter((i) => i.status === "issued" && i.buyerClientId === me.id)));
       },
     },
+
+    books: createBooksArea(state, { now, tick }),
 
     invoices: {
       async getForViewer(session, invoiceId) {

@@ -3,9 +3,15 @@
 // the Supabase implementation must provide them too.
 
 import type { AdminStore, BookingStore, DataStore, TherapistStore } from "@/lib/domain/store";
+import type { MatchSuggestion } from "@/lib/books/matching";
 import type {
   Appointment,
   BalancePayment,
+  BankConnection,
+  BankTransaction,
+  BtwTreatment,
+  CostCategory,
+  Expense,
   Client,
   Id,
   IntakeInput,
@@ -13,6 +19,7 @@ import type {
   Invoice,
   Locale,
   PaperWindow,
+  ReceiptFile,
   Room,
   RoomBlock,
   Session,
@@ -142,10 +149,75 @@ export interface InvoiceAccess {
   markSent(invoiceId: Id, to: string, at: string): Promise<void>;
 }
 
+/** Whether a viewer can use the bookkeeping pages. Admin: always "on" (the centre's books). */
+export interface BooksAccess {
+  status: "on" | "off" | "requested" | "needs_terms";
+  /** Monthly add-on fee excl. BTW, put on the rent invoice (therapists only). */
+  feeCents: number;
+}
+
+/** Everything one owner's bookkeeping pages show. */
+export interface BooksData {
+  ownerName: string;
+  /** False when the owner uses the KOR or only has BTW-exempt sales: BTW on costs does not come back. */
+  deductsBtw: boolean;
+  btwNote: "kor" | "exempt" | null;
+  /** Issued sales invoices (centre: room rent; therapist: own client invoices). */
+  invoices: Invoice[];
+  expenses: Expense[];
+  /** Newest first. */
+  transactions: BankTransaction[];
+  connection: BankConnection | null;
+  /** For every transaction nobody looked at yet. */
+  suggestions: Record<Id, MatchSuggestion>;
+}
+
+export interface ExpenseInput {
+  date: string;
+  supplier: string;
+  description?: string;
+  category: CostCategory;
+  grossCents: number;
+  btwRate: BtwTreatment;
+}
+
+export type BankMatchInput =
+  | { kind: "invoice"; invoiceId: Id }
+  | { kind: "expense"; expenseId: Id }
+  | { kind: "new_expense"; expense: ExpenseInput }
+  | { kind: "other_income" }
+  | { kind: "counted" }
+  | { kind: "private" };
+
+/** The accounting tool (D40): the admin keeps the centre's books, a therapist their own (add-on). */
+export interface BooksStore {
+  access(session: Session): Promise<BooksAccess>;
+  /** Therapist asks the centre to switch the add-on on. */
+  requestAddon(session: Session): Promise<BooksAccess>;
+  /** Therapist agrees to the processing terms before first use (D45). */
+  acceptTerms(session: Session): Promise<BooksAccess>;
+  getBooks(session: Session): Promise<BooksData>;
+  saveExpense(session: Session, input: ExpenseInput & { id?: Id }): Promise<Expense>;
+  /** Deletes a cost and its receipt; a linked bank payment goes back to "needs a look". */
+  deleteExpense(session: Session, expenseId: Id): Promise<void>;
+  attachReceipt(session: Session, expenseId: Id, file: { name: string; data: Uint8Array }): Promise<Expense>;
+  removeReceipt(session: Session, expenseId: Id): Promise<Expense>;
+  /** The receipt file, for its owner only (else not_found). */
+  readReceipt(session: Session, expenseId: Id): Promise<{ file: ReceiptFile; data: Uint8Array }>;
+  matchTransaction(session: Session, transactionId: Id, match: BankMatchInput): Promise<BankTransaction>;
+  /** Undoes a match (a payment marked on an invoice is taken off again; a cost stays). */
+  unmatchTransaction(session: Session, transactionId: Id): Promise<BankTransaction>;
+  /** Demo: connects the pretend bank. Live: starts the provider's consent flow. */
+  connectDemoBank(session: Session): Promise<BankConnection>;
+  /** Demo: renews the bank consent for another 180 days. */
+  renewBankConsent(session: Session): Promise<BankConnection>;
+}
+
 export type AppStore = Omit<DataStore, "booking" | "therapist" | "admin"> & {
   booking: Omit<BookingStore, "holdSlot"> & BookingExtras;
   therapist: Omit<TherapistStore, "addManualBooking"> & TherapistExtras;
   admin: Omit<AdminStore, "roomGrid"> & AdminExtras;
   client: ClientStore;
   invoices: InvoiceAccess;
+  books: BooksStore;
 };

@@ -22,6 +22,7 @@ import { insertAppointment, makeAppointment } from "./build";
 import { stableId } from "./ids";
 import { seedInvoices } from "./invoicing";
 import { seedRentInvoices } from "./rent-run";
+import { seedBooks } from "./books";
 import { candidateWindows, validateInState } from "./rules";
 import { SERIES_HORIZON_WEEKS, materializeSeries } from "./series";
 import type { DemoState } from "./state";
@@ -467,6 +468,12 @@ export function createSeedState(now: Date = new Date()): DemoState {
       { id: "rate-room-6", roomId: DEMO_IDS.rooms[6], pricingMode: "fixed_monthly", amountCents: 72500, btwTreatment: "exempt", validFrom: `${year}-01-01`, validTo: null },
       { id: "rate-default-block", roomId: null, pricingMode: "per_block", amountCents: 4000, btwTreatment: "exempt", validFrom: `${year}-01-01`, validTo: null },
     ],
+    expenses: [],
+    receiptData: {},
+    bankConnections: [],
+    bankTransactions: [],
+    booksAddon: {},
+    booksAddonFeeCents: 1000,
     rentSettings: { billingDay: 1, paymentTermDays: 14, autoSend: false },
     materializedUntil: horizon,
     seededAt: iso(refMs),
@@ -509,6 +516,7 @@ export function createSeedState(now: Date = new Date()): DemoState {
       inv.sentTo = inv.buyer.email;
     }
   }
+  seedBooks(state, refMs);
   return state;
 }
 

@@ -312,3 +312,89 @@ export interface Invoice {
 }
 
 export type InvoicePaymentStatus = "draft" | "paid" | "open" | "overdue" | "credit";
+
+// ------------------------------------------------------------ bookkeeping --
+// The accounting tool in the portal (D40): the centre's own books (admin), and a
+// therapist's books when the bookkeeping add-on is on. `ownerTherapistId` null = the centre.
+
+/** What a cost was for. A short fixed list, so choosing is easy (D41). */
+export type CostCategory =
+  | "rent"
+  | "supplies"
+  | "equipment"
+  | "office"
+  | "phone_internet"
+  | "software"
+  | "marketing"
+  | "training"
+  | "travel"
+  | "insurance"
+  | "energy"
+  | "cleaning"
+  | "advice"
+  | "bank_fees"
+  | "other";
+
+/** A receipt photo or PDF. The file itself is kept in storage, never in a list. */
+export interface ReceiptFile {
+  id: Id;
+  fileName: string;
+  mimeType: "image/jpeg" | "image/png" | "image/webp" | "application/pdf";
+  bytes: number;
+  uploadedAt: Iso;
+}
+
+/** One cost (purchase) with what was paid incl. BTW; net and BTW are derived from the rate. */
+export interface Expense {
+  id: Id;
+  ownerTherapistId: Id | null;
+  /** Date on the receipt (local). */
+  date: string;
+  supplier: string;
+  description: string;
+  category: CostCategory;
+  grossCents: number;
+  /** BTW rate on the receipt; "exempt" = no BTW on it. */
+  btwRate: BtwTreatment;
+  netCents: number;
+  btwCents: number;
+  receipt: ReceiptFile | null;
+  /** The bank payment this cost was paid with, once linked. */
+  bankTransactionId: Id | null;
+  createdAt: Iso;
+}
+
+/** A read-only bank connection through a licensed provider (AISP). Never initiates payments. */
+export interface BankConnection {
+  ownerTherapistId: Id | null;
+  bankName: string;
+  /** Shown masked except the last 4 characters. */
+  iban: string;
+  holder: string;
+  connectedAt: Iso;
+  /** The bank's consent ends on this date; the owner renews it (every 90–180 days). */
+  consentUntil: string;
+  lastSyncAt: Iso;
+  /** Demo feed: pretend transactions, no real bank. */
+  demo: boolean;
+}
+
+/** What a bank payment was, once someone looked at it. */
+export type BankMatch =
+  | { kind: "invoice"; invoiceId: Id; balancePaymentId: Id | null }
+  | { kind: "expense"; expenseId: Id }
+  | { kind: "other_income" }
+  | { kind: "counted" }
+  | { kind: "private" };
+
+export interface BankTransaction {
+  id: Id;
+  ownerTherapistId: Id | null;
+  bookedOn: string;
+  /** Positive = money in, negative = money out. */
+  amountCents: number;
+  counterparty: string;
+  counterpartyIban: string | null;
+  description: string;
+  match: BankMatch | null;
+}

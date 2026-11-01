@@ -73,6 +73,8 @@ const csp = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // Receipt photos and PDFs go up through a server action (at most 5 MB, checked again on the server).
+  experimental: { serverActions: { bodySizeLimit: "6mb" } },
   async headers() {
     return [
       {
