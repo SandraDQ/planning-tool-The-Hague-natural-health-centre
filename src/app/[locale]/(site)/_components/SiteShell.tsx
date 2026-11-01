@@ -19,7 +19,8 @@ function firstName(displayName: string) {
  * Reading the session cookie means these pages render per request.
  */
 export async function SiteShell({ children }: { children: React.ReactNode }) {
-  const [t, locale, session] = await Promise.all([getTranslations("site"), getLocale(), getSession()]);
+  // A broken demo configuration only hides the signed-in name; the public page still renders (D29).
+  const [t, locale, session] = await Promise.all([getTranslations("site"), getLocale(), getSession().catch(() => null)]);
   const account = session ? { label: firstName(session.displayName), href: homeFor(session.role), hint: t("myAccount") } : undefined;
   const signOut = session ? (
     <form action={signOutAction}>
