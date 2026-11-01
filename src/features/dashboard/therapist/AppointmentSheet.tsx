@@ -4,7 +4,8 @@ import { useState } from "react";
 import { useFormatter, useLocale, useTranslations } from "next-intl";
 import { Badge, Button, Icons, Select, Sheet, TextField, dayToDate, useToast } from "@/design-system";
 import type { BalancePayment, Locale } from "@/lib/domain/types";
-import { cancelAppointment, markNoShow, recordBalancePayment } from "../actions/therapist";
+import { cancelAppointment, markNoShow, recordBalancePayment, sendFinalInvoice } from "../actions/therapist";
+import { PdfLink } from "@/features/invoices/components/InvoiceBits";
 import { centsToInput, formatEuro, parseEuroInput } from "../money";
 import { localDay, localTime } from "../time";
 import { useRunAction } from "../useRunAction";
@@ -16,6 +17,7 @@ const METHODS: BalancePayment["method"][] = ["pin", "cash", "transfer", "tikkie"
 /** Appointment details with the therapist's actions (7): cancel, no-show, record balance payment. */
 export function AppointmentSheet({ appointment: a, today, onClose }: { appointment: CalendarAppointment; today: string; onClose: () => void }) {
   const t = useTranslations("therapist.appointment");
+  const ti = useTranslations("invoices");
   const format = useFormatter();
   const locale = useLocale() as Locale;
   const { pending, exec } = useRunAction("therapist");
@@ -189,6 +191,41 @@ export function AppointmentSheet({ appointment: a, today, onClose }: { appointme
                 ))}
               </ul>
               {remaining === 0 && balance > 0 && <p className="text-sm text-success">{t("paidInFull")}</p>}
+            </div>
+          )}
+          {(a.invoices.length > 0 || (canPay && remaining > 0 && a.status !== "no_show")) && (
+            <div className="flex flex-col gap-2">
+              <h3 className="text-sm font-medium text-fg-muted">{ti("therapist.invoicesHeading")}</h3>
+              {a.invoices.length > 0 && (
+                <ul className="flex flex-col gap-2">
+                  {a.invoices.map((inv) => (
+                    <li key={inv.id} className="flex flex-wrap items-center justify-between gap-2 rounded-md border border-border px-3 py-2">
+                      <span className="text-sm">
+                        {ti(`common.kind.${inv.kind}`)} {inv.number} · <span className="tabular-nums">{formatEuro(inv.totalCents, locale)}</span>
+                      </span>
+                      <PdfLink invoiceId={inv.id} label={ti("common.openPdf")} ariaLabel={ti("common.openPdfLabel", { number: inv.number ?? "" })} />
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {canPay && remaining > 0 && a.status !== "no_show" && !a.invoices.some((i) => i.kind === "final") && (
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  className="self-start"
+                  disabled={pending}
+                  leadingIcon={<Icons.Mail />}
+                  onClick={() =>
+                    exec(() => sendFinalInvoice(a.id), {
+                      success: ti("therapist.invoiceSent"),
+                      successText: a.client?.email ? ti("therapist.invoiceSentText") : ti("therapist.invoiceSentNoEmail"),
+                      onSuccess: onClose,
+                    })
+                  }
+                >
+                  {ti("therapist.sendInvoiceAmount", { amount: formatEuro(remaining, locale) })}
+                </Button>
+              )}
             </div>
           )}
           {a.status === "held" && <p className="text-sm text-fg-muted">{t("heldText")}</p>}

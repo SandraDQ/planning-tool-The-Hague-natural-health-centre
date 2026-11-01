@@ -10,6 +10,7 @@ import type {
   Client,
   Id,
   IntakeInput,
+  Invoice,
   Iso,
   PaperWindow,
   RentRate,
@@ -60,6 +61,10 @@ export interface DemoState {
   appointmentPolicy: Record<Id, CancellationPolicy>;
   /** Demo refunds (Mollie refunds later). */
   refunds: Array<{ id: Id; appointmentId: Id; amountCents: number; reason: "client_cancellation" | "therapist_cancellation" }>;
+  /** Client invoices (therapist = seller) and room-rent invoices (centre = seller). */
+  invoices: Invoice[];
+  /** Last number used per seller and year: key from sequenceKey(). Like invoice_sequences. */
+  invoiceSequences: Record<string, number>;
   rentRates: RentRate[];
   rentSettings: RentSettings;
   /** Block series are materialised up to this local date. */

@@ -16,6 +16,7 @@ import type {
   Therapist,
 } from "@/lib/domain/types";
 import type { ManualClientInput } from "@/lib/server/extensions";
+import { deliverPendingInvoices } from "@/lib/server/invoicing/deliver";
 import { run } from "./run";
 import { dayRange } from "../time";
 
@@ -61,6 +62,7 @@ export async function addManualBooking(input: { sessionTypeId: Id; slot: Slot; c
 export async function cancelAppointment(appointmentId: Id) {
   const { session, store } = await therapist();
   const result = await run(() => store.therapist.cancelAppointment(session, appointmentId, "therapist"));
+  await deliverPendingInvoices(); // credit note for the refunded deposit
   done();
   return result;
 }
@@ -75,6 +77,16 @@ export async function markNoShow(appointmentId: Id) {
 export async function recordBalancePayment(input: Omit<BalancePayment, "id">) {
   const { session, store } = await therapist();
   const result = await run(() => store.therapist.recordBalancePayment(session, input));
+  await deliverPendingInvoices(); // final invoice once paid in full
+  done();
+  return result;
+}
+
+/** Sends the final invoice now, before the balance is paid (the client pays by transfer). */
+export async function sendFinalInvoice(appointmentId: Id) {
+  const { session, store } = await therapist();
+  const result = await run(() => store.therapist.sendFinalInvoice(session, appointmentId));
+  await deliverPendingInvoices();
   done();
   return result;
 }

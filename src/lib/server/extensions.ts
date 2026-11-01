@@ -10,6 +10,7 @@ import type {
   Id,
   IntakeInput,
   Interval,
+  Invoice,
   Locale,
   PaperWindow,
   Room,
@@ -47,6 +48,19 @@ export interface ClientCancellation {
   refundCents: number;
 }
 
+/** A session that has started and is not fully paid: the "who still has to pay" list. Cents incl. BTW. */
+export interface OutstandingSession {
+  appointment: Appointment;
+  clientName: string;
+  clientEmail: string | null;
+  priceCents: number;
+  depositPaidCents: number;
+  balancePaidCents: number;
+  dueCents: number;
+  /** The final invoice, once sent. */
+  finalInvoice: Invoice | null;
+}
+
 export interface BookingExtras {
   /**
    * Replaces the contract version (D26). Pass the viewer's session: a signed-in client
@@ -70,6 +84,16 @@ export interface TherapistExtras {
   readIntake(session: Session, appointmentId: Id): Promise<IntakeInput | null>;
   /** Own paper-calendar windows (open and filled). */
   listMyPaperWindows(session: Session): Promise<PaperWindow[]>;
+  /** Issued invoices in the therapist's name (to clients), newest first. Optional local-date range [from, to). */
+  listMyInvoices(session: Session, filter?: { from?: string; to?: string }): Promise<Invoice[]>;
+  /** Invoices of own appointments (deposit, final, credit notes). */
+  listAppointmentInvoices(session: Session, appointmentIds: Id[]): Promise<Invoice[]>;
+  /** Room-rent invoices the centre sent to this therapist, newest first. */
+  listMyRentInvoices(session: Session): Promise<Invoice[]>;
+  /** Sessions that have started and still have money to come in, oldest first. */
+  listOutstanding(session: Session): Promise<OutstandingSession[]>;
+  /** Issues (and queues for e-mail) the final invoice before the balance is paid. Idempotent. */
+  sendFinalInvoice(session: Session, appointmentId: Id): Promise<Invoice>;
 }
 
 export interface AdminExtras {
@@ -79,6 +103,14 @@ export interface AdminExtras {
   listPaperWindows(session: Session, filter?: { therapistId?: Id }): Promise<PaperWindow[]>;
   /** Closes an open window so it takes no more bookings (a booked window is already closed to others). */
   closePaperWindow(session: Session, windowId: Id): Promise<PaperWindow>;
+  /** Room-rent invoices (drafts and issued), of one month (any day in it) or all, newest first. Never client invoices. */
+  listRentInvoices(session: Session, month?: string): Promise<Invoice[]>;
+  /** Builds the draft rent invoices of a month for review (replaces earlier drafts). */
+  prepareRentInvoices(session: Session, month: string): Promise<Invoice[]>;
+  /** Sends (issues) draft rent invoices: number, date and due date are set; e-mail follows. */
+  sendRentInvoices(session: Session, invoiceIds: Id[]): Promise<Invoice[]>;
+  /** Marks an issued rent invoice paid on a date, or unpaid again (null). */
+  setRentInvoicePaid(session: Session, invoiceId: Id, paidOn: string | null): Promise<Invoice>;
 }
 
 /** Signed-in client ("/account"). */
@@ -92,6 +124,22 @@ export interface ClientStore {
    * the fee is kept from the deposit, the rest is refunded; "no fee for new clients" respected.
    */
   cancelAppointment(session: Session, appointmentId: Id, by: "client"): Promise<ClientCancellation>;
+  /** Own invoices (deposit, final, credit notes), newest first. */
+  listMyInvoices(session: Session): Promise<Invoice[]>;
+}
+
+/** Reading one invoice (PDF download) and the e-mail outbox for invoices. */
+export interface InvoiceAccess {
+  /**
+   * One issued invoice, if the viewer may see it: the client it is addressed to, the
+   * therapist who issued it or received it (rent), the admin for room rent only.
+   * Anything else → not_found (no hint that the invoice exists).
+   */
+  getForViewer(session: Session, invoiceId: Id): Promise<Invoice>;
+  /** Server only (no session): issued invoices with an e-mail address that were not sent yet. */
+  listUnsent(): Promise<Invoice[]>;
+  /** Server only: stamps an invoice as e-mailed. */
+  markSent(invoiceId: Id, to: string, at: string): Promise<void>;
 }
 
 export type AppStore = Omit<DataStore, "booking" | "therapist" | "admin"> & {
@@ -99,4 +147,5 @@ export type AppStore = Omit<DataStore, "booking" | "therapist" | "admin"> & {
   therapist: Omit<TherapistStore, "addManualBooking"> & TherapistExtras;
   admin: Omit<AdminStore, "roomGrid"> & AdminExtras;
   client: ClientStore;
+  invoices: InvoiceAccess;
 };

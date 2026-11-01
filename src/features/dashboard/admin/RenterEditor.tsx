@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { Badge, Button, Card, Checkbox, TextField, Textarea } from "@/design-system";
-import type { Locale, Therapist, TherapistBusiness, Therapy } from "@/lib/domain/types";
+import { Badge, Button, Card, Checkbox, Select, TextField, Textarea } from "@/design-system";
+import type { BtwTreatment, Locale, Therapist, TherapistBusiness, Therapy } from "@/lib/domain/types";
 import { saveBusiness, updateRenter } from "../actions/admin";
 import { useRunAction } from "../useRunAction";
 
@@ -82,6 +82,7 @@ function PracticeCard({ therapist, therapies }: { therapist: Therapist; therapie
 
 function BusinessCard({ therapistId, business }: { therapistId: string; business: TherapistBusiness | null }) {
   const t = useTranslations("admin.renter");
+  const tb = useTranslations("invoices.btw");
   const { pending, exec } = useRunAction("admin");
   const [value, setValue] = useState<TherapistBusiness>(
     business ?? { therapistId, legalName: "", tradeName: null, address: null, kvk: null, btwNumber: null, kor: false },
@@ -120,6 +121,7 @@ function BusinessCard({ therapistId, business }: { therapistId: string; business
                 address: value.address?.trim() || null,
                 kvk: kvk || null,
                 btwNumber: btw || null,
+                exemptionGround: value.exemptionGround?.trim() || null,
               }),
             { success: t("businessSaved") },
           );
@@ -161,6 +163,31 @@ function BusinessCard({ therapistId, business }: { therapistId: string; business
           />
         </div>
         <Checkbox label={t("kor")} description={t("korHint")} checked={value.kor} onChange={(e) => setValue({ ...value, kor: e.target.checked })} />
+        <fieldset className="flex flex-col gap-3 rounded-md border border-border p-4">
+          <legend className="px-1 text-base font-medium">{tb("title")}</legend>
+          <p className="text-sm text-fg-muted">{tb("hint")}</p>
+          {value.kor ? (
+            <p className="text-base">{tb("korNote")}</p>
+          ) : (
+            <>
+              <Select
+                label={tb("treatment")}
+                value={value.btwTreatment ?? "exempt"}
+                onChange={(e) => setValue({ ...value, btwTreatment: e.target.value as BtwTreatment })}
+                options={(["21", "9", "exempt"] as const).map((v) => ({ value: v, label: tb(`options.${v}`) }))}
+              />
+              {(value.btwTreatment ?? "exempt") === "exempt" && (
+                <TextField
+                  label={tb("ground")}
+                  optional
+                  value={value.exemptionGround ?? ""}
+                  onChange={(e) => setValue({ ...value, exemptionGround: e.target.value })}
+                  hint={tb("groundHint")}
+                />
+              )}
+            </>
+          )}
+        </fieldset>
         <div>
           <Button type="submit" disabled={pending}>
             {t("saveBusiness")}

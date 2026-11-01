@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import type { Locale } from "@/lib/domain/types";
+import { deliverPendingInvoices } from "@/lib/server/invoicing/deliver";
 import { getStore } from "@/lib/server/data";
 import { getSession } from "@/lib/server/session";
 
@@ -25,6 +26,7 @@ export async function cancelOwnAppointment(_prev: CancelResult, form: FormData):
   try {
     // The store checks the appointment belongs to this client and applies the therapist's policy.
     const result = await getStore().client.cancelAppointment(session!, id, "client");
+    await deliverPendingInvoices(); // credit note for a refunded deposit
     revalidatePath(`/${locale}/account`);
     return { status: "done", refundCents: result.refundCents, feeCents: result.feeCents };
   } catch (err) {

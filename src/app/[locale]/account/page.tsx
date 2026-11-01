@@ -10,6 +10,8 @@ import { clientArea } from "@/features/booking/server/client-area";
 import { asLocale, bookingMetadata } from "@/features/booking/server/pages";
 import { freeCancelDeadline } from "@/features/booking/policy";
 import { TIME_ZONE } from "@/features/booking/time";
+import { todayLocal } from "@/features/dashboard/time";
+import { InvoiceList } from "@/features/invoices/components/InvoiceList";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -39,11 +41,13 @@ export default async function AccountPage({ params }: Props) {
   const store = getStore();
   const area = clientArea(store);
 
-  const [appointments, catalog, me] = await Promise.all([
+  const [appointments, catalog, me, invoices] = await Promise.all([
     area.listMyAppointments ? area.listMyAppointments(session).catch(() => null) : Promise.resolve(null),
     loadCatalog(locale).catch(() => null),
     area.getMe ? area.getMe(session).catch(() => null) : Promise.resolve(null),
+    store.client.listMyInvoices(session).catch(() => []),
   ]);
+  const ti = await getTranslations("invoices.account");
   const names = new Map(catalog?.therapists.map((th) => [th.id, th.displayName]) ?? []);
   const now = Date.now();
   // Holds that were never paid (abandoned, failed, expired) are not appointments to the client.
@@ -155,6 +159,17 @@ export default async function AccountPage({ params }: Props) {
               <ul className="mt-3 flex flex-col gap-3">{past.map((a) => row(a, false))}</ul>
             </section>
           )}
+          <section aria-labelledby="invoices-title" className="mt-10">
+            <h2 id="invoices-title" className="text-lg">
+              {ti("title")}
+            </h2>
+            <p className="mt-1 text-base text-fg-muted">{ti("lead")}</p>
+            {invoices.length === 0 ? (
+              <p className="mt-3 text-base text-fg-muted">{ti("empty")}</p>
+            ) : (
+              <InvoiceList invoices={invoices.slice(0, 20)} today={todayLocal()} locale={locale} show="seller" />
+            )}
+          </section>
         </>
       )}
     </div>
