@@ -11,7 +11,7 @@ import { DomainError, type DomainErrorCode } from "@/lib/domain/store";
 import type { BankConnection, BankTransaction, BtwTreatment, CostCategory, Expense, Id, Invoice, Session } from "@/lib/domain/types";
 import { splitGross } from "@/lib/invoicing/btw";
 import { amountDue } from "@/lib/invoicing/status";
-import type { BankMatchInput, BooksAccess, BooksData, BooksStore, ExpenseInput } from "../extensions";
+import type { BooksAccess, BooksData, BooksStore, ExpenseInput } from "../extensions";
 import { stableId } from "./ids";
 import { syncFinalInvoice } from "./invoicing";
 import type { DemoState } from "./state";

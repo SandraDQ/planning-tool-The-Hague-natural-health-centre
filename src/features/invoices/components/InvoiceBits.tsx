@@ -54,7 +54,7 @@ export function MonthNav({
   next,
   labels,
 }: {
-  pathname: "/therapist/invoices" | "/admin/invoices";
+  pathname: string;
   prev: string;
   next: string;
   labels: { previous: string; current: string; next: string };
