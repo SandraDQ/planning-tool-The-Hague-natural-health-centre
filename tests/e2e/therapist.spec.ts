@@ -35,7 +35,8 @@ test.describe("therapist @mobile", () => {
 
   test("add a manual booking", async ({ page }, testInfo) => {
     await signIn(page, "Demo – Anna de Vries");
-    const day = nextWeekdayAfterToday([1, 2, 4], 7); // a working day at least a week ahead
+    // Monday three weeks ahead: a working day past the seeded appointments (seen fully booked on Sundays otherwise).
+    const day = addDays(mondayOf(amsDay()), 21);
     await openDay(page, day);
     const before = await page.getByRole("button", { name: APPT }).count();
     await page.getByRole("button", { name: /^(Booking|Add booking)$/ }).first().click();
