@@ -17,6 +17,7 @@ export default async function TherapistSettingsPage({ params }: { params: Promis
     { href: "/therapist/settings/availability", icon: <Icons.Clock />, title: t("availability"), text: t("availabilityText") },
     { href: "/therapist/settings/policy", icon: <Icons.Info />, title: t("policy"), text: t("policyText") },
     { href: "/therapist/settings/profile", icon: <Icons.User />, title: t("profile"), text: t("profileText") },
+    { href: "/therapist/settings/calendar", icon: <Icons.CalendarIcon />, title: t("calendarLink"), text: t("calendarLinkText") },
   ];
 
   const rows: [string, string | null][] = business

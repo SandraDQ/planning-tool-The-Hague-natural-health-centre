@@ -461,6 +461,7 @@ export function createSeedState(now: Date = new Date()): DemoState {
       { id: "rate-default-block", roomId: null, pricingMode: "per_block", amountCents: 4000, btwTreatment: "exempt", validFrom: `${year}-01-01`, validTo: null },
     ],
     rentSettings: { billingDay: 1, paymentTermDays: 14, autoSend: false },
+    calendarFeedVersion: {},
     materializedUntil: horizon,
     seededAt: iso(refMs),
   };

@@ -295,7 +295,8 @@
     "takenText": "This block was just taken. Refresh the grid to see who has it.",
     "assign": "Assign",
     "assigned": "Block assigned",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "calendarLink": "Room schedule in your own calendar"
   },
   "therapies": {
     "title": "Therapies",

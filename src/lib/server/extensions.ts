@@ -3,6 +3,8 @@
 // the Supabase implementation must provide them too.
 
 import type { AdminStore, BookingStore, DataStore, TherapistStore } from "@/lib/domain/store";
+import type { FeedEvent } from "./calendar-feed/ics";
+import type { FeedSubject } from "./calendar-feed/token";
 import type {
   Appointment,
   BalancePayment,
@@ -94,9 +96,25 @@ export interface ClientStore {
   cancelAppointment(session: Session, appointmentId: Id, by: "client"): Promise<ClientCancellation>;
 }
 
+/**
+ * One-way calendar feed (7A). The signed link is the credential for `versionFor` and
+ * `events`; the signed-in therapist or admin reads and resets their own link.
+ */
+export interface FeedStore {
+  /** Current link version of a feed; 0 until the link is first reset. */
+  versionFor(subject: FeedSubject): Promise<number>;
+  /** Events for the feed, in [from, to). First name and service only, never intake (7A). */
+  events(subject: FeedSubject, range: Interval, locale: Locale): Promise<FeedEvent[]>;
+  /** The viewer's own feed (therapist: their calendar; admin: all room blocks). */
+  mine(session: Session): Promise<{ subject: FeedSubject; version: number }>;
+  /** Makes the old link stop working; returns the new version. */
+  resetMine(session: Session): Promise<number>;
+}
+
 export type AppStore = Omit<DataStore, "booking" | "therapist" | "admin"> & {
   booking: Omit<BookingStore, "holdSlot"> & BookingExtras;
   therapist: Omit<TherapistStore, "addManualBooking"> & TherapistExtras;
   admin: Omit<AdminStore, "roomGrid"> & AdminExtras;
   client: ClientStore;
+  feeds: FeedStore;
 };

@@ -25,6 +25,8 @@ import type { AppStore, ManualClientInput } from "../extensions";
 import { holdExpiresAt } from "@/lib/scheduling";
 import { insertAppointment, makeAppointment, sessionTypeContext } from "./build";
 import { cancellationTerms } from "./cancellation";
+import { feedEvents } from "./feeds";
+import { feedKey, type FeedSubject } from "../calendar-feed/token";
 import { checkReleaseBlock, checkReserveBlock, findSlots, occupies, roomHasFutureBookings, validateInState } from "./rules";
 import { SERIES_HORIZON_WEEKS, materializeSeries } from "./series";
 import type { DemoState } from "./state";
@@ -952,5 +954,30 @@ export function createDemoStore(state: DemoState, options: DemoStoreOptions = {}
         return { appointment: clone(a!), depositPaidCents, ...terms };
       },
     },
+
+    feeds: {
+      async versionFor(subject) {
+        return state.calendarFeedVersion[feedKey(subject)] ?? 0;
+      },
+      async events(subject, range, locale) {
+        tick();
+        if (!range || !isValidInterval(range) || ms(range.end) - ms(range.start) > 400 * 86_400_000) fail("invalid", "Invalid range");
+        return feedEvents(state, subject, range, locale === "en" ? "en" : "nl");
+      },
+      async mine(session) {
+        const subject = ownFeed(session);
+        return { subject, version: state.calendarFeedVersion[feedKey(subject)] ?? 0 };
+      },
+      async resetMine(session) {
+        const key = feedKey(ownFeed(session));
+        state.calendarFeedVersion[key] = (state.calendarFeedVersion[key] ?? 0) + 1;
+        return state.calendarFeedVersion[key];
+      },
+    },
   };
+
+  function ownFeed(session: Session): FeedSubject {
+    if (session?.role === "admin") return { kind: "admin" };
+    return { kind: "therapist", id: asTherapist(session).id };
+  }
 }

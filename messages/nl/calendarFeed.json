@@ -1,0 +1,23 @@
+{
+  "name": "THNHC afspraken",
+  "nameAdmin": "THNHC kamers",
+  "addTitle": "Toevoegen aan je eigen agenda",
+  "intro": "Zie je afspraken en kamerblokken in de agenda die je al gebruikt op je telefoon of computer. Kies hieronder je agenda-app. Dit hoef je maar één keer te doen.",
+  "introAdmin": "Zie wie welke kamer gebruikt, en wanneer, in de agenda die je al gebruikt op je telefoon of computer. Kies hieronder je agenda-app. Dit hoef je maar één keer te doen.",
+  "apple": "Apple Agenda (iPhone, iPad, Mac)",
+  "google": "Google Agenda",
+  "outlook": "Outlook",
+  "delay": "Je agenda-app kijkt zelf of er iets veranderd is. In Google Agenda kan een nieuwe boeking een paar uur later verschijnen. Deze agenda is alleen om te bekijken: wijzigingen doe je hier, in het portaal.",
+  "otherTitle": "Een andere agenda-app?",
+  "otherText": "Kopieer deze link en voeg hem in je agenda-app toe als abonnement (vaak “Agenda toevoegen via URL” of “Abonneren”).",
+  "linkLabel": "Je persoonlijke agendalink",
+  "copy": "Link kopiëren",
+  "copied": "Gekopieerd",
+  "privacy": "Houd deze link voor jezelf. Iedereen die hem heeft, kan je afspraken zien: de voornaam van de cliënt en de behandeling, nooit de klacht.",
+  "privacyAdmin": "Houd deze link voor jezelf. Iedereen die hem heeft, kan het kamerrooster zien: namen van therapeuten en tijden, geen cliëntgegevens.",
+  "resetTitle": "Link kwijt of per ongeluk gedeeld?",
+  "resetText": "Maak een nieuwe link. De oude werkt dan meteen niet meer, dus je voegt de agenda daarna opnieuw toe met een van de knoppen hierboven.",
+  "resetButton": "Nieuwe link maken",
+  "resetDone": "Klaar: je hebt een nieuwe link. Voeg hem opnieuw toe aan je agenda met een van de knoppen hieronder.",
+  "resetError": "Dat lukte niet. Probeer het opnieuw, of bel ons, dan helpen we je."
+}

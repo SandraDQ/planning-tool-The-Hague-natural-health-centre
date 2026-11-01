@@ -166,4 +166,28 @@ test.describe("therapist @mobile", () => {
     if (await btn.count()) await expect(btn).toBeDisabled();
     await shot(page, "therapist-release-blocked", testInfo);
   });
+
+  test("calendar link: subscribe feed works and a reset retires the old link", async ({ page, request }, testInfo) => {
+    await signIn(page, "Demo – Anna de Vries");
+    await page.goto("/en/therapist/settings/calendar");
+    await expect(page.getByRole("link", { name: "Apple Calendar (iPhone, iPad, Mac)" })).toHaveAttribute("href", /^webcal:\/\//);
+    const field = page.getByLabel("Your private calendar link");
+    const oldLink = await field.inputValue();
+    const feed = await request.get(oldLink);
+    expect(feed.status()).toBe(200);
+    expect(feed.headers()["content-type"]).toContain("text/calendar");
+    const body = await feed.text();
+    expect(body).toContain("BEGIN:VCALENDAR");
+    expect(body).toContain("BEGIN:VEVENT");
+    expect(body).not.toMatch(/@example\.invalid/);
+    await shot(page, "therapist-calendar-link", testInfo);
+
+    await page.getByRole("button", { name: "Make a new link" }).click();
+    await expect(page.getByText("Done: you have a new link.")).toBeVisible();
+    const newLink = await field.inputValue();
+    expect(newLink).not.toBe(oldLink);
+    expect((await request.get(newLink)).status()).toBe(200);
+    // In-memory demo state lives per server instance; the E2E server is a single instance.
+    expect((await request.get(oldLink)).status()).toBe(404);
+  });
 });
