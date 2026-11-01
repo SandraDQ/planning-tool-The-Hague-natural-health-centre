@@ -100,7 +100,8 @@ test.describe("access", () => {
 
   test("admin can't read intake: room grid shows no client names or complaints", async ({ page }) => {
     await signIn(page, "Owner (admin)");
-    await page.goto(`/en/admin/grid?week=${addDays(mondayOf(amsDay()), 0)}`);
+    // Next week: on phones the grid opens on its Monday (this week would open on today, e.g. an empty Sunday).
+    await page.goto(`/en/admin/grid?week=${addDays(mondayOf(amsDay()), 7)}`);
     await page.getByRole("button", { name: /Every week Demo – .* [1-9]\d* appointments?$/ }).first().click();
     const sheet = page.getByRole("dialog");
     await expect(sheet.getByText("Appointments in this block")).toBeVisible();

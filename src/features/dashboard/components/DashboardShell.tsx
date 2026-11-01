@@ -13,6 +13,7 @@ import {
   type AppNavItem,
 } from "@/design-system";
 import { signOutAction } from "@/lib/server/auth-actions";
+import { Welcome } from "@/features/onboarding/Welcome";
 
 /**
  * Chrome for the admin portal and the therapist dashboard: demo banner, a slim
@@ -118,6 +119,9 @@ export async function DashboardShell({
         </div>
       </header>
       <main id="main" tabIndex={-1} className={area === "therapist" ? "pb-24 outline-none lg:pb-0" : "outline-none"}>
+        <div className="mx-auto max-w-content px-gutter pt-4">
+          <Welcome area={area} name={displayName} />
+        </div>
         {children}
       </main>
       {area === "therapist" && <BottomNav items={items} label={tc("menu")} />}
