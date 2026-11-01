@@ -80,7 +80,7 @@ export function createDemoEmailStore(
       return clone({
         appointment: a,
         client: { firstName: client.firstName, email: client.email, locale: client.locale },
-        therapist: { displayName: therapist.displayName, publicEmail: therapist.publicEmail },
+        therapist: { displayName: therapist.displayName, publicEmail: therapist.publicEmail, loginEmail: state.therapistLoginEmails[therapist.id] ?? null },
         roomNumber: room?.number ?? null,
         template,
         centre: centre(),

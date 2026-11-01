@@ -28,6 +28,8 @@ export interface ConfirmationData {
   /** Centre practical information, in the right language. */
   centreInfo: string;
   reference: string;
+  /** Signed link where the client can cancel online; null in previews. */
+  manageUrl?: string | null;
   centre: { name: string; address: string; phone: string; email: string; website: string; mapUrl: string };
 }
 
@@ -57,6 +59,8 @@ const words = {
     cancelTitle: "Kun je niet komen?",
     cancelFree: (d: string) => `Zeg je afspraak af vóór ${d}, dan krijg je je aanbetaling terug.`,
     cancelHow: (n: string) => `Afzeggen of verzetten? Beantwoord deze e-mail of neem contact op met ${n}.`,
+    cancelOnline: "Zeg je afspraak online af",
+    changeHow: (n: string) => `Wil je een andere tijd? Beantwoord deze e-mail of neem contact op met ${n}.`,
     practical: "Goed om te weten",
     questions: "Vragen?",
     replyHint: (n: string) => `Beantwoord deze e-mail, dan komt je bericht bij ${n}.`,
@@ -82,6 +86,8 @@ const words = {
     cancelTitle: "Can't make it?",
     cancelFree: (d: string) => `Cancel before ${d} and you get your deposit back.`,
     cancelHow: (n: string) => `To cancel or change your appointment, reply to this e-mail or contact ${n}.`,
+    cancelOnline: "Cancel my appointment online",
+    changeHow: (n: string) => `Need a different time? Reply to this e-mail or contact ${n}.`,
     practical: "Good to know",
     questions: "Questions?",
     replyHint: (n: string) => `Reply to this e-mail and your message goes to ${n}.`,
@@ -140,7 +146,12 @@ export function renderBookingConfirmation(d: ConfirmationData): RenderedEmail {
     [w.due, f.euro(balance)],
   ];
 
-  const cancelLines = [free ? w.cancelFree(free) : null, d.policyText?.trim() || null, w.cancelHow(d.therapistName)].filter(Boolean) as string[];
+  const cancelLines = [free ? w.cancelFree(free) : null, d.policyText?.trim() || null, d.manageUrl ? w.changeHow(d.therapistName) : w.cancelHow(d.therapistName)].filter(
+    Boolean,
+  ) as string[];
+  const cancelLink = d.manageUrl
+    ? `<p style="${P}"><a href="${escapeHtml(d.manageUrl)}" style="color:${C.accent};font-weight:bold;text-decoration:underline;">${escapeHtml(w.cancelOnline)}</a></p>`
+    : "";
 
   const rowHtml = rows
     .map(
@@ -184,6 +195,7 @@ ${paragraphs(d.personalMessage, P)}
 <tr><td style="padding:8px 28px 0;">
 <h2 style="${H2}">${escapeHtml(w.cancelTitle)}</h2>
 ${cancelLines.map((l) => paragraphs(l, P)).join("")}
+${cancelLink}
 </td></tr>
 ${d.centreInfo.trim() ? `<tr><td style="padding:8px 28px 0;"><h2 style="${H2}">${escapeHtml(w.practical)}</h2>${paragraphs(d.centreInfo, P)}</td></tr>` : ""}
 <tr><td style="padding:8px 28px 28px;">
@@ -211,6 +223,7 @@ ${d.centreInfo.trim() ? `<tr><td style="padding:8px 28px 0;"><h2 style="${H2}">$
     "",
     w.cancelTitle.toUpperCase(),
     ...cancelLines,
+    ...(d.manageUrl ? [`${w.cancelOnline}: ${d.manageUrl}`] : []),
     ...(d.centreInfo.trim() ? ["", w.practical.toUpperCase(), d.centreInfo.trim()] : []),
     "",
     w.questions.toUpperCase(),

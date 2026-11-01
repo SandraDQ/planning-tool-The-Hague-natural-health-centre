@@ -17,6 +17,7 @@ import type {
 } from "@/lib/domain/types";
 import type { ManualClientInput } from "@/lib/server/extensions";
 import { run } from "./run";
+import { sendBookingConfirmation } from "@/lib/email/notify";
 import { dayRange } from "../time";
 
 async function therapist() {
@@ -54,6 +55,8 @@ export async function manualSlots(sessionTypeId: Id, day: string) {
 export async function addManualBooking(input: { sessionTypeId: Id; slot: Slot; client: ManualClientInput }) {
   const { session, store } = await therapist();
   const result = await run(() => store.therapist.addManualBooking(session, input));
+  // The sheet promises the client a confirmation when an e-mail address is filled in.
+  if (result.ok && input.client.email) await sendBookingConfirmation(store, result.data.id);
   done();
   return result;
 }

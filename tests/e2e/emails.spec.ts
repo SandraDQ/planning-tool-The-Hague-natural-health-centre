@@ -49,8 +49,25 @@ test.describe("confirmation e-mails", () => {
     await expect(mail.getByText("Dear Mila,")).toBeVisible();
     await expect(mail.getByText("Please wear comfortable clothes.")).toBeVisible();
     await page.screenshot({ path: testInfo.outputPath("admin-email-view.png") });
+    // The therapist also got a short "new booking" e-mail.
+    await page.keyboard.press("Escape");
+    await expect(page.getByRole("listitem").filter({ hasText: "New booking (to therapist)" })).toHaveCount(1);
+    // The client's cancel link works without an account.
+    await row.getByRole("button", { name: "View" }).click();
+    const href = await mail.getByRole("link", { name: "Cancel my appointment online" }).getAttribute("href");
     await page.keyboard.press("Escape");
     await axe(page, "admin-emails");
     await page.screenshot({ path: testInfo.outputPath("admin-emails.png"), fullPage: true });
+
+    await page.context().clearCookies();
+    await page.goto(new URL(href!).pathname);
+    await expect(page.getByRole("heading", { level: 1, name: "Your appointment" })).toBeVisible();
+    await page.getByRole("button", { name: "Cancel appointment" }).click();
+    await page.getByRole("button", { name: "Yes, cancel" }).click();
+    await expect(page.getByText("Your appointment is cancelled.")).toBeVisible();
+    await axe(page, "manage-booking");
+    await page.screenshot({ path: testInfo.outputPath("manage-cancelled.png"), fullPage: true });
+    await page.reload();
+    await expect(page.getByText("This appointment is cancelled.")).toBeVisible();
   });
 });

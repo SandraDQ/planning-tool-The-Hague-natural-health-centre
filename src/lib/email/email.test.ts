@@ -9,7 +9,8 @@ import { createDemoStore } from "@/lib/server/demo/store";
 import { renderBookingConfirmation, sampleConfirmation } from "./booking-confirmation";
 import { deliveryDecision, parseAddress, readEmailConfig } from "./config";
 import { clearOutbox, listOutbox } from "./outbox";
-import { sendBookingConfirmation } from "./notify";
+import { sendBookingConfirmation, sendTherapistNewBooking } from "./notify";
+import { manageToken, readManageToken } from "./manage-link";
 import { sendEmail } from "./send";
 
 const T0 = Date.parse("2026-11-02T07:30:00Z");
@@ -171,5 +172,58 @@ describe("confirmation texts in the demo store", () => {
     expect(mail.html).toContain("Ring the bell");
     expect(mail.html).toContain("Dear Mila,");
     expect(mail.html).not.toContain("SECRET-INTAKE-REASON"); // intake never goes into the e-mail
+  });
+});
+
+describe("cancel link and therapist e-mail", () => {
+  beforeEach(() => {
+    clearOutbox();
+    vi.stubEnv("DEMO_MODE", "1");
+    vi.stubEnv("EMAIL_API_KEY", undefined);
+    vi.stubEnv("SITE_URL", "https://app.example.invalid");
+  });
+  afterEach(() => vi.unstubAllEnvs());
+
+  async function paidBooking() {
+    const { state, store } = setup();
+    const slot = (await store.public.findSlots("st-daan-60", range(T0 + DAY, 14)))[0];
+    const held = await store.booking.holdSlot({ sessionTypeId: "st-daan-60", slot, client: guest, intake });
+    await store.booking.confirmPayment(held.id, "tr_1");
+    return { state, store, id: held.id };
+  }
+
+  it("the cancel link is signed: a changed id or signature is refused", () => {
+    const token = manageToken("appt-1");
+    expect(readManageToken(token)).toBe("appt-1");
+    expect(readManageToken(token.replace("appt-1", "appt-2"))).toBeNull();
+    expect(readManageToken(`${token}x`)).toBeNull();
+    expect(readManageToken("appt-1")).toBeNull();
+  });
+
+  it("the confirmation carries a working cancel link; cancelling through it refunds in time", async () => {
+    const { store, id } = await paidBooking();
+    await sendBookingConfirmation(store, id);
+    const html = listOutbox()[0].html!;
+    const href = /href="(https:\/\/app\.example\.invalid\/en\/book\/manage\/[^"]+)"/.exec(html)?.[1];
+    expect(href).toBeTruthy();
+    const token = decodeURIComponent(href!.split("/").pop()!.replace(/&amp;/g, "&"));
+    expect(readManageToken(token)).toBe(id);
+    const result = await store.booking.cancelWithLink(id);
+    expect(result.appointment.status).toBe("cancelled");
+    expect(result.refundCents).toBe(result.depositPaidCents);
+    expect(await code(store.booking.cancelWithLink(id))).toBe("invalid"); // already cancelled
+  });
+
+  it("the therapist gets a short new-booking e-mail without health information", async () => {
+    const { state, store, id } = await paidBooking();
+    expect((await sendTherapistNewBooking(store, id))?.via).toBe("outbox");
+    expect(await sendTherapistNewBooking(store, id)).toBeNull();
+    const mail = listOutbox()[0];
+    const therapistId = state.appointments.find((a) => a.id === id)!.therapistId;
+    expect(mail.to).toBe(state.therapistLoginEmails[therapistId]);
+    expect(mail.subject).toContain("Mila");
+    expect(mail.html).toContain("https://app.example.invalid/nl/therapist");
+    expect(mail.html).not.toContain("SECRET-INTAKE-REASON");
+    expect(mail.html).not.toContain("mila@example.invalid");
   });
 });

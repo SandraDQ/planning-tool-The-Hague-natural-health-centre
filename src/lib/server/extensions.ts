@@ -57,6 +57,11 @@ export interface BookingExtras {
    * booking gets a new guest client record; it never attaches to an existing one by e-mail.
    */
   holdSlot(input: { sessionTypeId: Id; slot: Slot; client: Omit<Client, "id">; intake: IntakeInput; session?: Session | null }): Promise<Appointment>;
+  /**
+   * Server only, after verifying a signed "manage" link from the confirmation e-mail
+   * (src/lib/email/manage-link.ts): cancel as the client, with the same policy rules.
+   */
+  cancelWithLink(appointmentId: Id): Promise<ClientCancellation>;
 }
 
 export interface TherapistExtras {
@@ -101,7 +106,7 @@ export interface ClientStore {
 export interface BookingEmailFacts {
   appointment: Appointment;
   client: Pick<Client, "firstName" | "email" | "locale">;
-  therapist: { displayName: string; publicEmail: string | null };
+  therapist: { displayName: string; publicEmail: string | null; loginEmail: string | null };
   roomNumber: number | null;
   /** Personal message for this treatment, or the therapist's general one; null = none written. */
   template: EmailTemplate | null;

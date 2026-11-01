@@ -77,7 +77,18 @@
       "booking_confirmation": "Booking confirmation",
       "example_confirmation": "Example",
       "invoice": "Invoice",
-      "other": "E-mail"
+      "other": "E-mail",
+      "therapist_new_booking": "New booking (to therapist)"
     }
+  },
+  "manage": {
+    "title": "Your appointment",
+    "lead": "Here you can cancel your appointment. Want a different time? Contact your therapist or the centre.",
+    "cancelNoDeposit": "Your appointment will be cancelled. You have not paid anything yet.",
+    "alreadyCancelled": "This appointment is cancelled.",
+    "tooLate": "This appointment can no longer be cancelled online.",
+    "callCentre": "Please call the centre:",
+    "change": "Need a different time? Reply to the confirmation e-mail to reach {name}, or call the centre:",
+    "yourTherapist": "your therapist"
   }
 }

@@ -119,6 +119,26 @@ export function createDemoStore(state: DemoState, options: DemoStoreOptions = {}
     );
   }
 
+  /** Client cancellation (own account or signed e-mail link): policy frozen at booking (D6), refund, D18 purge. */
+  function cancelForClient(a: Appointment) {
+    if (!occupies(a)) fail("invalid", "Only held or confirmed appointments can be cancelled");
+    if (ms(a.session.start) <= now()) fail("invalid", "The session has already started");
+    const depositPaidCents = state.appointmentPayment[a.id] ? a.snapshot.depositCents : 0;
+    const terms = cancellationTerms({
+      policy: state.appointmentPolicy[a.id] ?? null,
+      sessionStart: a.session.start,
+      priceCents: a.snapshot.priceCents,
+      depositPaidCents,
+      newClient: isNewClient(a),
+      nowMs: now(),
+    });
+    cancel(a, "client"); // D18: intake purged (cancelled before the start)
+    if (terms.refundCents > 0) {
+      state.refunds.push({ id: randomUUID(), appointmentId: a.id, amountCents: terms.refundCents, reason: "client_cancellation" });
+    }
+    return { appointment: clone(a), depositPaidCents, ...terms };
+  }
+
   // ---------- authorisation ----------
 
   function asAdmin(session: Session) {
@@ -384,6 +404,13 @@ export function createDemoStore(state: DemoState, options: DemoStoreOptions = {}
         const a = state.appointments.find((x) => x.id === appointmentId);
         if (!a) fail("not_found");
         if (a!.status === "held") cancel(a!, "payment_failed");
+      },
+
+      async cancelWithLink(appointmentId) {
+        tick();
+        const a = state.appointments.find((x) => x.id === appointmentId);
+        if (!a) fail("not_found");
+        return cancelForClient(a!);
       },
 
       async getAppointment(id) {
@@ -936,22 +963,7 @@ export function createDemoStore(state: DemoState, options: DemoStoreOptions = {}
         const a = state.appointments.find((x) => x.id === appointmentId);
         if (!a) fail("not_found");
         if (a!.clientId !== me.id) fail("forbidden");
-        if (!occupies(a!)) fail("invalid", "Only held or confirmed appointments can be cancelled");
-        if (ms(a!.session.start) <= now()) fail("invalid", "The session has already started");
-        const depositPaidCents = state.appointmentPayment[a!.id] ? a!.snapshot.depositCents : 0;
-        const terms = cancellationTerms({
-          policy: state.appointmentPolicy[a!.id] ?? null,
-          sessionStart: a!.session.start,
-          priceCents: a!.snapshot.priceCents,
-          depositPaidCents,
-          newClient: isNewClient(a!),
-          nowMs: now(),
-        });
-        cancel(a!, "client"); // D18: intake purged (cancelled before the start)
-        if (terms.refundCents > 0) {
-          state.refunds.push({ id: randomUUID(), appointmentId: a!.id, amountCents: terms.refundCents, reason: "client_cancellation" });
-        }
-        return { appointment: clone(a!), depositPaidCents, ...terms };
+        return cancelForClient(a!);
       },
     },
   };

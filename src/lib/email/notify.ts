@@ -11,6 +11,8 @@ import { logSafeError } from "@/lib/server/errors";
 import type { AppStore, BookingEmailFacts } from "@/lib/server/extensions";
 import { renderBookingConfirmation, sampleConfirmation, type ConfirmationData } from "./booking-confirmation";
 import { DEFAULT_PERSONAL_MESSAGE } from "./defaults";
+import { manageUrl, siteUrl } from "./manage-link";
+import { renderTherapistNewBooking } from "./therapist-new-booking";
 import { claimOnce, releaseClaim } from "./outbox";
 import { sendEmail } from "./send";
 import type { EmailResult } from "./types";
@@ -47,6 +49,7 @@ export function confirmationData(f: BookingEmailFacts): ConfirmationData {
     personalMessage: pick(f.template?.body, locale) || DEFAULT_PERSONAL_MESSAGE[locale],
     centreInfo: pick(f.centre.info, locale),
     reference: a.id.slice(0, 8).toUpperCase(),
+    manageUrl: manageUrl(a.id, locale),
     centre: CENTRE,
   };
 }
@@ -78,6 +81,38 @@ export async function sendBookingConfirmation(store: AppStore, appointmentId: st
     }
   } catch (e) {
     logSafeError("[email] booking confirmation failed", e);
+    return null;
+  }
+}
+
+/**
+ * Tells the therapist about a new online booking (no health information in it).
+ * Once per appointment; never throws.
+ */
+export async function sendTherapistNewBooking(store: AppStore, appointmentId: string): Promise<EmailResult | null> {
+  const key = `therapist_new_booking:${appointmentId}`;
+  try {
+    const facts = await store.email.bookingEmailFacts(appointmentId);
+    const to = facts?.therapist.loginEmail;
+    if (!facts || facts.appointment.status !== "confirmed" || !to) return null;
+    if (!claimOnce(key)) return null;
+    const a = facts.appointment;
+    const mail = renderTherapistNewBooking({
+      therapistName: facts.therapist.displayName,
+      clientFirstName: facts.client.firstName,
+      serviceName: a.snapshot.serviceName,
+      start: a.session.start,
+      durationMin: a.snapshot.durationMin,
+      calendarUrl: `${siteUrl()}/nl/therapist`,
+    });
+    try {
+      return await sendEmail({ to, subject: mail.subject, html: mail.html, text: mail.text, kind: "therapist_new_booking", locale: "nl" });
+    } catch (e) {
+      releaseClaim(key);
+      throw e;
+    }
+  } catch (e) {
+    logSafeError("[email] therapist new booking failed", e);
     return null;
   }
 }

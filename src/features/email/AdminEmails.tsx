@@ -114,7 +114,7 @@ export function ExampleSender({ defaultTo }: { defaultTo: string }) {
   );
 }
 
-const KINDS = ["booking_confirmation", "example_confirmation", "invoice"] as const;
+const KINDS = ["booking_confirmation", "example_confirmation", "therapist_new_booking", "invoice"] as const;
 
 /** Admin: recent e-mails, newest first. Content only for demo e-mails. */
 export function OutboxList({ entries }: { entries: OutboxEntry[] }) {
