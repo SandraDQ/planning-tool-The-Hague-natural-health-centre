@@ -32,6 +32,7 @@ Every decision, with date and who made it. Decisions 1–18 from the master prom
 | D26 | 2026-10-25 | A guest booking never attaches to an existing client account by e-mail. It creates its own client record; linking to an account happens only after the person confirms by magic link (when Supabase Auth is connected). A signed-in client always books as themselves. | Orchestrator (default, security review F2) | Decided |
 | D27 | 2026-10-25 | The booking form keeps only name, e-mail and phone in the browser between steps; complaint, date of birth and address are never stored client-side and must be retyped if a slot is lost. | Orchestrator (default, security review F6) | Decided |
 | D28 | 2026-10-25 | Demo mode needs an explicit `DEMO_MODE=1` and refuses to start when any real service key is set. | Orchestrator (security review F3) | Decided |
+| D29 | 2026-11-01 | An unsafe demo configuration no longer stops the whole server at startup; it is logged, and only demo data, login and booking refuse (via `getStore()`/`getSession()`). The public website stays online. | Orchestrator (default) | Decided |
 
 ## Open questions (defaults apply unless the owner says otherwise)
 
