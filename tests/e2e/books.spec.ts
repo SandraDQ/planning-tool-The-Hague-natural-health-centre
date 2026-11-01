@@ -34,7 +34,7 @@ test.describe("bookkeeping", () => {
     await expect(sheet.getByText("Of this, €2.10 is BTW.")).toBeVisible();
     await sheet.getByRole("button", { name: "Save cost" }).click();
     await expect(page.getByText("Cost saved")).toBeVisible();
-    const receipt = page.getByRole("link", { name: "Open the receipt of HEMA" });
+    const receipt = page.getByRole("link", { name: "Open receipt from HEMA" });
     await expect(receipt).toBeVisible();
     const file = await page.request.get((await receipt.getAttribute("href"))!);
     expect(file.status()).toBe(200);
@@ -105,7 +105,7 @@ test.describe("bookkeeping", () => {
   test("therapist without the add-on can ask for it; nobody else sees the centre's books @desktop", async ({ page, browser }) => {
     await signIn(page, "Owner (admin)");
     await page.goto("/en/admin/books");
-    const href = (await page.getByRole("link", { name: /^Open the receipt of/ }).first().getAttribute("href"))!;
+    const href = (await page.getByRole("link", { name: /^Open receipt from/ }).first().getAttribute("href"))!;
 
     const ctx = await browser.newContext();
     const gijs = await ctx.newPage();

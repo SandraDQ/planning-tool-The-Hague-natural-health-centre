@@ -22,7 +22,7 @@ test.describe("invoices", () => {
     await expect(page.getByRole("heading", { name: "Welcome to your payments page" })).toBeVisible();
     expect(await axe(page)).toEqual([]);
     await shot(page, "invoices-therapist", testInfo);
-    await page.getByRole("button", { name: "Got it" }).click();
+    await page.getByRole("button", { name: "Got it", exact: true }).click();
     await expect(page.getByRole("button", { name: "How does this page work?" })).toBeVisible();
 
     const rows = page.getByRole("button", { name: "Payment received" });

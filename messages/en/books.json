@@ -27,7 +27,7 @@
   "noCostsText": "Tap “Add a cost” when you buy something for the practice.",
   "receipt": "Receipt",
   "openReceipt": "Open receipt",
-  "openReceiptLabel": "Open the receipt of {supplier}",
+  "openReceiptLabel": "Open receipt from {supplier}",
   "noReceipt": "No receipt",
   "addReceipt": "Add receipt",
   "paidByBank": "Paid via the bank",
