@@ -16,7 +16,8 @@ export async function Welcome({ area, name, narrow }: { area: WelcomeArea; name:
   const [t, locale, jar] = await Promise.all([getTranslations(`welcome.${area}`), getLocale(), cookies()]);
   const tc = await getTranslations("welcome");
   const hidden = jar.get(welcomeCookie(area))?.value === "1";
-  const firstName = name.split(" ")[0] ?? name;
+  // "Demo – Anna de Vries" → "Anna"
+  const firstName = name.replace(/^Demo\s*[–-]\s*/, "").split(/\s+/)[0] || name;
 
   if (hidden) {
     return (
