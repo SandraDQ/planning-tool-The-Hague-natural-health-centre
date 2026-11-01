@@ -1,0 +1,55 @@
+{
+  "gotIt": "Begrepen, verberg dit",
+  "showAgain": "Uitleg",
+  "therapist": {
+    "title": "Welkom in je praktijk, {name}",
+    "intro": "Hier houd je je afspraken en je kamer op één plek bij. Het werkt op je telefoon, tablet en computer. Neem rustig de tijd; we helpen je als iets niet duidelijk is.",
+    "step1": {
+      "title": "Je agenda",
+      "text": "Zie je afspraken van vandaag en deze week. Tik op een afspraak voor de details."
+    },
+    "step2": {
+      "title": "Kamerblokken",
+      "text": "Reserveer een kamer voor de tijden waarop je wilt werken. Cliënten kunnen je dan online boeken binnen die tijden."
+    },
+    "step3": {
+      "title": "Instellingen",
+      "text": "Vul je behandelingen, prijzen en werktijden in, zodat cliënten de juiste informatie zien."
+    },
+    "help": "Vragen of loop je vast? Bel <phone></phone> of mail <email></email>. We helpen je graag."
+  },
+  "admin": {
+    "title": "Welkom, {name}",
+    "intro": "Hier beheer je het centrum: kamers, huurders en huur. Alles staat in het menu bovenaan.",
+    "step1": {
+      "title": "Kamerrooster",
+      "text": "Zie in één oogopslag welke kamers gereserveerd zijn, door wie en wanneer."
+    },
+    "step2": {
+      "title": "Kamers en huurders",
+      "text": "Voeg kamers en therapeuten toe en kies wie welke kamer huurt."
+    },
+    "step3": {
+      "title": "Huur",
+      "text": "Stel de huur per kamer in: een vast bedrag per maand of een prijs per blok."
+    },
+    "help": "Vragen of loop je vast? Bel <phone></phone> of mail <email></email>. We helpen je graag."
+  },
+  "client": {
+    "title": "Welkom, {name}",
+    "intro": "Dit is uw eigen pagina bij The Hague Natural Health Centre. Hier vindt u alles over uw afspraken.",
+    "step1": {
+      "title": "Uw afspraken",
+      "text": "Hieronder ziet u uw komende en eerdere afspraken, met datum, tijd en therapeut."
+    },
+    "step2": {
+      "title": "Boeken",
+      "text": "Wilt u een nieuwe afspraak? Druk op de groene knop Afspraak maken. U kiest een behandeling, een dag en een tijd."
+    },
+    "step3": {
+      "title": "Annuleren",
+      "text": "Kunt u niet komen? Druk op Afspraak annuleren. U ziet eerst of u geld terugkrijgt."
+    },
+    "help": "Vragen of loopt u vast? Bel ons op <phone></phone> of mail <email></email>. We helpen u graag."
+  }
+}

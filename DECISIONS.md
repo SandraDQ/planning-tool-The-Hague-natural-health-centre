@@ -33,6 +33,7 @@ Every decision, with date and who made it. Decisions 1–18 from the master prom
 | D27 | 2026-10-25 | The booking form keeps only name, e-mail and phone in the browser between steps; complaint, date of birth and address are never stored client-side and must be retyped if a slot is lost. | Orchestrator (default, security review F6) | Decided |
 | D28 | 2026-10-25 | Demo mode needs an explicit `DEMO_MODE=1` and refuses to start when any real service key is set. | Orchestrator (security review F3) | Decided |
 | D29 | 2026-11-01 | An unsafe demo configuration no longer stops the whole server at startup; it is logged, and only demo data, login and booking refuse (via `getStore()`/`getSession()`). The public website stays online. | Orchestrator (default) | Decided |
+| D30 | 2026-11-01 | **Standing rule: very easy to use for older people.** Every new screen uses plain language, large text (18px+ for explanations), big tap targets, one clear main button, and says what happens before anything important happens. Each signed-in area (admin, therapist, client) opens with a welcome message: a warm greeting, three plain steps and the centre's phone and e-mail for help. "Got it" hides it on that device (cookie, no personal data); a "Help" button brings it back. | Owner | Decided |
 
 ## Open questions (defaults apply unless the owner says otherwise)
 

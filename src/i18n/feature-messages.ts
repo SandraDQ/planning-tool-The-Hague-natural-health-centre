@@ -1,6 +1,6 @@
 // Feature namespaces live in messages/<locale>/<namespace>.json so agents can work
 // in parallel without editing the same file. Register each namespace here.
-const namespaces = ["booking", "auth", "therapist", "admin", "demo"] as const;
+const namespaces = ["booking", "auth", "therapist", "admin", "demo", "welcome"] as const;
 
 export async function loadFeatureMessages(locale: string) {
   const entries = await Promise.all(
