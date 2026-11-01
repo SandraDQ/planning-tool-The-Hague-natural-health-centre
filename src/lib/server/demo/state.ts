@@ -80,6 +80,8 @@ export interface DemoState {
   booksAddonFeeCents: number;
   rentRates: RentRate[];
   rentSettings: RentSettings;
+  /** Calendar-feed link version per feed key ("therapist:<id>" or "admin"); missing = 0. */
+  calendarFeedVersion: Record<string, number>;
   /** Block series are materialised up to this local date. */
   materializedUntil: string;
   seededAt: Iso;

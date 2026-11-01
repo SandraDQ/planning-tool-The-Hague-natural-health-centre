@@ -1,0 +1,51 @@
+{
+  "title": "Je praktijk instellen",
+  "lead": "Een paar korte stappen, en cliënten kunnen je online boeken. Je kunt altijd stoppen; we onthouden waar je was.",
+  "progress": "{done} van {total} stappen klaar",
+  "progressLabel": "Voortgang instellen",
+  "progressText": "Doe de stappen op volgorde. Elke knop brengt je naar het juiste scherm; kom daarna hier terug.",
+  "allDone": "Alles klaar. Goed gedaan!",
+  "allDoneText": "Je praktijk is ingesteld. Je kunt alles later nog aanpassen bij Instellingen.",
+  "done": "Klaar",
+  "needed": "Nodig om boekbaar te zijn",
+  "optional": "Optioneel",
+  "later": "Komt binnenkort",
+  "change": "Bekijken of aanpassen",
+  "help": "Loop je vast? Bel <phone></phone>, dan doen we het samen.",
+  "steps": {
+    "profile": {
+      "title": "Je profiel",
+      "text": "Een korte introductie in het Nederlands en Engels, zodat cliënten je leren kennen.",
+      "button": "Profiel schrijven"
+    },
+    "services": {
+      "title": "Je behandelingen en prijzen",
+      "text": "Voeg toe wat je aanbiedt, hoe lang het duurt en wat het kost. Je kiest ook de aanbetaling die cliënten bij het boeken betalen.",
+      "button": "Behandeling toevoegen"
+    },
+    "times": {
+      "title": "Wanneer je werkt",
+      "text": "Kies de tijden waarop cliënten je kunnen boeken: je werktijden, of de kamerblokken die je reserveert.",
+      "button": "Tijden instellen"
+    },
+    "policy": {
+      "title": "Annuleringsregels",
+      "text": "Bepaal tot hoe lang voor een afspraak cliënten gratis kunnen annuleren. Cliënten zien dit voordat ze betalen.",
+      "button": "Regels instellen"
+    },
+    "payments": {
+      "title": "Online betalen",
+      "text": "Koppel je eigen betaalaccount, zodat aanbetalingen direct naar jou gaan. We laten het je weten als dit klaar is."
+    },
+    "preview": {
+      "title": "Bekijk je boekingspagina",
+      "text": "Zie wat cliënten zien als ze jou boeken.",
+      "button": "Boekingspagina openen"
+    }
+  },
+  "bannerTitle": "Je praktijk is voor {done} van {total} ingesteld",
+  "bannerText": "Nog een paar stappen en cliënten kunnen je online boeken.",
+  "bannerButton": "Verder met instellen",
+  "menuTitle": "Je praktijk instellen",
+  "menuText": "{done} van {total} stappen klaar"
+}

@@ -475,6 +475,7 @@ export function createSeedState(now: Date = new Date()): DemoState {
     booksAddon: {},
     booksAddonFeeCents: 1000,
     rentSettings: { billingDay: 1, paymentTermDays: 14, autoSend: false },
+    calendarFeedVersion: {},
     materializedUntil: horizon,
     seededAt: iso(refMs),
   };

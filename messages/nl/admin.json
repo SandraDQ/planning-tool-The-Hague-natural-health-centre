@@ -295,7 +295,8 @@
     "takenText": "Dit blok is net door iemand anders genomen. Vernieuw het rooster om te zien wie het heeft.",
     "assign": "Toewijzen",
     "assigned": "Blok toegewezen",
-    "cancel": "Annuleren"
+    "cancel": "Annuleren",
+    "calendarLink": "Kamerrooster in je eigen agenda"
   },
   "therapies": {
     "title": "Therapieën",

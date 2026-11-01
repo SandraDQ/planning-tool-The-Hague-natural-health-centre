@@ -1,0 +1,23 @@
+{
+  "name": "THNHC appointments",
+  "nameAdmin": "THNHC rooms",
+  "addTitle": "Add to your own calendar",
+  "intro": "See your appointments and room blocks in the calendar you already use on your phone or computer. Choose your calendar app below. You only need to do this once.",
+  "introAdmin": "See who uses which room, and when, in the calendar you already use on your phone or computer. Choose your calendar app below. You only need to do this once.",
+  "apple": "Apple Calendar (iPhone, iPad, Mac)",
+  "google": "Google Calendar",
+  "outlook": "Outlook",
+  "delay": "Your calendar app checks for changes by itself. New bookings can take a few hours to appear in Google Calendar. This calendar is for viewing only: make changes here, in the portal.",
+  "otherTitle": "Another calendar app?",
+  "otherText": "Copy this link and add it in your calendar app as a subscription (often called “Add calendar from URL” or “Subscribe”).",
+  "linkLabel": "Your private calendar link",
+  "copy": "Copy link",
+  "copied": "Copied",
+  "privacy": "Keep this link to yourself. Anyone who has it can see your appointments: the client's first name and the treatment, never their complaint.",
+  "privacyAdmin": "Keep this link to yourself. Anyone who has it can see the room schedule: therapist names and times, no client details.",
+  "resetTitle": "Lost the link or shared it by mistake?",
+  "resetText": "Make a new link. The old one stops working straight away, so you'll need to add the calendar again with one of the buttons above.",
+  "resetButton": "Make a new link",
+  "resetDone": "Done: you have a new link. Add it to your calendar again with one of the buttons below.",
+  "resetError": "That didn't work. Please try again, or call us and we'll help."
+}
