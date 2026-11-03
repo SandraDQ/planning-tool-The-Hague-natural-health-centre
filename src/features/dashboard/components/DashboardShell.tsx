@@ -32,6 +32,8 @@ export async function DashboardShell({
   const locale = await getLocale();
   const t = await getTranslations(area);
   const tc = await getTranslations(`${area}.shell`);
+  const ti = await getTranslations("invoices");
+  const tb = await getTranslations("books");
 
   const items: AppNavItem[] =
     area === "admin"
@@ -41,12 +43,16 @@ export async function DashboardShell({
           { href: "/admin/paper", label: t("nav.paper"), icon: <Icons.CalendarIcon /> },
           { href: "/admin/rooms", label: t("nav.rooms"), icon: <Icons.Door /> },
           { href: "/admin/renters", label: t("nav.renters"), icon: <Icons.Users /> },
+          { href: "/admin/invoices", label: ti("admin.nav"), icon: <Icons.Mail /> },
+          { href: "/admin/books", label: tb("nav"), icon: <Icons.Receipt /> },
           { href: "/admin/rent", label: t("nav.rent"), icon: <Icons.Euro /> },
           { href: "/admin/therapies", label: t("nav.therapies"), icon: <Icons.Leaf /> },
         ]
       : [
           { href: "/therapist", label: t("nav.calendar"), icon: <Icons.CalendarIcon />, match: "exact" },
           { href: "/therapist/blocks", label: t("nav.blocks"), icon: <Icons.Layers /> },
+          { href: "/therapist/invoices", label: ti("therapist.nav"), icon: <Icons.Euro /> },
+          { href: "/therapist/books", label: tb("nav"), icon: <Icons.Receipt /> },
           { href: "/therapist/settings", label: t("nav.settings"), icon: <Icons.Sliders /> },
         ];
 

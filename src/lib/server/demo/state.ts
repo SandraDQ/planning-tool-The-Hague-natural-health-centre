@@ -4,12 +4,16 @@ import type {
   Appointment,
   AvailabilityRule,
   BalancePayment,
+  BankConnection,
+  BankTransaction,
   BlockSeries,
   BlockTemplate,
   CancellationPolicy,
   Client,
+  Expense,
   Id,
   IntakeInput,
+  Invoice,
   Iso,
   PaperWindow,
   RentRate,
@@ -60,6 +64,20 @@ export interface DemoState {
   appointmentPolicy: Record<Id, CancellationPolicy>;
   /** Demo refunds (Mollie refunds later). */
   refunds: Array<{ id: Id; appointmentId: Id; amountCents: number; reason: "client_cancellation" | "therapist_cancellation" }>;
+  /** Client invoices (therapist = seller) and room-rent invoices (centre = seller). */
+  invoices: Invoice[];
+  /** Last number used per seller and year: key from sequenceKey(). Like invoice_sequences. */
+  invoiceSequences: Record<string, number>;
+  /** Bookkeeping (D40): costs, receipt files, bank connections and bank payments, per owner. */
+  expenses: Expense[];
+  /** Receipt file bytes by receipt id (Supabase Storage later). */
+  receiptData: Record<Id, Uint8Array>;
+  bankConnections: BankConnection[];
+  bankTransactions: BankTransaction[];
+  /** Bookkeeping add-on per therapist (D44). */
+  booksAddon: Record<Id, { status: "requested" | "active"; since: string; termsAcceptedAt: Iso | null }>;
+  /** Monthly add-on fee excl. BTW (21%), on the rent invoice. Placeholder until the owner sets it. */
+  booksAddonFeeCents: number;
   rentRates: RentRate[];
   rentSettings: RentSettings;
   /** Calendar-feed link version per feed key ("therapist:<id>" or "admin"); missing = 0. */

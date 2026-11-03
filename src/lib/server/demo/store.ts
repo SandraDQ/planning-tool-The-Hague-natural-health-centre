@@ -13,6 +13,7 @@ import type {
   Id,
   IntakeInput,
   Interval,
+  Invoice,
   Locale,
   RentRate,
   RoomBlock,
@@ -23,8 +24,11 @@ import type {
 } from "@/lib/domain/types";
 import type { AppStore, ManualClientInput } from "../extensions";
 import { holdExpiresAt } from "@/lib/scheduling";
+import { createBooksArea } from "./books";
 import { insertAppointment, makeAppointment, sessionTypeContext } from "./build";
 import { cancellationTerms } from "./cancellation";
+import { appointmentMoney, invoicesOf, onDepositPaid, onDepositRefunded, syncFinalInvoice } from "./invoicing";
+import { issueRentInvoices, monthBounds, prepareRentRun } from "./rent-run";
 import { feedEvents } from "./feeds";
 import { feedKey, type FeedSubject } from "../calendar-feed/token";
 import { checkReleaseBlock, checkReserveBlock, findSlots, occupies, roomHasFutureBookings, validateInState } from "./rules";
@@ -151,6 +155,9 @@ export function createDemoStore(state: DemoState, options: DemoStoreOptions = {}
   }
 
   // ---------- shared helpers ----------
+
+  const newestFirst = (xs: Invoice[]) =>
+    [...xs].sort((a, b) => (b.issuedAt ?? "9999").localeCompare(a.issuedAt ?? "9999") || (b.number ?? "").localeCompare(a.number ?? ""));
 
   /**
    * D26 (review F2): a guest booking always gets its own new client record, even when the
@@ -376,6 +383,7 @@ export function createDemoStore(state: DemoState, options: DemoStoreOptions = {}
         a!.status = "confirmed";
         a!.holdExpiresAt = null;
         state.appointmentPayment[a!.id] = paymentId;
+        onDepositPaid(state, a!, now()); // deposit invoice (9.3), e-mailed by the delivery step
         return clone(a!);
       },
 
@@ -496,6 +504,7 @@ export function createDemoStore(state: DemoState, options: DemoStoreOptions = {}
         // A cancellation by the therapist always returns the full paid deposit.
         if (state.appointmentPayment[a.id] && a.snapshot.depositCents > 0) {
           state.refunds.push({ id: randomUUID(), appointmentId: a.id, amountCents: a.snapshot.depositCents, reason: "therapist_cancellation" });
+          onDepositRefunded(state, a, a.snapshot.depositCents, now());
         }
         return clone(a);
       },
@@ -517,6 +526,7 @@ export function createDemoStore(state: DemoState, options: DemoStoreOptions = {}
         if (ms(a.session.start) > now()) fail("invalid", "A balance can be recorded once the session has started");
         const payment = { id: randomUUID(), appointmentId: a.id, method: input.method, amountCents: input.amountCents, paidOn: input.paidOn };
         state.balancePayments.push(payment);
+        syncFinalInvoice(state, a, now()); // final invoice once paid in full (9.3)
         return clone(payment);
       },
       async listMyServices(session) {
@@ -667,6 +677,63 @@ export function createDemoStore(state: DemoState, options: DemoStoreOptions = {}
         const me = asTherapist(session);
         return clone(state.paperWindows.filter((w) => w.therapistId === me.id));
       },
+      async listMyInvoices(session, filter) {
+        const me = asTherapist(session);
+        if (filter?.from !== undefined && !isDate(filter.from)) fail("invalid");
+        if (filter?.to !== undefined && !isDate(filter.to)) fail("invalid");
+        return clone(
+          newestFirst(
+            state.invoices.filter((i) => {
+              if (i.status !== "issued" || i.sellerType !== "therapist" || i.sellerTherapistId !== me.id) return false;
+              const day = localDateOf(ms(i.issuedAt!));
+              return (!filter?.from || day >= filter.from) && (!filter?.to || day < filter.to);
+            }),
+          ),
+        );
+      },
+      async listAppointmentInvoices(session, appointmentIds) {
+        const me = asTherapist(session);
+        if (!Array.isArray(appointmentIds) || appointmentIds.length > 500) fail("invalid");
+        const ids = new Set(appointmentIds);
+        return clone(
+          newestFirst(state.invoices.filter((i) => i.status === "issued" && i.sellerTherapistId === me.id && i.appointmentId && ids.has(i.appointmentId))),
+        );
+      },
+      async listMyRentInvoices(session) {
+        const me = asTherapist(session);
+        return clone(newestFirst(state.invoices.filter((i) => i.kind === "room_rent" && i.status === "issued" && i.buyerTherapistId === me.id)));
+      },
+      async listOutstanding(session) {
+        const me = asTherapist(session);
+        const t = now();
+        return state.appointments
+          .filter((a) => a.therapistId === me.id && (a.status === "confirmed" || a.status === "completed") && ms(a.session.start) <= t)
+          .map((a) => {
+            const money = appointmentMoney(state, a);
+            const client = state.clients.find((c) => c.id === a.clientId);
+            return {
+              appointment: clone(a),
+              clientName: client ? `${client.firstName} ${client.lastName}`.trim() : "",
+              clientEmail: client?.email || null,
+              priceCents: money.priceCents,
+              depositPaidCents: money.depositPaidCents,
+              balancePaidCents: money.balancePaidCents,
+              dueCents: money.dueCents,
+              finalInvoice: clone(invoicesOf(state, a.id).find((i) => i.kind === "final") ?? null),
+            };
+          })
+          .filter((row) => row.dueCents > 0)
+          .sort((x, y) => ms(x.appointment.session.start) - ms(y.appointment.session.start));
+      },
+      async sendFinalInvoice(session, appointmentId) {
+        const me = asTherapist(session);
+        const a = ownAppointment(me, appointmentId);
+        if (a.status !== "confirmed" && a.status !== "completed") fail("invalid", "Only sessions that took place get an invoice");
+        if (ms(a.session.start) > now()) fail("invalid", "The session has not started yet");
+        const inv = syncFinalInvoice(state, a, now(), { send: true });
+        if (!inv) fail("invalid", "Nothing left to invoice: the deposit covered the whole price");
+        return clone(inv!);
+      },
     },
 
     admin: {
@@ -781,6 +848,10 @@ export function createDemoStore(state: DemoState, options: DemoStoreOptions = {}
         if (!isText(business.legalName, 200) || typeof business.kor !== "boolean") fail("invalid", "Legal name is required");
         const optional = (v: unknown) => v === null || (typeof v === "string" && v.length <= 300);
         if (![business.tradeName, business.address, business.kvk, business.btwNumber].every(optional)) fail("invalid");
+        const btwTreatment = business.btwTreatment ?? "exempt";
+        if (!["21", "9", "exempt"].includes(btwTreatment)) fail("invalid", "Unknown BTW treatment");
+        const exemptionGround = business.exemptionGround ?? null;
+        if (!optional(exemptionGround)) fail("invalid");
         // Review F10: store only the known fields (no mass assignment).
         const row: TherapistBusiness = {
           therapistId: business.therapistId,
@@ -790,6 +861,8 @@ export function createDemoStore(state: DemoState, options: DemoStoreOptions = {}
           kvk: business.kvk,
           btwNumber: business.btwNumber,
           kor: business.kor,
+          btwTreatment,
+          exemptionGround: btwTreatment === "exempt" ? exemptionGround?.trim() || null : null,
         };
         state.business = [...state.business.filter((b) => b.therapistId !== row.therapistId), row];
         return clone(row);
@@ -920,6 +993,32 @@ export function createDemoStore(state: DemoState, options: DemoStoreOptions = {}
         w!.status = "closed";
         return clone(w!);
       },
+      async listRentInvoices(session, month) {
+        asAdmin(session);
+        if (month !== undefined && !isDate(month)) fail("invalid");
+        const first = month ? monthBounds(month).first : null;
+        return clone(newestFirst(state.invoices.filter((i) => i.kind === "room_rent" && (!first || i.rentMonth === first))));
+      },
+      async prepareRentInvoices(session, month) {
+        asAdmin(session);
+        if (!isDate(month)) fail("invalid");
+        return clone(prepareRentRun(state, month, now()));
+      },
+      async sendRentInvoices(session, invoiceIds) {
+        asAdmin(session);
+        if (!Array.isArray(invoiceIds) || invoiceIds.length === 0 || invoiceIds.length > 200) fail("invalid");
+        return clone(issueRentInvoices(state, invoiceIds, now()));
+      },
+      async setRentInvoicePaid(session, invoiceId, paidOn) {
+        asAdmin(session);
+        const inv = state.invoices.find((i) => i.id === invoiceId && i.kind === "room_rent");
+        if (!inv) fail("not_found");
+        if (inv!.status !== "issued") fail("invalid", "Send the invoice first");
+        if (paidOn !== null && (!isDate(paidOn) || paidOn > localDateOf(now()))) fail("invalid", "Invalid payment date");
+        inv!.paidCents = paidOn ? inv!.totalCents : 0;
+        inv!.paidOn = paidOn;
+        return clone(inv!);
+      },
     },
 
     client: {
@@ -950,8 +1049,41 @@ export function createDemoStore(state: DemoState, options: DemoStoreOptions = {}
         cancel(a!, "client"); // D18: intake purged (cancelled before the start)
         if (terms.refundCents > 0) {
           state.refunds.push({ id: randomUUID(), appointmentId: a!.id, amountCents: terms.refundCents, reason: "client_cancellation" });
+          onDepositRefunded(state, a!, terms.refundCents, now());
         }
         return { appointment: clone(a!), depositPaidCents, ...terms };
+      },
+      async listMyInvoices(session) {
+        const me = asClient(session);
+        return clone(newestFirst(state.invoices.filter((i) => i.status === "issued" && i.buyerClientId === me.id)));
+      },
+    },
+
+    books: createBooksArea(state, { now, tick }),
+
+    invoices: {
+      async getForViewer(session, invoiceId) {
+        tick();
+        const inv = state.invoices.find((i) => i.id === invoiceId && i.status === "issued");
+        const allowed =
+          !!inv &&
+          ((session?.role === "client" && !!session.clientId && inv.buyerClientId === session.clientId) ||
+            (session?.role === "therapist" &&
+              !!session.therapistId &&
+              (inv.sellerTherapistId === session.therapistId || inv.buyerTherapistId === session.therapistId)) ||
+            (session?.role === "admin" && inv.kind === "room_rent"));
+        if (!allowed) fail("not_found");
+        return clone(inv!);
+      },
+      async listUnsent() {
+        return clone(state.invoices.filter((i) => i.status === "issued" && !i.sentAt && !!i.buyer.email));
+      },
+      async markSent(invoiceId, to, at) {
+        const inv = state.invoices.find((i) => i.id === invoiceId);
+        if (!inv) fail("not_found");
+        if (inv!.sentAt) return;
+        inv!.sentAt = at;
+        inv!.sentTo = to;
       },
     },
 

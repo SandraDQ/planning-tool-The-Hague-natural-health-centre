@@ -102,7 +102,7 @@
     "amount": "Bedrag",
     "amountError": "Vul een bedrag in, bijvoorbeeld 45,00.",
     "paidOn": "Betaald op",
-    "invoiceNote": "Bij opslaan wordt de eindfactuur op jouw naam gemaakt (demo: er wordt geen factuur verstuurd).",
+    "invoiceNote": "Is de sessie helemaal betaald, dan wordt de eindfactuur op uw naam gemaakt en naar uw cliënt gemaild.",
     "savePayment": "Betaling opslaan",
     "paymentSaved": "Betaling opgeslagen",
     "paymentSavedText": "De eindfactuur wordt voor je gemaakt.",
