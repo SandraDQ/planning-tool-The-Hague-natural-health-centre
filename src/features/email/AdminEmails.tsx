@@ -114,7 +114,7 @@ export function ExampleSender({ defaultTo }: { defaultTo: string }) {
   );
 }
 
-const KINDS = ["booking_confirmation", "example_confirmation", "therapist_new_booking", "invoice"] as const;
+const KINDS = ["booking_confirmation", "example_confirmation", "therapist_new_booking", "invoice", "client_invoice"] as const;
 
 /** Admin: recent e-mails, newest first. Content only for demo e-mails. */
 export function OutboxList({ entries }: { entries: OutboxEntry[] }) {
@@ -140,7 +140,7 @@ export function OutboxList({ entries }: { entries: OutboxEntry[] }) {
           {entries.map((e) => (
             <li key={e.id} className="flex flex-wrap items-center gap-3 px-4 py-3 sm:px-5">
               <div className="min-w-0 flex-1">
-                <p className="text-base font-bold break-words">{e.subject}</p>
+                <p className="text-base font-bold break-words">{e.subject || kind(e.kind)}</p>
                 <p className="text-sm text-fg-muted">
                   {kind(e.kind)} · {e.to} · {format.dateTime(new Date(e.at), { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })}
                 </p>
@@ -155,11 +155,11 @@ export function OutboxList({ entries }: { entries: OutboxEntry[] }) {
           ))}
         </ul>
       )}
-      <Sheet open={open !== null} onClose={() => setOpen(null)} title={open ? t("viewTitle", { to: open.to }) : ""} description={open?.subject}>
+      <Sheet open={open !== null} onClose={() => setOpen(null)} title={open ? t("viewTitle", { to: open.to }) : ""} description={open?.subject || undefined}>
         {open?.html ? (
           <iframe title={open.subject} srcDoc={open.html} sandbox="" className="h-[70vh] w-full rounded-md border border-border bg-white" />
         ) : (
-          <p className="text-base">{t("noContent")}</p>
+          <p className="text-base">{open?.kind === "client_invoice" ? t("privateContent") : t("noContent")}</p>
         )}
       </Sheet>
     </Card>

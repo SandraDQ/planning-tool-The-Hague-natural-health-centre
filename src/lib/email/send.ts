@@ -16,6 +16,9 @@ import { recordEmail } from "./outbox";
 import { sendWithProvider } from "./providers";
 import type { EmailMessage, EmailResult } from "./types";
 
+/** Kinds whose subject and content the admin may not see in the e-mail log. */
+const PRIVATE_KINDS = new Set(["client_invoice"]);
+
 const isAddress = (s: string) => s.length <= 254 && /^[^\s@<>,;]+@[^\s@<>,;]+\.[^\s@<>,;]+$/.test(s);
 
 export async function sendEmail(msg: EmailMessage): Promise<EmailResult> {
@@ -24,14 +27,17 @@ export async function sendEmail(msg: EmailMessage): Promise<EmailResult> {
   const cfg = readEmailConfig();
   const demo = isDemoMode();
   const decision = deliveryDecision(cfg, msg.to, demo);
+  // The log is shown to the admin (Admin → E-mails). A therapist's invoice to a client is
+  // logged without its subject, content or attachment names (D31).
+  const hidden = PRIVATE_KINDS.has(msg.kind);
   const base = {
     at: new Date().toISOString(),
     kind: msg.kind,
     to: msg.to,
-    subject: msg.subject,
+    subject: hidden ? "" : msg.subject,
     // Content is kept only for the demo outbox; real client e-mails are not stored in memory.
-    html: demo ? msg.html : null,
-    attachmentNames: (msg.attachments ?? []).map((a) => a.filename),
+    html: demo && !hidden ? msg.html : null,
+    attachmentNames: hidden ? [] : (msg.attachments ?? []).map((a) => a.filename),
   };
 
   if (decision !== "send") {

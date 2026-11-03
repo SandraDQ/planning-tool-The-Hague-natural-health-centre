@@ -75,11 +75,13 @@
     "noContent": "The content of real e-mails is not kept, to protect clients' privacy.",
     "kind": {
       "booking_confirmation": "Booking confirmation",
+      "client_invoice": "Invoice to a client",
       "example_confirmation": "Example",
       "invoice": "Invoice",
       "other": "E-mail",
       "therapist_new_booking": "New booking (to therapist)"
-    }
+    },
+    "privateContent": "This is a therapist's invoice to a client. Only the therapist and the client can see what is in it."
   },
   "manage": {
     "title": "Your appointment",

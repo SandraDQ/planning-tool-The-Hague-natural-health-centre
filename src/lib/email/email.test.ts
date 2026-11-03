@@ -119,6 +119,15 @@ describe("sendEmail", () => {
     expect(String(err.message)).not.toContain("test-key");
   });
 
+  it("logs a therapist's invoice to a client without its subject or content (D31)", async () => {
+    const msg = { subject: "Your deposit invoice", html: "<p>Invoice</p>", text: "Invoice", attachments: [{ filename: "2026-0001.pdf", contentType: "application/pdf", contentBase64: "JVBERg==" }] };
+    await sendEmail({ ...msg, to: "client@example.invalid", kind: "client_invoice" });
+    await sendEmail({ ...msg, to: "therapist@example.invalid", kind: "invoice" });
+    const [rent, client] = listOutbox();
+    expect(client).toMatchObject({ kind: "client_invoice", subject: "", html: null, attachmentNames: [] });
+    expect(rent).toMatchObject({ kind: "invoice", subject: "Your deposit invoice", attachmentNames: ["2026-0001.pdf"] });
+  });
+
   it("refuses header-like recipients", async () => {
     await expect(sendEmail({ to: "a@b.nl,c@d.nl", subject: "s", html: "h", text: "t", kind: "test" })).rejects.toThrow();
   });

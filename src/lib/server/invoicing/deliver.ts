@@ -93,7 +93,8 @@ export async function deliverPendingInvoices(): Promise<number> {
           ...content,
           replyTo: inv.seller.email ?? undefined,
           attachments: [{ filename: invoiceFileName(inv), contentType: "application/pdf", contentBase64: Buffer.from(pdf).toString("base64") }],
-          kind: "invoice",
+          // D31: the admin sees room-rent invoices only, never a therapist's invoice to a client.
+          kind: inv.kind === "room_rent" ? "invoice" : "client_invoice",
           locale: inv.locale,
         });
         await store.invoices.markSent(inv.id, inv.buyer.email!, new Date().toISOString());

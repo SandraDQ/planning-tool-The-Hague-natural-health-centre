@@ -75,11 +75,13 @@
     "noContent": "De inhoud van echte e-mails bewaren we niet, om de privacy van cliënten te beschermen.",
     "kind": {
       "booking_confirmation": "Boekingsbevestiging",
+      "client_invoice": "Factuur aan een cliënt",
       "example_confirmation": "Voorbeeld",
       "invoice": "Factuur",
       "other": "E-mail",
       "therapist_new_booking": "Nieuwe afspraak (aan therapeut)"
-    }
+    },
+    "privateContent": "Dit is een factuur van een therapeut aan een cliënt. Alleen de therapeut en de cliënt kunnen zien wat erin staat."
   },
   "manage": {
     "title": "Je afspraak",

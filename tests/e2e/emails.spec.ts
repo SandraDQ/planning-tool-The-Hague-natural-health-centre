@@ -42,8 +42,12 @@ test.describe("confirmation e-mails", () => {
     await signIn(page, "Owner (admin)");
     await page.goto("/en/admin/emails");
     await expect(page.getByText("Not connected yet")).toBeVisible();
-    const row = page.getByRole("listitem").filter({ hasText: email });
-    await expect(row).toContainText("Booking confirmation");
+    const row = page.getByRole("listitem").filter({ hasText: email }).filter({ hasText: "Booking confirmation" });
+    await expect(row).toHaveCount(1);
+    // The deposit invoice went out too; the admin sees that it was sent, not what is in it (D31).
+    const invoiceRow = page.getByRole("listitem").filter({ hasText: email }).filter({ hasText: "Invoice to a client" });
+    await expect(invoiceRow).toHaveCount(1);
+    await expect(invoiceRow).not.toContainText("deposit invoice");
     await row.getByRole("button", { name: "View" }).click();
     const mail = page.frameLocator('iframe[title^="Your appointment on"]');
     await expect(mail.getByText("Dear Mila,")).toBeVisible();
