@@ -4,6 +4,7 @@ import { Link } from "@/i18n/navigation";
 import { getStore } from "@/lib/server/data";
 import { requireRole } from "@/lib/server/session";
 import { DashboardPage, PageHeading } from "@/features/dashboard/components/Page";
+import { therapistSetup } from "@/features/onboarding/setup";
 
 export default async function TherapistSettingsPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -11,14 +12,16 @@ export default async function TherapistSettingsPage({ params }: { params: Promis
   const session = await requireRole("therapist", locale);
   const t = await getTranslations("therapist.settings");
   const te = await getTranslations("email.therapist");
-  const business = await getStore().therapist.getMyBusiness(session);
+  const [business, setup, ts] = await Promise.all([getStore().therapist.getMyBusiness(session), therapistSetup(session), getTranslations("setup")]);
 
   const sections = [
+    { href: "/therapist/setup", icon: <Icons.Check />, title: ts("menuTitle"), text: ts("menuText", { done: setup.done, total: setup.total }) },
     { href: "/therapist/settings/services", icon: <Icons.Leaf />, title: t("services"), text: t("servicesText") },
     { href: "/therapist/settings/availability", icon: <Icons.Clock />, title: t("availability"), text: t("availabilityText") },
     { href: "/therapist/settings/policy", icon: <Icons.Info />, title: t("policy"), text: t("policyText") },
     { href: "/therapist/settings/emails", icon: <Icons.Mail />, title: te("settingsTitle"), text: te("settingsText") },
     { href: "/therapist/settings/profile", icon: <Icons.User />, title: t("profile"), text: t("profileText") },
+    { href: "/therapist/settings/calendar", icon: <Icons.CalendarIcon />, title: t("calendarLink"), text: t("calendarLinkText") },
   ];
 
   const rows: [string, string | null][] = business

@@ -1,0 +1,51 @@
+{
+  "title": "Set up your practice",
+  "lead": "A few short steps, and clients can book you online. You can stop at any time; we remember where you were.",
+  "progress": "{done} of {total} steps done",
+  "progressLabel": "Setup progress",
+  "progressText": "Take the steps in order. Each button takes you to the right screen; come back here when you're done.",
+  "allDone": "All done. Well done!",
+  "allDoneText": "Your practice is set up. You can always change things later under Settings.",
+  "done": "Done",
+  "needed": "Needed to be bookable",
+  "optional": "Optional",
+  "later": "Coming soon",
+  "change": "View or change",
+  "help": "Stuck? Call <phone></phone> and we'll do it together.",
+  "steps": {
+    "profile": {
+      "title": "Your profile",
+      "text": "A short introduction in Dutch and English, so clients get to know you.",
+      "button": "Write your profile"
+    },
+    "services": {
+      "title": "Your treatments and prices",
+      "text": "Add what you offer, how long it takes and what it costs. You also choose the deposit clients pay when they book.",
+      "button": "Add a treatment"
+    },
+    "times": {
+      "title": "When you work",
+      "text": "Choose the times clients can book you: your working hours, or the room blocks you reserve.",
+      "button": "Set your times"
+    },
+    "policy": {
+      "title": "Cancellation rules",
+      "text": "Decide how long before an appointment clients can cancel for free. Clients see this before they pay.",
+      "button": "Set your rules"
+    },
+    "payments": {
+      "title": "Online payments",
+      "text": "Link your own payment account so deposits go straight to you. We'll let you know when this is ready."
+    },
+    "preview": {
+      "title": "Look at your booking page",
+      "text": "See what clients see when they book you.",
+      "button": "Open your booking page"
+    }
+  },
+  "bannerTitle": "Your practice is {done} of {total} set up",
+  "bannerText": "A few more steps and clients can book you online.",
+  "bannerButton": "Continue setting up",
+  "menuTitle": "Set up your practice",
+  "menuText": "{done} of {total} steps done"
+}

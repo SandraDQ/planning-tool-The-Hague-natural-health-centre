@@ -166,4 +166,45 @@ test.describe("therapist @mobile", () => {
     if (await btn.count()) await expect(btn).toBeDisabled();
     await shot(page, "therapist-release-blocked", testInfo);
   });
+
+  test("calendar link: subscribe feed works and a reset retires the old link", async ({ page, request }, testInfo) => {
+    await signIn(page, "Demo – Anna de Vries");
+    await page.goto("/en/therapist/settings/calendar");
+    await expect(page.getByRole("link", { name: "Apple Calendar (iPhone, iPad, Mac)" })).toHaveAttribute("href", /^webcal:\/\//);
+    const field = page.getByLabel("Your private calendar link");
+    const oldLink = await field.inputValue();
+    const feed = await request.get(oldLink);
+    expect(feed.status()).toBe(200);
+    expect(feed.headers()["content-type"]).toContain("text/calendar");
+    const body = await feed.text();
+    expect(body).toContain("BEGIN:VCALENDAR");
+    expect(body).toContain("BEGIN:VEVENT");
+    expect(body).not.toMatch(/@example\.invalid/);
+    await shot(page, "therapist-calendar-link", testInfo);
+
+    await page.getByRole("button", { name: "Make a new link" }).click();
+    await expect(page.getByText("Done: you have a new link.")).toBeVisible();
+    const newLink = await field.inputValue();
+    expect(newLink).not.toBe(oldLink);
+    expect((await request.get(newLink)).status()).toBe(200);
+    // In-memory demo state lives per server instance; the E2E server is a single instance.
+    expect((await request.get(oldLink)).status()).toBe(404);
+  });
+
+  test("setup steps: progress, status per step and a button to each screen", async ({ page }, testInfo) => {
+    const errors = watchErrors(page);
+    await signIn(page, "Demo – Anna de Vries");
+    await page.goto("/en/therapist/settings");
+    await page.getByRole("link", { name: /Set up your practice/ }).click();
+    await expect(page).toHaveURL(/\/en\/therapist\/setup$/);
+    await expect(page.getByRole("heading", { level: 1, name: "Set up your practice" })).toBeVisible();
+    await expect(page.getByRole("progressbar", { name: "Setup progress" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Your treatments and prices" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Online payments" })).toBeVisible();
+    await expect(page.getByText("Coming soon")).toBeVisible();
+    await shot(page, "therapist-setup", testInfo);
+    await page.getByRole("link", { name: /^(Add a treatment|View or change)$/ }).first().click();
+    await expect(page).toHaveURL(/\/en\/therapist\/settings\/profile$|\/en\/therapist\/settings\/services$/);
+    expect(errors).toEqual([]);
+  });
 });

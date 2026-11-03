@@ -3,6 +3,7 @@ import { requireRole } from "@/lib/server/session";
 import { loadCalendarData } from "@/features/dashboard/therapist/calendar-data";
 import { TherapistCalendar } from "@/features/dashboard/therapist/TherapistCalendar";
 import { mondayOf, parseDayParam, todayLocal } from "@/features/dashboard/time";
+import { SetupBanner } from "@/features/onboarding/SetupBanner";
 
 export default async function TherapistCalendarPage({
   params,
@@ -19,5 +20,12 @@ export default async function TherapistCalendarPage({
   const day = parseDayParam(query.day) ?? parseDayParam(query.week) ?? today;
   const monday = mondayOf(parseDayParam(query.week) ?? day);
   const data = await loadCalendarData(session, monday);
-  return <TherapistCalendar key={monday} data={data} initialDay={day} today={today} />;
+  return (
+    <>
+      <div className="mx-auto max-w-content px-gutter pt-4 empty:hidden">
+        <SetupBanner session={session} />
+      </div>
+      <TherapistCalendar key={monday} data={data} initialDay={day} today={today} />
+    </>
+  );
 }
