@@ -217,3 +217,33 @@ export const Trash = (p: IconProps) => (
     <path d="M10 11v6M14 11v6" />
   </Base>
 );
+
+export const Receipt = (p: IconProps) => (
+  <Base {...p}>
+    <path d="M5 3h14v18l-2.5-1.5L14 21l-2-1.5L10 21l-2.5-1.5L5 21z" />
+    <path d="M9 8h6M9 12h6M9 16h3" />
+  </Base>
+);
+
+export const Bank = (p: IconProps) => (
+  <Base {...p}>
+    <path d="m3 9 9-5 9 5" />
+    <path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8" />
+    <path d="M3 21h18" />
+  </Base>
+);
+
+export const Download = (p: IconProps) => (
+  <Base {...p}>
+    <path d="M12 3v12" />
+    <path d="m7 10 5 5 5-5" />
+    <path d="M4 20h16" />
+  </Base>
+);
+
+export const Camera = (p: IconProps) => (
+  <Base {...p}>
+    <path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z" />
+    <circle cx="12" cy="13.5" r="3.5" />
+  </Base>
+);

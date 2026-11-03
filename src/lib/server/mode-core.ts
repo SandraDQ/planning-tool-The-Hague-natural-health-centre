@@ -6,7 +6,7 @@
 
 /**
  * Variables that mean real services or real data are connected.
- * EMAIL_API_KEY is not on this list (D-EMAIL): the demo may send real e-mail, but only to
+ * EMAIL_API_KEY is not on this list (D48): the demo may send real e-mail, but only to
  * the addresses on EMAIL_DEMO_RECIPIENTS (see src/lib/email/config.ts).
  */
 export const REAL_SERVICE_KEYS = [

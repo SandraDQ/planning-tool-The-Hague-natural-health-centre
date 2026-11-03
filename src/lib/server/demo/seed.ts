@@ -20,6 +20,9 @@ import type {
 } from "@/lib/domain/types";
 import { insertAppointment, makeAppointment } from "./build";
 import { stableId } from "./ids";
+import { seedInvoices } from "./invoicing";
+import { seedRentInvoices } from "./rent-run";
+import { seedBooks, seedBooksAddons } from "./books";
 import { candidateWindows, validateInState } from "./rules";
 import { SERIES_HORIZON_WEEKS, materializeSeries } from "./series";
 import type { DemoState } from "./state";
@@ -398,6 +401,9 @@ export function createSeedState(now: Date = new Date()): DemoState {
     kvk: `9000000${i + 1}`,
     btwNumber: i % 2 === 0 ? `NL00000000${i + 1}B01` : null,
     kor: i % 2 === 1,
+    // Placeholder until the accountant answers (DECISIONS: waiting on the accountant).
+    btwTreatment: s.id === T.carla ? "exempt" : "21",
+    exemptionGround: s.id === T.carla ? "art. 11 lid 1 sub g Wet OB (gezondheidskundige zorg)" : null,
   }));
 
   const availability: AvailabilityRule[] = WORKING_HOURS.flatMap(([therapistId, days, startTime, endTime]) =>
@@ -454,12 +460,20 @@ export function createSeedState(now: Date = new Date()): DemoState {
     balancePayments: [],
     appointmentPolicy: {},
     refunds: [],
+    invoices: [],
+    invoiceSequences: {},
     rentRates: [
       { id: "rate-room-3", roomId: DEMO_IDS.rooms[3], pricingMode: "fixed_monthly", amountCents: 65000, btwTreatment: "exempt", validFrom: `${year}-01-01`, validTo: null },
       { id: "rate-room-4", roomId: DEMO_IDS.rooms[4], pricingMode: "fixed_monthly", amountCents: 60000, btwTreatment: "exempt", validFrom: `${year}-01-01`, validTo: null },
       { id: "rate-room-6", roomId: DEMO_IDS.rooms[6], pricingMode: "fixed_monthly", amountCents: 72500, btwTreatment: "exempt", validFrom: `${year}-01-01`, validTo: null },
       { id: "rate-default-block", roomId: null, pricingMode: "per_block", amountCents: 4000, btwTreatment: "exempt", validFrom: `${year}-01-01`, validTo: null },
     ],
+    expenses: [],
+    receiptData: {},
+    bankConnections: [],
+    bankTransactions: [],
+    booksAddon: {},
+    booksAddonFeeCents: 1000,
     rentSettings: { billingDay: 1, paymentTermDays: 14, autoSend: false },
     calendarFeedVersion: {},
     materializedUntil: horizon,
@@ -494,6 +508,17 @@ export function createSeedState(now: Date = new Date()): DemoState {
   }
 
   seedAppointments(state, { nowMs: refMs, from: firstMonday, to: addDays(weekStart, 27), rnd });
+  seedInvoices(state, refMs);
+  seedBooksAddons(state, refMs);
+  seedRentInvoices(state, refMs);
+  // Seeded invoices count as already e-mailed, so the demo never sends a backlog.
+  for (const inv of state.invoices) {
+    if (inv.status === "issued" && inv.buyer.email) {
+      inv.sentAt = inv.issuedAt;
+      inv.sentTo = inv.buyer.email;
+    }
+  }
+  seedBooks(state, refMs);
   return state;
 }
 

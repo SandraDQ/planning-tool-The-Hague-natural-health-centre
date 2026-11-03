@@ -5,6 +5,7 @@ import { getLocale } from "next-intl/server";
 import { getStore } from "@/lib/server/data";
 import { requireRole } from "@/lib/server/session";
 import type { BlockTemplate, Id, Interval, RentRate, RentSettings, Room, Therapist, TherapistBusiness, Therapy } from "@/lib/domain/types";
+import { deliverPendingInvoices } from "@/lib/server/invoicing/deliver";
 import { run } from "./run";
 import { addDays } from "../time";
 
@@ -117,6 +118,33 @@ export async function openPaperWindow(input: { therapistId: Id; roomId: Id; peri
 export async function closePaperWindow(windowId: Id) {
   const { session, store } = await admin();
   const result = await run(() => store.closePaperWindow(session, windowId));
+  done();
+  return result;
+}
+
+// ------------------------------------------------------------- room-rent invoices --
+
+/** Builds the draft rent invoices of a month for review. */
+export async function prepareRentInvoices(month: string) {
+  const { session, store } = await admin();
+  const result = await run(() => store.prepareRentInvoices(session, month));
+  done();
+  return result;
+}
+
+/** Sends the reviewed rent invoices: they get a number and go out by e-mail with the PDF. */
+export async function sendRentInvoices(invoiceIds: Id[]) {
+  const { session, store } = await admin();
+  const result = await run(() => store.sendRentInvoices(session, invoiceIds));
+  await deliverPendingInvoices();
+  done();
+  return result;
+}
+
+/** Marks a rent invoice paid on a date, or unpaid again (null). */
+export async function setRentInvoicePaid(invoiceId: Id, paidOn: string | null) {
+  const { session, store } = await admin();
+  const result = await run(() => store.setRentInvoicePaid(session, invoiceId, paidOn));
   done();
   return result;
 }

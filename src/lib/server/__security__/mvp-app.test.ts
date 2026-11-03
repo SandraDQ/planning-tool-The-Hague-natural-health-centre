@@ -184,7 +184,7 @@ describe("A4 · demo mode switch (F3, D28)", () => {
     expect(() => assertSafeMode()).not.toThrow();
   });
 
-  it("D-EMAIL: an e-mail key alone keeps demo mode on (the demo only mails EMAIL_DEMO_RECIPIENTS)", () => {
+  it("D48: an e-mail key alone keeps demo mode on (the demo only mails EMAIL_DEMO_RECIPIENTS)", () => {
     clean();
     vi.stubEnv("DEMO_MODE", "1");
     vi.stubEnv("EMAIL_API_KEY", "real-value");

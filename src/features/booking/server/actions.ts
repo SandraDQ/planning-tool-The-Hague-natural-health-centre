@@ -3,6 +3,7 @@
 import { randomUUID } from "node:crypto";
 import { redirect } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
+import { deliverPendingInvoices } from "@/lib/server/invoicing/deliver";
 import { getStore } from "@/lib/server/data";
 import { sendBookingConfirmation, sendTherapistNewBooking } from "@/lib/email/notify";
 import { getSession } from "@/lib/server/session";
@@ -102,6 +103,7 @@ export async function demoPaySucceeded(form: FormData) {
   let status: "ok" | "expired" | "error" = "ok";
   try {
     await getStore().booking.confirmPayment(id, `demo_${randomUUID()}`);
+    await deliverPendingInvoices(); // deposit invoice by e-mail
   } catch (err) {
     status = errorCode(err) === "hold_expired" ? "expired" : "error";
     if (status === "error") console.error("[booking] demo confirm failed", errorCode(err) ?? "unknown");

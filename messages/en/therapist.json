@@ -102,7 +102,7 @@
     "amount": "Amount",
     "amountError": "Enter an amount, for example 45.00.",
     "paidOn": "Paid on",
-    "invoiceNote": "Saving makes the final invoice in your name (demo: no invoice is sent).",
+    "invoiceNote": "When the session is fully paid, the final invoice is made in your name and e-mailed to your client.",
     "savePayment": "Save payment",
     "paymentSaved": "Payment saved",
     "paymentSavedText": "The final invoice will be made for you.",

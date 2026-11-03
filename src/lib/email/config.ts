@@ -34,7 +34,7 @@ export function parseAddress(value: string): { name: string | null; email: strin
 }
 
 /**
- * Decides whether a message may really be sent (D-EMAIL). In demo mode only addresses on
+ * Decides whether a message may really be sent (D48). In demo mode only addresses on
  * EMAIL_DEMO_RECIPIENTS get real e-mail, so the public demo can never be used to send
  * mail from the centre's domain to strangers.
  */

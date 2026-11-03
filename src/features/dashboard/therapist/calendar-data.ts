@@ -1,5 +1,5 @@
 import "server-only";
-import type { Appointment, BalancePayment, Client, Interval, Room, Service, Session, SessionType } from "@/lib/domain/types";
+import type { Appointment, BalancePayment, Client, Interval, Invoice, Room, Service, Session, SessionType } from "@/lib/domain/types";
 import { getStore } from "@/lib/server/data";
 import { addDays, isoWeekday, localDay, localToIso, weekDays, weekRange } from "../time";
 
@@ -21,6 +21,8 @@ export type CalendarAppointment = Appointment & {
   client: Pick<Client, "firstName" | "lastName" | "email" | "phone"> | null;
   /** Balance payments recorded so far, oldest first. */
   payments: BalancePayment[];
+  /** Issued invoices of this appointment (deposit, final, credit notes), oldest first. */
+  invoices: Pick<Invoice, "id" | "kind" | "number" | "totalCents" | "issuedAt">[];
 };
 
 export type CalendarData = {
@@ -51,10 +53,17 @@ export async function loadCalendarData(session: Session, monday: string): Promis
   ]);
   const clientIds = [...new Set(appointments.map((a) => a.clientId))];
   const appointmentIds = appointments.map((a) => a.id);
-  const [clients, payments] = await Promise.all([
+  const [clients, payments, invoices] = await Promise.all([
     clientIds.length ? store.listClients(session, clientIds) : Promise.resolve([]),
     appointmentIds.length ? store.listBalancePayments(session, appointmentIds) : Promise.resolve([]),
+    appointmentIds.length ? store.listAppointmentInvoices(session, appointmentIds) : Promise.resolve([]),
   ]);
+  const invoicesByAppointment = new Map<string, CalendarAppointment["invoices"]>();
+  for (const inv of [...invoices].reverse()) {
+    if (!inv.appointmentId) continue;
+    const slim = { id: inv.id, kind: inv.kind, number: inv.number, totalCents: inv.totalCents, issuedAt: inv.issuedAt };
+    invoicesByAppointment.set(inv.appointmentId, [...(invoicesByAppointment.get(inv.appointmentId) ?? []), slim]);
+  }
   const paymentsByAppointment = new Map<string, BalancePayment[]>();
   for (const p of payments) paymentsByAppointment.set(p.appointmentId, [...(paymentsByAppointment.get(p.appointmentId) ?? []), p]);
   const clientById = new Map(clients.map((c) => [c.id, c]));
@@ -105,6 +114,7 @@ export async function loadCalendarData(session: Session, monday: string): Promis
         roomNumber: roomById.get(a.roomId)?.number ?? null,
         client: c ? { firstName: c.firstName, lastName: c.lastName, email: c.email, phone: c.phone } : null,
         payments: (paymentsByAppointment.get(a.id) ?? []).sort((x, y) => x.paidOn.localeCompare(y.paidOn)),
+        invoices: invoicesByAppointment.get(a.id) ?? [],
       };
     }),
     timeOff: timeOff.map((x) => x.period).filter((p) => p.start < range.end && p.end > range.start),

@@ -48,6 +48,8 @@ export interface BlockTemplate {
   active: boolean;
 }
 
+export type BtwTreatment = "21" | "9" | "exempt";
+
 export type RentPricingMode = "fixed_monthly" | "per_block";
 
 export interface RentRate {
@@ -94,6 +96,13 @@ export interface TherapistBusiness {
   kvk: string | null;
   btwNumber: string | null;
   kor: boolean;
+  /**
+   * BTW on this therapist's client invoices (admin sets it on the accountant's advice).
+   * Prices clients see include BTW. Absent = exempt until the admin sets it.
+   */
+  btwTreatment?: BtwTreatment;
+  /** Legal ground printed on invoices when exempt (e.g. "art. 11 lid 1 sub g Wet OB"). */
+  exemptionGround?: string | null;
 }
 
 export interface Service {
@@ -253,4 +262,156 @@ export interface EmailTemplate {
 /** Centre-wide practical information added to every confirmation (admin). */
 export interface CentreEmailSettings {
   info: Record<Locale, string>;
+}
+
+// ---------------------------------------------------------------- invoices --
+
+export type InvoiceKind = "deposit" | "final" | "credit_note" | "room_rent";
+
+/** Who an invoice is from or to, frozen at issue (D10: invoices never change afterwards). */
+export interface InvoiceParty {
+  name: string;
+  address: string | null;
+  email: string | null;
+  kvk?: string | null;
+  btwNumber?: string | null;
+}
+
+export interface InvoiceLine {
+  description: string;
+  quantity: number;
+  /** Excl. BTW; negative on credit notes and deductions. */
+  unitCents: number;
+  lineTotalCents: number;
+  btwTreatment: BtwTreatment;
+  /** Basis points: 2100 = 21%. */
+  btwRateBp: number;
+  btwCents: number;
+  exemptionGround: string | null;
+}
+
+/**
+ * Client invoices (deposit, final, credit note) are in the therapist's name (9.1, 9.3);
+ * room-rent invoices are from the centre to a therapist (9.4).
+ */
+export interface Invoice {
+  id: Id;
+  sellerType: "therapist" | "centre";
+  sellerTherapistId: Id | null;
+  kind: InvoiceKind;
+  /** Drafts exist only for room rent (admin reviews before sending). */
+  status: "draft" | "issued";
+  /** "YYYY-NNNN", gap-free per seller per year (D13). Null while draft. */
+  number: string | null;
+  issuedAt: Iso | null;
+  dueOn: string | null;
+  locale: Locale;
+  appointmentId: Id | null;
+  creditedInvoiceId: Id | null;
+  /** Room rent: first day of the month billed (YYYY-MM-01). */
+  rentMonth: string | null;
+  buyerClientId: Id | null;
+  buyerTherapistId: Id | null;
+  seller: InvoiceParty;
+  buyer: InvoiceParty;
+  lines: InvoiceLine[];
+  /** Plain-language lines printed under the totals (deposit received, balance paid, ...). */
+  notes: string[];
+  subtotalCents: number;
+  btwCents: number;
+  totalCents: number;
+  /** Money received against this invoice. Not part of the frozen invoice. */
+  paidCents: number;
+  paidOn: string | null;
+  /** When the invoice e-mail went out, and to whom. Null = not sent (yet). */
+  sentAt: Iso | null;
+  sentTo: string | null;
+}
+
+export type InvoicePaymentStatus = "draft" | "paid" | "open" | "overdue" | "credit";
+
+// ------------------------------------------------------------ bookkeeping --
+// The accounting tool in the portal (D40): the centre's own books (admin), and a
+// therapist's books when the bookkeeping add-on is on. `ownerTherapistId` null = the centre.
+
+/** What a cost was for. A short fixed list, so choosing is easy (D41). */
+export type CostCategory =
+  | "rent"
+  | "supplies"
+  | "equipment"
+  | "office"
+  | "phone_internet"
+  | "software"
+  | "marketing"
+  | "training"
+  | "travel"
+  | "insurance"
+  | "energy"
+  | "cleaning"
+  | "advice"
+  | "bank_fees"
+  | "other";
+
+/** A receipt photo or PDF. The file itself is kept in storage, never in a list. */
+export interface ReceiptFile {
+  id: Id;
+  fileName: string;
+  mimeType: "image/jpeg" | "image/png" | "image/webp" | "application/pdf";
+  bytes: number;
+  uploadedAt: Iso;
+}
+
+/** One cost (purchase) with what was paid incl. BTW; net and BTW are derived from the rate. */
+export interface Expense {
+  id: Id;
+  ownerTherapistId: Id | null;
+  /** Date on the receipt (local). */
+  date: string;
+  supplier: string;
+  description: string;
+  category: CostCategory;
+  grossCents: number;
+  /** BTW rate on the receipt; "exempt" = no BTW on it. */
+  btwRate: BtwTreatment;
+  netCents: number;
+  btwCents: number;
+  receipt: ReceiptFile | null;
+  /** The bank payment this cost was paid with, once linked. */
+  bankTransactionId: Id | null;
+  createdAt: Iso;
+}
+
+/** A read-only bank connection through a licensed provider (AISP). Never initiates payments. */
+export interface BankConnection {
+  ownerTherapistId: Id | null;
+  bankName: string;
+  /** Shown masked except the last 4 characters. */
+  iban: string;
+  holder: string;
+  connectedAt: Iso;
+  /** The bank's consent ends on this date; the owner renews it (every 90–180 days). */
+  consentUntil: string;
+  lastSyncAt: Iso;
+  /** Demo feed: pretend transactions, no real bank. */
+  demo: boolean;
+}
+
+/** What a bank payment was, once someone looked at it. */
+export type BankMatch =
+  | { kind: "invoice"; invoiceId: Id; balancePaymentId: Id | null }
+  | { kind: "expense"; expenseId: Id }
+  | { kind: "other_income" }
+  | { kind: "counted" }
+  | { kind: "private" };
+
+export interface BankTransaction {
+  id: Id;
+  ownerTherapistId: Id | null;
+  bookedOn: string;
+  /** Positive = money in, negative = money out. */
+  amountCents: number;
+  counterparty: string;
+  counterpartyIban: string | null;
+  description: string;
+  match: BankMatch | null;
 }

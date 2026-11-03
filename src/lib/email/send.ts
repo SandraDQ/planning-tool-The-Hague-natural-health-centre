@@ -6,7 +6,7 @@ import "server-only";
 //   await sendEmail({ to, subject, html, text, replyTo, attachments, kind: "invoice", locale });
 //
 // - No EMAIL_API_KEY: nothing leaves the server; the message goes to the outbox.
-// - Demo mode with a key: only addresses on EMAIL_DEMO_RECIPIENTS get real mail (D-EMAIL).
+// - Demo mode with a key: only addresses on EMAIL_DEMO_RECIPIENTS get real mail (D48).
 // - Errors from the provider are thrown (EmailSendError, status only, never the key).
 
 import { randomUUID } from "node:crypto";
