@@ -141,7 +141,7 @@
     "intro": "Dank u wel, {name}. We zien u graag.",
     "introNoName": "Dank u wel. We zien u graag.",
     "emailNote": "We hebben de gegevens naar uw e-mailadres gestuurd.",
-    "demoEmail": "Demo: er worden geen e-mails verstuurd.",
+    "demoEmail": "Demo: de e-mail wordt niet echt verstuurd. Het centrum ziet hem in het beheerportaal onder E-mails.",
     "nextTitle": "Wat gebeurt er nu",
     "next1": "U krijgt een bevestiging per e-mail, met het bewijs van uw aanbetaling.",
     "next2": "{name} krijgt uw gegevens en bereidt uw bezoek voor.",

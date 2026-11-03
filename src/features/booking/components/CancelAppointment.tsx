@@ -14,8 +14,14 @@ export function CancelAppointment({
   appointmentId,
   consequence,
   cancellable,
+  cancelAction = cancelOwnAppointment,
+  token,
 }: {
   appointmentId: string;
+  /** Defaults to the signed-in client's cancel; the e-mail link page passes its own. */
+  cancelAction?: (prev: CancelResult, form: FormData) => Promise<CancelResult>;
+  /** Signed link token, sent instead of relying on a session. */
+  token?: string;
   consequence: string;
   /** False once the appointment is cancelled (then only the outcome, if any, shows). */
   cancellable: boolean;
@@ -24,7 +30,7 @@ export function CancelAppointment({
   const locale = useLocale();
   const format = useFormatter();
   const [open, setOpen] = useState(false);
-  const [state, action, pending] = useActionState<CancelResult, FormData>(cancelOwnAppointment, { status: "idle" });
+  const [state, action, pending] = useActionState<CancelResult, FormData>(cancelAction, { status: "idle" });
   const panelRef = useRef<HTMLDivElement>(null);
   const doneRef = useRef<HTMLDivElement>(null);
 
@@ -71,6 +77,7 @@ export function CancelAppointment({
       {state.status === "error" && <Notice tone="danger" role="alert" title={t("cancelError")} />}
       <form action={action} className="flex flex-col gap-2 sm:flex-row">
         <input type="hidden" name="id" value={appointmentId} />
+        {token && <input type="hidden" name="token" value={token} />}
         <input type="hidden" name="locale" value={locale} />
         <Button type="submit" variant="secondary" disabled={pending} aria-busy={pending}>
           {t("cancelConfirm")}

@@ -9,7 +9,9 @@ import type {
   BlockSeries,
   BlockTemplate,
   CancellationPolicy,
+  CentreEmailSettings,
   Client,
+  EmailTemplate,
   Expense,
   Id,
   IntakeInput,
@@ -85,4 +87,8 @@ export interface DemoState {
   /** Block series are materialised up to this local date. */
   materializedUntil: string;
   seededAt: Iso;
+  /** Therapists' confirmation messages (email_templates). Created on first use. */
+  emailTemplates?: EmailTemplate[];
+  /** Centre practical info for every confirmation (admin). Created on first use. */
+  centreEmail?: CentreEmailSettings;
 }

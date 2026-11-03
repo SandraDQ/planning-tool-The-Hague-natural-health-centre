@@ -4,7 +4,11 @@
 // to run next to any real service key, so a deployment with real data can never fall back
 // to the open demo login. `next dev` sets DEMO_MODE=1 by default (next.config.ts).
 
-/** Variables that mean real services or real data are connected. */
+/**
+ * Variables that mean real services or real data are connected.
+ * EMAIL_API_KEY is not on this list (D48): the demo may send real e-mail, but only to
+ * the addresses on EMAIL_DEMO_RECIPIENTS (see src/lib/email/config.ts).
+ */
 export const REAL_SERVICE_KEYS = [
   "SUPABASE_URL",
   "SUPABASE_SERVICE_ROLE_KEY",
@@ -13,7 +17,6 @@ export const REAL_SERVICE_KEYS = [
   "DATABASE_URL",
   "MOLLIE_API_KEY",
   "MONEYBIRD_TOKEN",
-  "EMAIL_API_KEY",
   "GOOGLE_CLIENT_SECRET",
   "MICROSOFT_CLIENT_SECRET",
 ] as const;

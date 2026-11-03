@@ -32,6 +32,7 @@ export async function DashboardShell({
   const locale = await getLocale();
   const t = await getTranslations(area);
   const tc = await getTranslations(`${area}.shell`);
+  const te = await getTranslations("email.admin");
   const ti = await getTranslations("invoices");
   const tb = await getTranslations("books");
 
@@ -47,6 +48,7 @@ export async function DashboardShell({
           { href: "/admin/books", label: tb("nav"), icon: <Icons.Receipt /> },
           { href: "/admin/rent", label: t("nav.rent"), icon: <Icons.Euro /> },
           { href: "/admin/therapies", label: t("nav.therapies"), icon: <Icons.Leaf /> },
+          { href: "/admin/emails", label: te("nav"), icon: <Icons.Mail /> },
         ]
       : [
           { href: "/therapist", label: t("nav.calendar"), icon: <Icons.CalendarIcon />, match: "exact" },
